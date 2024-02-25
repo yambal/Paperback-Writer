@@ -10,7 +10,8 @@ type paperbackWriterOptionType = {
 
 
 export const paperbackWriter = async ({ command }: paperbackWriterOptionType) => {
-  
+  console.group(`paperbackWriter({ command: ${command} })`)
+
   const typesFormat: OutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
   try {
@@ -43,6 +44,10 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
         outputTypes = paperbackWriterSetting() || ['pdf']
         break
 
+      case 'pdf':
+        outputTypes = ['pdf']
+        break
+
       case 'all':
         outputTypes = typesFormat
         break
@@ -58,8 +63,11 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       return
     }
 
+    console.log(`outputTypes: ${outputTypes}`)
+
     if (outputTypes && outputTypes.length > 0) {
-      outputTypes.forEach( async (outputType) => {
+      outputTypes.forEach( async (outputType, index) => {
+        console.log(`${index + 1}/${outputTypes?.length} (${mdfilename}) : ${editorDocumentLanguageId} -> ${outputType}`)
         if (typesFormat.indexOf(outputType) >= 0) {
           const outputFilename = mdfilename.replace(ext, '.' + outputType)
           const editorText = editor.document.getText()
@@ -82,6 +90,8 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
   } catch (error) {
     console.error('paperbackWriter()', error)
+  } finally { 
+    console.groupEnd()
   }
 
 }

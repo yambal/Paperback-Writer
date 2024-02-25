@@ -139,6 +139,8 @@ export const exportPdf = ({
           message: `exportPdf(): ${error}`,
           type: 'error'
         })
+      } finally {
+        console.log('finish')
       }
     }
   )

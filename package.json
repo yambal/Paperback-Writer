@@ -15,7 +15,12 @@
     "commands": [
       {
         "command": "extension.paperback-writer.settings",
-        "title": "Palarback Writer: Export (settings.json)",
+        "title": "Paperback Writer: Export (settings.json)",
+        "group": "paperback-writer"
+      },
+      {
+        "command": "extension.paperback-writer.pdf",
+        "title": "Paperback Writer: Markdown -> PDF: 出力 (pdf)",
         "group": "paperback-writer"
       },
       {

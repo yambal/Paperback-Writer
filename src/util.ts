@@ -5,6 +5,7 @@ import { mkdirp } from "mkdirp"
 import os from "os"
 import * as vscode from 'vscode'
 import { rimraf } from 'rimraf'
+import { group } from 'console'
 
 /**
  * ファイルパスの存在を確認する
@@ -58,7 +59,14 @@ export const isExistsDir = (dirname: fs.PathLike) => {
  * ディレクトリを削除する
  */
 export const deleteFile = (path: string | string[]) => {
-  rimraf.sync(path)
+  try {
+    console.group(`deleteFile(${path})`)
+    rimraf.sync(path)
+  } catch (error: any) {
+    console.warn(error.message)
+  } finally {
+    console.groupEnd
+  }
 }
 
 export const getOutputDir = (filename: string, resource: vscode.Uri) => {

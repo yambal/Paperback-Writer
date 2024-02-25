@@ -27,6 +27,9 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('extension.paperback-writer.settings', async () => {
 			await paperbackWriter({command: 'settings'})
 		}),
+		vscode.commands.registerCommand('extension.paperback-writer.pdf', async () => {
+			await paperbackWriter({command: 'pdf'})
+		}),
 		vscode.commands.registerCommand('extension.paperback-writer.helloWorld', () => {
 			vscode.window.showInformationMessage('Hello World from paperback-writer!')
 		})
