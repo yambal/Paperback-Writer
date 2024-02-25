@@ -1,0 +1,411 @@
+{
+  "name": "paperback-writer",
+  "displayName": "paperback-writer",
+  "description": "Create Paperback ",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.paperback-writer.settings",
+        "title": "Palarback Writer: Export (settings.json)",
+        "group": "paperback-writer"
+      },
+      {
+        "command": "extension.paperback-writer.helloWorld",
+        "title": "Palarback Writer: Hello World",
+        "group": "paperback-writer"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "PaperBack Writer",
+      "properties": {
+        "paperback-writer.type": {
+          "type": "array",
+          "default": [
+            "pdf"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Output format: pdf, html, png, jpeg. Multiple output formats support"
+        },
+        "paperback-writer.convertOnSave": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Auto convert on save. To apply the settings, you need to restart Visual Studio Code"
+        },
+        "paperback-writer.convertOnSaveExclude": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "Excluded file name of convertOnSave option"
+        },
+        "paperback-writer.outputDirectory": {
+          "type": "string",
+          "default": "",
+          "description": "Output Directory."
+        },
+        "paperback-writer.outputDirectoryRelativePathFile": {
+          "type": "boolean",
+          "default": false,
+          "description": "If paperback-writer.outputDirectoryRelativePathFile option is set to true, the relative path set with paperback-writer.outputDirectory is interpreted as relative from the file"
+        },
+        "paperback-writer.styles": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "A list of local paths to the stylesheets to use from the paperback-writer. All '\\' need to be written as '\\\\'."
+        },
+        "paperback-writer.stylesRelativePathFile": {
+          "type": "boolean",
+          "default": false,
+          "description": "If paperback-writer.stylesRelativePathFile option is set to true, the relative path set with paperback-writer.styles is interpreted as relative from the file"
+        },
+        "paperback-writer.includeDefaultStyles": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the inclusion of default Markdown styles (VSCode, paperback-writer)"
+        },
+        "paperback-writer.highlight": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable Syntax highlighting"
+        },
+        "paperback-writer.highlightStyle": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "",
+            "a11y-dark.css",
+            "a11y-light.css",
+            "agate.css",
+            "androidstudio.css",
+            "an-old-hope.css",
+            "arduino-light.css",
+            "arta.css",
+            "ascetic.css",
+            "atelier-cave-dark.css",
+            "atelier-cave-light.css",
+            "atelier-dune-dark.css",
+            "atelier-dune-light.css",
+            "atelier-estuary-dark.css",
+            "atelier-estuary-light.css",
+            "atelier-forest-dark.css",
+            "atelier-forest-light.css",
+            "atelier-heath-dark.css",
+            "atelier-heath-light.css",
+            "atelier-lakeside-dark.css",
+            "atelier-lakeside-light.css",
+            "atelier-plateau-dark.css",
+            "atelier-plateau-light.css",
+            "atelier-savanna-dark.css",
+            "atelier-savanna-light.css",
+            "atelier-seaside-dark.css",
+            "atelier-seaside-light.css",
+            "atelier-sulphurpool-dark.css",
+            "atelier-sulphurpool-light.css",
+            "atom-one-dark.css",
+            "atom-one-dark-reasonable.css",
+            "atom-one-light.css",
+            "brown-paper.css",
+            "codepen-embed.css",
+            "color-brewer.css",
+            "darcula.css",
+            "dark.css",
+            "darkula.css",
+            "default.css",
+            "docco.css",
+            "dracula.css",
+            "far.css",
+            "foundation.css",
+            "github.css",
+            "github-gist.css",
+            "gml.css",
+            "googlecode.css",
+            "gradient-dark.css",
+            "grayscale.css",
+            "gruvbox-dark.css",
+            "gruvbox-light.css",
+            "hopscotch.css",
+            "hybrid.css",
+            "idea.css",
+            "ir-black.css",
+            "isbl-editor-dark.css",
+            "isbl-editor-light.css",
+            "kimbie.dark.css",
+            "kimbie.light.css",
+            "lightfair.css",
+            "magula.css",
+            "mono-blue.css",
+            "monokai.css",
+            "monokai-sublime.css",
+            "night-owl.css",
+            "nord.css",
+            "obsidian.css",
+            "ocean.css",
+            "paraiso-dark.css",
+            "paraiso-light.css",
+            "pojoaque.css",
+            "purebasic.css",
+            "qtcreator_dark.css",
+            "qtcreator_light.css",
+            "railscasts.css",
+            "rainbow.css",
+            "routeros.css",
+            "school-book.css",
+            "shades-of-purple.css",
+            "solarized-dark.css",
+            "solarized-light.css",
+            "sunburst.css",
+            "tomorrow.css",
+            "tomorrow-night.css",
+            "tomorrow-night-blue.css",
+            "tomorrow-night-bright.css",
+            "tomorrow-night-eighties.css",
+            "vs.css",
+            "vs2015.css",
+            "xcode.css",
+            "xt256.css",
+            "zenburn.css"
+          ],
+          "default": "",
+          "markdownDescription": "Set the style file name. [highlight.js demo](https://highlightjs.org/static/demo/) [highlight.js/src/styles](https://github.com/highlightjs/highlight.js/tree/master/src/styles)"
+        },
+        "paperback-writer.breaks": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable line breaks"
+        },
+        "paperback-writer.emoji": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Enable emoji. [Emoji cheat sheet](https://www.webfx.com/tools/emoji-cheat-sheet/)"
+        },
+        "paperback-writer.executablePath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium."
+        },
+        "paperback-writer.scale": {
+          "type": "number",
+          "default": 1,
+          "description": "Scale of the page rendering."
+        },
+        "paperback-writer.displayHeaderFooter": {
+          "type": "boolean",
+          "default": true,
+          "description": "pdf only. Display header and footer.",
+          "scope": "resource"
+        },
+        "paperback-writer.headerTemplate": {
+          "type": "string",
+          "default": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \">%%ISO-DATE%%</div>",
+          "description": "pdf only. HTML template for the print header.",
+          "scope": "resource"
+        },
+        "paperback-writer.footerTemplate": {
+          "type": "string",
+          "default": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
+          "description": "pdf only. HTML template for the print footer.",
+          "scope": "resource"
+        },
+        "paperback-writer.printBackground": {
+          "type": "boolean",
+          "default": true,
+          "description": "pdf only. Print background graphics.",
+          "scope": "resource"
+        },
+        "paperback-writer.orientation": {
+          "type": "string",
+          "enum": [
+            "portrait",
+            "landscape"
+          ],
+          "default": "portrait",
+          "description": "pdf only. Paper orientation. portrait or landscape.",
+          "scope": "resource"
+        },
+        "paperback-writer.pageRanges": {
+          "type": "string",
+          "default": "",
+          "description": "pdf only. Paper ranges to print, e.g., '1-5, 8, 11-13'.",
+          "scope": "resource"
+        },
+        "paperback-writer.format": {
+          "type": "string",
+          "enum": [
+            "Letter",
+            "Legal",
+            "Tabloid",
+            "Ledger",
+            "A0",
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "A5",
+            "A6"
+          ],
+          "default": "A4",
+          "description": "pdf only. Paper format [Letter, Legal, Tabloid, Ledger, A0, A1, A2, A3, A4, A5, A6].",
+          "scope": "resource"
+        },
+        "paperback-writer.width": {
+          "type": "string",
+          "default": "",
+          "description": "pdf only. Paper width, accepts values labeled with units(mm, cm, in, px). If it is set, it overrides the paperback-writer.format option.",
+          "scope": "resource"
+        },
+        "paperback-writer.height": {
+          "type": "string",
+          "default": "",
+          "description": "pdf only. Paper height, accepts values labeled with units(mm, cm, in, px). If it is set, it overrides the paperback-writer.format option.",
+          "scope": "resource"
+        },
+        "paperback-writer.margin.top": {
+          "type": "string",
+          "default": "1.5cm",
+          "description": "Page Option. Border Top. units: mm, cm, in, px",
+          "scope": "resource"
+        },
+        "paperback-writer.margin.bottom": {
+          "type": "string",
+          "default": "1cm",
+          "description": "Page Option. Border bottom. units: mm, cm, in, px",
+          "scope": "resource"
+        },
+        "paperback-writer.margin.right": {
+          "type": "string",
+          "default": "1cm",
+          "description": "Page Option. Border right. units: mm, cm, in, px",
+          "scope": "resource"
+        },
+        "paperback-writer.margin.left": {
+          "type": "string",
+          "default": "1cm",
+          "description": "Page Option. Border left. units: mm, cm, in, px",
+          "scope": "resource"
+        },
+        "paperback-writer.quality": {
+          "type": "number",
+          "default": 100,
+          "description": "jpeg only. The quality of the image, between 0-100. Not applicable to png images."
+        },
+        "paperback-writer.clip.x": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "default": "",
+          "description": "png and jpeg only. x-coordinate of top-left corner of clip area."
+        },
+        "paperback-writer.clip.y": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "default": "",
+          "description": "png and jpeg only. y-coordinate of top-left corner of clip area."
+        },
+        "paperback-writer.clip.width": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "default": "",
+          "description": "png and jpeg only. width of clipping area."
+        },
+        "paperback-writer.clip.height": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "default": "",
+          "description": "png and jpeg only. height of clipping area."
+        },
+        "paperback-writer.omitBackground": {
+          "type": "boolean",
+          "default": false,
+          "description": "png and jpeg only. Hides default white background and allows capturing screenshots with transparency."
+        },
+        "paperback-writer.plantumlOpenMarker": {
+          "type": "string",
+          "default": "@startuml",
+          "description": "Oppening delimiter used for the plantuml parser."
+        },
+        "paperback-writer.plantumlCloseMarker": {
+          "type": "string",
+          "default": "@enduml",
+          "description": "Closing delimiter used for the plantuml parser."
+        },
+        "paperback-writer.plantumlServer": {
+          "type": "string",
+          "default": "http://www.plantuml.com/plantuml",
+          "description": "plantuml server"
+        },
+        "paperback-writer.StatusbarMessageTimeout": {
+          "type": "number",
+          "default": 10000,
+          "description": "Statusbar message timeout [milliseconds]"
+        },
+        "paperback-writer.markdown-it-include.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable markdown-it-include. "
+        },
+        "paperback-writer.mermaidServer": {
+          "type": "string",
+          "default": "https://unpkg.com/mermaid/dist/mermaid.min.js",
+          "description": "mermaid server."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "yarn run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/marked": "^6.0.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.86.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "@vscode/test-cli": "^0.0.6",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "marked": "^12.0.0",
+    "mkdirp": "^3.0.1",
+    "puppeteer-core": "2.1.1",
+    "rimraf": "^5.0.5"
+  }
+}
