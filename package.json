@@ -20,9 +20,14 @@
       },
       {
         "command": "extension.paperback-writer.pdf",
-        "title": "Paperback Writer: Markdown -> PDF: 出力 (pdf)",
+        "title": "Paperback Writer: Markdown -> PDF: 出力",
         "group": "paperback-writer"
       },
+      {
+        "command": "extension.paperback-writer.all",
+        "title": "Paperback Writer: Markdown -> ALL: 出力 (pdf, html, png, jpeg)",
+        "group": "paperback-writer"
+      },  
       {
         "command": "extension.paperback-writer.helloWorld",
         "title": "Palarback Writer: Hello World",

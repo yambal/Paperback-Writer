@@ -2,10 +2,10 @@ import fs from 'fs'
 import { showMessage } from './vscode-util'
 
 
-export const exportHtml = (data: string | NodeJS.ArrayBufferView, filename: fs.PathOrFileDescriptor) => {
+export const exportHtml = async (data: string | NodeJS.ArrayBufferView, filename: fs.PathOrFileDescriptor):Promise<void> => {
   try {
-    console.group(`exportHtml(data, ${filename})`)
-    fs.writeFile(filename, data, 'utf-8', (error) => {
+    console.log(`exportHtml(data, ${filename})`)
+    await fs.writeFile(filename, data, 'utf-8', (error) => {
       if (error) {
         showMessage({
           message: `exportHtml(): ${error}`,
@@ -16,6 +16,5 @@ export const exportHtml = (data: string | NodeJS.ArrayBufferView, filename: fs.P
     })
   } catch (error: any) {
   } finally {
-    console.groupEnd()
   }
 }

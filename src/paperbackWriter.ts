@@ -2,6 +2,7 @@ import path from "path"
 import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode-util"
 import { markdownToHtml } from "./markdownToHtml"
 import { exportPdf } from "./exportPdf"
+import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 
 type OutputType = 'html' | 'pdf' | 'png' | 'jpeg';
 type paperbackWriterOptionType = {
@@ -15,6 +16,14 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
   const typesFormat: OutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
   try {
+    if (!checkPuppeteerBinary()) {
+      showMessage({
+        message: `Chromium or Chrome does not exist! See https://github.com/yzane/vscode-markdown-pdf#install`,
+        type: 'error'
+      })
+      return
+    }
+
     const editor = getActiveTextEditor()
     if (!editor) {
       showMessage({
@@ -66,15 +75,16 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     console.log(`outputTypes: ${outputTypes}`)
 
     if (outputTypes && outputTypes.length > 0) {
+      const editorText = editor.document.getText()
+      const html = await markdownToHtml(editorText)
+      
       outputTypes.forEach( async (outputType, index) => {
         console.log(`${index + 1}/${outputTypes?.length} (${mdfilename}) : ${editorDocumentLanguageId} -> ${outputType}`)
         if (typesFormat.indexOf(outputType) >= 0) {
           const outputFilename = mdfilename.replace(ext, '.' + outputType)
-          const editorText = editor.document.getText()
           switch (editorDocumentLanguageId) {
             case 'markdown':
-              const html = await markdownToHtml(mdfilename, outputType, editorText)
-              exportPdf({
+              await exportPdf({
                 html,
                 outputFilename,
                 outputType,

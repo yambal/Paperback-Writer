@@ -1,4 +1,3 @@
-import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { 
   getPaperbackWriterConfiguration, showMessage,
 } from "./vscode-util"
@@ -25,14 +24,7 @@ export const exportPdf = ({
 
   const pwConf = getPaperbackWriterConfiguration()
   const pwWsConf = getPaperbackWriterConfiguration(scope)
-  
-  if (!checkPuppeteerBinary()) {
-    showMessage({
-      message: `Chromium or Chrome does not exist! See https://github.com/yzane/vscode-markdown-pdf#install`,
-      type: 'error'
-    })
-    return
-  }
+
 
   var StatusbarMessageTimeout = pwConf.StatusbarMessageTimeout
   var exportFilename = getOutputDir(outputFilename, editorDocumentUri)
@@ -47,7 +39,7 @@ export const exportPdf = ({
       try {
         // export html
         if (outputType === 'html' && exportFilename) {
-          exportHtml(html, exportFilename)
+          await exportHtml(html, exportFilename)
           // vscode.window.setStatusBarMessage('$(markdown) ' + exportFilename, StatusbarMessageTimeout);
           return
         }
@@ -56,7 +48,7 @@ export const exportPdf = ({
         // create temporary file
         var f = path.parse(outputFilename)
         var tmpfilename = path.join(f.dir, f.name + '_tmp.html')
-        exportHtml(html, tmpfilename)
+        await exportHtml(html, tmpfilename)
 
         /** Papeteer 起動 */
         const browser = await puppeteer.launch({
