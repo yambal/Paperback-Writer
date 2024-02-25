@@ -1,29 +1,48 @@
 import * as vscode from 'vscode'
 
-export const showErrorMessage = (msg: string, error: any) => {
-  vscode.window.showErrorMessage('ERROR: ' + msg)
-  console.log('ERROR: ' + msg)
-  if (error) {
-    vscode.window.showErrorMessage(error.toString())
-    console.log(error)
+/**
+ * メッセージの種類
+ */
+export type MessageType = "error" | "warning" | "info" | "log"
+
+/**
+ * メッセージを表示する
+ */
+export type ShowMessageProps = {
+  /** 表示メッセージ */
+  message: string,
+  /** メッセージの種類 */
+  type: MessageType
+}
+export const showMessage = ({
+  message,
+  type
+}: ShowMessageProps) => {
+
+  switch (type) {
+    case "error":
+      vscode.window.showErrorMessage(message)
+      break
+    case "warning":
+      vscode.window.showWarningMessage(message)
+      break
+    case "info":
+      vscode.window.showInformationMessage(message)
+      break
+    case "log":
+      console.log(message)
+      break
+    default:
+      vscode.window.showInformationMessage(message)
+      break
   }
-}
-
-export const showInformationMessage = (title: string, msg: any) => {
-  vscode.window.showInformationMessage(`${title}: ${msg}`)
-  console.log(`${title}: ${msg}`)
-}
-
-export const showWarningMessage = (title: string, msg: any) => {
-  vscode.window.showWarningMessage(`${title}: ${msg}`)
-  console.log(`${title}: ${msg}`)
 }
 
 export const getActiveTextEditor = ():vscode.TextEditor | undefined => {
   return vscode.window.activeTextEditor
 }
 
-export const getLanguageId = (): string | undefined => {
+export const getEditorDocumentLanguageId = (): string | undefined => {
   var editor = getActiveTextEditor()
   if (editor) {
     return editor.document.languageId
@@ -132,14 +151,3 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
   
   return pwf
 }
-
-
-
-export const getConfiguration = (item: string, fallbackValue?: string | undefined, section?: string | undefined, ) => {
- return vscode.workspace.getConfiguration(section)[item] || fallbackValue || undefined
-}
-
-export const getExecutablePath = ():string => {
-  return getPaperbackWriterConfiguration()['executablePath'] as PaperbackWriterConfiguration['executablePath']
-}
-

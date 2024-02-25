@@ -1,7 +1,6 @@
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { 
-  getPaperbackWriterConfiguration,
-  showErrorMessage
+  getPaperbackWriterConfiguration, showMessage,
 } from "./vscode-util"
 import { deleteFile, getOutputDir, isExistsPath } from "./util"
 import * as vscode from 'vscode'
@@ -28,14 +27,16 @@ export const exportPdf = ({
   const pwWsConf = getPaperbackWriterConfiguration(scope)
   
   if (!checkPuppeteerBinary()) {
-    showErrorMessage('Chromium or Chrome does not exist!', 'See https://github.com/yzane/vscode-markdown-pdf#install')
+    showMessage({
+      message: `Chromium or Chrome does not exist! See https://github.com/yzane/vscode-markdown-pdf#install`,
+      type: 'error'
+    })
     return
   }
 
   var StatusbarMessageTimeout = pwConf.StatusbarMessageTimeout
   var exportFilename = getOutputDir(outputFilename, editorDocumentUri)
   if (!exportFilename) {
-    showErrorMessage('Chromium or Chrome does not exist!', 'See https://github.com/yzane/vscode-markdown-pdf#install')
     return
   }
   
@@ -57,15 +58,11 @@ export const exportPdf = ({
         var tmpfilename = path.join(f.dir, f.name + '_tmp.html')
         exportHtml(html, tmpfilename)
 
-        var options = {
+        /** Papeteer 起動 */
+        const browser = await puppeteer.launch({
           executablePath: pwConf.executablePath || puppeteer.executablePath(),
           args: ['--lang='+vscode.env.language, '--no-sandbox', '--disable-setuid-sandbox']
-          // Setting Up Chrome Linux Sandbox
-          // https://github.com/puppeteer/puppeteer/blob/master/docs/troubleshooting.md#setting-up-chrome-linux-sandbox
-        }
-
-        /** Papeteer 起動 */
-        const browser = await puppeteer.launch(options)
+        })
         const page = await browser.newPage()
         await page.setDefaultTimeout(0)
         /** 一時HTMLを開く */
@@ -138,7 +135,10 @@ export const exportPdf = ({
 
         vscode.window.setStatusBarMessage('$(markdown) ' + exportFilename, StatusbarMessageTimeout)
       } catch (error) {
-        showErrorMessage('exportPdf()', error)
+        showMessage({
+          message: `exportPdf(): ${error}`,
+          type: 'error'
+        })
       }
     }
   )

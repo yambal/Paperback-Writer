@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from "path"
-import { getPaperbackWriterConfiguration, getWorkspaceFolder, showErrorMessage } from './vscode-util'
+import { getPaperbackWriterConfiguration, getWorkspaceFolder, showMessage } from './vscode-util'
 import { mkdirp } from "mkdirp"
 import os from "os"
 import * as vscode from 'vscode'
@@ -81,7 +81,10 @@ export const getOutputDir = (filename: string, resource: vscode.Uri) => {
 
     if (path.isAbsolute(outputDirectory)) {
       if (!isExistsDir(outputDirectory)) {
-        showErrorMessage('The output directory specified by the markdown-pdf.outputDirectory option does not exist.', `Check the markdown-pdf.outputDirectory option. ${outputDirectory}`);
+        showMessage({
+          message: 'The output directory specified by the markdown-pdf.outputDirectory option does not exist.',
+          type: 'error'
+        })
         return
       }
       return path.join(outputDirectory, path.basename(filename))
@@ -100,6 +103,9 @@ export const getOutputDir = (filename: string, resource: vscode.Uri) => {
     mkdir(outputDir)
     return path.join(outputDir, path.basename(filename))
   } catch (error) {
-    showErrorMessage('getOutputDir()', error)
+    showMessage({
+      message: `getOutputDir(): ${error}`,
+      type: 'error'
+    })
   }
 }

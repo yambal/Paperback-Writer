@@ -1,71 +1,87 @@
-import path from "path";
-import { getActiveTextEditor, getLanguageId, getPaperbackWriterConfiguration, showWarningMessage } from "./vscode-util";
-import { markdownToHtml } from "./markdownToHtml";
-import { exportPdf } from "./exportPdf";
-
-
-type paperbackWriterOptionType = 'settings' | 'helloWorld';
+import path from "path"
+import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode-util"
+import { markdownToHtml } from "./markdownToHtml"
+import { exportPdf } from "./exportPdf"
 
 type OutputType = 'html' | 'pdf' | 'png' | 'jpeg';
+type paperbackWriterOptionType = {
+  command: 'settings' | 'all' | OutputType
+}
 
-export const paperbackWriter = async (paperbackWriterOption: paperbackWriterOptionType) => {
-  let outputTypes: OutputType[] | undefined = undefined
-  const types_format: OutputType[] = ['html', 'pdf', 'png', 'jpeg'];
+
+export const paperbackWriter = async ({ command }: paperbackWriterOptionType) => {
+  
+  const typesFormat: OutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
   try {
-    var editor = getActiveTextEditor();
+    const editor = getActiveTextEditor()
     if (!editor) {
-      showWarningMessage('Ops', 'No active Editor!')
-      return;
+      showMessage({
+        message: 'No active Editor!',
+        type: 'warning'
+      })
+      return
     }
 
-    var editorDocumentUri = editor.document.uri;
-    var mdfilename = editorDocumentUri.fsPath
-    var ext = path.extname(mdfilename)
+    const editorDocumentUri = editor.document.uri
+    const mdfilename = editorDocumentUri.fsPath
+    const ext = path.extname(mdfilename)
 
-    var languageId = getLanguageId()
-    if (languageId !== 'markdown' && languageId !== 'html') {
-      showWarningMessage('Ops', 'It is not a markdown mode!');
-      return;
+    var editorDocumentLanguageId = getEditorDocumentLanguageId()
+    if (editorDocumentLanguageId !== 'markdown' && editorDocumentLanguageId !== 'html') {
+      showMessage({
+        message: 'It is not a markdown mode!',
+        type: 'warning'
+      })
+      return
     }
 
-    switch (paperbackWriterOption) {
+    // 出力を設定
+    let outputTypes: OutputType[] | undefined = undefined
+    switch (command) {
       case 'settings':
         outputTypes = paperbackWriterSetting() || ['pdf']
-        break;
+        break
 
-      case 'helloWorld':
-        console.log('helloWorld')
-        break;
+      case 'all':
+        outputTypes = typesFormat
+        break
+
       default:
-        console.log('default')
+        showMessage({
+          message: 'markdownPdf().1 Supported formats: html, pdf, png, jpeg.',
+          type: 'error'
+        })
+        return
+    }
+    if (!outputTypes) {
+      return
     }
 
     if (outputTypes && outputTypes.length > 0) {
-      for (var i = 0; i < outputTypes.length; i++) {
-        const outputType = outputTypes[i]
-
-        if (types_format.indexOf(outputType) >= 0) {
+      outputTypes.forEach( async (outputType) => {
+        if (typesFormat.indexOf(outputType) >= 0) {
           const outputFilename = mdfilename.replace(ext, '.' + outputType)
-          const text = editor.document.getText()
-
-          if (languageId === 'markdown') {
-            console.log(mdfilename, outputType, text)
-            const html = await markdownToHtml(mdfilename, outputType, text)
-            exportPdf({
-              html,
-              outputFilename,
-              outputType,
-              scope: editorDocumentUri,
-              editorDocumentUri
-            })
+          const editorText = editor.document.getText()
+          switch (editorDocumentLanguageId) {
+            case 'markdown':
+              const html = await markdownToHtml(mdfilename, outputType, editorText)
+              exportPdf({
+                html,
+                outputFilename,
+                outputType,
+                scope: editorDocumentUri,
+                editorDocumentUri
+              })
+              break
+          
           }
         }
-      }
+      })
     }
 
   } catch (error) {
-    console.error('paperbackWriter()', error);
+    console.error('paperbackWriter()', error)
   }
 
 }
