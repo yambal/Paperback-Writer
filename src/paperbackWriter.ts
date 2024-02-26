@@ -25,8 +25,8 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
   try {
     if (!checkPuppeteerBinary()) {
       showMessage({
-        message: `Chromium or Chrome does not exist! See https://github.com/yzane/vscode-markdown-pdf#install`,
-        type: 'error'
+        message: `ChromiumまたはChromeが存在しません！`, // See https://github.com/yzane/vscode-markdown-pdf#install`,
+        type: "warning"
       })
       return
     }

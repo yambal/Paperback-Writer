@@ -25,7 +25,7 @@ export const checkPuppeteerBinary = () => {
   } catch (error) {
     showMessage({
       message: `checkPuppeteerBinary(): ${error}`,
-      type: 'error'
+      type: "error"
     })
 
   } finally {

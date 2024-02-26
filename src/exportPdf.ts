@@ -15,7 +15,7 @@ export type exportPdfProps = {
   lunchedPuppeteerPage: LunchedPuppeteer['page'],
 }
 
-export const exportPdf = async ({
+export const exportPdf = ({
   outputFilename,
   outputType,
   scope,
@@ -27,11 +27,12 @@ export const exportPdf = async ({
     const pwConf = getPaperbackWriterConfiguration()
     const pwWsConf = getPaperbackWriterConfiguration(scope)
 
+    /** @todo 外だし */
     var exportFilename = getOutputDir(outputFilename, editorDocumentUri)
     if (!exportFilename) {
       return
     }
-
+    
     if (outputType === 'pdf') {
       const options = {
         path: exportFilename,
