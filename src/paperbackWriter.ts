@@ -57,10 +57,6 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       case 'pdf':
         outputTypes = ['pdf']
         break
-      
-      case 'html':
-        outputTypes = ['html']
-        break
 
       case 'all':
         outputTypes = typesFormat
