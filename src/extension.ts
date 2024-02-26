@@ -65,5 +65,3 @@ const checkPuppeteer = async () => {
 		console.groupEnd()
 	}	
 }
-
-
