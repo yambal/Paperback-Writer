@@ -1,13 +1,11 @@
 import { 
   getPaperbackWriterConfiguration, showMessage,
 } from "./vscode-util"
-import { deleteFile, getOutputDir, isExistsPath } from "./util"
+import { getOutputDir } from "./util"
 import * as vscode from 'vscode'
-import { exportHtml } from "./exportHtml"
-import path from "path"
 
 export type exportPdfProps = {
-  html: string,
+  htmlPath: string,
   outputFilename: string,
   outputType: string,
   scope: vscode.ConfigurationScope | null | undefined
@@ -15,16 +13,14 @@ export type exportPdfProps = {
 }
 
 export const exportPdf = ({
-  html,
+  htmlPath,
   outputFilename,
   outputType,
   scope,
   editorDocumentUri
 }: exportPdfProps) => {
-
   const pwConf = getPaperbackWriterConfiguration()
   const pwWsConf = getPaperbackWriterConfiguration(scope)
-
 
   var StatusbarMessageTimeout = pwConf.StatusbarMessageTimeout
   var exportFilename = getOutputDir(outputFilename, editorDocumentUri)
@@ -37,12 +33,7 @@ export const exportPdf = ({
     title: '[Markdown PDF]: Exporting (' + outputType + ') ...'
     }, async () => {
       try {
-
         const puppeteer = require('puppeteer-core')
-        // create temporary file
-        var f = path.parse(outputFilename)
-        var tmpfilename = path.join(f.dir, f.name + '_tmp.html')
-        await exportHtml(html, tmpfilename)
 
         /** Papeteer 起動 */
         const browser = await puppeteer.launch({
@@ -51,8 +42,9 @@ export const exportPdf = ({
         })
         const page = await browser.newPage()
         await page.setDefaultTimeout(0)
+
         /** 一時HTMLを開く */
-        await page.goto(vscode.Uri.file(tmpfilename).toString(), { waitUntil: 'networkidle0' })
+        await page.goto(vscode.Uri.file(htmlPath).toString(), { waitUntil: 'networkidle0' })
 
         if (outputType === 'pdf') {
           const options = {
@@ -114,10 +106,6 @@ export const exportPdf = ({
         }
 
         await browser.close()
-
-        if (isExistsPath(tmpfilename)) {
-          deleteFile(tmpfilename)
-        }
 
         vscode.window.setStatusBarMessage('$(markdown) ' + exportFilename, StatusbarMessageTimeout)
       } catch (error) {
