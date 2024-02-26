@@ -24,6 +24,11 @@
         "group": "paperback-writer"
       },
       {
+        "command": "extension.paperback-writer.html",
+        "title": "Paperback Writer: Markdown -> HTML: 出力",
+        "group": "paperback-writer"
+      },
+      {
         "command": "extension.paperback-writer.all",
         "title": "Paperback Writer: Markdown -> ALL: 出力 (pdf, html, png, jpeg)",
         "group": "paperback-writer"

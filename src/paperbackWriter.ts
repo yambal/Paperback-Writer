@@ -3,6 +3,7 @@ import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterCon
 import { markdownToHtml } from "./markdownToHtml"
 import { exportPdf } from "./exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
+import { exportHtml } from "./exportHtml"
 
 type OutputType = 'html' | 'pdf' | 'png' | 'jpeg';
 type paperbackWriterOptionType = {
@@ -56,6 +57,10 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       case 'pdf':
         outputTypes = ['pdf']
         break
+      
+      case 'html':
+        outputTypes = ['html']
+        break
 
       case 'all':
         outputTypes = typesFormat
@@ -76,23 +81,40 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
     if (outputTypes && outputTypes.length > 0) {
       const editorText = editor.document.getText()
-      const html = await markdownToHtml(editorText)
+
+      let editorDicumentHtml: string | undefined = undefined
+      if (editorDocumentLanguageId === 'markdown') {
+        editorDicumentHtml = await markdownToHtml(editorText)
+      }
       
       outputTypes.forEach( async (outputType, index) => {
         console.log(`${index + 1}/${outputTypes?.length} (${mdfilename}) : ${editorDocumentLanguageId} -> ${outputType}`)
         if (typesFormat.indexOf(outputType) >= 0) {
+
           const outputFilename = mdfilename.replace(ext, '.' + outputType)
-          switch (editorDocumentLanguageId) {
-            case 'markdown':
-              await exportPdf({
-                html,
-                outputFilename,
-                outputType,
-                scope: editorDocumentUri,
-                editorDocumentUri
-              })
-              break
-          
+
+          if (outputType === 'html' && editorDicumentHtml) {
+            await exportHtml(editorDicumentHtml, outputFilename)
+            showMessage({
+              message: `Exported ${outputFilename}`,
+              type: 'info'
+            })
+          } else {
+            switch (editorDocumentLanguageId) {
+              case 'markdown':
+                if (editorDicumentHtml) {
+                  const html = editorDicumentHtml
+                  await exportPdf({
+                    html,
+                    outputFilename,
+                    outputType,
+                    scope: editorDocumentUri,
+                    editorDocumentUri
+                  })
+                }
+                break
+            
+            }
           }
         }
       })

@@ -37,12 +37,6 @@ export const exportPdf = ({
     title: '[Markdown PDF]: Exporting (' + outputType + ') ...'
     }, async () => {
       try {
-        // export html
-        if (outputType === 'html' && exportFilename) {
-          await exportHtml(html, exportFilename)
-          // vscode.window.setStatusBarMessage('$(markdown) ' + exportFilename, StatusbarMessageTimeout);
-          return
-        }
 
         const puppeteer = require('puppeteer-core')
         // create temporary file
