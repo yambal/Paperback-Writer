@@ -23,7 +23,7 @@ export const installChromium = ():Promise<void> => {
     const browserFetcher = puppeteer.createBrowserFetcher()
 
     /** @todo dist を読みにいっているが、テストだからか？ */
-    const revision = "722234" // require(path.join(__dirname, 'node_modules', 'puppeteer-core', 'package.json')).puppeteer.chromium_revision;
+    const revision = "756035" // 3.3.0 // require(path.join(__dirname, 'node_modules', 'puppeteer-core', 'package.json')).puppeteer.chromium_revision;
     const revisionInfo = browserFetcher.revisionInfo(revision)
 
     setProxy()
