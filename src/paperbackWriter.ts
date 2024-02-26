@@ -1,10 +1,15 @@
 import path from "path"
 import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode-util"
 import { markdownToHtml } from "./markdownToHtml"
-import { exportPdf } from "./exportPdf"
+import { PuppeteerOutputType, exportPdf } from "./exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
+import { lunchPuppeteer } from "./lunchPuppeteer"
+import * as vscode from 'vscode'
+import { exportHtml } from "./exportHtml"
+import { deleteFile } from "./util"
 
-type OutputType = 'html' | 'pdf' | 'png' | 'jpeg';
+
+export type OutputType = PuppeteerOutputType | 'html'
 type paperbackWriterOptionType = {
   command: 'settings' | 'all' | OutputType
 }
@@ -12,6 +17,8 @@ type paperbackWriterOptionType = {
 
 export const paperbackWriter = async ({ command }: paperbackWriterOptionType) => {
   console.group(`paperbackWriter({ command: ${command} })`)
+
+  const pwConf = getPaperbackWriterConfiguration()
 
   const typesFormat: OutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
@@ -76,34 +83,55 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
     if (outputTypes && outputTypes.length > 0) {
       const editorText = editor.document.getText()
-      const html = await markdownToHtml(editorText)
-      
-      outputTypes.forEach( async (outputType, index) => {
-        console.log(`${index + 1}/${outputTypes?.length} (${mdfilename}) : ${editorDocumentLanguageId} -> ${outputType}`)
-        if (typesFormat.indexOf(outputType) >= 0) {
-          const outputFilename = mdfilename.replace(ext, '.' + outputType)
-          switch (editorDocumentLanguageId) {
-            case 'markdown':
-              await exportPdf({
-                html,
-                outputFilename,
-                outputType,
-                scope: editorDocumentUri,
-                editorDocumentUri
-              })
-              break
-          
-          }
-        }
-      })
-    }
+      const f = path.parse(mdfilename)
+      const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
+      return markdownToHtml(editorText)
+      .then((html) => {
+        return exportHtml(html, tmpfilename)
+        .then((path) => {
+          lunchPuppeteer(pwConf.executablePath, vscode.env.language)
+          .then((lunchedPuppeteer) => {
+            return lunchedPuppeteer.page.goto(vscode.Uri.file(tmpfilename).toString(), { waitUntil: 'networkidle0' })
+            .then(() => {
+              if (outputTypes) {
+                const tasks = outputTypes.map((outputType, index) => {
+                  console.log(`${index + 1}/${outputTypes?.length} (${mdfilename}) : ${editorDocumentLanguageId} -> ${outputType}`)
+                  const outputFilename = mdfilename.replace(ext, '.' + outputType)
+    
+                  if (editorDocumentLanguageId === "markdown" && outputType === 'html') {
+                    return exportHtml(html, outputFilename)
+    
+                  } else if (editorDocumentLanguageId === "markdown" && outputType !== 'html') {      
+                    return exportPdf({
+                      outputFilename,
+                      outputType,
+                      scope: editorDocumentUri,
+                      editorDocumentUri,
+                      lunchedPuppeteerPage: lunchedPuppeteer.page,
+                    })
+                  } else {
+                    return null
+                  }
+                })
+    
+                Promise.all(tasks)
+                .then(() => {
+                  deleteFile(tmpfilename)
+                  lunchedPuppeteer.browser.close()
+                })
+              }
+            })
+          })
+        })
+      })
+      
+    }
   } catch (error) {
     console.error('paperbackWriter()', error)
   } finally { 
     console.groupEnd()
   }
-
 }
 
 const paperbackWriterSetting = (): OutputType[] => {

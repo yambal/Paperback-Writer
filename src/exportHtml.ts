@@ -1,24 +1,17 @@
 import fs from 'fs'
-import { showMessage } from './vscode-util'
 
-export const exportHtml = (data: string | NodeJS.ArrayBufferView, filename: fs.PathOrFileDescriptor):Promise<void> => {
+export const exportHtml = (data: string | NodeJS.ArrayBufferView, path: fs.PathOrFileDescriptor):Promise<string> => {
   return new Promise((resolve, reject) => { 
     try {
-      console.log(`exportHtml(data, ${filename})`)
-      fs.writeFile(filename, data, 'utf-8', (error) => {
+      fs.writeFile(path, data, 'utf-8', (error) => {
         if (error) {
-          showMessage({
-            message: `exportHtml(): ${error}`,
-            type: 'error'
-          })
-          reject(error)
+          reject(error.message)
         } else {
-          resolve()
+          resolve(path.toString())
         }
       })
     } catch (error: any) {
-      reject()
-    } finally {
+      reject(`error@exportHtml(): ${error}`)
     }
   })
 }

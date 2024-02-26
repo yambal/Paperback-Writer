@@ -1,5 +1,11 @@
 
-export const lunchPuppeteer = (executablePath: string, language: string): Promise<{browser: any, page:any}> => {
+
+export type LunchedPuppeteer = {
+  browser: any
+  page: any
+}
+
+export const lunchPuppeteer = (executablePath: string, language: string): Promise<LunchedPuppeteer> => {
   return new Promise((resolve, reject) => {
     const puppeteer = require('puppeteer-core')
     return puppeteer.launch({
@@ -9,10 +15,11 @@ export const lunchPuppeteer = (executablePath: string, language: string): Promis
       return browser.newPage()
       .then((page: any) => {
         page.setDefaultTimeout(0)
-        resolve({
+        const lb: LunchedPuppeteer = {
           browser,
           page
-        })
+        }
+        resolve(lb)
       })
       .catch((error: any) => {
         browser.close()
