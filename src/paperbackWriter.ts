@@ -1,12 +1,12 @@
 import path from "path"
 import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode-util"
-import { markdownToHtml } from "./markdownToHtml"
-import { PuppeteerOutputType, exportPdf } from "./exportPdf"
+import { markdownToHtml } from "./convert/markdownToHtml"
+import { PuppeteerOutputType, exportPdf } from "./export/exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
-import { exportHtml } from "./exportHtml"
-import { deleteFile } from "./util"
+import { exportHtml } from "./export/exportHtml"
+import { deleteFile, getOutputDir } from "./util"
 
 
 export type OutputType = PuppeteerOutputType | 'html'
@@ -86,9 +86,9 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       const f = path.parse(mdfilename)
       const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
-      return markdownToHtml(editorText)
+      return markdownToHtml({markdownString: editorText})
       .then((html) => {
-        return exportHtml(html, tmpfilename)
+        return exportHtml({htmlString: html, exportPath:tmpfilename})
         .then((path) => {
           lunchPuppeteer(pwConf.executablePath, vscode.env.language)
           .then((lunchedPuppeteer) => {
@@ -100,15 +100,49 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                   const outputFilename = mdfilename.replace(ext, '.' + outputType)
     
                   if (editorDocumentLanguageId === "markdown" && outputType === 'html') {
-                    return exportHtml(html, outputFilename)
+                    return exportHtml({htmlString: html, exportPath: outputFilename})
     
                   } else if (editorDocumentLanguageId === "markdown" && outputType !== 'html') {      
+                    /** @todo 外だし */
+                    var exportFilename = getOutputDir(outputFilename, editorDocumentUri)
+                    if (!exportFilename) {
+                      return
+                    }
+
                     return exportPdf({
-                      outputFilename,
                       outputType,
-                      scope: editorDocumentUri,
-                      editorDocumentUri,
                       lunchedPuppeteerPage: lunchedPuppeteer.page,
+                      exportFilename,
+                      pdfOption: {
+                        scale: pwConf.scale,
+                        isDisplayHeaderAndFooter: pwConf.displayHeaderFooter,
+                        headerTemplate: pwConf.headerTemplate,
+                        footerTemplate: pwConf.footerTemplate,
+                        isPrintBackground: pwConf.printBackground,
+                        orientationIsLandscape: pwConf.orientation === 'landscape',
+                        pageRanges: pwConf.pageRanges,
+                        format: pwConf.format,
+                        width: pwConf.width,
+                        height: pwConf.height,
+                        margin: {
+                          top: pwConf.margin.top,
+                          right: pwConf.margin.right,
+                          bottom: pwConf.margin.bottom,
+                          left: pwConf.margin.left
+                        }
+                      },
+                      imageOption: {
+                        quality: pwConf.quality,
+                        clip: {
+                          x: pwConf.clip.x,
+                          y: pwConf.clip.y,
+                          width: pwConf.clip.width,
+                          height: pwConf.clip.height
+                        },
+                        omitBackground: pwConf.omitBackground,
+                        fullPage: false
+                      }
+
                     })
                   } else {
                     return null
