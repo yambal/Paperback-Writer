@@ -1,30 +1,53 @@
 import { LunchedPuppeteer } from "../lunchPuppeteer"
 
-export type PuppeteerOutputType = "png" | "jpeg"
+export type PuppeteerImageOutputType = "png" | "jpeg"
 
 export type ImageOption = {
+  /** 画像の品質 */
   quality: number | undefined
+
+  /** クリップ */
   clip: {
+    /** x座標 */
     x: number | null
+
+    /** y座標 */
     y: number | null
+
+    /** 幅 */
     width: number | null
+
+    /** 高さ */
     height: number | null
   }
+  /** フルページ */
   fullPage: boolean
+
+  /** 背景の省略 */
   omitBackground: boolean
 }
 
 export type ExportImageProps = {
-  outputType: PuppeteerOutputType,
+  /** 画像の出力形式 */
+  outputType: PuppeteerImageOutputType,
+
+  /** ランチ済のPuppeteerのページ */
   lunchedPuppeteerPage: LunchedPuppeteer['page']
-  exportFilename: string
+
+  /** エクスポートパスファイル */
+  exportUri: string
+
+  /** 画像のオプション */
   imageOption: ImageOption
 }
 
+/**
+ * ランチ済のPuppeteerのページを指定して、画像をエクスポートする
+ */
 export const exportImage = ({
   outputType,
   lunchedPuppeteerPage,
-  exportFilename,
+  exportUri,
   imageOption
 }: ExportImageProps): Promise<void> => {
 
@@ -40,7 +63,7 @@ export const exportImage = ({
       let options
       if (clip_x_option !== null && clip_y_option !== null && clip_width_option !== null && clip_height_option !== null) {
         options = {
-          path: exportFilename,
+          path: exportUri,
           quality: quality_option,
           fullPage: imageOption.fullPage,
           clip: {
@@ -53,7 +76,7 @@ export const exportImage = ({
         }
       } else {
         options = {
-          path: exportFilename,
+          path: exportUri,
           quality: quality_option,
           fullPage: true,
           omitBackground: imageOption.omitBackground,

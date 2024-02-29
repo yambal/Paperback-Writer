@@ -1,44 +1,81 @@
 import { LunchedPuppeteer } from "../lunchPuppeteer"
 
-export type PuppeteerOutputType = "pdf" | "png" | "jpeg"
+export type PuppeteerPdfOutputType = "pdf"
+
+export type PdfFormat = "Letter" | "Legal" | "Tabloid" | "Ledger" | "A0" | "A1" | "A2" | "A3" | "A4" | "A5" | "A6"
+export type PdfOrientation = "portrait" | "landscape"
 
 export type PdfOption = {
+  /** スケール */
   scale: number | undefined
+
+  /** ヘッダー・フッターの表示 */
   isDisplayHeaderAndFooter: boolean
+
+  /** ヘッダーテンプレート */
   headerTemplate: string
+
+  /** フッターテンプレート */
   footerTemplate: string
+
+  /** 背景の印刷 */
   isPrintBackground: boolean
+
+  /** 横向きの場合はtrue */
   orientationIsLandscape: boolean
+
+  /** ページ範囲 */
   pageRanges: string
-  format: string
+
+  /** ページのフォーマット */
+  format?: PdfFormat
+
+  /** 幅 */
   width: string
+
+  /** 高さ */
   height: string
+
+  /** マージン */
   margin: {
+    /** 上マージン */
     top: string
+
+    /** 右マージン */
     right: string
+
+    /** 下マージン */
     bottom: string
+
+    /** 左マージン */
     left: string
   }
 }
 
 export type ExportPdfProps = {
-  outputType: PuppeteerOutputType,
+  /** ランチ済のPuppeteerのページ */
   lunchedPuppeteerPage: LunchedPuppeteer['page']
-  exportFilename: string
+
+  /** エクスポートパスファイル */
+  exportUri: string
+
+  /** PDFのオプション */
   pdfOption: PdfOption
 }
 
+/**
+ * ランチ済のPuppeteerのページを指定して、PDFをエクスポートする
+ */
 export const exportPdf = ({
-  outputType,
   lunchedPuppeteerPage,
-  exportFilename,
+  exportUri,
   pdfOption,
 }: ExportPdfProps): Promise<void> => {
 
   return new Promise((resolve, reject) => {
     const format = !pdfOption.width && !pdfOption.height ? pdfOption.format ?? 'A4' : ''
     const options = {
-      path: exportFilename,
+      path: exportUri,
       scale: pdfOption.scale || 1,
       displayHeaderFooter: pdfOption.isDisplayHeaderAndFooter,
       headerTemplate: transformTemplate(pdfOption.headerTemplate),

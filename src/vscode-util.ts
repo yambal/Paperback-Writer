@@ -1,4 +1,6 @@
 import * as vscode from 'vscode'
+import { PdfFormat, PdfOrientation } from './export/exportPdf'
+import { PuppeteerOutputType } from './paperbackWriter'
 
 /**
  * メッセージの種類
@@ -55,7 +57,7 @@ export const getWorkspaceFolder = (uri: vscode.Uri): vscode.WorkspaceFolder | un
 }
 
 type PaperbackWriterConfiguration = {
-  type: string[],
+  type: PuppeteerOutputType[],
   convertOnSave: boolean,
   convertOnSaveExclude: string[]
   outputDirectory: string
@@ -73,9 +75,11 @@ type PaperbackWriterConfiguration = {
   headerTemplate: string
   footerTemplate: string
   printBackground: boolean
-  orientation: "portrait" | "landscape"
+  orientation: PdfOrientation
   pageRanges: string
-  format: "Letter" | "Legal" | "Tabloid" | "Ledger" | "A0" | "A1" | "A2" | "A3" | "A4" | "A5" | "A6"
+
+  /** ページのフォーマット */
+  format?: PdfFormat
   width: string
   height: string
   margin: {
@@ -84,13 +88,19 @@ type PaperbackWriterConfiguration = {
     bottom: string
     left: string
   }
+
+  /** 画像の品質 */
   quality: number
+
+  /** クリップ範囲 */
   clip: {
     x: number | null
     y: number | null
     width: number | null
     height: number | null
   },
+
+  /** 背景の省略 */
   omitBackground: boolean
   plantumlOpenMarker: string
   plantumlCloseMarker: string

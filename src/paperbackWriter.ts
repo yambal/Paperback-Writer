@@ -1,17 +1,18 @@
 import path from "path"
 import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode-util"
 import { markdownToHtml } from "./convert/markdownToHtml"
-import { PuppeteerOutputType, exportPdf } from "./export/exportPdf"
+import { PuppeteerPdfOutputType, exportPdf } from "./export/exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
 import { exportHtml } from "./export/exportHtml"
 import { deleteFile, getOutputDir } from "./util"
-import { exportImage } from "./export/exportImage"
+import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 
-export type OutputType = PuppeteerOutputType | 'html'
+export type PuppeteerOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
+
 type paperbackWriterOptionType = {
-  command: 'settings' | 'all' | OutputType
+  command: 'settings' | 'all' | PuppeteerOutputType
 }
 
 export const paperbackWriter = async ({ command }: paperbackWriterOptionType) => {
@@ -19,7 +20,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
   const pwConf = getPaperbackWriterConfiguration()
 
-  const typesFormat: OutputType[] = ['html', 'pdf', 'png', 'jpeg']
+  const typesFormat: PuppeteerOutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
   try {
     if (!checkPuppeteerBinary()) {
@@ -53,10 +54,10 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     }
 
     // 出力を設定
-    let outputTypes: OutputType[] | undefined = undefined
+    let outputTypes: PuppeteerOutputType[] | undefined = undefined
     switch (command) {
       case 'settings':
-        outputTypes = paperbackWriterSetting() || ['pdf']
+        outputTypes = getConfigurationType() || ['pdf']
         break
 
       case 'pdf':
@@ -102,8 +103,8 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                     return exportHtml({htmlString: html, exportPath: outputFilename})
     
                   } else if (editorDocumentLanguageId === "markdown" && outputType !== 'html') {      
-                    var exportFilename = getOutputDir(outputFilename, editorDocumentUri)
-                    if (!exportFilename) {
+                    var exportUri = getOutputDir(outputFilename, editorDocumentUri)
+                    if (!exportUri) {
                       return
                     }
 
@@ -111,15 +112,10 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                       return exportImage({
                         outputType,
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
-                        exportFilename,
+                        exportUri,
                         imageOption: {
                           quality: pwConf.quality,
-                          clip: {
-                            x: pwConf.clip.x,
-                            y: pwConf.clip.y,
-                            width: pwConf.clip.width,
-                            height: pwConf.clip.height
-                          },
+                          clip: pwConf.clip,
                           omitBackground: pwConf.omitBackground,
                           fullPage: false
                         }
@@ -128,9 +124,8 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
                     if (outputType === 'pdf') {
                       return exportPdf({
-                        outputType,
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
-                        exportFilename,
+                        exportUri,
                         pdfOption: {
                           scale: pwConf.scale,
                           isDisplayHeaderAndFooter: pwConf.displayHeaderFooter,
@@ -142,12 +137,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           format: pwConf.format,
                           width: pwConf.width,
                           height: pwConf.height,
-                          margin: {
-                            top: pwConf.margin.top,
-                            right: pwConf.margin.right,
-                            bottom: pwConf.margin.bottom,
-                            left: pwConf.margin.left
-                          }
+                          margin: pwConf.margin
                         }
                       })
                     }
@@ -175,7 +165,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
   }
 }
 
-const paperbackWriterSetting = (): OutputType[] => {
+const getConfigurationType = (): PuppeteerOutputType[] => {
   const pwConf = getPaperbackWriterConfiguration()
 
   var tempConfigurationType = pwConf.type
@@ -185,6 +175,6 @@ const paperbackWriterSetting = (): OutputType[] => {
     return [tempConfigurationType]
 
   } else {
-    return tempConfigurationType as OutputType[]
+    return tempConfigurationType as PuppeteerOutputType[]
   }
 } 

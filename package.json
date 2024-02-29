@@ -253,7 +253,7 @@
         "paperback-writer.pageRanges": {
           "type": "string",
           "default": "",
-          "description": "pdf only. Paper ranges to print, e.g., '1-5, 8, 11-13'.",
+          "description": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
           "scope": "resource"
         },
         "paperback-writer.format": {
@@ -272,19 +272,19 @@
             "A6"
           ],
           "default": "A4",
-          "description": "pdf only. Paper format [Letter, Legal, Tabloid, Ledger, A0, A1, A2, A3, A4, A5, A6].",
+          "description": "用紙サイズ(pdfのみ)",
           "scope": "resource"
         },
         "paperback-writer.width": {
           "type": "string",
           "default": "",
-          "description": "pdf only. Paper width, accepts values labeled with units(mm, cm, in, px). If it is set, it overrides the paperback-writer.format option.",
+          "description": "用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
           "scope": "resource"
         },
         "paperback-writer.height": {
           "type": "string",
           "default": "",
-          "description": "pdf only. Paper height, accepts values labeled with units(mm, cm, in, px). If it is set, it overrides the paperback-writer.format option.",
+          "description": "用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
           "scope": "resource"
         },
         "paperback-writer.margin.top": {
@@ -314,7 +314,7 @@
         "paperback-writer.quality": {
           "type": "number",
           "default": 100,
-          "description": "jpeg only. The quality of the image, between 0-100. Not applicable to png images."
+          "description": "画像品質(jpegのみ)、0-100"
         },
         "paperback-writer.clip.x": {
           "type": [
