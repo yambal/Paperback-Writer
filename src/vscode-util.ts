@@ -1,6 +1,6 @@
 import * as vscode from 'vscode'
 import { PdfFormat, PdfOrientation } from './export/exportPdf'
-import { PuppeteerOutputType } from './paperbackWriter'
+import { PaperbackWriterOutputType } from './paperbackWriter'
 
 /**
  * メッセージの種類
@@ -57,7 +57,7 @@ export const getWorkspaceFolder = (uri: vscode.Uri): vscode.WorkspaceFolder | un
 }
 
 type PaperbackWriterConfiguration = {
-  type: PuppeteerOutputType[],
+  type: PaperbackWriterOutputType[],
   convertOnSave: boolean,
   convertOnSaveExclude: string[]
   outputDirectory: string

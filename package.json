@@ -24,8 +24,23 @@
         "group": "paperback-writer"
       },
       {
+        "command": "extension.paperback-writer.png",
+        "title": "%extension.paperback-writer.png%",
+        "group": "paperback-writer"
+      },
+      {
+        "command": "extension.paperback-writer.jpeg",
+        "title": "%extension.paperback-writer.jpeg%",
+        "group": "paperback-writer"
+      },
+      {
+        "command": "extension.paperback-writer.html",
+        "title": "%extension.paperback-writer.html%",
+        "group": "paperback-writer"
+      },
+      {
         "command": "extension.paperback-writer.all",
-        "title": "Markdown -> ALL: 出力 (pdf, html, png, jpeg)",
+        "title": "%extension.paperback-writer.all%",
         "group": "paperback-writer"
       },
       {
@@ -39,13 +54,31 @@
         {
           "when": "resourceLangId == markdown",
           "command": "extension.paperback-writer.pdf",
-          "alt": "MarkdownをPDFに変換する",
           "group": "paperback-writer"
         },
         {
           "when": "resourceLangId == markdown",
           "command": "extension.paperback-writer.settings",
-          "alt": "Markdownを他の形式に変換する",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.png",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.jpeg",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.html",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.all",
           "group": "paperback-writer"
         }
       ],
@@ -53,13 +86,31 @@
         {
           "when": "resourceLangId == markdown",
           "command": "extension.paperback-writer.pdf",
-          "alt": "MarkdownをPDFに変換する",
           "group": "paperback-writer"
         },
         {
           "when": "resourceLangId == markdown",
           "command": "extension.paperback-writer.settings",
-          "alt": "Markdownを他の形式に変換する",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.png",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.jpeg",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.html",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.all",
           "group": "paperback-writer"
         }
       ],
@@ -67,13 +118,11 @@
         {
           "when": "resourceLangId == markdown",
           "command": "extension.paperback-writer.pdf",
-          "alt": "MarkdownをPDFに変換する",
           "group": "paperback-writer"
         },
         {
           "when": "resourceLangId == markdown",
           "command": "extension.paperback-writer.settings",
-          "alt": "Markdownを他の形式に変換する",
           "group": "paperback-writer"
         }
       ]

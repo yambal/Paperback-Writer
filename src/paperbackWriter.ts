@@ -9,10 +9,15 @@ import { exportHtml } from "./export/exportHtml"
 import { deleteFile, getOutputDir } from "./util"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 
-export type PuppeteerOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
+/** このExtentionが出力できる拡張子 */
+export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
 
-type paperbackWriterOptionType = {
-  command: 'settings' | 'all' | PuppeteerOutputType
+/** 受け付けるコマンド */
+export type PaperbackWriterCommandType = 'settings' | 'all' | PaperbackWriterOutputType
+
+/** paperbackWriterのオプション */
+export type paperbackWriterOptionType = {
+  command: PaperbackWriterCommandType
 }
 
 export const paperbackWriter = async ({ command }: paperbackWriterOptionType) => {
@@ -20,7 +25,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
   const pwConf = getPaperbackWriterConfiguration()
 
-  const typesFormat: PuppeteerOutputType[] = ['html', 'pdf', 'png', 'jpeg']
+  const allOutputTypes: PaperbackWriterOutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
   try {
     if (!checkPuppeteerBinary()) {
@@ -54,18 +59,30 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     }
 
     // 出力を設定
-    let outputTypes: PuppeteerOutputType[] | undefined = undefined
+    let outputTypes: PaperbackWriterOutputType[] | undefined
     switch (command) {
       case 'settings':
-        outputTypes = getConfigurationType() || ['pdf']
+        outputTypes = pwConf.type || ['pdf']
         break
 
       case 'pdf':
         outputTypes = ['pdf']
         break
 
+      case 'png':
+          outputTypes = ['png']
+          break
+      
+      case 'jpeg':
+        outputTypes = ['jpeg']
+        break
+
+      case 'html':
+        outputTypes = ['html']
+        break
+
       case 'all':
-        outputTypes = typesFormat
+        outputTypes = allOutputTypes
         break
 
       default:
@@ -164,17 +181,3 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     console.groupEnd()
   }
 }
-
-const getConfigurationType = (): PuppeteerOutputType[] => {
-  const pwConf = getPaperbackWriterConfiguration()
-
-  var tempConfigurationType = pwConf.type
-  console.log('paperbackWriterSetting', tempConfigurationType)
-
-  if (tempConfigurationType && !Array.isArray(tempConfigurationType)) {
-    return [tempConfigurationType]
-
-  } else {
-    return tempConfigurationType as PuppeteerOutputType[]
-  }
-} 

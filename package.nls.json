@@ -1,4 +1,8 @@
 {
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",
-  "extension.paperback-writer.pdf": "Output Markdown to PDF"
+  "extension.paperback-writer.pdf": "Output Markdown to PDF",
+  "extension.paperback-writer.png": "Output Markdown to PNG",
+  "extension.paperback-writer.jpeg": "Output Markdown to JPEG",
+  "extension.paperback-writer.html": "Output Markdown to HTML",
+  "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG"
 }

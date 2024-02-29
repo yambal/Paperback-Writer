@@ -1,4 +1,8 @@
 {
-  "extension.paperback-writer.settings": "Markdownを他のファイル形式に書き出します (settings.json) ",
-  "extension.paperback-writer.pdf": "MarkdownをPDFに書き出します"
+  "extension.paperback-writer.settings": "Markdownを他のファイル形式に書き出し (settings.json) ",
+  "extension.paperback-writer.pdf": "MarkdownをPDFに書き出し",
+  "extension.paperback-writer.png": "MarkdownをPNGに書き出し",
+  "extension.paperback-writer.jpeg": "MarkdownをJPEGに書き出し",
+  "extension.paperback-writer.html": "MarkdownをHTMLに書き出し",
+  "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGに書き出し"
 }

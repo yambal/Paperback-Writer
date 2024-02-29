@@ -32,6 +32,15 @@ export const activate = async (context: vscode.ExtensionContext) => {
 		vscode.commands.registerCommand('extension.paperback-writer.pdf', async () => {
 			await paperbackWriter({command: 'pdf'})
 		}),
+		vscode.commands.registerCommand('extension.paperback-writer.png', async () => {
+			await paperbackWriter({command: 'png'})
+		}),
+		vscode.commands.registerCommand('extension.paperback-writer.jpeg', async () => {
+			await paperbackWriter({command: 'jpeg'})
+		}),
+		vscode.commands.registerCommand('extension.paperback-writer.html', async () => {
+			await paperbackWriter({command: 'html'})
+		}),
 		vscode.commands.registerCommand('extension.paperback-writer.all', async () => {
 			await paperbackWriter({command: 'all'})
 		}),
