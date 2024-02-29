@@ -7,13 +7,12 @@ import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
 import { exportHtml } from "./export/exportHtml"
 import { deleteFile, getOutputDir } from "./util"
-
+import { exportImage } from "./export/exportImage"
 
 export type OutputType = PuppeteerOutputType | 'html'
 type paperbackWriterOptionType = {
   command: 'settings' | 'all' | OutputType
 }
-
 
 export const paperbackWriter = async ({ command }: paperbackWriterOptionType) => {
   console.group(`paperbackWriter({ command: ${command} })`)
@@ -103,47 +102,55 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                     return exportHtml({htmlString: html, exportPath: outputFilename})
     
                   } else if (editorDocumentLanguageId === "markdown" && outputType !== 'html') {      
-                    /** @todo 外だし */
                     var exportFilename = getOutputDir(outputFilename, editorDocumentUri)
                     if (!exportFilename) {
                       return
                     }
 
-                    return exportPdf({
-                      outputType,
-                      lunchedPuppeteerPage: lunchedPuppeteer.page,
-                      exportFilename,
-                      pdfOption: {
-                        scale: pwConf.scale,
-                        isDisplayHeaderAndFooter: pwConf.displayHeaderFooter,
-                        headerTemplate: pwConf.headerTemplate,
-                        footerTemplate: pwConf.footerTemplate,
-                        isPrintBackground: pwConf.printBackground,
-                        orientationIsLandscape: pwConf.orientation === 'landscape',
-                        pageRanges: pwConf.pageRanges,
-                        format: pwConf.format,
-                        width: pwConf.width,
-                        height: pwConf.height,
-                        margin: {
-                          top: pwConf.margin.top,
-                          right: pwConf.margin.right,
-                          bottom: pwConf.margin.bottom,
-                          left: pwConf.margin.left
+                    if (outputType === 'png' || outputType === 'jpeg') {
+                      return exportImage({
+                        outputType,
+                        lunchedPuppeteerPage: lunchedPuppeteer.page,
+                        exportFilename,
+                        imageOption: {
+                          quality: pwConf.quality,
+                          clip: {
+                            x: pwConf.clip.x,
+                            y: pwConf.clip.y,
+                            width: pwConf.clip.width,
+                            height: pwConf.clip.height
+                          },
+                          omitBackground: pwConf.omitBackground,
+                          fullPage: false
                         }
-                      },
-                      imageOption: {
-                        quality: pwConf.quality,
-                        clip: {
-                          x: pwConf.clip.x,
-                          y: pwConf.clip.y,
-                          width: pwConf.clip.width,
-                          height: pwConf.clip.height
-                        },
-                        omitBackground: pwConf.omitBackground,
-                        fullPage: false
-                      }
+                      })
+                    }
 
-                    })
+                    if (outputType === 'pdf') {
+                      return exportPdf({
+                        outputType,
+                        lunchedPuppeteerPage: lunchedPuppeteer.page,
+                        exportFilename,
+                        pdfOption: {
+                          scale: pwConf.scale,
+                          isDisplayHeaderAndFooter: pwConf.displayHeaderFooter,
+                          headerTemplate: pwConf.headerTemplate,
+                          footerTemplate: pwConf.footerTemplate,
+                          isPrintBackground: pwConf.printBackground,
+                          orientationIsLandscape: pwConf.orientation === 'landscape',
+                          pageRanges: pwConf.pageRanges,
+                          format: pwConf.format,
+                          width: pwConf.width,
+                          height: pwConf.height,
+                          margin: {
+                            top: pwConf.margin.top,
+                            right: pwConf.margin.right,
+                            bottom: pwConf.margin.bottom,
+                            left: pwConf.margin.left
+                          }
+                        }
+                      })
+                    }
                   } else {
                     return null
                   }
