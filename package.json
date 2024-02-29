@@ -15,25 +15,69 @@
     "commands": [
       {
         "command": "extension.paperback-writer.settings",
-        "title": "Paperback Writer: Export (settings.json)",
+        "title": "%extension.paperback-writer.settings%",
         "group": "paperback-writer"
       },
       {
         "command": "extension.paperback-writer.pdf",
-        "title": "Paperback Writer: Markdown -> PDF: 出力",
+        "title": "%extension.paperback-writer.pdf%",
         "group": "paperback-writer"
       },
       {
         "command": "extension.paperback-writer.all",
-        "title": "Paperback Writer: Markdown -> ALL: 出力 (pdf, html, png, jpeg)",
+        "title": "Markdown -> ALL: 出力 (pdf, html, png, jpeg)",
         "group": "paperback-writer"
       },
       {
         "command": "extension.paperback-writer.helloWorld",
-        "title": "Palarback Writer: Hello World",
+        "title": "Hello World",
         "group": "paperback-writer"
       }
     ],
+    "menus": {
+      "explorer/context": [
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.pdf",
+          "alt": "MarkdownをPDFに変換する",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.settings",
+          "alt": "Markdownを他の形式に変換する",
+          "group": "paperback-writer"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.pdf",
+          "alt": "MarkdownをPDFに変換する",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.settings",
+          "alt": "Markdownを他の形式に変換する",
+          "group": "paperback-writer"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.pdf",
+          "alt": "MarkdownをPDFに変換する",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.settings",
+          "alt": "Markdownを他の形式に変換する",
+          "group": "paperback-writer"
+        }
+      ]
+    },
     "configuration": {
       "type": "object",
       "title": "PaperBack Writer",
