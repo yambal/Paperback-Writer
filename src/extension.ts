@@ -6,20 +6,22 @@ import { showMessage } from './vscode-util'
 import { installChromium } from './installChromium'
 import { paperbackWriter } from './paperbackWriter'
 
-let INSTALL_CHECK = false
-
 // このメソッドは、拡張機能がアクティブになったときに呼び出されます。
 // 拡張機能が有効になるのは、コマンドが最初に実行されたときです。
-export function activate(context: vscode.ExtensionContext) {
+export const activate = async (context: vscode.ExtensionContext) => {
 	checkPuppeteer()
-
-	// コンソールを使用して、診断情報 (console.log) とエラー (console.error) を出力します。
-	// このコードは、拡張機能が有効化されたときに一度だけ実行されます。
-	showMessage({
-		message: 'Congratulations, your extension "paperback-writer" is now active!',
-		type: 'info'
+	.then(() => {
+		showMessage({
+			message: 'Congratulations, your extension "paperback-writer" is now active!',
+			type: 'info'
+		})
+	}).catch((error) => {
+		showMessage({
+			message: error.message,
+			type: 'error'
+		})
 	})
-
+	
 	// コマンドはpackage.jsonファイルで定義されています。
 	// 次に、コマンドの実装を registerCommand で指定します。
 	// commandIdパラメータは、package.jsonのcommandフィールドと一致しなければならない。
@@ -46,22 +48,19 @@ export function activate(context: vscode.ExtensionContext) {
 // このメソッドは、拡張機能が無効化されたときに呼び出されます。
 export function deactivate() {}
 
-const checkPuppeteer = async () => {
-	console.group('checkPuppeteer()')
-  try {
-    if (checkPuppeteerBinary()) {
-      INSTALL_CHECK = true
-    } else {
-      await installChromium()
-			INSTALL_CHECK = true
-    }
-  } catch (error) {
-		INSTALL_CHECK = false
-		showMessage({
-			message: `checkPuppeteer(): ${error}`,
-			type: 'error'
-		})
-  } finally {
-		console.groupEnd()
-	}	
+const checkPuppeteer = ():Promise<void> => {
+	return new Promise((resolve, reject) => {
+		try {
+			if (checkPuppeteerBinary()) {
+				resolve()
+			} else {
+				return installChromium()
+				.then(() => {
+					resolve()
+				})
+			}
+		} catch (error) {
+			reject(error)
+		}
+	})
 }

@@ -27,7 +27,7 @@
         "command": "extension.paperback-writer.all",
         "title": "Paperback Writer: Markdown -> ALL: 出力 (pdf, html, png, jpeg)",
         "group": "paperback-writer"
-      },  
+      },
       {
         "command": "extension.paperback-writer.helloWorld",
         "title": "Palarback Writer: Hello World",
@@ -46,7 +46,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Output format: pdf, html, png, jpeg. Multiple output formats support"
+          "description": "出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート"
         },
         "paperback-writer.convertOnSave": {
           "type": "boolean",
@@ -64,7 +64,7 @@
         "paperback-writer.outputDirectory": {
           "type": "string",
           "default": "",
-          "description": "Output Directory."
+          "description": "出力ディレクトリ"
         },
         "paperback-writer.outputDirectoryRelativePathFile": {
           "type": "boolean",
@@ -237,7 +237,7 @@
         "paperback-writer.printBackground": {
           "type": "boolean",
           "default": true,
-          "description": "pdf only. Print background graphics.",
+          "description": "背景グラフィックを印刷する(pdfのみ)",
           "scope": "resource"
         },
         "paperback-writer.orientation": {
@@ -247,7 +247,7 @@
             "landscape"
           ],
           "default": "portrait",
-          "description": "pdf only. Paper orientation. portrait or landscape.",
+          "description": "用紙の向き(pdfのみ)",
           "scope": "resource"
         },
         "paperback-writer.pageRanges": {
@@ -415,7 +415,7 @@
   "dependencies": {
     "marked": "^12.0.0",
     "mkdirp": "^3.0.1",
-    "puppeteer-core": "2.1.1",
+    "puppeteer-core": "3.3.0",
     "rimraf": "^5.0.5"
   }
 }

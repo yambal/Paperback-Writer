@@ -18,7 +18,6 @@ export const isExistsPath = (path: fs.PathLike) => {
     fs.accessSync(path)
     return true
   } catch (error: any) {
-    console.warn(error.message)
     return false
   }
 }

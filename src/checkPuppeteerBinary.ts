@@ -4,7 +4,9 @@ import * as vscode from 'vscode'
 
 export const checkPuppeteerBinary = () => {
   console.group('checkPuppeteerBinary()')
+  
   try {
+    
     const executablePath = vscode.workspace.getConfiguration('palerback-writer')['executablePath'] || ''
     if (isExistsPath(executablePath)) {
       return true
@@ -23,7 +25,7 @@ export const checkPuppeteerBinary = () => {
   } catch (error) {
     showMessage({
       message: `checkPuppeteerBinary(): ${error}`,
-      type: 'error'
+      type: "error"
     })
 
   } finally {
