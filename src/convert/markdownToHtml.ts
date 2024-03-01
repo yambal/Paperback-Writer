@@ -1,9 +1,9 @@
+
 import { marked } from 'marked'
 import ejs from 'ejs'
 import { renderer } from './renderer'
 import { defautTemplate } from '../templates/defaultTemplate'
-
-import hljs from "highlight.js"
+import { hilightJsStyle } from '../templates/hilightJsStyle'
 
 export type MarkdownToHtmlProps = {
   /** マークダウンテキスト */
@@ -20,7 +20,12 @@ export const markdownToHtml = async ({markdownString}: MarkdownToHtmlProps): Pro
     marked.use({renderer: renderer()})
     const htmlBodyString = await marked(markdownString)
 
-    let html = ejs.render(defautTemplate, {body: htmlBodyString})
+    let html = ejs.render(defautTemplate, {
+      body: htmlBodyString,
+      style: hilightJsStyle({
+
+      })
+    })
 
     return html
   } catch (error: any) {

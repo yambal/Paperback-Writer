@@ -37,7 +37,11 @@ const extensionConfig = {
             loader: 'ts-loader'
           }
         ]
-      }
+      },
+      {
+        test: /\.txt$/,
+        use: 'raw-loader'
+      },
     ]
   },
   devtool: 'nosources-source-map',

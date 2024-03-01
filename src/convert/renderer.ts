@@ -1,5 +1,5 @@
 import { marked,  } from 'marked'
-import hljs from "highlight.js"
+import hljs, { HighlightResult } from "highlight.js"
 
 /**
  * @see https://marked.js.org/using_pro#use
@@ -27,12 +27,27 @@ export const renderer = () => {
     const info = infostring ?? ''
     const [language, fileName] = info.split(':')
 
-    const hilighted = hljs.highlightAuto(code).value
+    hljs.addPlugin({
+      'after:highlightElement': ({ el, result}) => {
+          el.innerHTML = result.value.replace(/^/gm,'<span class="row-number"></span>')
+      }
+    })
+
+    let result: HighlightResult | undefined = undefined
+    if (language && language.length > 0) {
+      result = hljs.highlight(code, {language})
+    } else {
+      result = hljs.highlightAuto(code)
+    }
+
+    const numValue = result.value.split(`\n`).map((line, index) => {
+      return `<span class="row-number">${index + 1}</span>${line}`
+    }).join(`\n`)
 
     return `<div>
-    ${language && `<div class="language">${language}</div>`}
+    ${result.language && `<div class="language">${result.language}</div>`}
     ${fileName && `<div class="fileName">${fileName}</div>`}
-    <pre><code class="hljs">${hilighted}</code></pre>    
+    <pre><code class="hljs">${numValue}</code></pre>    
 </div>`
   }
 
