@@ -1,7 +1,9 @@
 import { marked } from 'marked'
 import ejs from 'ejs'
-import { isExistsPath } from '../util'
+import { renderer } from './renderer'
 import { defautTemplate } from '../templates/defaultTemplate'
+
+import hljs from "highlight.js"
 
 export type MarkdownToHtmlProps = {
   /** マークダウンテキスト */
@@ -15,6 +17,7 @@ export const markdownToHtml = async ({markdownString}: MarkdownToHtmlProps): Pro
   try {
     console.log(`markdownToHtml({text: ${markdownString.slice(0, 12)}...})`)
 
+    marked.use({renderer: renderer()})
     const htmlBodyString = await marked(markdownString)
 
     let html = ejs.render(defautTemplate, {body: htmlBodyString})
