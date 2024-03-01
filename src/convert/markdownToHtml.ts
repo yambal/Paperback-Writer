@@ -4,8 +4,13 @@ import { isExistsPath } from '../util'
 import { defautTemplate } from '../templates/defaultTemplate'
 
 export type MarkdownToHtmlProps = {
+  /** マークダウンテキスト */
   markdownString: string
 }
+
+/**
+ * Markdown から HTML に変換する
+ */
 export const markdownToHtml = async ({markdownString}: MarkdownToHtmlProps): Promise<string> => {
   try {
     console.log(`markdownToHtml({text: ${markdownString.slice(0, 12)}...})`)
