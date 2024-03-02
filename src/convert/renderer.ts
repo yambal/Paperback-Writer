@@ -27,6 +27,8 @@ export const renderer = () => {
     const info = infostring ?? ''
     const [language, fileName] = info.split(':')
 
+    console.log(language, fileName)
+
     hljs.addPlugin({
       'after:highlightElement': ({ el, result}) => {
           el.innerHTML = result.value.replace(/^/gm,'<span class="row-number"></span>')
@@ -34,12 +36,16 @@ export const renderer = () => {
     })
 
     let result: HighlightResult | undefined = undefined
-    if (language && language.length > 0) {
-      result = hljs.highlight(code, {language})
-    } else {
+    try {
+      if (language && language.length > 0) {
+        result = hljs.highlight(code, {language})
+      } else {
+        result = hljs.highlightAuto(code)
+      }
+    } catch (error) {
       result = hljs.highlightAuto(code)
     }
-
+    
     const numValue = result.value.split(`\n`).map((line, index) => {
       return `<span class="row-number">${index + 1}</span>${line}`
     }).join(`\n`)

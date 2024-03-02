@@ -38,10 +38,6 @@ const extensionConfig = {
           }
         ]
       },
-      {
-        test: /\.txt$/,
-        use: 'raw-loader'
-      },
     ]
   },
   devtool: 'nosources-source-map',

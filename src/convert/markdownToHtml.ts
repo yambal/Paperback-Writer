@@ -13,25 +13,22 @@ export type MarkdownToHtmlProps = {
 /**
  * Markdown から HTML に変換する
  */
-export const markdownToHtml = async ({markdownString}: MarkdownToHtmlProps): Promise<string> => {
-  try {
-    console.log(`markdownToHtml({text: ${markdownString.slice(0, 12)}...})`)
+export const markdownToHtml = ({markdownString}: MarkdownToHtmlProps): Promise<string> => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      console.log(`markdownToHtml({text: ${markdownString.slice(0, 12)}...})`)
+      marked.use({renderer: renderer()})
+      const htmlBodyString = await marked(markdownString)
 
-    marked.use({renderer: renderer()})
-    const htmlBodyString = await marked(markdownString)
-
-    let html = ejs.render(defautTemplate, {
-      body: htmlBodyString,
-      style: hilightJsStyle({
-
+      let html = ejs.render(defautTemplate, {
+        body: htmlBodyString,
+        style: hilightJsStyle({
+        })
       })
-    })
+      resolve(html)
 
-    return html
-  } catch (error: any) {
-    console.error('markdownToHtml()', error)
-    return ''
-  } finally {
-
-  }
+    } catch (error) {
+      reject(error)
+    }
+  })
 }
