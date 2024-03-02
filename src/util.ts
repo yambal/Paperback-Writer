@@ -116,3 +116,14 @@ export const getOutputDir = (filename: string, resource: vscode.Uri) => {
     })
   }
 }
+
+/** その文字列が拡張子を表す文字列を持っているか */
+export const hasExtension = (str: string) => {
+  if (!str || str.length === 0) {
+    return false
+  }
+  // ファイル拡張子を判定する正規表現
+  const regex = /\.[0-9a-z]+$/i
+  // ファイル拡張子が存在する場合、trueを返す
+  return regex.test(str)
+}

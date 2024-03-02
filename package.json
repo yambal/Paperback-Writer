@@ -493,6 +493,7 @@
   "devDependencies": {
     "@types/ejs": "^3.1.5",
     "@types/marked": "^6.0.0",
+    "@types/minify": "^9.1.4",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@types/vscode": "^1.86.0",
@@ -511,6 +512,7 @@
     "ejs": "^3.1.9",
     "highlight.js": "^11.9.0",
     "marked": "^12.0.0",
+    "minify": "^11.0.1",
     "mkdirp": "^3.0.1",
     "puppeteer-core": "3.3.0",
     "rimraf": "^5.0.5"

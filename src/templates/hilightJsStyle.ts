@@ -88,5 +88,9 @@ export const hilightJsStyle = (
   .hljs-strong{
     font-weight:700
   }
+  .hljs-row:not(:last-child) {
+    border-bottom: 1px solid red;
+    display: flex;
+  }
   `
 }
