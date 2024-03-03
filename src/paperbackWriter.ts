@@ -6,7 +6,7 @@ import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
 import { exportHtml } from "./export/exportHtml"
-import { deleteFile, getOutputDir } from "./util"
+import { deleteFile, getOutputPathName } from "./util"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 
 /** このExtentionが出力できる拡張子 */
@@ -45,9 +45,9 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       return
     }
 
-    const editorDocumentUri = editor.document.uri
-    const mdfilename = editorDocumentUri.fsPath
-    const ext = path.extname(mdfilename)
+    const editorDocVsUrl = editor.document.uri
+    const editorCocPathName = editorDocVsUrl.fsPath
+    const ext = path.extname(editorCocPathName)
 
     var editorDocumentLanguageId = getEditorDocumentLanguageId()
     if (editorDocumentLanguageId !== 'markdown' && editorDocumentLanguageId !== 'html') {
@@ -100,7 +100,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
     if (outputTypes && outputTypes.length > 0) {
       const editorText = editor.document.getText()
-      const f = path.parse(mdfilename)
+      const f = path.parse(editorCocPathName)
       const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
       return markdownToHtml({markdownString: editorText})
@@ -113,23 +113,31 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
             .then(() => {
               if (outputTypes) {
                 const tasks = outputTypes.map((outputType, index) => {
-                  console.log(`${index + 1}/${outputTypes?.length} (${mdfilename}) : ${editorDocumentLanguageId} -> ${outputType}`)
-                  const outputFilename = mdfilename.replace(ext, '.' + outputType)
+                  console.log(`${index + 1}/${outputTypes?.length} (${editorCocPathName}) : ${editorDocumentLanguageId} -> ${outputType}`)
+                  const outputPathName = editorCocPathName.replace(ext, '.' + outputType)
     
                   if (editorDocumentLanguageId === "markdown" && outputType === 'html') {
-                    return exportHtml({htmlString: html, exportPath: outputFilename})
+                    return exportHtml({htmlString: html, exportPath: outputPathName})
     
                   } else if (editorDocumentLanguageId === "markdown" && outputType !== 'html') {      
-                    var exportUri = getOutputDir(outputFilename, editorDocumentUri)
-                    if (!exportUri) {
+
+                    const exportPathName = getOutputPathName(outputPathName, editorDocVsUrl)
+                    if (!exportPathName) {
                       return
                     }
+
+                    console.group()
+                    console.log('outputPathName: ', editorCocPathName)
+                    console.log('outputPathName > ', outputPathName)
+                    console.log('editorDocVsUrl >', editorDocVsUrl)
+                    console.log(' > exportPathName', exportPathName)
+                    console.groupEnd
 
                     if (outputType === 'png' || outputType === 'jpeg') {
                       return exportImage({
                         outputType,
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
-                        exportUri,
+                        exportPathName,
                         imageOption: {
                           quality: pwConf.quality,
                           clip: pwConf.clip,
@@ -142,7 +150,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                     if (outputType === 'pdf') {
                       return exportPdf({
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
-                        exportUri,
+                        exportPathName,
                         pdfOption: {
                           scale: pwConf.scale,
                           isDisplayHeaderAndFooter: pwConf.displayHeaderFooter,

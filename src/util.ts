@@ -1,12 +1,10 @@
 import fs from 'fs'
 import path from "path"
-import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, getWorkspaceFolder, showMessage } from './vscode-util'
+import { getNls, getPaperbackWriterConfiguration, getWorkspaceFolder, showMessage } from './vscode-util'
 import { mkdirp } from "mkdirp"
 import os from "os"
 import * as vscode from 'vscode'
 import { rimraf } from 'rimraf'
-import { group } from 'console'
-import { paperbackWriter } from './paperbackWriter'
 
 /**
  * ファイルパスの存在を確認する
@@ -69,47 +67,49 @@ export const deleteFile = (path: string | string[]) => {
   }
 }
 
-export const getOutputDir = (filename: string, resource: vscode.Uri) => {
+/** pathName(ファイルのパス)から、出力pathNameを返す */
+export const getOutputPathName = (pathName: string, resource: vscode.Uri) => {
   try {
     const pwConf = getPaperbackWriterConfiguration()
-    var outputDir
     if (resource === undefined) {
-      return filename
+      return pathName
     }
-    var outputDirectory = pwConf.outputDirectory
+
+    const outputDirectory = pwConf.outputDirectory
     if (outputDirectory.length === 0) {
-      return filename
+      return pathName
     }
 
     if (outputDirectory.indexOf('~') === 0) {
-      outputDir = outputDirectory.replace(/^~/, os.homedir())
+      const outputDir = outputDirectory.replace(/^~/, os.homedir())
       mkdir(outputDir)
-      return path.join(outputDir, path.basename(filename))
+      return path.join(outputDir, path.basename(pathName))
     }
 
     if (path.isAbsolute(outputDirectory)) {
       if (!isExistsDir(outputDirectory)) {
         showMessage({
-          message: 'The output directory specified by the markdown-pdf.outputDirectory option does not exist.',
+          message: getNls()["markdown-pdf.outputDirector.notExist"],
           type: 'error'
         })
         return
       }
-      return path.join(outputDirectory, path.basename(filename))
+      return path.join(outputDirectory, path.basename(pathName))
     }
 
     var outputDirectoryRelativePathFile = pwConf.outputDirectoryRelativePathFile
     let root = getWorkspaceFolder(resource)
 
     if (outputDirectoryRelativePathFile === false && root) {
-      outputDir = path.join(root.uri.fsPath, outputDirectory)
+      const outputDir = path.join(root.uri.fsPath, outputDirectory)
       mkdir(outputDir)
-      return path.join(outputDir, path.basename(filename))
+      return path.join(outputDir, path.basename(pathName))
     }
 
-    outputDir = path.join(path.dirname(resource.fsPath), outputDirectory)
+    const outputDir = path.join(path.dirname(resource.fsPath), outputDirectory)
     mkdir(outputDir)
-    return path.join(outputDir, path.basename(filename))
+    return path.join(outputDir, path.basename(pathName))
+
   } catch (error) {
     showMessage({
       message: `getOutputDir(): ${error}`,

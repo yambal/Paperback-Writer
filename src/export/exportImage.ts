@@ -35,7 +35,7 @@ export type ExportImageProps = {
   lunchedPuppeteerPage: LunchedPuppeteer['page']
 
   /** エクスポートパスファイル */
-  exportUri: string
+  exportPathName: string
 
   /** 画像のオプション */
   imageOption: ImageOption
@@ -47,7 +47,7 @@ export type ExportImageProps = {
 export const exportImage = ({
   outputType,
   lunchedPuppeteerPage,
-  exportUri,
+  exportPathName,
   imageOption
 }: ExportImageProps): Promise<void> => {
 
@@ -63,7 +63,7 @@ export const exportImage = ({
       let options
       if (clip_x_option !== null && clip_y_option !== null && clip_width_option !== null && clip_height_option !== null) {
         options = {
-          path: exportUri,
+          path: exportPathName,
           quality: quality_option,
           fullPage: imageOption.fullPage,
           clip: {
@@ -76,7 +76,7 @@ export const exportImage = ({
         }
       } else {
         options = {
-          path: exportUri,
+          path: exportPathName,
           quality: quality_option,
           fullPage: true,
           omitBackground: imageOption.omitBackground,

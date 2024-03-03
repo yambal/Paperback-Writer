@@ -6,5 +6,8 @@
   "extension.paperback-writer.html": "Output Markdown to HTML",
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
   "paperback-writer.isConvertOnSave": "Enable Auto convert on save. To apply the settings, you need to restart Visual Studio Code",
-  "paperback-writer.convertOnSaveExclude": "Excluded file name of convertOnSave option"
+  "paperback-writer.convertOnSaveExclude": "Excluded file name of convertOnSave option",
+  "paperback-writer.outputDirectory": "Output directory",
+
+  "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
 }

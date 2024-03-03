@@ -57,7 +57,7 @@ export type ExportPdfProps = {
   lunchedPuppeteerPage: LunchedPuppeteer['page']
 
   /** エクスポートパスファイル */
-  exportUri: string
+  exportPathName: string
 
   /** PDFのオプション */
   pdfOption: PdfOption
@@ -68,7 +68,7 @@ export type ExportPdfProps = {
  */
 export const exportPdf = ({
   lunchedPuppeteerPage,
-  exportUri,
+  exportPathName,
   pdfOption,
 }: ExportPdfProps): Promise<void> => {
 
@@ -77,7 +77,7 @@ export const exportPdf = ({
   return new Promise((resolve, reject) => {
     const format = !pdfOption.width && !pdfOption.height ? pdfOption.format ?? 'A4' : ''
     const options = {
-      path: exportUri,
+      path: exportPathName,
       scale: pdfOption.scale || 1,
       displayHeaderFooter: pdfOption.isDisplayHeaderAndFooter,
       headerTemplate: transformTemplate(pdfOption.headerTemplate),

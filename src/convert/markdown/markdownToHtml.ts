@@ -7,7 +7,6 @@ import { remedyCss } from '../templates/remedyCss'
 
 var CleanCSS = require('clean-css')
 
-
 export type MarkdownToHtmlProps = {
   /** マークダウンテキスト */
   markdownString: string
