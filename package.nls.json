@@ -9,6 +9,11 @@
   "paperback-writer.convertOnSaveExclude": "Excluded file name of convertOnSave option",
   "paperback-writer.outputDirectory": "Output directory",
   "paperback-writer.outputDirectoryRelativePathFile": "If set to true, relative paths set in the output directory are interpreted as relative to that file.",
+  "paperback-writer.styles": "A list of local paths to the stylesheets to use from the paperback-writer. All '\\' need to be written as '\\\\'.",
+  "paperback-writer.includeDefaultStyles": "Enable the inclusion of default Markdown styles (VSCode, paperback-writer)",
+  "paperback-writer.stylesRelativePathFile": "If paperback-writer.stylesRelativePathFile option is set to true, the relative path set with paperback-writer.styles is interpreted as relative from the file",
+  "paperback-writer.executablePath": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
+  "paperback-writer.scale": "Scale of the page rendering. (pdf only)",
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
 }

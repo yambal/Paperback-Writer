@@ -174,17 +174,17 @@
           "items": {
             "type": "string"
           },
-          "description": "A list of local paths to the stylesheets to use from the paperback-writer. All '\\' need to be written as '\\\\'."
+          "description": "%paperback-writer.styles%"
         },
         "paperback-writer.stylesRelativePathFile": {
           "type": "boolean",
           "default": false,
-          "description": "If paperback-writer.stylesRelativePathFile option is set to true, the relative path set with paperback-writer.styles is interpreted as relative from the file"
+          "description": "%paperback-writer.stylesRelativePathFile%"
         },
         "paperback-writer.includeDefaultStyles": {
           "type": "boolean",
           "default": true,
-          "description": "Enable the inclusion of default Markdown styles (VSCode, paperback-writer)"
+          "description": "%paperback-writer.includeDefaultStyles%"
         },
         "paperback-writer.highlight": {
           "type": "boolean",
@@ -306,12 +306,12 @@
         "paperback-writer.executablePath": {
           "type": "string",
           "default": "",
-          "description": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium."
+          "description": "%paperback-writer.executablePath%"
         },
         "paperback-writer.scale": {
           "type": "number",
           "default": 1,
-          "description": "Scale of the page rendering."
+          "description": "%paperback-writer.scale%"
         },
         "paperback-writer.displayHeaderFooter": {
           "type": "boolean",

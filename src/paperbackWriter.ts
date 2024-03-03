@@ -6,8 +6,9 @@ import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
 import { exportHtml } from "./export/exportHtml"
-import { deleteFile, getOutputPathName } from "./util"
+import { deleteFile, getOutputPathName, readFile } from "./util"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
+import { styleTagBuilder } from "./convert/styles/styleTagBuilder"
 
 /** このExtentionが出力できる拡張子 */
 export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
@@ -103,7 +104,10 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       const f = path.parse(editorCocPathName)
       const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
-      return markdownToHtml({markdownString: editorText})
+      const styleTag = styleTagBuilder(editorDocVsUrl)
+      console.log('styleTag: ', styleTag)
+
+      return markdownToHtml({markdownString: editorText, styleTags: styleTag})
       .then((html) => {
         return exportHtml({htmlString: html, exportPath:tmpfilename})
         .then((path) => {
@@ -229,3 +233,5 @@ const isMarkdownPdfOnSaveExclude = () => {
     showMessage({message: "isMarkdownPdfOnSaveExclude", type: 'error'})
   }
 }
+
+

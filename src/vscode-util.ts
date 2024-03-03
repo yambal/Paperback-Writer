@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
 import { PdfFormat, PdfOrientation } from './export/exportPdf'
 import { PaperbackWriterOutputType } from './paperbackWriter'
+var os = require('os')
 
 import localeEn from "../package.nls.json"
 import localeJa from "../package.nls.ja.json"
@@ -196,3 +197,18 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
   
   return pwf
 }
+
+/** 入力から vscode.Uri を得る */
+export const getVscodeUri = (href: string):vscode.Uri => {
+  return vscode.Uri.parse(href)
+}
+
+export const getPath = (href: string):string => {
+  return vscode.Uri.file(href).toString()
+}
+
+export const getHomeDirPath = (href: string):string => {
+  return getPath(href.replace(/^~/, os.homedir()))
+}
+
+

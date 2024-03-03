@@ -5,10 +5,15 @@
   "extension.paperback-writer.jpeg": "MarkdownをJPEGに書き出し",
   "extension.paperback-writer.html": "MarkdownをHTMLに書き出し",
   "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGに書き出し",
-  "paperback-writer.isConvertOnSave": "保存時に自動変換を有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります。",
+  "paperback-writer.isConvertOnSave": "保存時に自動変換を有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります",
   "paperback-writer.convertOnSaveExclude": "自動変換の対象外ファイル名",
   "paperback-writer.outputDirectory": "出力ディレクトリ",
-  "paperback-writer.outputDirectoryRelativePathFile": "trueに設定されている場合、出力ディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます。",
+  "paperback-writer.outputDirectoryRelativePathFile": "trueに設定されている場合、出力ディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
+  "paperback-writer.styles": "使用するスタイルシートへのローカルパスのリスト。All '\\' need to be written as '\\\\'.",
+  "paperback-writer.includeDefaultStyles": "デフォルトのMarkdownスタイル（VSCode、paperback-writer）のインクルードを有効にする",
+  "paperback-writer.stylesRelativePathFile": "true に設定されている場合、paperback-writer.styles で設定された相対パスは、そのファイルからの相対パスとして解釈されます",
+  "paperback-writer.executablePath": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
+  "paperback-writer.scale": "ページレンダリングのスケール(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"
 }
