@@ -104,10 +104,9 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       const f = path.parse(editorCocPathName)
       const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
-      const styleTag = styleTagBuilder(editorDocVsUrl)
-      console.log('styleTag: ', styleTag)
+      const { styleTags } = styleTagBuilder(editorDocVsUrl)
 
-      return markdownToHtml({markdownString: editorText, styleTags: styleTag})
+      return markdownToHtml({markdownString: editorText, styleTags: styleTags})
       .then((html) => {
         return exportHtml({htmlString: html, exportPath:tmpfilename})
         .then((path) => {

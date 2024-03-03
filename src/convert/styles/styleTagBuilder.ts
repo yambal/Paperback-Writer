@@ -1,21 +1,29 @@
-import path, { join } from "path"
+import path from "path"
 import * as vscode from 'vscode'
-import { getHomeDirPath, getPaperbackWriterConfiguration, getPath, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
-import { readFile } from "../../util"
+import { getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
 import { vscodeMarkdownStyle } from "./css/vscodeMarkdownStyle"
 import { hilightJsStyle } from "./css/hilightJsStyle"
 import { remedyCss } from "./css/remedyCss"
 
 var CleanCSS = require('clean-css')
 
-export const styleTagBuilder = (uri: vscode.Uri) => {
-  
+type StyleTagBuilderProps = vscode.Uri
+
+type BuildedStyle = {
+  styleTags: string,
+}
+
+
+export const styleTagBuilder = (editorDocVsUrl: StyleTagBuilderProps) => {
+  const styleTags: string[] = []
+  const styleLinks: string[] = []
+
   try {
-    console.group(`readStyles(${uri})`)
+
     const PwCnf = getPaperbackWriterConfiguration()
     
     const includeDefaultStyles = PwCnf.includeDefaultStyles
-    const styleTags: string[] = []
+    
 
     // 1. vscodeのスタイルを読む。
     if (includeDefaultStyles) {
@@ -24,87 +32,83 @@ export const styleTagBuilder = (uri: vscode.Uri) => {
       styles.push(vscodeMarkdownStyle)
       styles.push(hilightJsStyle({}))
 
-      const minified = new CleanCSS({}).minify(styles.join('\n'))
+      const minified = new CleanCSS({}).minify(styles.join('\n')).styles
 
       const defaultStyleTag = `<style>${minified}</style>`
       styleTags.push(defaultStyleTag)
     }
 
     // 2. markdown.styles設定のスタイルを読む
-    if (includeDefaultStyles) {
-      const styles = PwCnf.styles
-      if (styles && Array.isArray(styles) && styles.length > 0) {
-        styles.forEach((style, index) => {
-          var href = fixHref(uri, style)
-          console.log(`markdown.style (${index}): ${href}`)
-          const userStyle = '<link rel=\"stylesheet\" href=\"' + href + '\" type=\"text/css\">'
-          styleTags.push(userStyle)
-        })
-      }
+    const styles = PwCnf.styles
+    if (styles && Array.isArray(styles) && styles.length > 0) {
+      styles.forEach((styleFilePath, index) => {
+        const href = fixHref(editorDocVsUrl, styleFilePath)
+        console.log(`markdown.style (${index}): ${href}`)
+        styleLinks.push(`<link rel="stylesheet" href="${href}" type="text/css">`)
+      })
     }
 
-    console.groupEnd()
-    return styleTags.join('\n')
+    const res: BuildedStyle = {
+      styleTags: styleTags.join('\n') + '\n' + styleLinks.join('\n')
+    }
+
+    return res
 
   } catch (error) {
     showMessage({message: "readStyles()", type: 'error'})
-  } finally {
-    
-  }
-}
-
-const makeCss = (filename: string) => {
-  try {
-    var css = readFile(filename)
-    if (css) {
-      return '\n<style>\n' + css + '\n</style>\n'
-    } else {
-      return ''
+    const res: BuildedStyle = {
+      styleTags: styleTags.join('\n') + '\n' + styleLinks.join('\n')
     }
-  } catch (error) {
-    showMessage({message: "makeCss()", type: 'error'})
+
+    return res
   }
 }
 
-/*
- * vscode/extensions/markdown-language-features/src/features/previewContentProvider.ts fixHref()
- * https://github.com/Microsoft/vscode/blob/0c47c04e85bc604288a288422f0a7db69302a323/extensions/markdown-language-features/src/features/previewContentProvider.ts#L95
- *
- * Extension Authoring: Adopting Multi Root Workspace APIs ?E Microsoft/vscode Wiki
- * https://github.com/Microsoft/vscode/wiki/Extension-Authoring:-Adopting-Multi-Root-Workspace-APIs
+/**
+ * 編集中ドキュメントから、指定ファイルへの相対パスを取得する
+ * @todo リファクタリング
  */
-const fixHref = (resource: any, href: string) => {
+const fixHref = (editorDocVsUri: vscode.Uri, workspaceFilePath: string) => {
   try {
     const PwCnf = getPaperbackWriterConfiguration()
-    if (!href) {
-      return href
+    if (!path) {
+      return path
     }
 
     // すでにURLになっている場合はhrefを使う
-    const hrefUri = getVscodeUri(href)
+    const hrefUri = getVscodeUri(workspaceFilePath)
     if (['http', 'https'].indexOf(hrefUri.scheme) >= 0) {
+      console.log('network')
       return hrefUri.toString()
     }
 
     // ^ で始まる場合、ホームディレクトリの相対パスを使用する
-    if (href.indexOf('~') === 0) {
-      return getHomeDirPath(href)
-    }
-
-    // ファイルURIとしてhrefを使用する
-    if (path.isAbsolute(href)) {
-      return getPath(href)
+    if (workspaceFilePath.indexOf('~') === 0) {
+      console.log('~')
+      return getHomeDirPath(workspaceFilePath)
     }
 
     // ワークスペースがあり、markdown-pdf.stylesRelativePathFileがfalseの場合、ワークスペース相対パスを使用する。
     const stylesRelativePathFile = PwCnf.stylesRelativePathFile
-    let root = getWorkspaceFolder(resource)
-    if (stylesRelativePathFile === false && root) {
-      return getPath(path.join(root.uri.fsPath, href))
+    const workspaceFolder = getWorkspaceFolder(editorDocVsUri)
+    if (workspaceFolder && !stylesRelativePathFile) {
+      // 編集ファイルのディレクトリのパス
+      const editorDocUri = path.dirname(editorDocVsUri.fsPath)
+
+      // CSSファイルのパス
+      let fileAbsoluteUri = getUri(workspaceFilePath)
+      if(!path.isAbsolute(workspaceFilePath)) {
+        fileAbsoluteUri = getUri(path.join(workspaceFolder.uri.path, workspaceFilePath))
+      }
+      
+      // 編集ファイルからの相対パス(参照元ディレクトリから、対象を指定する）
+      const rPath = path.relative(editorDocUri, fileAbsoluteUri.fsPath)
+      console.log(`${workspaceFilePath} = ${fileAbsoluteUri.fsPath} <- ${editorDocVsUri.fsPath} = ${rPath}`)
+      return rPath
     }
 
     // マークダウン・ファイルからの相対参照
-    return getPath(path.join(path.dirname(resource.fsPath), href))
+    return workspaceFilePath
 
   } catch (error) {
     showMessage({message: "fixHref()", type: 'error'})

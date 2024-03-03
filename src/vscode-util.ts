@@ -203,8 +203,12 @@ export const getVscodeUri = (href: string):vscode.Uri => {
   return vscode.Uri.parse(href)
 }
 
+export const getUri = (href: string):vscode.Uri => {
+  return vscode.Uri.file(href)
+}
+
 export const getPath = (href: string):string => {
-  return vscode.Uri.file(href).toString()
+  return getUri(href).toString()
 }
 
 export const getHomeDirPath = (href: string):string => {

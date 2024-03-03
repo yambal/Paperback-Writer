@@ -9,9 +9,9 @@
   "paperback-writer.convertOnSaveExclude": "自動変換の対象外ファイル名",
   "paperback-writer.outputDirectory": "出力ディレクトリ",
   "paperback-writer.outputDirectoryRelativePathFile": "trueに設定されている場合、出力ディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
-  "paperback-writer.styles": "使用するスタイルシートへのローカルパスのリスト。All '\\' need to be written as '\\\\'.",
+  "paperback-writer.styles": "使用するスタイルシートのパスリスト",
   "paperback-writer.includeDefaultStyles": "デフォルトのMarkdownスタイル（VSCode、paperback-writer）のインクルードを有効にする",
-  "paperback-writer.stylesRelativePathFile": "true に設定されている場合、paperback-writer.styles で設定された相対パスは、そのファイルからの相対パスとして解釈されます",
+  "paperback-writer.stylesRelativePathFile": "設定されている場合、styles で設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま記載します",
   "paperback-writer.executablePath": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
   "paperback-writer.scale": "ページレンダリングのスケール(pdfのみ)",
 
