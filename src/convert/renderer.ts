@@ -36,7 +36,8 @@ export const renderer = () => {
     let languageName = undefined
     if (hasExtension(langAndFName[0])) {
       fileName = langAndFName[0]
-    } else (langAndFName[0] && langAndFName[0].length > 0) {
+
+    } else if (langAndFName[0] && langAndFName[0].length > 0) {
       languageName = langAndFName[0]
     }
     if (hasExtension(langAndFName[1])) {

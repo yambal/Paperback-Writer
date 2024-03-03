@@ -4,8 +4,6 @@ import { renderer } from './renderer'
 import { defautTemplate } from '../templates/defaultTemplate'
 import { hilightJsStyle } from '../templates/hilightJsStyle'
 
-import { minify } from 'minify'
-
 export type MarkdownToHtmlProps = {
   /** マークダウンテキスト */
   markdownString: string
@@ -26,7 +24,7 @@ export const markdownToHtml = ({markdownString}: MarkdownToHtmlProps): Promise<s
       let html = ejs.render(defautTemplate, {
         title: 'Markdown to HTML',
         body: htmlBodyString,
-        style: minify.css(css)
+        style: css
       })
 
       console.log(`html: ${html.slice(1500, 3000)}...`)
