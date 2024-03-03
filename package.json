@@ -166,7 +166,7 @@
         "paperback-writer.outputDirectoryRelativePathFile": {
           "type": "boolean",
           "default": false,
-          "description": "If paperback-writer.outputDirectoryRelativePathFile option is set to true, the relative path set with paperback-writer.outputDirectory is interpreted as relative from the file"
+          "description": "%paperback-writer.outputDirectoryRelativePathFile%"
         },
         "paperback-writer.styles": {
           "type": "array",

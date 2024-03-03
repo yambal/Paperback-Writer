@@ -17,6 +17,7 @@ type Nls = {
   "paperback-writer.isConvertOnSave": string
   "paperback-writer.convertOnSaveExclude": string
   "paperback-writer.outputDirectory": string
+  "paperback-writer.outputDirectoryRelativePathFile": string
 
   "markdown-pdf.outputDirector.notExist": string
 }

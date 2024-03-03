@@ -8,6 +8,7 @@
   "paperback-writer.isConvertOnSave": "保存時に自動変換を有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります。",
   "paperback-writer.convertOnSaveExclude": "自動変換の対象外ファイル名",
   "paperback-writer.outputDirectory": "出力ディレクトリ",
+  "paperback-writer.outputDirectoryRelativePathFile": "trueに設定されている場合、出力ディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます。",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"
 }

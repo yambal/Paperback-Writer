@@ -8,6 +8,7 @@
   "paperback-writer.isConvertOnSave": "Enable Auto convert on save. To apply the settings, you need to restart Visual Studio Code",
   "paperback-writer.convertOnSaveExclude": "Excluded file name of convertOnSave option",
   "paperback-writer.outputDirectory": "Output directory",
+  "paperback-writer.outputDirectoryRelativePathFile": "If set to true, relative paths set in the output directory are interpreted as relative to that file.",
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
 }
