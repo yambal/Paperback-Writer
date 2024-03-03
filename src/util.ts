@@ -1,11 +1,12 @@
 import fs from 'fs'
 import path from "path"
-import { getPaperbackWriterConfiguration, getWorkspaceFolder, showMessage } from './vscode-util'
+import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, getWorkspaceFolder, showMessage } from './vscode-util'
 import { mkdirp } from "mkdirp"
 import os from "os"
 import * as vscode from 'vscode'
 import { rimraf } from 'rimraf'
 import { group } from 'console'
+import { paperbackWriter } from './paperbackWriter'
 
 /**
  * ファイルパスの存在を確認する
@@ -127,3 +128,4 @@ export const hasExtension = (str: string) => {
   // ファイル拡張子が存在する場合、trueを返す
   return regex.test(str)
 }
+

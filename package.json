@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yambal/Paperback-Writer.git"
+    "url": "git+ssh://git@github.com/dondoko-susumu/react-native-card-media.git"
   },
   "engines": {
     "vscode": "^1.86.0"
@@ -145,10 +145,10 @@
           },
           "description": "出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート"
         },
-        "paperback-writer.convertOnSave": {
+        "paperback-writer.isConvertOnSave": {
           "type": "boolean",
           "default": false,
-          "description": "Enable Auto convert on save. To apply the settings, you need to restart Visual Studio Code"
+          "description": "%paperback-writer.isConvertOnSave%"
         },
         "paperback-writer.convertOnSaveExclude": {
           "type": "array",
@@ -156,7 +156,7 @@
           "items": {
             "type": "string"
           },
-          "description": "Excluded file name of convertOnSave option"
+          "description": "%paperback-writer.convertOnSaveExclude%"
         },
         "paperback-writer.outputDirectory": {
           "type": "string",

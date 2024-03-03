@@ -1,6 +1,6 @@
 import path from "path"
 import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode-util"
-import { markdownToHtml } from "./convert/markdownToHtml"
+import { markdownToHtml } from "./convert/markdown/markdownToHtml"
 import { PuppeteerPdfOutputType, exportPdf } from "./export/exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
@@ -179,5 +179,45 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     console.error('paperbackWriter()', error)
   } finally { 
     console.groupEnd()
+  }
+}
+
+// -------------------------------------------------------------------------------
+/** 自動保存 */
+export const autoSave = () => {
+  try {
+    var mode = getEditorDocumentLanguageId()
+    if (mode != 'markdown') {
+      return
+    }
+
+    if (!isMarkdownPdfOnSaveExclude()) {
+      paperbackWriter({command: 'settings'})
+    }
+
+  } catch (error) {
+		showMessage({message: "markdownPdfOnSave", type: 'error'})
+  }
+}
+
+/** 除外ルールに抵触するものを返す */
+const isMarkdownPdfOnSaveExclude = () => {
+  try{
+		const PwCnf = getPaperbackWriterConfiguration()
+    var editor = getActiveTextEditor()
+
+		if (editor) {
+			const filename = path.basename(editor.document.fileName)
+			const excludePatterns = PwCnf.convertOnSaveExclude || ''
+			if (excludePatterns && Array.isArray(excludePatterns) && excludePatterns.length > 0) {
+				return excludePatterns.find((excludePattern) => {
+					var re = new RegExp(excludePattern)
+					return re.test(filename)
+				})
+			}
+		}
+		return false
+  } catch (error) {
+    showMessage({message: "isMarkdownPdfOnSaveExclude", type: 'error'})
   }
 }

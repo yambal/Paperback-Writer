@@ -1,6 +1,6 @@
 import { marked,  } from 'marked'
 import hljs, { HighlightResult } from "highlight.js"
-import { hasExtension } from '../util'
+import { hasExtension } from '../../util'
 
 
 
@@ -9,7 +9,7 @@ import { hasExtension } from '../util'
  * @see https://marked.js.org/using_pro#use
  */
 
-export const renderer = () => {
+export const markedPWRenderer = () => {
   const renderer = new marked.Renderer()
 
   renderer.heading = (text, level) => {

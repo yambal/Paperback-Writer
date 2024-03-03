@@ -72,6 +72,8 @@ export const exportPdf = ({
   pdfOption,
 }: ExportPdfProps): Promise<void> => {
 
+  console.log(pdfOption)
+
   return new Promise((resolve, reject) => {
     const format = !pdfOption.width && !pdfOption.height ? pdfOption.format ?? 'A4' : ''
     const options = {

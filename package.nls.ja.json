@@ -4,5 +4,7 @@
   "extension.paperback-writer.png": "MarkdownをPNGに書き出し",
   "extension.paperback-writer.jpeg": "MarkdownをJPEGに書き出し",
   "extension.paperback-writer.html": "MarkdownをHTMLに書き出し",
-  "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGに書き出し"
+  "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGに書き出し",
+  "paperback-writer.isConvertOnSave": "保存時に自動変換を有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります。",
+  "paperback-writer.convertOnSaveExclude": "自動変換の対象外ファイル名"
 }

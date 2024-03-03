@@ -2,9 +2,9 @@
 // このモジュールをインポートし、以下のコードでvscodeというエイリアスで参照します。
 import * as vscode from 'vscode'
 import { checkPuppeteerBinary } from './checkPuppeteerBinary'
-import { showMessage } from './vscode-util'
+import { getPaperbackWriterConfiguration, showMessage } from './vscode-util'
 import { installChromium } from './installChromium'
-import { paperbackWriter } from './paperbackWriter'
+import { paperbackWriter, autoSave } from './paperbackWriter'
 
 // このメソッドは、拡張機能がアクティブになったときに呼び出されます。
 // 拡張機能が有効になるのは、コマンドが最初に実行されたときです。
@@ -52,6 +52,15 @@ export const activate = async (context: vscode.ExtensionContext) => {
 	commands.forEach(command =>{
     context.subscriptions.push(command)
   })
+
+	/** 自動保存 */
+	const PwCnf = getPaperbackWriterConfiguration()
+	if (PwCnf.isConvertOnSave) {
+		var disposable_onsave = vscode.workspace.onDidSaveTextDocument(() => { 
+			autoSave()
+		})
+    context.subscriptions.push(disposable_onsave)
+	}
 }
 
 // このメソッドは、拡張機能が無効化されたときに呼び出されます。
@@ -73,3 +82,4 @@ const checkPuppeteer = ():Promise<void> => {
 		}
 	})
 }
+

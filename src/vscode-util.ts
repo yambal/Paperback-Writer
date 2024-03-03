@@ -58,7 +58,7 @@ export const getWorkspaceFolder = (uri: vscode.Uri): vscode.WorkspaceFolder | un
 
 type PaperbackWriterConfiguration = {
   type: PaperbackWriterOutputType[],
-  convertOnSave: boolean,
+  isConvertOnSave: boolean,
   convertOnSaveExclude: string[]
   outputDirectory: string
   outputDirectoryRelativePathFile: boolean
@@ -114,7 +114,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
   
   const pwf: PaperbackWriterConfiguration = {
     type: wsc['type'],
-    convertOnSave: wsc['convertOnSave'],
+    isConvertOnSave: wsc['isConvertOnSave'],
     convertOnSaveExclude: wsc['convertOnSaveExclude'],
     outputDirectory: wsc['outputDirectory'],
     outputDirectoryRelativePathFile: wsc['outputDirectoryRelativePathFile'],
