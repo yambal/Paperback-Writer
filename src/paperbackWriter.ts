@@ -6,7 +6,7 @@ import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
 import { exportHtml } from "./export/exportHtml"
-import { deleteFile, getOutputPathName, readFile } from "./util"
+import { deleteFile, getOutputPathName } from "./util"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 import { styleTagBuilder } from "./convert/styles/styleTagBuilder"
 
@@ -124,7 +124,11 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     
                   } else if (editorDocumentLanguageId === "markdown" && outputType !== 'html') {      
 
-                    const exportPathName = getOutputPathName(outputPathName, editorDocVsUrl)
+                    const exportPathName = getOutputPathName({
+                      outputPathName,
+                      editorDocVsUrl
+                    })
+
                     if (!exportPathName) {
                       return
                     }

@@ -143,12 +143,15 @@
           "items": {
             "type": "string"
           },
-          "description": "出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート"
+          "title": "%paperback-writer.type%",
+          "description": "%paperback-writer.type.dsc%",
+          "order": 0
         },
         "paperback-writer.isConvertOnSave": {
           "type": "boolean",
           "default": false,
-          "description": "%paperback-writer.isConvertOnSave%"
+          "title": "%paperback-writer.isConvertOnSave%",
+          "description": "%paperback-writer.isConvertOnSave.dsc%"
         },
         "paperback-writer.convertOnSaveExclude": {
           "type": "array",
@@ -156,17 +159,20 @@
           "items": {
             "type": "string"
           },
-          "description": "%paperback-writer.convertOnSaveExclude%"
+          "title": "%paperback-writer.convertOnSaveExclude%",
+          "description": "%paperback-writer.convertOnSaveExclude.dsc%"
         },
         "paperback-writer.outputDirectory": {
           "type": "string",
           "default": "",
-          "description": "%paperback-writer.outputDirectory%"
+          "title": "%paperback-writer.outputDirectory%",
+          "description": "%paperback-writer.outputDirectory.dsc%"
         },
         "paperback-writer.outputDirectoryRelativePathFile": {
           "type": "boolean",
           "default": false,
-          "description": "%paperback-writer.outputDirectoryRelativePathFile%"
+          "title": "%paperback-writer.outputDirectoryRelativePathFile%",
+          "description": "%paperback-writer.outputDirectoryRelativePathFile.dsc%"
         },
         "paperback-writer.styles": {
           "type": "array",
@@ -174,17 +180,20 @@
           "items": {
             "type": "string"
           },
-          "description": "%paperback-writer.styles%"
+          "title": "%paperback-writer.styles%",
+          "description": "%paperback-writer.styles.dsc%"
         },
         "paperback-writer.stylesRelativePathFile": {
           "type": "boolean",
           "default": false,
-          "description": "%paperback-writer.stylesRelativePathFile%"
+          "title": "%paperback-writer.stylesRelativePathFile%",
+          "description": "%paperback-writer.stylesRelativePathFile.dsc%"
         },
         "paperback-writer.includeDefaultStyles": {
           "type": "boolean",
           "default": true,
-          "description": "%paperback-writer.includeDefaultStyles%"
+          "title": "%paperback-writer.includeDefaultStyles%",
+          "description": "%paperback-writer.includeDefaultStyles.dsc%"
         },
         "paperback-writer.highlight": {
           "type": "boolean",
@@ -306,12 +315,14 @@
         "paperback-writer.executablePath": {
           "type": "string",
           "default": "",
-          "description": "%paperback-writer.executablePath%"
+          "title": "%paperback-writer.executablePath%",
+          "description": "%paperback-writer.executablePath.dsc%"
         },
         "paperback-writer.scale": {
           "type": "number",
           "default": 1,
-          "description": "%paperback-writer.scale%"
+          "title": "%paperback-writer.scale%",
+          "description": "%paperback-writer.scale.dsc%"
         },
         "paperback-writer.displayHeaderFooter": {
           "type": "boolean",

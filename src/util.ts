@@ -67,23 +67,36 @@ export const deleteFile = (path: string | string[]) => {
   }
 }
 
-/** pathName(ファイルのパス)から、出力pathNameを返す */
-export const getOutputPathName = (pathName: string, resource: vscode.Uri) => {
+/**
+ * pathName(ファイルのパス)から、出力pathNameを返す
+ **/
+export type GetOutputPathNameProps = {
+  /** 出力ファイル名 */
+  outputPathName: string
+
+  /** 現在のエディタのドキュメントのURI */
+  editorDocVsUrl: vscode.Uri
+}
+
+export const getOutputPathName = ({
+  outputPathName,
+  editorDocVsUrl
+}:GetOutputPathNameProps) => {
   try {
     const pwConf = getPaperbackWriterConfiguration()
-    if (resource === undefined) {
-      return pathName
+    if (editorDocVsUrl === undefined) {
+      return outputPathName
     }
 
     const outputDirectory = pwConf.outputDirectory
     if (outputDirectory.length === 0) {
-      return pathName
+      return outputPathName
     }
 
     if (outputDirectory.indexOf('~') === 0) {
       const outputDir = outputDirectory.replace(/^~/, os.homedir())
       mkdir(outputDir)
-      return path.join(outputDir, path.basename(pathName))
+      return path.join(outputDir, path.basename(outputPathName))
     }
 
     if (path.isAbsolute(outputDirectory)) {
@@ -94,21 +107,20 @@ export const getOutputPathName = (pathName: string, resource: vscode.Uri) => {
         })
         return
       }
-      return path.join(outputDirectory, path.basename(pathName))
+      return path.join(outputDirectory, path.basename(outputPathName))
     }
 
-    var outputDirectoryRelativePathFile = pwConf.outputDirectoryRelativePathFile
-    let root = getWorkspaceFolder(resource)
-
-    if (outputDirectoryRelativePathFile === false && root) {
-      const outputDir = path.join(root.uri.fsPath, outputDirectory)
+    // 書き出しディレクトリを相対パスとして解釈する場合
+    const workspaceFolder = getWorkspaceFolder(editorDocVsUrl)
+    if (pwConf.outputDirectoryRelativePathFile === false && workspaceFolder) {
+      const outputDir = path.join(workspaceFolder.uri.fsPath, outputDirectory)
       mkdir(outputDir)
-      return path.join(outputDir, path.basename(pathName))
+      return path.join(outputDir, path.basename(outputPathName))
     }
 
-    const outputDir = path.join(path.dirname(resource.fsPath), outputDirectory)
+    const outputDir = path.join(path.dirname(editorDocVsUrl.fsPath), outputDirectory)
     mkdir(outputDir)
-    return path.join(outputDir, path.basename(pathName))
+    return path.join(outputDir, path.basename(outputPathName))
 
   } catch (error) {
     showMessage({

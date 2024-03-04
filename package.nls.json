@@ -1,19 +1,40 @@
 {
+  "%paperback-writer.type": "Output formats",
+  "paperback-writer.type.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported."  ,
+
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",
   "extension.paperback-writer.pdf": "Output Markdown to PDF",
   "extension.paperback-writer.png": "Output Markdown to PNG",
   "extension.paperback-writer.jpeg": "Output Markdown to JPEG",
   "extension.paperback-writer.html": "Output Markdown to HTML",
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
-  "paperback-writer.isConvertOnSave": "Enable Auto convert on save. To apply the settings, you need to restart Visual Studio Code",
-  "paperback-writer.convertOnSaveExclude": "Excluded file name of convertOnSave option",
-  "paperback-writer.outputDirectory": "Output directory",
-  "paperback-writer.outputDirectoryRelativePathFile": "If set to true, relative paths set in the output directory are interpreted as relative to that file.",
-  "paperback-writer.styles": "A list of local paths to the stylesheets to use from the paperback-writer. All '\\' need to be written as '\\\\'.",
-  "paperback-writer.includeDefaultStyles": "Enable the inclusion of default Markdown styles (VSCode, paperback-writer)",
-  "paperback-writer.stylesRelativePathFile": "If set, the path to the CSS file set in styles (without converting it to a relative path) is described as it is.",
-  "paperback-writer.executablePath": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
-  "paperback-writer.scale": "Scale of the page rendering. (pdf only)",
+
+  "paperback-writer.isConvertOnSave": "Enable Auto export on save",
+  "paperback-writer.isConvertOnSave.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
+
+  "paperback-writer.convertOnSaveExclude": "Excluded from automatic exportOnSaves",
+  "paperback-writer.convertOnSaveExclude.dsc": "Excluded file name of exportOnSave option",
+
+  "paperback-writer.outputDirectory": "Export directory",
+  "paperback-writer.outputDirectory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
+
+  "paperback-writer.outputDirectoryRelativePathFile": "Interpret the export directory as a relative path",
+  "paperback-writer.outputDirectoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
+
+  "paperback-writer.styles": "Custom Styles",
+  "paperback-writer.styles.dsc": "List of paths for custom stylesheets (CSS) to be used.",
+
+  "paperback-writer.stylesRelativePathFile": "Do not convert paths to custom styles",
+  "paperback-writer.stylesRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
+
+  "paperback-writer.includeDefaultStyles": "Incorporate default styles",
+  "paperback-writer.includeDefaultStyles.dsc": "Include the default styles.",
+
+  "paperback-writer.executablePath": "External Chromium",
+  "paperback-writer.executablePath.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
+
+  "paperback-writer.scale": "PDF Rendering Scale",
+  "paperback-writer.scale.dsc": "Scale of the page rendering. (pdf only)",
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
 }

@@ -1,19 +1,40 @@
 {
+  "%paperback-writer.type": "出力形式",
+  "paperback-writer.type.dsc": "出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート",
+  
   "extension.paperback-writer.settings": "Markdownを他のファイル形式に書き出し (settings.json) ",
   "extension.paperback-writer.pdf": "MarkdownをPDFに書き出し",
   "extension.paperback-writer.png": "MarkdownをPNGに書き出し",
   "extension.paperback-writer.jpeg": "MarkdownをJPEGに書き出し",
   "extension.paperback-writer.html": "MarkdownをHTMLに書き出し",
   "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGに書き出し",
-  "paperback-writer.isConvertOnSave": "保存時に自動変換を有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります",
-  "paperback-writer.convertOnSaveExclude": "自動変換の対象外ファイル名",
-  "paperback-writer.outputDirectory": "出力ディレクトリ",
-  "paperback-writer.outputDirectoryRelativePathFile": "trueに設定されている場合、出力ディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
-  "paperback-writer.styles": "使用するスタイルシートのパスリスト",
-  "paperback-writer.includeDefaultStyles": "デフォルトのMarkdownスタイル（VSCode、paperback-writer）のインクルードを有効にする",
-  "paperback-writer.stylesRelativePathFile": "設定されている場合、styles で設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま記載します",
-  "paperback-writer.executablePath": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
-  "paperback-writer.scale": "ページレンダリングのスケール(pdfのみ)",
+
+  "paperback-writer.isConvertOnSave": "自動書き出し",
+  "paperback-writer.isConvertOnSave.dsc": "保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります",
+
+  "paperback-writer.convertOnSaveExclude": "自動書き出しの対象外",
+  "paperback-writer.convertOnSaveExclude.dsc": "自動書き出しの対象外ファイル名をリストする",
+
+  "paperback-writer.outputDirectory": "書き出しディレクトリ",
+  "paperback-writer.outputDirectory.dsc": "書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます",
+
+  "paperback-writer.outputDirectoryRelativePathFile": "書き出しディレクトリを相対パスとして解釈",
+  "paperback-writer.outputDirectoryRelativePathFile.dsc": "設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
+
+  "paperback-writer.styles": "カスタムスタイル",
+  "paperback-writer.styles.dsc": "使用するカスタムスタイルシート（CSS）のパスリスト",
+
+  "paperback-writer.stylesRelativePathFile": "カスタムスタイルのパスを変換しない",
+  "paperback-writer.stylesRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",
+
+  "paperback-writer.includeDefaultStyles": "デフォルトスタイル",
+  "paperback-writer.includeDefaultStyles.dsc": "デフォルトのスタイルを組み込む",
+
+  "paperback-writer.executablePath": "外部Chrome",
+  "paperback-writer.executablePath.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
+
+  "paperback-writer.scale": "PDFの描画スケール",
+  "paperback-writer.scale.dsc": "ページレンダリングのスケール(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"
 }
