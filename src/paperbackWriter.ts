@@ -9,6 +9,7 @@ import { exportHtml } from "./export/exportHtml"
 import { deleteFile, getOutputPathName } from "./util"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 import { styleTagBuilder } from "./convert/styles/styleTagBuilder"
+import { buildFontQuerys } from "./convert/styles/css/fontStyle"
 
 /** このExtentionが出力できる拡張子 */
 export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
@@ -104,13 +105,10 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       const f = path.parse(editorCocPathName)
       const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
+      // スタイルタグを生成
       const styleTags  = styleTagBuilder({
         editorDocVsUrl, 
-        fontQuerys:[
-          {target: '.body', fontSet: 'notoSan', language: 'ja'},
-          {target: 'h1, h2', fontSet: 'Train+One', language: 'ja'},
-          {target: 'p', fontSet: 'notoSerif', language: 'ja'}
-        ]
+        fontQuerys:buildFontQuerys()
       })
 
       return markdownToHtml({markdownString: editorText, styleTags: styleTags})

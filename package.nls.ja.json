@@ -30,6 +30,10 @@
   "paperback-writer.includeDefaultStyles": "デフォルトスタイル",
   "paperback-writer.includeDefaultStyles.dsc": "デフォルトのスタイルを組み込む",
 
+  "paperback-writer.baseFont.dsc": "ベースとなるフォント",
+
+  "paperback-writer.baseFontSize.dsc": "ベースとなるフォントサイズ（px）",
+
   "paperback-writer.executablePath": "外部Chrome",
   "paperback-writer.executablePath.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
 

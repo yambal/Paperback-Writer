@@ -1,22 +1,49 @@
+import { VscodeEnvLanguage, getEnvLanguage, getPaperbackWriterConfiguration } from "../../../vscode-util"
+import { FontQuery } from "../styleTagBuilder"
 
-export type FontSets = "system" | "notoSan" | "notoSerif" | "Train+One" | "Dela+Gothic+One"
-
-export type GetFontFamilyProps = {
-  fontSet: FontSets
-  language?: "ja"
-}
-
-export type MlFontFamily = {
-  default: FontFamily
-  ja: FontFamily
-}
-
+/**
+ * フォントに関する定義
+ */
 export type FontFamily = {
+  /** CSS の font-family: に記載するフォントのセット */
   fontFamily: string
+
+  /** Google Font の family= 読込みに使う */
   googleFontName?: string
 }
 
+type MlFontFamily = {
+  "default": FontFamily
+  "ja": FontFamily
+  "en"?: FontFamily
+  "zh-cn"?: FontFamily
+  "zh-tw"?: FontFamily
+  "fr"?: FontFamily
+  "de"?: FontFamily
+  "it"?: FontFamily
+  "es"?: FontFamily
+  "ko"?: FontFamily
+  "ru"?: FontFamily
+  "pt-br"?: FontFamily
+  "tr"?: FontFamily
+  "pl"?: FontFamily
+  "cs"?: FontFamily
+  "hu"?: FontFamily
+}
 
+export type FontSetId = "system" | "notoSan" | "notoSerif" | "Train+One" | "Dela+Gothic+One"
+
+export type GetFontFamilyProps = {
+  /** 登録済みのフォントID */
+  fontSet: FontSetId
+
+  /** 言語 */
+  language?: VscodeEnvLanguage
+}
+
+/**
+ * フォントセットと言語からフォントファミリーを取得する
+ */
 export const getFontFamily = ({
   fontSet,
   language
@@ -91,47 +118,33 @@ export const getFontFamily = ({
       }
   }
 
-  if (language) {
-    return set[language]
-  }
-  return set["default"]
+  return language && set[language] || set["default"]
 }
 
 /**
- * 
- */
-export type FontQuery = {
-  language?: "ja"
-  target: string
-  fontSet: FontSets
-}
+ * 設定からFontQueryを生成する
+ **/
+export const buildFontQuerys = ():FontQuery[] => {
+  const pwConf = getPaperbackWriterConfiguration()
 
-export type GetFontStyleTagsProps = {
-  fontQuerys: FontQuery[]
-}
+  const fontQuerys: FontQuery[] = []
 
-export const getFontStyleTags = ({
-  fontQuerys
-}: GetFontStyleTagsProps) => {
-  
+  const language = getEnvLanguage()
 
-  const fontCsss: string[] = []
-  const googleFontNames: string[] = []
-  fontQuerys.forEach((fontQuery) => {
-    const { language, target, fontSet } = fontQuery
-    const { fontFamily, googleFontName } = getFontFamily({ fontSet, language })
-    fontCsss.push(`${target} { font-family: ${fontFamily}}`)
-    googleFontName && googleFontNames.push(googleFontName)
-  })
+  // 1. ベースフォント
+  switch (pwConf.baseFont) {
+    case 'Noto Sans':
+      fontQuerys.push({target: 'body', fontSet: 'notoSan', language})
+      break
 
-  const uniqGoogleFontNames = Array.from(new Set(googleFontNames))
-  let googleFontFamilyLink = ""
-  if (googleFontNames.length > 0) {
-    const preconnectLink = `<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`
-    const familyPrams = uniqGoogleFontNames.map((googleFontName, index) => {return `family=${googleFontName}`}).join("&")
-    googleFontFamilyLink = `${preconnectLink}<link href="https://fonts.googleapis.com/css2?${familyPrams}&display=swap" rel="stylesheet">`
+    case 'Noto Serif':
+      fontQuerys.push({target: 'body', fontSet: 'notoSerif', language})
+      break
+
+    default:
+      fontQuerys.push({target: 'body', fontSet: 'system', language})
+      break
   }
 
-  return googleFontFamilyLink + "\n<style>" + fontCsss.join("\n") + "</style>"
+  return fontQuerys
 }

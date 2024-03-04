@@ -1,21 +1,5 @@
-export const vscodeMarkdownStyle = `
-  /*---------------------------------------------------------------------------------------------
-  *  Copyright (c) Microsoft Corporation. All rights reserved.
-  *  Licensed under the MIT License. See License.txt in the project root for license information.
-  *--------------------------------------------------------------------------------------------*/
- 
- html, body {
-   font-family: var(--markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", system-ui, "Ubuntu", "Droid Sans", sans-serif);
-   font-size: var(--markdown-font-size, 14px);
-   padding: 0 26px;
-   line-height: var(--markdown-line-height, 22px);
-   word-wrap: break-word;
- }
- 
- body {
-   padding-top: 1em;
- }
- 
+export const vscodeMarkdownStyle = ` 
+
  /* Reset margin top for elements */
  h1, h2, h3, h4, h5, h6,
  p, ol, ul, pre {

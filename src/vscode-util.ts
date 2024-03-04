@@ -143,6 +143,10 @@ type PaperbackWriterConfiguration = {
   plantumlServer: string
   StatusbarMessageTimeout: number
   mermaidServer: string
+
+  baseFont: "" | "Noto Sans" | "Noto Serif"
+
+  baseFontSize: number
 }
 
 export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScope | null | undefined): PaperbackWriterConfiguration => {
@@ -190,7 +194,9 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     plantumlCloseMarker: wsc['plantumlCloseMarker'],
     plantumlServer: wsc['plantumlServer'],
     StatusbarMessageTimeout: wsc['StatusbarMessageTimeout'],
-    mermaidServer: wsc['mermaidServer']
+    mermaidServer: wsc['mermaidServer'],
+    baseFont: wsc['baseFont'],
+    baseFontSize: wsc['baseFontSize']
   }
 
   const margin = wsc['margin']
@@ -215,4 +221,7 @@ export const getHomeDirPath = (href: string):string => {
   return getPath(href.replace(/^~/, os.homedir()))
 }
 
-
+export type VscodeEnvLanguage = "en" | "zh-cn" | "zh-tw" | "fr" | "de" | "it" | "es" | "ja" | "ko" | "ru" | "pt-br" | "tr" | "pl" | "cs" | "hu"
+export const getEnvLanguage = (): VscodeEnvLanguage => {
+  return vscode.env.language as VscodeEnvLanguage
+}

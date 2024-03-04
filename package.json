@@ -183,6 +183,21 @@
           "title": "%paperback-writer.styles%",
           "description": "%paperback-writer.styles.dsc%"
         },
+        "paperback-writer.baseFont": {
+          "type": "string",
+          "enum": [
+            "",
+            "Noto Sans",
+            "Noto Serif"
+          ],
+          "default": "",
+          "description": "%paperback-writer.baseFont.dsc%"
+        },
+        "paperback-writer.baseFontSize": {
+          "type": "number",
+          "default": 14,
+          "description": "%paperback-writer.baseFontSize.dsc%"
+        },
         "paperback-writer.stylesRelativePathFile": {
           "type": "boolean",
           "default": false,

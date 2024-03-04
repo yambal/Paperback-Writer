@@ -1,10 +1,10 @@
 import path from "path"
 import * as vscode from 'vscode'
-import { getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
+import { VscodeEnvLanguage, getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
 import { vscodeMarkdownStyle } from "./css/vscodeMarkdownStyle"
 import { hilightJsStyle } from "./css/hilightJsStyle"
 import { remedyCss } from "./css/remedyCss"
-import { getFontStyleTags, GetFontStyleTagsProps } from "./css/fontStyle"
+import { FontSetId, getFontFamily } from "./css/fontStyle"
 
 var CleanCSS = require('clean-css')
 
@@ -18,42 +18,47 @@ export const styleTagBuilder = ({
   fontQuerys
 }:StyleTagBuilderProps) => {
 
-  const styleTags = themeStyleTagBuilder({editorDocVsUrl})
-  const fontStyleTags = getFontStyleTags({fontQuerys})
+  const styleTags = themeStyleTagsBuilder({editorDocVsUrl})
+  const fontStyleTags = fontStyleTagsBuilder({fontQuerys})
 
   return fontStyleTags + '\n' + styleTags
 }
 
+
+// ------------------------------
 type ThemeStyleTagBuilderProps = {
   editorDocVsUrl: vscode.Uri
 }
 type BuildedStyle = string
-export const themeStyleTagBuilder = ({
+
+/**
+ * テーマに関するスタイルタグを生成する
+ */
+export const themeStyleTagsBuilder = ({
   editorDocVsUrl
-}: ThemeStyleTagBuilderProps) => {
+}: ThemeStyleTagBuilderProps): string => {
   const styleTags: string[] = []
   const styleLinks: string[] = []
 
+  const PwCnf = getPaperbackWriterConfiguration()
+
   try {
-
-    const PwCnf = getPaperbackWriterConfiguration()
-    
-    const includeDefaultStyles = PwCnf.includeDefaultStyles
-    
     // 1. vscodeのスタイルを読む。
+    const includeDefaultStyles = PwCnf.includeDefaultStyles
+    const builtInStyles: string[] = []
     if (includeDefaultStyles) {
-      const styles: string[] = []
-      styles.push(remedyCss)
-      styles.push(vscodeMarkdownStyle)
-      styles.push(hilightJsStyle({}))
-
-      const minified = new CleanCSS({}).minify(styles.join('\n')).styles
-
-      const defaultStyleTag = `<style>${minified}</style>`
-      styleTags.push(defaultStyleTag)
+      builtInStyles.push(remedyCss)
+      builtInStyles.push(vscodeMarkdownStyle)
+      builtInStyles.push(hilightJsStyle({}))
     }
 
-    // 2. markdown.styles設定のスタイルを読む
+    // 2. ベースフォントサイズ
+    builtInStyles.push(`html { font-size: ${PwCnf.baseFontSize}px; }`)
+      
+    const minified = new CleanCSS({}).minify(builtInStyles.join('\n')).styles
+    styleTags.push(`<style>${minified}</style>`)
+
+    // 3. markdown.styles(ユーザー)設定のスタイルを読む
     const styles = PwCnf.styles
     if (styles && Array.isArray(styles) && styles.length > 0) {
       styles.forEach((styleFilePath, index) => {
@@ -123,4 +128,42 @@ const fixHref = (editorDocVsUri: vscode.Uri, workspaceFilePath: string) => {
   } catch (error) {
     showMessage({message: "fixHref()", type: 'error'})
   }
+}
+
+
+/**
+ * フォントに関する定義から、スタイルタグを生成する
+ */
+export type FontQuery = {
+  language?: VscodeEnvLanguage
+  target: string
+  fontSet: FontSetId
+}
+
+type GetFontStyleTagsProps = {
+  fontQuerys: FontQuery[]
+}
+
+const fontStyleTagsBuilder = ({
+  fontQuerys
+}: GetFontStyleTagsProps) => {
+  const fontCsss: string[] = []
+  const googleFontNames: string[] = []
+  fontQuerys.forEach((fontQuery) => {
+    const { language, target, fontSet } = fontQuery
+    const { fontFamily, googleFontName } = getFontFamily({ fontSet, language })
+    fontCsss.push(`${target} { font-family: ${fontFamily}; }`)
+    googleFontName && googleFontNames.push(googleFontName)
+  })
+
+  const uniqGoogleFontNames = Array.from(new Set(googleFontNames))
+  let googleFontFamilyLink = ""
+  if (googleFontNames.length > 0) {
+    const preconnectLink = `<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>`
+    const familyPrams = uniqGoogleFontNames.map((googleFontName, index) => {return `family=${googleFontName}`}).join("&")
+    googleFontFamilyLink = `${preconnectLink}<link href="https://fonts.googleapis.com/css2?${familyPrams}&display=swap" rel="stylesheet">`
+  }
+
+  return googleFontFamilyLink + "\n<style>" + fontCsss.join("\n") + "</style>"
 }
