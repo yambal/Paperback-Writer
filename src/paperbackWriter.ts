@@ -104,7 +104,14 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       const f = path.parse(editorCocPathName)
       const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
-      const { styleTags } = styleTagBuilder(editorDocVsUrl)
+      const styleTags  = styleTagBuilder({
+        editorDocVsUrl, 
+        fontQuerys:[
+          {target: '.body', fontSet: 'notoSan', language: 'ja'},
+          {target: 'h1, h2', fontSet: 'Train+One', language: 'ja'},
+          {target: 'p', fontSet: 'notoSerif', language: 'ja'}
+        ]
+      })
 
       return markdownToHtml({markdownString: editorText, styleTags: styleTags})
       .then((html) => {

@@ -4,17 +4,33 @@ import { getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, 
 import { vscodeMarkdownStyle } from "./css/vscodeMarkdownStyle"
 import { hilightJsStyle } from "./css/hilightJsStyle"
 import { remedyCss } from "./css/remedyCss"
+import { getFontStyleTags, GetFontStyleTagsProps } from "./css/fontStyle"
 
 var CleanCSS = require('clean-css')
 
-type StyleTagBuilderProps = vscode.Uri
-
-type BuildedStyle = {
-  styleTags: string,
+export type StyleTagBuilderProps = {
+  editorDocVsUrl: ThemeStyleTagBuilderProps['editorDocVsUrl']
+  fontQuerys: GetFontStyleTagsProps['fontQuerys']
 }
 
+export const styleTagBuilder = ({
+  editorDocVsUrl,
+  fontQuerys
+}:StyleTagBuilderProps) => {
 
-export const styleTagBuilder = (editorDocVsUrl: StyleTagBuilderProps) => {
+  const styleTags = themeStyleTagBuilder({editorDocVsUrl})
+  const fontStyleTags = getFontStyleTags({fontQuerys})
+
+  return fontStyleTags + '\n' + styleTags
+}
+
+type ThemeStyleTagBuilderProps = {
+  editorDocVsUrl: vscode.Uri
+}
+type BuildedStyle = string
+export const themeStyleTagBuilder = ({
+  editorDocVsUrl
+}: ThemeStyleTagBuilderProps) => {
   const styleTags: string[] = []
   const styleLinks: string[] = []
 
@@ -24,7 +40,6 @@ export const styleTagBuilder = (editorDocVsUrl: StyleTagBuilderProps) => {
     
     const includeDefaultStyles = PwCnf.includeDefaultStyles
     
-
     // 1. vscodeのスタイルを読む。
     if (includeDefaultStyles) {
       const styles: string[] = []
@@ -48,17 +63,13 @@ export const styleTagBuilder = (editorDocVsUrl: StyleTagBuilderProps) => {
       })
     }
 
-    const res: BuildedStyle = {
-      styleTags: styleTags.join('\n') + '\n' + styleLinks.join('\n')
-    }
+    const res = styleTags.join('\n') + '\n' + styleLinks.join('\n')
 
     return res
 
   } catch (error) {
     showMessage({message: "readStyles()", type: 'error'})
-    const res: BuildedStyle = {
-      styleTags: styleTags.join('\n') + '\n' + styleLinks.join('\n')
-    }
+    const res: BuildedStyle = styleTags.join('\n') + '\n' + styleLinks.join('\n')
 
     return res
   }
