@@ -11,7 +11,6 @@ export const ruby: TokenizerAndRendererExtension = {
     return src.match(/\{[^|]*\|[^}]*}/)?.index
   },
   tokenizer(src: string, tokens: any[]) {
-    console.log('src', src)
     const rule = /\{([^|]*)\|([^}]*)}/                            // {傀儡|かいらい}
     const match = rule.exec(src)
     if (match) {  

@@ -342,7 +342,7 @@
         "paperback-writer.displayHeaderFooter": {
           "type": "boolean",
           "default": true,
-          "description": "pdf only. Display header and footer.",
+          "description": "%paperback-writer.displayHeaderFooter.dsc%",
           "scope": "resource"
         },
         "paperback-writer.headerTemplate": {
