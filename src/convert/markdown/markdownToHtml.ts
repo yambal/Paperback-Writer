@@ -2,7 +2,7 @@ import { marked } from 'marked'
 import ejs from 'ejs'
 import { markedPWRenderer } from './markedPWRenderer'
 import { defautTemplate } from '../templates/defaultTemplate'
-
+import { ruby } from './extentions/rubyExtention'
 
 export type MarkdownToHtmlProps = {
   /** マークダウンテキスト */
@@ -21,7 +21,10 @@ export const markdownToHtml = ({
   return new Promise(async (resolve, reject) => {
     try {
       console.log(`markdownToHtml({text: ${markdownString.slice(0, 12)}...})`)
-      marked.use({renderer: markedPWRenderer()})
+      marked.use({
+        renderer: markedPWRenderer(),
+        extensions: [ruby]
+      })
       const htmlBodyString = await marked(markdownString)
 
       let html = ejs.render(defautTemplate, {
