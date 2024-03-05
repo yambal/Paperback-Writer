@@ -188,7 +188,8 @@
           "enum": [
             "",
             "Noto Sans",
-            "Noto Serif"
+            "Noto Serif",
+            "BIZ UDPGothic"
           ],
           "default": "",
           "description": "%paperback-writer.baseFont.dsc%"

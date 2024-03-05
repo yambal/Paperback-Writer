@@ -31,7 +31,7 @@ type MlFontFamily = {
   "hu"?: FontFamily
 }
 
-export type FontSetId = "system" | "notoSan" | "notoSerif" | "Train+One" | "Dela+Gothic+One"
+export type FontSetId = "system" | "notoSan" | "notoSerif" | "UDPGothic" | "Train+One" | "Dela+Gothic+One"
 
 export type GetFontFamilyProps = {
   /** 登録済みのフォントID */
@@ -76,6 +76,19 @@ export const getFontFamily = ({
         }
       }
       break
+
+    case "UDPGothic":
+      set = {
+        default: {
+          fontFamily: `"BIZ UDPGothic", sans-serif`,
+          googleFontName: "BIZ+UDPGothic"
+        },
+        ja: {
+          fontFamily: `"BIZ UDPGothic", sans-serif`,
+          googleFontName: "BIZ+UDPGothic"
+        }
+      }
+      break 
 
     case "Dela+Gothic+One":
       set = {
@@ -139,6 +152,10 @@ export const buildFontQuerys = ():FontQuery[] => {
 
     case 'Noto Serif':
       fontQuerys.push({target: 'body', fontSet: 'notoSerif', language})
+      break
+
+    case 'BIZ UDPGothic':
+      fontQuerys.push({target: 'body', fontSet: 'UDPGothic', language})
       break
 
     default:

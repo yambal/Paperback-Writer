@@ -144,7 +144,7 @@ type PaperbackWriterConfiguration = {
   StatusbarMessageTimeout: number
   mermaidServer: string
 
-  baseFont: "" | "Noto Sans" | "Noto Serif"
+  baseFont: "" | "Noto Sans" | "Noto Serif" | "BIZ UDPGothic"
 
   baseFontSize: number
 }
