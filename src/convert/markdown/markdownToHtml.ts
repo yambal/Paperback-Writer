@@ -3,6 +3,7 @@ import ejs from 'ejs'
 import { markedPWRenderer } from './markedPWRenderer'
 import { defautTemplate } from '../templates/defaultTemplate'
 import { ruby } from './extentions/rubyExtention'
+import { plantuml, plantumlFetcher } from './extentions/plantumlExtention'
 
 export type MarkdownToHtmlProps = {
   /** マークダウンテキスト */
@@ -21,11 +22,21 @@ export const markdownToHtml = ({
   return new Promise(async (resolve, reject) => {
     try {
       console.log(`markdownToHtml({text: ${markdownString.slice(0, 12)}...})`)
+
       marked.use({
         renderer: markedPWRenderer(),
-        extensions: [ruby]
+        extensions: [ruby, plantuml],
+        async: true,
+        async walkTokens(token) {
+          if (token.type === 'plantuml') {
+            console.log('token.content', token.content)
+            const res = await plantumlFetcher()
+            token.html = `<div>${res}</div>`
+          }
+        }
       })
-      const htmlBodyString = await marked(markdownString)
+
+      const htmlBodyString = await marked.parse(markdownString)
 
       let html = ejs.render(defautTemplate, {
         title: 'Markdown to HTML',
