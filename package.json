@@ -187,9 +187,11 @@
           "type": "string",
           "enum": [
             "",
-            "Noto Sans",
-            "Noto Serif",
-            "BIZ UDPGothic"
+            "Noto Sans : CY,JA,LA,VI",
+            "Noto : CY,JA,LA,VI",
+            "Roboto : CY,GR,LA,VI",
+            "BIZ UDPGothic : JA,(CY,LA)",
+            "BIZ UDPMincho : JA,(CY,LA)"
           ],
           "default": "",
           "description": "%paperback-writer.baseFont.dsc%"

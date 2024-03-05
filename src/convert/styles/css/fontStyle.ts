@@ -14,7 +14,7 @@ export type FontFamily = {
 
 type MlFontFamily = {
   "default": FontFamily
-  "ja": FontFamily
+  "ja"?: FontFamily
   "en"?: FontFamily
   "zh-cn"?: FontFamily
   "zh-tw"?: FontFamily
@@ -31,7 +31,7 @@ type MlFontFamily = {
   "hu"?: FontFamily
 }
 
-export type FontSetId = "system" | "notoSan" | "notoSerif" | "UDPGothic" | "Train+One" | "Dela+Gothic+One"
+export type FontSetId = "system" | "notoSan" | "notoSerif" | "Roboto" | "UDPGothic" | "UDPMincho" | "Train+One" | "Dela+Gothic+One"
 
 export type GetFontFamilyProps = {
   /** 登録済みのフォントID */
@@ -77,44 +77,32 @@ export const getFontFamily = ({
       }
       break
 
+    case "Roboto":
+      set = {
+        default: {
+          fontFamily: `"Roboto", sans-serif`,
+          googleFontName: "Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        },
+      }
+      break
+
     case "UDPGothic":
       set = {
         default: {
           fontFamily: `"BIZ UDPGothic", sans-serif`,
           googleFontName: "BIZ+UDPGothic"
         },
-        ja: {
-          fontFamily: `"BIZ UDPGothic", sans-serif`,
-          googleFontName: "BIZ+UDPGothic"
-        }
+      }
+      break
+
+    case "UDPMincho":
+      set = {
+        default: {
+          fontFamily: `"BIZ UDPMincho", serif`,
+          googleFontName: "BIZ+UDPMincho"
+        },
       }
       break 
-
-    case "Dela+Gothic+One":
-      set = {
-        default: {
-          fontFamily: `"Dela Gothic One", sans-serif, system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", Meiryo, sans-serif`,
-          googleFontName: "Dela+Gothic+One"
-        },
-        ja: {
-          fontFamily: `"Dela Gothic One", sans-serif, system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", Meiryo, sans-serif`,
-          googleFontName: "Dela+Gothic+One"
-        }
-      }
-      break
-
-    case "Train+One":
-      set = {
-        default: {
-          fontFamily: `"Train One", sans-serif, system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", Meiryo, sans-serif`,
-          googleFontName: "Train+One"
-        },
-        ja: {
-          fontFamily: `"Train One", sans-serif, system-ui, -apple-system, "Hiragino Sans", "Yu Gothic UI", "Segoe UI", Meiryo, sans-serif`,
-          googleFontName: "Train+One"
-        }
-      }
-      break
 
     case "system":
 
@@ -146,16 +134,24 @@ export const buildFontQuerys = ():FontQuery[] => {
 
   // 1. ベースフォント
   switch (pwConf.baseFont) {
-    case 'Noto Sans':
+    case 'Noto Sans : CY,JA,LA,VI':
       fontQuerys.push({target: 'body', fontSet: 'notoSan', language})
       break
 
-    case 'Noto Serif':
+    case 'Noto Serif : CY,JA,LA,VI':
       fontQuerys.push({target: 'body', fontSet: 'notoSerif', language})
       break
 
-    case 'BIZ UDPGothic':
+    case 'Roboto : CY,GR,LA,VI':
+      fontQuerys.push({target: 'body', fontSet: 'Roboto', language})
+      break
+
+    case 'BIZ UDPGothic : JA,(CY,LA)':
       fontQuerys.push({target: 'body', fontSet: 'UDPGothic', language})
+      break
+
+    case "BIZ UDPMincho : JA,(CY,LA)":
+      fontQuerys.push({target: 'body', fontSet: 'UDPMincho', language})
       break
 
     default:
