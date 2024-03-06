@@ -23,6 +23,7 @@ export const markedPWRenderer = () => {
       </h${level}>`
   }
 
+  /** インラインコード */
   renderer.codespan = (text) => {
     return `<code class="code-inline">${text}</code>`
   }
