@@ -5,6 +5,7 @@ import { vscodeMarkdownStyle } from "./css/vscodeMarkdownStyle"
 import { codeCss } from "../markdown/renderer/codeCss"
 import { remedyCss } from "./css/remedyCss"
 import { FontSetId, getFontFamily } from "./css/fontStyle"
+import { blockquoteCss } from "./css/blockquoteCss"
 
 var CleanCSS = require('clean-css')
 
@@ -50,6 +51,7 @@ export const themeStyleTagsBuilder = ({
       builtInStyles.push(remedyCss)
       builtInStyles.push(vscodeMarkdownStyle)
       builtInStyles.push(codeCss({}))
+      builtInStyles.push(blockquoteCss())
     }
 
     // 2. ベースフォントサイズ
