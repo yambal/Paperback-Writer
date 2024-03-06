@@ -196,6 +196,15 @@
           "default": "",
           "description": "%paperback-writer.baseFont.dsc%"
         },
+        "paperback-writer.codeFont": {
+          "type": "string",
+          "enum": [
+            "",
+            "Source Code Pro : Code"
+          ],
+          "default": "",
+          "description": "%paperback-writer.codeFont.dsc%"
+        },
         "paperback-writer.baseFontSize": {
           "type": "number",
           "default": 14,
@@ -547,6 +556,7 @@
     "highlight.js": "^11.9.0",
     "marked": "^12.0.0",
     "mkdirp": "^3.0.1",
+    "polished": "^4.3.1",
     "puppeteer-core": "3.3.0",
     "rimraf": "^5.0.5"
   }

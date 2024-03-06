@@ -205,26 +205,7 @@ export const vscodeMarkdownStyle = `
    white-space: pre-wrap;
  }
  
- pre:not(.hljs),
- pre.hljs code > div {
-   padding: 16px;
-   border-radius: 3px;
-   overflow: auto;
- }
- 
- pre code {
-   display: inline-block;
-   color: var(--vscode-editor-foreground);
-   tab-size: 4;
-   background: none;
- }
- 
  /** Theming */
- 
- pre {
-   background-color: var(--vscode-textCodeBlock-background);
-   border: 1px solid var(--vscode-widget-border);
- }
  
  .vscode-high-contrast h1 {
    border-color: rgb(0, 0, 0);

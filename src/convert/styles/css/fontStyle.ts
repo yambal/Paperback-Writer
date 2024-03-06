@@ -31,7 +31,7 @@ type MlFontFamily = {
   "hu"?: FontFamily
 }
 
-export type FontSetId = "system" | "notoSan" | "notoSerif" | "Roboto" | "UDPGothic" | "UDPMincho" | "Train+One" | "Dela+Gothic+One"
+export type FontSetId = "system" | "notoSan" | "notoSerif" | "Roboto" | "SourceCodePro" | "UDPGothic" | "UDPMincho" | "Train+One" | "Dela+Gothic+One"
 
 export type GetFontFamilyProps = {
   /** 登録済みのフォントID */
@@ -81,7 +81,16 @@ export const getFontFamily = ({
       set = {
         default: {
           fontFamily: `"Roboto", sans-serif`,
-          googleFontName: "Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+          googleFontName: "Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900"
+        },
+      }
+      break
+
+    case "SourceCodePro":
+      set = {
+        default: {
+          fontFamily: `"Source Code Pro", monospace`,
+          googleFontName: "Source+Code+Pro:ital,wght@0,200..900;1,200..900"
         },
       }
       break
@@ -157,6 +166,11 @@ export const buildFontQuerys = ():FontQuery[] => {
     default:
       fontQuerys.push({target: 'body', fontSet: 'system', language})
       break
+  }
+
+  switch (pwConf.baseFont) {
+    default:
+      fontQuerys.push({target: '.hljs-row-code', fontSet: 'SourceCodePro', language})
   }
 
   return fontQuerys

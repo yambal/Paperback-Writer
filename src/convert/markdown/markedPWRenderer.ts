@@ -60,16 +60,14 @@ export const markedPWRenderer = () => {
       <span class="hljs-row-number">
         ${index + 1}
       </span>
-      <span class="hljs-row-code">
-        ${line}
-      </span>
+      <span><pre class="hljs-row-code">${line}</pre></span>
     </div>`
     }).join(`\n`)
 
-    return `<div>
-    ${result.language && `<div class="language">${result.language}</div>`}
-    ${fileName && `<div class="fileName">${fileName}</div>`}
-    <div class="hljs">${numberedValue}</div>    
+    return `<div class="hljs">
+  <div class="hljs-filename">${fileName}</div>
+  <div class="hljs-language">${result.language}</div>
+  ${numberedValue}
 </div>`
   }
 

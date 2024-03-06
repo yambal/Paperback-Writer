@@ -1,3 +1,5 @@
+import { darken, readableColor } from 'polished'
+
 export type HilightJsStyleProps = {
   backgroundColor?: string
   baseColor?: string
@@ -5,6 +7,8 @@ export type HilightJsStyleProps = {
   builtInColor?: string
   attrColor?: string
   stringColor?: string
+  borderColor?: string
+  round?: string
 }
 
 export const hilightJsStyle = (
@@ -14,9 +18,15 @@ export const hilightJsStyle = (
     commentColor = `#697070`,
     builtInColor = `#397300`,
     attrColor = `#444444`,
-    stringColor = `#880000`
+    stringColor = `#880000`,
+    borderColor,
+    round = `0.5em`
   }: HilightJsStyleProps
 ): string => {
+
+  borderColor = borderColor || darken(0.1, backgroundColor)
+  const readableColorOnBorder = readableColor(borderColor, 'white', baseColor)
+  
 
   return `
   :root{
@@ -26,19 +36,41 @@ export const hilightJsStyle = (
     --built-in-color: ${builtInColor};
     --attr-color: ${attrColor};
     --string-color: ${stringColor};
+    --border-color: ${borderColor};
+    --color-on-border: ${readableColorOnBorder};
   }
-  pre code.hljs{
-    display:block;
-    overflow-x:auto;
-    padding:1em
-  }
-  code.hljs{
-    padding:3px 5px
-  }
+
   .hljs{
+    position: relative;
     background: var(--bg-color);
     color: var(--base-color);
+    padding-top: 2em;
+    border-radius: ${round};
+    border: 1px solid var(--border-color);
   }
+
+  .hljs .hljs-language {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--border-color);
+    color: var(--color-on-border);
+    padding: 0.25em 1em;
+    border-top-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+  }
+
+  .hljs .hljs-filename {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--border-color);
+    color: var(--color-on-border);
+    padding: 0.25em 1em;
+    border-top-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+  }
+
   .hljs-comment{
     color: var(--comment-color);
   }
@@ -88,9 +120,27 @@ export const hilightJsStyle = (
   .hljs-strong{
     font-weight:700
   }
+
+  .hljs-row {
+    display: grid;
+    grid-template-columns: 5em auto;
+  }
+  .hljs pre {
+    margin: 0;
+  }
   .hljs-row:not(:last-child) {
-    border-bottom: 1px solid red;
-    display: flex;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .hljs-row-number {
+    padding: 0 0.5em;
+    border-right: 1px solid var(--border-color);
+    text-align: right;
+    user-select: none;
+  }
+
+  .hljs-row-code {
+    padding: 0 0.5em;
   }
   `
 }

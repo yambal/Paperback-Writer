@@ -145,7 +145,7 @@ type PaperbackWriterConfiguration = {
   mermaidServer: string
 
   baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
-
+  codeFont: "Source Code Pro : Code"
   baseFontSize: number
 }
 
@@ -196,6 +196,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     StatusbarMessageTimeout: wsc['StatusbarMessageTimeout'],
     mermaidServer: wsc['mermaidServer'],
     baseFont: wsc['baseFont'],
+    codeFont: wsc['codeFont'],
     baseFontSize: wsc['baseFontSize']
   }
 
