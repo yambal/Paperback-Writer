@@ -11,7 +11,7 @@ export type HilightJsStyleProps = {
   round?: string
 }
 
-export const hilightJsStyle = (
+export const codeCss = (
   {
     backgroundColor = `#f3f3f3`,
     baseColor = `#444444`,
@@ -27,7 +27,6 @@ export const hilightJsStyle = (
   borderColor = borderColor || darken(0.1, backgroundColor)
   const readableColorOnBorder = readableColor(borderColor, 'white', baseColor)
   
-
   return `
   :root{
     --bg-color: ${backgroundColor};
@@ -40,7 +39,7 @@ export const hilightJsStyle = (
     --color-on-border: ${readableColorOnBorder};
   }
 
-  .hljs{
+  .code-block {
     position: relative;
     background: var(--bg-color);
     color: var(--base-color);
@@ -49,7 +48,7 @@ export const hilightJsStyle = (
     border: 1px solid var(--border-color);
   }
 
-  .hljs .hljs-language {
+  .code-block .code-block-language {
     position: absolute;
     top: 0;
     right: 0;
@@ -60,7 +59,7 @@ export const hilightJsStyle = (
     border-bottom-left-radius: 0.5em;
   }
 
-  .hljs .hljs-filename {
+  .code-block .code-block-filename {
     position: absolute;
     top: 0;
     left: 0;
@@ -71,76 +70,85 @@ export const hilightJsStyle = (
     border-bottom-right-radius: 0.5em;
   }
 
-  .hljs-comment{
+  .code-block-comment{
     color: var(--comment-color);
   }
-  .hljs-punctuation,.hljs-tag{
+  .code-block-punctuation,.code-block-tag{
     color:#444a
   }
-  .hljs-tag .hljs-attr {
+  .code-block-tag .code-block-attr {
     color: var(--attr-color);
   }
-  .hljs-tag .hljs-name{
+  .code-block-tag .code-block-name{
     color:#444
   }
-  .hljs-attribute,.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-name,.hljs-selector-tag{
+  .code-block-attribute,.code-block-doctag,.code-block-keyword,.code-block-meta .code-block-keyword,.code-block-name,.code-block-selector-tag{
     font-weight:700
   }
-  .hljs-string{
+  .code-block-string{
     color: var(--string-color);
   }
-  .hljs-deletion,.hljs-number,.hljs-quote,.hljs-selector-class,.hljs-selector-id,.hljs-template-tag,.hljs-type{
+  .code-block-deletion,.code-block-number,.code-block-quote,.code-block-selector-class,.code-block-selector-id,.code-block-template-tag,.code-block-type{
     color:#800
   }
-  .hljs-section,.hljs-title{
+  .code-block-section,.code-block-title{
     color:#800;
     font-weight:700
   }
-  .hljs-link,.hljs-operator,.hljs-regexp,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-symbol,.hljs-template-variable,.hljs-variable{
+  .code-block-link,.code-block-operator,.code-block-regexp,.code-block-selector-attr,.code-block-selector-pseudo,.code-block-symbol,.code-block-template-variable,.code-block-variable{
     color:#ab5656
   }
-  .hljs-literal{
+  .code-block-literal{
     color:#695
   }
-  .hljs-built_in {
+  .code-block-built_in {
     color: var(--built-in-color);
   }
-  .hljs-addition,.hljs-bullet,.hljs-code{
+  .code-block-addition,.code-block-bullet,.code-block-code{
     color:#397300
   }
-  .hljs-meta{
+  .code-block-meta{
     color:#1f7199
   }
-  .hljs-meta .hljs-string{
+  .code-block-meta .code-block-string{
     color:#38a
   }
-  .hljs-emphasis{
+  .code-block-emphasis{
     font-style:italic
   }
-  .hljs-strong{
+  .code-block-strong{
     font-weight:700
   }
 
-  .hljs-row {
+  .code-block-row {
     display: grid;
     grid-template-columns: 5em auto;
   }
-  .hljs pre {
+  .code-block pre {
     margin: 0;
   }
-  .hljs-row:not(:last-child) {
-    border-bottom: 1px solid var(--border-color);
+  .code-block-row:not(:last-child) {
+    border-bottom: 1px dashed var(--border-color);
   }
 
-  .hljs-row-number {
+  .code-block-row-number {
     padding: 0 0.5em;
     border-right: 1px solid var(--border-color);
     text-align: right;
     user-select: none;
   }
 
-  .hljs-row-code {
+  .code-block-row-code {
     padding: 0 0.5em;
+  }
+
+  /** インラインコード */
+  .code-inline {
+    background-color: var(--bg-color);
+    color: var(--base-color);
+    padding: 0.1em 0.3em;
+    border-radius: 0.3em;
+    border: 1px solid var(--border-color);
   }
   `
 }

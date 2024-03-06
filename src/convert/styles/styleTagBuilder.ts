@@ -2,7 +2,7 @@ import path from "path"
 import * as vscode from 'vscode'
 import { VscodeEnvLanguage, getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
 import { vscodeMarkdownStyle } from "./css/vscodeMarkdownStyle"
-import { hilightJsStyle } from "./css/hilightJsStyle"
+import { codeCss } from "../markdown/renderer/codeCss"
 import { remedyCss } from "./css/remedyCss"
 import { FontSetId, getFontFamily } from "./css/fontStyle"
 
@@ -49,7 +49,7 @@ export const themeStyleTagsBuilder = ({
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
       builtInStyles.push(vscodeMarkdownStyle)
-      builtInStyles.push(hilightJsStyle({}))
+      builtInStyles.push(codeCss({}))
     }
 
     // 2. ベースフォントサイズ

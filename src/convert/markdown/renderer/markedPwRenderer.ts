@@ -1,6 +1,6 @@
 import { marked,  } from 'marked'
 import hljs, { HighlightResult } from "highlight.js"
-import { hasExtension } from '../../util'
+import { hasExtension } from '../../../util'
 
 
 
@@ -24,7 +24,7 @@ export const markedPWRenderer = () => {
   }
 
   renderer.codespan = (text) => {
-    return `<code class="inline-code">${text}</code>`
+    return `<code class="code-inline">${text}</code>`
   }
 
   /** コードブロック */
@@ -46,6 +46,9 @@ export const markedPWRenderer = () => {
 
     let result: HighlightResult | undefined = undefined
     try {
+      hljs.configure({
+        classPrefix: 'code-block-'
+      })
       if (languageName) {
         result = hljs.highlight(code, {language: languageName})
       } else {
@@ -56,17 +59,17 @@ export const markedPWRenderer = () => {
     }
 
     const numberedValue = result.value.split(`\n`).map((line, index) => {
-      return `<div class="hljs-row">
-      <span class="hljs-row-number">
+      return `<div class="code-block-row">
+      <span class="code-block-row-number">
         ${index + 1}
       </span>
-      <span><pre class="hljs-row-code">${line}</pre></span>
+      <span><pre class="code-block-row-code">${line}</pre></span>
     </div>`
     }).join(`\n`)
 
-    return `<div class="hljs">
-  <div class="hljs-filename">${fileName}</div>
-  <div class="hljs-language">${result.language}</div>
+    return `<div class="code-block">
+  <div class="code-block-filename">${fileName}</div>
+  <div class="code-block-language">${result.language}</div>
   ${numberedValue}
 </div>`
   }

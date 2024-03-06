@@ -1,6 +1,6 @@
 import { marked } from 'marked'
 import ejs from 'ejs'
-import { markedPWRenderer } from './markedPWRenderer'
+import { markedPWRenderer } from './renderer/markedPwRenderer'
 import { defautTemplate } from '../templates/defaultTemplate'
 import { ruby } from './extentions/rubyExtention'
 
