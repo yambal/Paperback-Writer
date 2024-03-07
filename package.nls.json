@@ -54,6 +54,8 @@
 
   "paperback-writer.format.dsc": "Paper size (pdf only), invalid if paper width or height is set.",
 
+  "paperback-writer.width.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Paper Size` will be disabled.",
+
   "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
