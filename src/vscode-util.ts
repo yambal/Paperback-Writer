@@ -80,18 +80,6 @@ export const getActiveTextEditor = ():vscode.TextEditor | undefined => {
   return vscode.window.activeTextEditor
 }
 
-export const getEditorDocumentLanguageId = (): string | undefined => {
-  var editor = getActiveTextEditor()
-  if (editor) {
-    return editor.document.languageId
-  }
-  return undefined
-}
-
-export const getWorkspaceFolder = (uri: vscode.Uri): vscode.WorkspaceFolder | undefined => {
-  return vscode.workspace.getWorkspaceFolder(uri)
-}
-
 type PaperbackWriterConfiguration = {
   type: PaperbackWriterOutputType[],
   isConvertOnSave: boolean,
@@ -101,8 +89,7 @@ type PaperbackWriterConfiguration = {
   styles: string[]
   stylesRelativePathFile: boolean
   includeDefaultStyles: boolean
-  highlight: boolean
-  highlightStyle: string | null
+
   breaks: boolean
   emoji: boolean
   executablePath: string
@@ -138,17 +125,15 @@ type PaperbackWriterConfiguration = {
 
   /** 背景の省略 */
   omitBackground: boolean
-  plantumlOpenMarker: string
-  plantumlCloseMarker: string
-  plantumlServer: string
+
   StatusbarMessageTimeout: number
-  mermaidServer: string
 
   baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
   codeFont: "Source Code Pro : Code"
   baseFontSize: number
 }
 
+/** 設定を得る */
 export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScope | null | undefined): PaperbackWriterConfiguration => {
   const wsc = vscode.workspace.getConfiguration('paperback-writer', scope)
   
@@ -161,8 +146,6 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     styles: wsc['styles'],
     stylesRelativePathFile: wsc['stylesRelativePathFile'],
     includeDefaultStyles: wsc['includeDefaultStyles'],
-    highlight: wsc['highlight'],
-    highlightStyle: wsc['highlightStyle'],
     breaks: wsc['breaks'],
     emoji: wsc['emoji'],
     executablePath: wsc['executablePath'],
@@ -190,11 +173,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       height: wsc['clip']['height']
     },
     omitBackground: wsc['omitBackground'],
-    plantumlOpenMarker: wsc['plantumlOpenMarker'],
-    plantumlCloseMarker: wsc['plantumlCloseMarker'],
-    plantumlServer: wsc['plantumlServer'],
     StatusbarMessageTimeout: wsc['StatusbarMessageTimeout'],
-    mermaidServer: wsc['mermaidServer'],
     baseFont: wsc['baseFont'],
     codeFont: wsc['codeFont'],
     baseFontSize: wsc['baseFontSize']
@@ -210,19 +189,35 @@ export const getVscodeUri = (href: string):vscode.Uri => {
   return vscode.Uri.parse(href)
 }
 
+/** 文字列から vscode.Uri を得る */
 export const getUri = (href: string):vscode.Uri => {
   return vscode.Uri.file(href)
 }
 
+/** 文字列から URIの文字列表現を返す */
 export const getPath = (href: string):string => {
   return getUri(href).toString()
 }
 
+/** OSホームを返す */
 export const getHomeDirPath = (href: string):string => {
   return getPath(href.replace(/^~/, os.homedir()))
 }
 
+/** VSCodeの言語設定を得る */
 export type VscodeEnvLanguage = "en" | "zh-cn" | "zh-tw" | "fr" | "de" | "it" | "es" | "ja" | "ko" | "ru" | "pt-br" | "tr" | "pl" | "cs" | "hu"
 export const getEnvLanguage = (): VscodeEnvLanguage => {
   return vscode.env.language as VscodeEnvLanguage
+}
+
+export const getWorkspaceFolder = (uri: vscode.Uri): vscode.WorkspaceFolder | undefined => {
+  return vscode.workspace.getWorkspaceFolder(uri)
+}
+
+export const getEditorDocumentLanguageId = (): string | undefined => {
+  var editor = getActiveTextEditor()
+  if (editor) {
+    return editor.document.languageId
+  }
+  return undefined
 }
