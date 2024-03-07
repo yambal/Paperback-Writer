@@ -91,7 +91,7 @@ type PaperbackWriterConfiguration = {
   includeDefaultStyles: boolean
 
   breaks: boolean
-  emoji: boolean
+
   executablePath: string
   scale: number
   displayHeaderFooter: boolean
@@ -147,7 +147,6 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     stylesRelativePathFile: wsc['stylesRelativePathFile'],
     includeDefaultStyles: wsc['includeDefaultStyles'],
     breaks: wsc['breaks'],
-    emoji: wsc['emoji'],
     executablePath: wsc['executablePath'],
     scale: wsc['scale'],
     displayHeaderFooter: wsc['displayHeaderFooter'],
