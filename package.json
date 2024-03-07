@@ -488,16 +488,6 @@
           "default": false,
           "description": "png and jpeg only. Hides default white background and allows capturing screenshots with transparency."
         },
-        "paperback-writer.plantumlOpenMarker": {
-          "type": "string",
-          "default": "@startuml",
-          "description": "Oppening delimiter used for the plantuml parser."
-        },
-        "paperback-writer.plantumlCloseMarker": {
-          "type": "string",
-          "default": "@enduml",
-          "description": "Closing delimiter used for the plantuml parser."
-        },
         "paperback-writer.StatusbarMessageTimeout": {
           "type": "number",
           "default": 10000,
