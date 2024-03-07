@@ -62,6 +62,8 @@
   "paperback-writer.margin.right.dsc": "Page Option. Border Right. units: mm, cm, in, px",
   "paperback-writer.margin.left.dsc": "Page Option. Border Left. units: mm, cm, in, px",
 
+  "paperback-writer.quality.dsc": "Image quality. (png/jpeg only)",
+
 
   "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
 

@@ -337,7 +337,7 @@
         "paperback-writer.quality": {
           "type": "number",
           "default": 100,
-          "description": "画像品質(jpegのみ)、0-100"
+          "description": "%paperback-writer.quality.dsc%"
         },
         "paperback-writer.clip.x": {
           "type": [

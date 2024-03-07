@@ -62,6 +62,8 @@
   "paperback-writer.margin.right.dsc": "ページ設定 : 右余白。単位 mm、cm、in、px",
   "paperback-writer.margin.left.dsc": "ページ設定 : 左余白。単位 mm、cm、in、px",
 
+  "paperback-writer.quality.dsc": "画像品質(jpegのみ)、0-100",
+
   "%paperback-writer.displayHeaderFooter.dsc%" : "ページヘッダーとフッターを表示(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"
