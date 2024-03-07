@@ -260,7 +260,7 @@
         "paperback-writer.printBackground": {
           "type": "boolean",
           "default": true,
-          "description": "背景グラフィックを印刷する(pdfのみ)",
+          "description": "%paperback-writer.printBackground.dsc%",
           "scope": "resource"
         },
         "paperback-writer.orientation": {
