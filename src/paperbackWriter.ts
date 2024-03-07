@@ -111,7 +111,11 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
         fontQuerys:buildFontQuerys()
       })
 
-      return markdownToHtml({markdownString: editorText, styleTags: styleTags})
+      return markdownToHtml({
+        markdownString: editorText,
+        styleTags: styleTags,
+        isAddBrOnSingleNewLine: pwConf.breaks
+      })
       .then((html) => {
         return exportHtml({htmlString: html, exportPath:tmpfilename})
         .then((path) => {
