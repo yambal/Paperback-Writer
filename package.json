@@ -225,7 +225,7 @@
         "paperback-writer.breaks": {
           "type": "boolean",
           "default": false,
-          "description": "Enable line breaks"
+          "description": "%paperback-writer.breaks.dsc%"
         },
         "paperback-writer.executablePath": {
           "type": "string",

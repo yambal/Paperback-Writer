@@ -30,6 +30,8 @@
   "paperback-writer.includeDefaultStyles": "デフォルトスタイル",
   "paperback-writer.includeDefaultStyles.dsc": "デフォルトのスタイルを組み込む",
 
+  "paperback-writer.breaks.dsc": "一行改行時に<br>を追加します",
+
   "paperback-writer.baseFont.dsc": "ベースとなるフォント",
 
   "paperback-writer.baseFontSize.dsc": "ベースとなるフォントサイズ（px）",
