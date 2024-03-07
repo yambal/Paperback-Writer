@@ -361,7 +361,7 @@
             "null"
           ],
           "default": "",
-          "description": "png and jpeg only. width of clipping area."
+          "description": "%paperback-writer.clip.width.dsc%"
         },
         "paperback-writer.clip.height": {
           "type": [
@@ -369,7 +369,7 @@
             "null"
           ],
           "default": "",
-          "description": "png and jpeg only. height of clipping area."
+          "description": "%paperback-writer.clip.height.dsc%"
         },
         "paperback-writer.omitBackground": {
           "type": "boolean",
