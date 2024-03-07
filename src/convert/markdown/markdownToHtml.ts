@@ -9,6 +9,8 @@ export type MarkdownToHtmlProps = {
   markdownString: string
 
   styleTags?: string
+
+  isAddBrOnSingleNewLine?: boolean
 }
 
 /**
@@ -16,14 +18,16 @@ export type MarkdownToHtmlProps = {
  */
 export const markdownToHtml = ({
   markdownString,
-  styleTags
+  styleTags,
+  isAddBrOnSingleNewLine = false
 }: MarkdownToHtmlProps): Promise<string> => {
   return new Promise(async (resolve, reject) => {
     try {
       console.log(`markdownToHtml({text: ${markdownString.slice(0, 12)}...})`)
       marked.use({
         renderer: markedPWRenderer(),
-        extensions: [ruby]
+        extensions: [ruby],
+        breaks: isAddBrOnSingleNewLine
       })
       const htmlBodyString = await marked(markdownString)
 

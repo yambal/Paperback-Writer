@@ -30,6 +30,8 @@
   "paperback-writer.includeDefaultStyles": "Incorporate default styles",
   "paperback-writer.includeDefaultStyles.dsc": "Include the default styles.",
 
+  "paperback-writer.breaks.dsc": "Enable line breaks",
+
   "paperback-writer.baseFont.dsc": "Base font",
 
   "paperback-writer.baseFontSize.dsc": "Base font Size (px)",
