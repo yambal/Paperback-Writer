@@ -512,11 +512,6 @@
           "type": "boolean",
           "default": true,
           "description": "Enable markdown-it-include. "
-        },
-        "paperback-writer.mermaidServer": {
-          "type": "string",
-          "default": "https://unpkg.com/mermaid/dist/mermaid.min.js",
-          "description": "mermaid server."
         }
       }
     }
