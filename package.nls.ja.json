@@ -2,18 +2,19 @@
   "%paperback-writer.type": "出力形式",
   "paperback-writer.type.dsc": "出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート",
   
-  "extension.paperback-writer.settings": "Markdownを他のファイル形式に書き出し (settings.json) ",
-  "extension.paperback-writer.pdf": "MarkdownをPDFに書き出し",
-  "extension.paperback-writer.png": "MarkdownをPNGに書き出し",
-  "extension.paperback-writer.jpeg": "MarkdownをJPEGに書き出し",
-  "extension.paperback-writer.html": "MarkdownをHTMLに書き出し",
-  "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGに書き出し",
+  "$comment": "コマンド --------------------------------------------",
+  "extension.paperback-writer.settings": "Markdownを他の形式にOutput (settings.json) ",
+  "extension.paperback-writer.pdf": "MarkdownをPDFにOutput",
+  "extension.paperback-writer.png": "MarkdownをPNGにOutput",
+  "extension.paperback-writer.jpeg": "MarkdownをJPEGにOutput",
+  "extension.paperback-writer.html": "MarkdownをHTMLにOutput",
+  "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGにOutput",
 
   "paperback-writer.isConvertOnSave": "自動書き出し",
   "paperback-writer.isConvertOnSave.dsc": "保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります",
 
   "paperback-writer.convertOnSaveExclude": "自動書き出しの対象外",
-  "paperback-writer.convertOnSaveExclude.dsc": "自動書き出しの対象外ファイル名をリストする",
+  "paperback-writer.convertOnSaveExclude.dsc": "自動書き出しの対象外ファイル名",
 
   "paperback-writer.outputDirectory": "書き出しディレクトリ",
   "paperback-writer.outputDirectory.dsc": "書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます",
@@ -41,7 +42,7 @@
   "paperback-writer.executablePath.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
 
   "paperback-writer.scale": "PDFの描画スケール",
-  "paperback-writer.scale.dsc": "ページレンダリングのスケール(pdfのみ)",
+  "paperback-writer.scale.dsc": "ページレンダリングのスケール",
 
   "paperback-writer.headerTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
 

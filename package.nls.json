@@ -2,6 +2,7 @@
   "%paperback-writer.type": "Output formats",
   "paperback-writer.type.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported."  ,
 
+  "$comment": "Commands --------------------------------------------",
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",
   "extension.paperback-writer.pdf": "Output Markdown to PDF",
   "extension.paperback-writer.png": "Output Markdown to PNG",
@@ -42,7 +43,7 @@
   "paperback-writer.executablePath.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
 
   "paperback-writer.scale": "PDF Rendering Scale",
-  "paperback-writer.scale.dsc": "Scale of the page rendering. (pdf only)",
+  "paperback-writer.scale.dsc": "Scale of the page rendering.",
 
   "paperback-writer.headerTemplate.dsc": "pdf only. HTML template for the print header.",
 
