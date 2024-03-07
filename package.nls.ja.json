@@ -33,6 +33,7 @@
   "paperback-writer.breaks.dsc": "一行改行時に<br>を追加します",
 
   "paperback-writer.baseFont.dsc": "ベースとなるフォント",
+  "paperback-writer.codeFont.dsc": "コードに使用するフォント",
 
   "paperback-writer.baseFontSize.dsc": "ベースとなるフォントサイズ（px）",
 
@@ -70,7 +71,7 @@
 
   "paperback-writer.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
 
-  "%paperback-writer.displayHeaderFooter.dsc%" : "ページヘッダーとフッターを表示(pdfのみ)",
+  "paperback-writer.displayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"
 }

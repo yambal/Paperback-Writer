@@ -33,6 +33,8 @@
   "paperback-writer.breaks.dsc": "Enable line breaks",
 
   "paperback-writer.baseFont.dsc": "Base font",
+  "paperback-writer.codeFont.dsc": "Code font",
+
 
   "paperback-writer.baseFontSize.dsc": "Base font Size (px)",
 
