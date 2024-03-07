@@ -172,7 +172,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       height: wsc['clip']['height']
     },
     omitBackground: wsc['omitBackground'],
-    StatusbarMessageTimeout: wsc['StatusbarMessageTimeout'],
+    StatusbarMessageTimeout: 10000,
     baseFont: wsc['baseFont'],
     codeFont: wsc['codeFont'],
     baseFontSize: wsc['baseFontSize']

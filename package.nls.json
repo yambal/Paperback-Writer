@@ -33,6 +33,8 @@
   "paperback-writer.breaks.dsc": "Enable line breaks",
 
   "paperback-writer.baseFont.dsc": "Base font",
+  "paperback-writer.codeFont.dsc": "Code font",
+
 
   "paperback-writer.baseFontSize.dsc": "Base font Size (px)",
 
@@ -42,7 +44,36 @@
   "paperback-writer.scale": "PDF Rendering Scale",
   "paperback-writer.scale.dsc": "Scale of the page rendering. (pdf only)",
 
-  "%paperback-writer.displayHeaderFooter.dsc%" : "Display header and footer. (pdf only)",
+  "paperback-writer.headerTemplate.dsc": "pdf only. HTML template for the print header.",
+
+  "paperback-writer.footerTemplate.dsc": "pdf only. HTML template for the print footer.",
+
+  "paperback-writer.printBackground.dsc": "Print background graphic (pdf only)",
+
+  "paperback-writer.orientation.dsc": "Page orientation. (pdf only)",
+
+  "paperback-writer.pageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",
+
+  "paperback-writer.format.dsc": "Paper size (pdf only), invalid if paper width or height is set.",
+
+  "paperback-writer.width.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Paper Size` will be disabled.",
+  "paperback-writer.height.dsc": "Paper height (pdf only), mm, cm, in, px units are available. If set, `Paper Size` will be disabled.",
+
+  "paperback-writer.margin.top.dsc": "Page Option. Border Top. units: mm, cm, in, px",
+  "paperback-writer.margin.bottom.dsc": "Page Option. Border Bottom. units: mm, cm, in, px",
+  "paperback-writer.margin.right.dsc": "Page Option. Border Right. units: mm, cm, in, px",
+  "paperback-writer.margin.left.dsc": "Page Option. Border Left. units: mm, cm, in, px",
+
+  "paperback-writer.quality.dsc": "Image quality. (png/jpeg only)",
+  "paperback-writer.clip.x.dsc": "png and jpeg only. x-coordinate of top-left corner of clip area.",
+  "paperback-writer.clip.y.dsc": "png and jpeg only. y-coordinate of top-left corner of clip area.",
+  "paperback-writer.clip.width.dsc": "png and jpeg only. Width of clip area.",
+  "paperback-writer.clip.height.dsc": "png and jpeg only. Height of clip area.",
+
+  "paperback-writer.omitBackground.dsc": "Omit background images. (png/jpeg only)",
+
+
+  "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
 }

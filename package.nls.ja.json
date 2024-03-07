@@ -33,6 +33,7 @@
   "paperback-writer.breaks.dsc": "一行改行時に<br>を追加します",
 
   "paperback-writer.baseFont.dsc": "ベースとなるフォント",
+  "paperback-writer.codeFont.dsc": "コードに使用するフォント",
 
   "paperback-writer.baseFontSize.dsc": "ベースとなるフォントサイズ（px）",
 
@@ -41,7 +42,36 @@
 
   "paperback-writer.scale": "PDFの描画スケール",
   "paperback-writer.scale.dsc": "ページレンダリングのスケール(pdfのみ)",
-  "%paperback-writer.displayHeaderFooter.dsc%" : "ページヘッダーとフッターを表示(pdfのみ)",
+
+  "paperback-writer.headerTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
+
+  "paperback-writer.footerTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
+
+  "paperback-writer.printBackground.dsc": "背景グラフィックを印刷する(pdfのみ)",
+
+  "paperback-writer.orientation.dsc": "用紙の向き(pdfのみ)",
+
+  "paperback-writer.pageRanges.dsc": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
+
+  "paperback-writer.format.dsc": "用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。",
+
+  "paperback-writer.width.dsc": "用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
+  "paperback-writer.height.dsc": "用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
+
+  "paperback-writer.margin.top.dsc": "ページ設定 : 上余白。単位 mm、cm、in、px",
+  "paperback-writer.margin.bottom.dsc": "ページ設定 : 下余白。単位 mm、cm、in、px",
+  "paperback-writer.margin.right.dsc": "ページ設定 : 右余白。単位 mm、cm、in、px",
+  "paperback-writer.margin.left.dsc": "ページ設定 : 左余白。単位 mm、cm、in、px",
+
+  "paperback-writer.quality.dsc": "画像品質(jpegのみ)、0-100",
+  "paperback-writer.clip.x.dsc": "クリップ領域の左上隅の x座標 (png/jpegのみ)",
+  "paperback-writer.clip.y.dsc": "クリップ領域の左上隅の y座標 (png/jpegのみ)",
+  "paperback-writer.clip.width.dsc": "クリップ領域の幅 (png/jpegのみ)",
+  "paperback-writer.clip.height.dsc": "クリップ領域の高さ (png/jpegのみ)",
+
+  "paperback-writer.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
+
+  "paperback-writer.displayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"
 }

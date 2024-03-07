@@ -248,19 +248,19 @@
         "paperback-writer.headerTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \">%%ISO-DATE%%</div>",
-          "description": "pdf only. HTML template for the print header.",
+          "description": "%paperback-writer.headerTemplate.dsc%",
           "scope": "resource"
         },
         "paperback-writer.footerTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
-          "description": "pdf only. HTML template for the print footer.",
+          "description": "%paperback-writer.footerTemplate.dsc%",
           "scope": "resource"
         },
         "paperback-writer.printBackground": {
           "type": "boolean",
           "default": true,
-          "description": "背景グラフィックを印刷する(pdfのみ)",
+          "description": "%paperback-writer.printBackground.dsc%",
           "scope": "resource"
         },
         "paperback-writer.orientation": {
@@ -270,13 +270,13 @@
             "landscape"
           ],
           "default": "portrait",
-          "description": "用紙の向き(pdfのみ)",
+          "description": "%paperback-writer.orientation.dsc%",
           "scope": "resource"
         },
         "paperback-writer.pageRanges": {
           "type": "string",
           "default": "",
-          "description": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
+          "description": "%paperback-writer.pageRanges.dsc%",
           "scope": "resource"
         },
         "paperback-writer.format": {
@@ -295,49 +295,49 @@
             "A6"
           ],
           "default": "A4",
-          "description": "用紙サイズ(pdfのみ)",
+          "description": "%paperback-writer.format.dsc%",
           "scope": "resource"
         },
         "paperback-writer.width": {
           "type": "string",
           "default": "",
-          "description": "用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
+          "description": "%paperback-writer.width.dsc%",
           "scope": "resource"
         },
         "paperback-writer.height": {
           "type": "string",
           "default": "",
-          "description": "用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
+          "description": "%paperback-writer.height.dsc%",
           "scope": "resource"
         },
         "paperback-writer.margin.top": {
           "type": "string",
           "default": "1.5cm",
-          "description": "Page Option. Border Top. units: mm, cm, in, px",
+          "description": "%paperback-writer.margin.top.dsc%",
           "scope": "resource"
         },
         "paperback-writer.margin.bottom": {
           "type": "string",
           "default": "1cm",
-          "description": "Page Option. Border bottom. units: mm, cm, in, px",
+          "description": "%paperback-writer.margin.bottom.dsc%",
           "scope": "resource"
         },
         "paperback-writer.margin.right": {
           "type": "string",
           "default": "1cm",
-          "description": "Page Option. Border right. units: mm, cm, in, px",
+          "description": "%paperback-writer.margin.right.dsc%",
           "scope": "resource"
         },
         "paperback-writer.margin.left": {
           "type": "string",
           "default": "1cm",
-          "description": "Page Option. Border left. units: mm, cm, in, px",
+          "description": "%paperback-writer.margin.left.dsc%",
           "scope": "resource"
         },
         "paperback-writer.quality": {
           "type": "number",
           "default": 100,
-          "description": "画像品質(jpegのみ)、0-100"
+          "description": "%paperback-writer.quality.dsc%"
         },
         "paperback-writer.clip.x": {
           "type": [
@@ -345,7 +345,7 @@
             "null"
           ],
           "default": "",
-          "description": "png and jpeg only. x-coordinate of top-left corner of clip area."
+          "description": "%paperback-writer.clip.x.dsc%"
         },
         "paperback-writer.clip.y": {
           "type": [
@@ -353,7 +353,7 @@
             "null"
           ],
           "default": "",
-          "description": "png and jpeg only. y-coordinate of top-left corner of clip area."
+          "description": "%paperback-writer.clip.y.dsc%"
         },
         "paperback-writer.clip.width": {
           "type": [
@@ -361,7 +361,7 @@
             "null"
           ],
           "default": "",
-          "description": "png and jpeg only. width of clipping area."
+          "description": "%paperback-writer.clip.width.dsc%"
         },
         "paperback-writer.clip.height": {
           "type": [
@@ -369,17 +369,12 @@
             "null"
           ],
           "default": "",
-          "description": "png and jpeg only. height of clipping area."
+          "description": "%paperback-writer.clip.height.dsc%"
         },
         "paperback-writer.omitBackground": {
           "type": "boolean",
           "default": false,
-          "description": "png and jpeg only. Hides default white background and allows capturing screenshots with transparency."
-        },
-        "paperback-writer.StatusbarMessageTimeout": {
-          "type": "number",
-          "default": 10000,
-          "description": "Statusbar message timeout [milliseconds]"
+          "description": "%paperback-writer.omitBackground.dsc%"
         }
       }
     }
