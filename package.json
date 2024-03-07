@@ -498,11 +498,6 @@
           "default": "@enduml",
           "description": "Closing delimiter used for the plantuml parser."
         },
-        "paperback-writer.plantumlServer": {
-          "type": "string",
-          "default": "http://www.plantuml.com/plantuml",
-          "description": "plantuml server"
-        },
         "paperback-writer.StatusbarMessageTimeout": {
           "type": "number",
           "default": 10000,
