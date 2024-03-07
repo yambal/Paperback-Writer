@@ -177,8 +177,6 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     codeFont: wsc['codeFont'],
     baseFontSize: wsc['baseFontSize']
   }
-
-  const margin = wsc['margin']
   
   return pwf
 }
