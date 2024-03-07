@@ -295,7 +295,7 @@
             "A6"
           ],
           "default": "A4",
-          "description": "用紙サイズ(pdfのみ)",
+          "description": "%paperback-writer.format.dsc%",
           "scope": "resource"
         },
         "paperback-writer.width": {

@@ -52,6 +52,8 @@
 
   "paperback-writer.pageRanges.dsc": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
 
+  "paperback-writer.format.dsc": "用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。",
+
   "%paperback-writer.displayHeaderFooter.dsc%" : "ページヘッダーとフッターを表示(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"
