@@ -57,6 +57,12 @@
   "paperback-writer.width.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Paper Size` will be disabled.",
   "paperback-writer.height.dsc": "Paper height (pdf only), mm, cm, in, px units are available. If set, `Paper Size` will be disabled.",
 
+  "paperback-writer.margin.top.dsc": "Page Option. Border Top. units: mm, cm, in, px",
+  "paperback-writer.margin.bottom.dsc": "Page Option. Border Bottom. units: mm, cm, in, px",
+  "paperback-writer.margin.right.dsc": "Page Option. Border Right. units: mm, cm, in, px",
+  "paperback-writer.margin.left.dsc": "Page Option. Border Left. units: mm, cm, in, px",
+
+
   "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."

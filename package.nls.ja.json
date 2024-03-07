@@ -57,6 +57,11 @@
   "paperback-writer.width.dsc": "用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
   "paperback-writer.height.dsc": "用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
 
+  "paperback-writer.margin.top.dsc": "ページ設定 : 上余白。単位 mm、cm、in、px",
+  "paperback-writer.margin.bottom.dsc": "ページ設定 : 下余白。単位 mm、cm、in、px",
+  "paperback-writer.margin.right.dsc": "ページ設定 : 右余白。単位 mm、cm、in、px",
+  "paperback-writer.margin.left.dsc": "ページ設定 : 左余白。単位 mm、cm、in、px",
+
   "%paperback-writer.displayHeaderFooter.dsc%" : "ページヘッダーとフッターを表示(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"

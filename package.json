@@ -313,25 +313,25 @@
         "paperback-writer.margin.top": {
           "type": "string",
           "default": "1.5cm",
-          "description": "Page Option. Border Top. units: mm, cm, in, px",
+          "description": "%paperback-writer.margin.top.dsc%",
           "scope": "resource"
         },
         "paperback-writer.margin.bottom": {
           "type": "string",
           "default": "1cm",
-          "description": "Page Option. Border bottom. units: mm, cm, in, px",
+          "description": "%paperback-writer.margin.bottom.dsc%",
           "scope": "resource"
         },
         "paperback-writer.margin.right": {
           "type": "string",
           "default": "1cm",
-          "description": "Page Option. Border right. units: mm, cm, in, px",
+          "description": "%paperback-writer.margin.right.dsc%",
           "scope": "resource"
         },
         "paperback-writer.margin.left": {
           "type": "string",
           "default": "1cm",
-          "description": "Page Option. Border left. units: mm, cm, in, px",
+          "description": "%paperback-writer.margin.left.dsc%",
           "scope": "resource"
         },
         "paperback-writer.quality": {
