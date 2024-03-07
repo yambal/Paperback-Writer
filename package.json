@@ -276,7 +276,7 @@
         "paperback-writer.pageRanges": {
           "type": "string",
           "default": "",
-          "description": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
+          "description": "%paperback-writer.pageRanges.dsc%",
           "scope": "resource"
         },
         "paperback-writer.format": {

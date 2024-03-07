@@ -50,6 +50,8 @@
 
   "paperback-writer.orientation.dsc": "用紙の向き(pdfのみ)",
 
+  "paperback-writer.pageRanges.dsc": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
+
   "%paperback-writer.displayHeaderFooter.dsc%" : "ページヘッダーとフッターを表示(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"

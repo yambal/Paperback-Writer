@@ -50,6 +50,8 @@
 
   "paperback-writer.orientation.dsc": "Page orientation. (pdf only)",
 
+  "paperback-writer.pageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",
+
   "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
