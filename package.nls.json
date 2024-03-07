@@ -44,7 +44,9 @@
 
   "paperback-writer.headerTemplate.dsc": "pdf only. HTML template for the print header.",
 
-  "%paperback-writer.displayHeaderFooter.dsc%" : "Display header and footer. (pdf only)",
+  "paperback-writer.footerTemplate.dsc": "pdf only. HTML template for the print footer.",
+
+  "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
 }

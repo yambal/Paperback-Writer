@@ -254,7 +254,7 @@
         "paperback-writer.footerTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
-          "description": "pdf only. HTML template for the print footer.",
+          "description": "%paperback-writer.footerTemplate.dsc%",
           "scope": "resource"
         },
         "paperback-writer.printBackground": {
