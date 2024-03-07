@@ -270,7 +270,7 @@
             "landscape"
           ],
           "default": "portrait",
-          "description": "用紙の向き(pdfのみ)",
+          "description": "%paperback-writer.orientation.dsc%",
           "scope": "resource"
         },
         "paperback-writer.pageRanges": {

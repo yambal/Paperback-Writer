@@ -48,6 +48,8 @@
 
   "paperback-writer.printBackground.dsc": "Print background graphic (pdf only)",
 
+  "paperback-writer.orientation.dsc": "Page orientation. (pdf only)",
+
   "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
