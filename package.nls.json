@@ -63,6 +63,8 @@
   "paperback-writer.margin.left.dsc": "Page Option. Border Left. units: mm, cm, in, px",
 
   "paperback-writer.quality.dsc": "Image quality. (png/jpeg only)",
+  "paperback-writer.clip.x.dsc": "png and jpeg only. x-coordinate of top-left corner of clip area.",
+  "paperback-writer.clip.y.dsc": "png and jpeg only. y-coordinate of top-left corner of clip area.",
 
 
   "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",

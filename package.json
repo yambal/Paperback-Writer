@@ -345,7 +345,7 @@
             "null"
           ],
           "default": "",
-          "description": "png and jpeg only. x-coordinate of top-left corner of clip area."
+          "description": "%paperback-writer.clip.x.dsc%"
         },
         "paperback-writer.clip.y": {
           "type": [
@@ -353,7 +353,7 @@
             "null"
           ],
           "default": "",
-          "description": "png and jpeg only. y-coordinate of top-left corner of clip area."
+          "description": "%paperback-writer.clip.y.dsc%"
         },
         "paperback-writer.clip.width": {
           "type": [
