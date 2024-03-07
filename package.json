@@ -307,7 +307,7 @@
         "paperback-writer.height": {
           "type": "string",
           "default": "",
-          "description": "用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
+          "description": "%paperback-writer.height.dsc%",
           "scope": "resource"
         },
         "paperback-writer.margin.top": {
