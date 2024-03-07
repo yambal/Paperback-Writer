@@ -68,6 +68,8 @@
   "paperback-writer.clip.width.dsc": "png and jpeg only. Width of clip area.",
   "paperback-writer.clip.height.dsc": "png and jpeg only. Height of clip area.",
 
+  "paperback-writer.omitBackground.dsc": "Omit background images. (png/jpeg only)",
+
 
   "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
 

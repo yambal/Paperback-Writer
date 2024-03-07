@@ -68,6 +68,8 @@
   "paperback-writer.clip.width.dsc": "クリップ領域の幅 (png/jpegのみ)",
   "paperback-writer.clip.height.dsc": "クリップ領域の高さ (png/jpegのみ)",
 
+  "paperback-writer.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
+
   "%paperback-writer.displayHeaderFooter.dsc%" : "ページヘッダーとフッターを表示(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"

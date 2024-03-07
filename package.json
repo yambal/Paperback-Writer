@@ -374,12 +374,7 @@
         "paperback-writer.omitBackground": {
           "type": "boolean",
           "default": false,
-          "description": "png and jpeg only. Hides default white background and allows capturing screenshots with transparency."
-        },
-        "paperback-writer.StatusbarMessageTimeout": {
-          "type": "number",
-          "default": 10000,
-          "description": "Statusbar message timeout [milliseconds]"
+          "description": "%paperback-writer.omitBackground.dsc%"
         }
       }
     }
