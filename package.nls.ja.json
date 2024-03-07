@@ -39,6 +39,9 @@
 
   "paperback-writer.scale": "PDFの描画スケール",
   "paperback-writer.scale.dsc": "ページレンダリングのスケール(pdfのみ)",
+
+  "paperback-writer.headerTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
+
   "%paperback-writer.displayHeaderFooter.dsc%" : "ページヘッダーとフッターを表示(pdfのみ)",
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"

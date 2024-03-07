@@ -360,7 +360,7 @@
         "paperback-writer.headerTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \">%%ISO-DATE%%</div>",
-          "description": "pdf only. HTML template for the print header.",
+          "description": "%paperback-writer.headerTemplate.dsc%",
           "scope": "resource"
         },
         "paperback-writer.footerTemplate": {
