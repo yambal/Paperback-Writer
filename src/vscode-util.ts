@@ -87,7 +87,7 @@ type PaperbackWriterConfiguration = {
   outputDirectory: string
   outputDirectoryRelativePathFile: boolean
   customCSS: string[]
-  stylesRelativePathFile: boolean
+  customCSSRelativePathFile: boolean
   includeDefaultStyles: boolean
 
   breaks: boolean
@@ -144,7 +144,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     outputDirectory: wsc['outputDirectory'],
     outputDirectoryRelativePathFile: wsc['outputDirectoryRelativePathFile'],
     customCSS: wsc['customCSS'],
-    stylesRelativePathFile: wsc['stylesRelativePathFile'],
+    customCSSRelativePathFile: wsc['customCSSRelativePathFile'],
     includeDefaultStyles: wsc['includeDefaultStyles'],
     breaks: wsc['breaks'],
     executablePath: wsc['executablePath'],

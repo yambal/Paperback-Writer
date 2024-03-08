@@ -5,6 +5,7 @@
   "paperback-writer.outputDirectory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
   "paperback-writer.outputDirectoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
   "paperback-writer.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
+  "paperback-writer.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
 
   "$comment": "Commands --------------------------------------------",
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",
@@ -13,9 +14,6 @@
   "extension.paperback-writer.jpeg": "Output Markdown to JPEG",
   "extension.paperback-writer.html": "Output Markdown to HTML",
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",  
-
-  "paperback-writer.stylesRelativePathFile": "Do not convert paths to custom styles",
-  "paperback-writer.stylesRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
 
   "paperback-writer.includeDefaultStyles": "Incorporate default styles",
   "paperback-writer.includeDefaultStyles.dsc": "Include the default styles.",

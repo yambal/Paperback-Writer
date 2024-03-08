@@ -60,8 +60,8 @@
 |  | paperback-writer.`listOfFileNamesExcludedFromAutoOutput` | 自動書き出しの対象外ファイル名 |
 |  | paperback-writer.`outputDirector` | 書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます |
 |  | paperback-writer.`outputDirectoryRelativePathFile` | 設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます |
-| スタイルオプション | paperback-writer.`styles` | 使用するカスタムスタイルシート（CSS）のパスリスト |
-|  | paperback-writer.`stylesRelativePathFile` | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
+| スタイルオプション | paperback-writer.`customCSS` | 使用するカスタムスタイルシート（CSS）のパスリスト |
+|  | paperback-writer.`customCSSRelativePathFile` | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
 |  | paperback-writer.`includeDefaultStyles` | デフォルトのスタイルを組み込む |
 | シンタックスハイライトオプション |  |  |
 | Markdownオプション | paperback-writer.`breaks` | 一行改行時に<br>を追加します |

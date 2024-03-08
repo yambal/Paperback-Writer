@@ -5,6 +5,7 @@
   "paperback-writer.outputDirectory.dsc": "書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます",
   "paperback-writer.outputDirectoryRelativePathFile.dsc": "設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
   "paperback-writer.customCSS.dsc": "使用するカスタムスタイルシート（CSS）のパスリスト",
+  "paperback-writer.customCSSRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",
 
   "$comment": "コマンド --------------------------------------------",
   "extension.paperback-writer.settings": "Markdownを他の形式にOutput (settings.json) ",
@@ -14,8 +15,6 @@
   "extension.paperback-writer.html": "MarkdownをHTMLにOutput",
   "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGにOutput",
 
-  "paperback-writer.stylesRelativePathFile": "カスタムスタイルのパスを変換しない",
-  "paperback-writer.stylesRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",
 
   "paperback-writer.includeDefaultStyles": "デフォルトスタイル",
   "paperback-writer.includeDefaultStyles.dsc": "デフォルトのスタイルを組み込む",

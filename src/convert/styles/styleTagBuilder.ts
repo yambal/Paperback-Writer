@@ -108,7 +108,7 @@ const fixHref = (editorDocVsUri: vscode.Uri, workspaceFilePath: string) => {
 
     // ワークスペースがあり、markdown-pdf.stylesRelativePathFileがfalseの場合、ワークスペース相対パスを使用する。
     const workspaceFolder = getWorkspaceFolder(editorDocVsUri)
-    if (workspaceFolder && !PwCnf.stylesRelativePathFile) {
+    if (workspaceFolder && !PwCnf.customCSSRelativePathFile) {
       // 編集ファイルのディレクトリのパス
       const editorDocUri = path.dirname(editorDocVsUri.fsPath)
 

@@ -182,6 +182,12 @@
           "description": "%paperback-writer.customCSS.dsc%",
           "order": 5
         },
+        "paperback-writer.customCSSRelativePathFile": {
+          "type": "boolean",
+          "default": false,
+          "description": "%paperback-writer.customCSSRelativePathFile.dsc%",
+          "order": 6
+        },
         "paperback-writer.baseFont": {
           "type": "string",
           "enum": [
@@ -208,12 +214,6 @@
           "type": "number",
           "default": 14,
           "description": "%paperback-writer.baseFontSize.dsc%"
-        },
-        "paperback-writer.stylesRelativePathFile": {
-          "type": "boolean",
-          "default": false,
-          "title": "%paperback-writer.stylesRelativePathFile%",
-          "description": "%paperback-writer.stylesRelativePathFile.dsc%"
         },
         "paperback-writer.includeDefaultStyles": {
           "type": "boolean",

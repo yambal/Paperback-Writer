@@ -54,8 +54,8 @@ Visual Studio Code User and Workspace Settings
 |  | paperback-writer.`listOfFileNamesExcludedFromAutoOutput` | Filenames excluded from automatic export |
 |  | paperback-writer.`outputDirectory` | Specifies the directory for exports. If empty, exports are placed in the same location as the source files |
 |  | paperback-writer.`outputDirectoryRelativePathFile` | If set, the relative path specified for the export directory is interpreted relative to this file |
-| Style Options | paperback-writer.`styles` | List of paths to custom style sheets (CSS) |
-|  | paperback-writer.`stylesRelativePathFile` | If set, integrates the path to the CSS file set in custom style without converting to a relative path |
+| Style Options | paperback-writer.`customCSS` | List of paths to custom style sheets (CSS) |
+|  | paperback-writer.`customCSSRelativePathFile` | If set, integrates the path to the CSS file set in custom style without converting to a relative path |
 |  | paperback-writer.`includeDefaultStyles` | Includes default styles |
 | Syntax Highlighting Options |  |  |
 | Markdown Options | paperback-writer.`breaks` | Adds a `<br>` on a single line break |
