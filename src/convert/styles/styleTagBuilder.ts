@@ -61,7 +61,7 @@ export const themeStyleTagsBuilder = ({
     styleTags.push(`<style>${minified}</style>`)
 
     // 3. markdown.styles(ユーザー)設定のスタイルを読む
-    const styles = PwCnf.styles
+    const styles = PwCnf.customCSS
     if (styles && Array.isArray(styles) && styles.length > 0) {
       styles.forEach((styleFilePath, index) => {
         const href = fixHref(editorDocVsUrl, styleFilePath)

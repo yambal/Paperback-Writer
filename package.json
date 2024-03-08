@@ -164,23 +164,23 @@
         "paperback-writer.outputDirectory": {
           "type": "string",
           "default": "",
-          "title": "%paperback-writer.outputDirectory%",
-          "description": "%paperback-writer.outputDirectory.dsc%"
+          "description": "%paperback-writer.outputDirectory.dsc%",
+          "order": 3
         },
         "paperback-writer.outputDirectoryRelativePathFile": {
           "type": "boolean",
           "default": false,
-          "title": "%paperback-writer.outputDirectoryRelativePathFile%",
-          "description": "%paperback-writer.outputDirectoryRelativePathFile.dsc%"
+          "description": "%paperback-writer.outputDirectoryRelativePathFile.dsc%",
+          "order": 4
         },
-        "paperback-writer.styles": {
+        "paperback-writer.customCSS": {
           "type": "array",
           "default": [],
           "items": {
             "type": "string"
           },
-          "title": "%paperback-writer.styles%",
-          "description": "%paperback-writer.styles.dsc%"
+          "description": "%paperback-writer.customCSS.dsc%",
+          "order": 5
         },
         "paperback-writer.baseFont": {
           "type": "string",
