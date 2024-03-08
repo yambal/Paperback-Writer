@@ -232,7 +232,7 @@ const isMarkdownPdfOnSaveExclude = () => {
 
 		if (editor) {
 			const filename = path.basename(editor.document.fileName)
-			const excludePatterns = PwCnf.convertOnSaveExclude || ''
+			const excludePatterns = PwCnf.listOfFileNamesExcludedFromAutoOutput || ''
 			if (excludePatterns && Array.isArray(excludePatterns) && excludePatterns.length > 0) {
 				return excludePatterns.find((excludePattern) => {
 					var re = new RegExp(excludePattern)

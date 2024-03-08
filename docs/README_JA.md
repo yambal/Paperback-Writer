@@ -57,7 +57,7 @@
 | --- | --- | --- |
 | 保存オプション | paperback-writer.`outputTypes` | 出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート |
 |  | paperback-writer.`autoOutput` | 保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります |
-|  | paperback-writer.`convertOnSaveExclude` | 自動書き出しの対象外ファイル名 |
+|  | paperback-writer.`listOfFileNamesExcludedFromAutoOutput` | 自動書き出しの対象外ファイル名 |
 |  | paperback-writer.`outputDirector` | 書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます |
 |  | paperback-writer.`outputDirectoryRelativePathFile` | 設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます |
 | スタイルオプション | paperback-writer.`styles` | 使用するカスタムスタイルシート（CSS）のパスリスト |
