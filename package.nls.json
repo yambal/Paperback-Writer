@@ -1,6 +1,6 @@
 {
-  "paperback-writer.outputTypes": "Output formats",
-  "paperback-writer.outputTypes.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported."  ,
+  "paperback-writer.outputTypes.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported.",
+  "paperback-writer.autoOutput": "Enable Auto export on save",
 
   "$comment": "Commands --------------------------------------------",
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",
@@ -10,8 +10,8 @@
   "extension.paperback-writer.html": "Output Markdown to HTML",
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
 
-  "paperback-writer.isConvertOnSave": "Enable Auto export on save",
-  "paperback-writer.isConvertOnSave.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
+  
+  "paperback-writer.autoOutput.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
 
   "paperback-writer.convertOnSaveExclude": "Excluded from automatic exportOnSaves",
   "paperback-writer.convertOnSaveExclude.dsc": "Excluded file name of exportOnSave option",

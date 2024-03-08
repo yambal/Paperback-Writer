@@ -15,7 +15,7 @@ type Nls = {
   "extension.paperback-writer.jpeg": string
   "extension.paperback-writer.html": string
   "extension.paperback-writer.all": string
-  "paperback-writer.isConvertOnSave": string
+  "paperback-writer.autoOutput.dsc": string
   "paperback-writer.convertOnSaveExclude": string
   "paperback-writer.outputDirectory": string
   "paperback-writer.outputDirectoryRelativePathFile": string
@@ -82,7 +82,7 @@ export const getActiveTextEditor = ():vscode.TextEditor | undefined => {
 
 type PaperbackWriterConfiguration = {
   outputTypes: PaperbackWriterOutputType[],
-  isConvertOnSave: boolean,
+  autoOutput: boolean,
   convertOnSaveExclude: string[]
   outputDirectory: string
   outputDirectoryRelativePathFile: boolean
@@ -139,7 +139,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
   
   const pwf: PaperbackWriterConfiguration = {
     outputTypes: wsc['outputTypes'],
-    isConvertOnSave: wsc['isConvertOnSave'],
+    autoOutput: wsc['autoOutput'],
     convertOnSaveExclude: wsc['convertOnSaveExclude'],
     outputDirectory: wsc['outputDirectory'],
     outputDirectoryRelativePathFile: wsc['outputDirectoryRelativePathFile'],

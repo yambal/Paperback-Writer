@@ -143,15 +143,14 @@
           "items": {
             "type": "string"
           },
-          "title": "%paperback-writer.outputTypes%",
           "description": "%paperback-writer.outputTypes.dsc%",
           "order": 0
         },
-        "paperback-writer.isConvertOnSave": {
+        "paperback-writer.autoOutput": {       
           "type": "boolean",
           "default": false,
-          "title": "%paperback-writer.isConvertOnSave%",
-          "description": "%paperback-writer.isConvertOnSave.dsc%"
+          "description": "%paperback-writer.autoOutput.dsc%",
+          "order": 1
         },
         "paperback-writer.convertOnSaveExclude": {
           "type": "array",

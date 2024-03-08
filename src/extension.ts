@@ -55,7 +55,7 @@ export const activate = async (context: vscode.ExtensionContext) => {
 
 	/** 自動保存 */
 	const PwCnf = getPaperbackWriterConfiguration()
-	if (PwCnf.isConvertOnSave) {
+	if (PwCnf.autoOutput) {
 		var disposable_onsave = vscode.workspace.onDidSaveTextDocument(() => { 
 			autoSave()
 		})
