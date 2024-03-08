@@ -7,6 +7,8 @@
   "paperback-writer.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
   "paperback-writer.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
 
+  "paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc": "Enable line breaks",
+  
   "$comment": "Commands --------------------------------------------",
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",
   "extension.paperback-writer.pdf": "Output Markdown to PDF",
@@ -18,7 +20,7 @@
   "paperback-writer.includeDefaultStyles": "Incorporate default styles",
   "paperback-writer.includeDefaultStyles.dsc": "Include the default styles.",
 
-  "paperback-writer.breaks.dsc": "Enable line breaks",
+  
 
   "paperback-writer.baseFont.dsc": "Base font",
   "paperback-writer.codeFont.dsc": "Code font",

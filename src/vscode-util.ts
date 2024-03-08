@@ -90,7 +90,7 @@ type PaperbackWriterConfiguration = {
   customCSSRelativePathFile: boolean
   includeDefaultStyles: boolean
 
-  breaks: boolean
+  addBrOnSingleLineBreaksInMarkdown: boolean
 
   executablePath: string
   scale: number
@@ -146,7 +146,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     customCSS: wsc['customCSS'],
     customCSSRelativePathFile: wsc['customCSSRelativePathFile'],
     includeDefaultStyles: wsc['includeDefaultStyles'],
-    breaks: wsc['breaks'],
+    addBrOnSingleLineBreaksInMarkdown: wsc['addBrOnSingleLineBreaksInMarkdown'],
     executablePath: wsc['executablePath'],
     scale: wsc['scale'],
     displayHeaderFooter: wsc['displayHeaderFooter'],

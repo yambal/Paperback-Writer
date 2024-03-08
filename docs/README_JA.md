@@ -64,7 +64,7 @@
 |  | paperback-writer.`customCSSRelativePathFile` | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
 |  | paperback-writer.`includeDefaultStyles` | デフォルトのスタイルを組み込む |
 | シンタックスハイライトオプション |  |  |
-| Markdownオプション | paperback-writer.`breaks` | 一行改行時に<br>を追加します |
+| Markdownオプション | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`scale` | ページレンダリングのスケール |
 | PDFオプション | paperback-writer.`displayHeaderFooter` | ページヘッダーとフッターを表示 |
 || paperback-writer.`headerTemplate` | 印刷ヘッダー用HTMLテンプレート|

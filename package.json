@@ -188,6 +188,17 @@
           "description": "%paperback-writer.customCSSRelativePathFile.dsc%",
           "order": 6
         },
+        "paperback-writer.includeDefaultStyles": {
+          "type": "boolean",
+          "default": true,
+          "description": "%paperback-writer.includeDefaultStyles.dsc%",
+          "order": 7
+        },
+        "paperback-writer.addBrOnSingleLineBreaksInMarkdown": {
+          "type": "boolean",
+          "default": false,
+          "description": "%paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc%"
+        },
         "paperback-writer.baseFont": {
           "type": "string",
           "enum": [
@@ -214,17 +225,6 @@
           "type": "number",
           "default": 14,
           "description": "%paperback-writer.baseFontSize.dsc%"
-        },
-        "paperback-writer.includeDefaultStyles": {
-          "type": "boolean",
-          "default": true,
-          "title": "%paperback-writer.includeDefaultStyles%",
-          "description": "%paperback-writer.includeDefaultStyles.dsc%"
-        },
-        "paperback-writer.breaks": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.breaks.dsc%"
         },
         "paperback-writer.executablePath": {
           "type": "string",

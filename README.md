@@ -58,7 +58,7 @@ Visual Studio Code User and Workspace Settings
 |  | paperback-writer.`customCSSRelativePathFile` | If set, integrates the path to the CSS file set in custom style without converting to a relative path |
 |  | paperback-writer.`includeDefaultStyles` | Includes default styles |
 | Syntax Highlighting Options |  |  |
-| Markdown Options | paperback-writer.`breaks` | Adds a `<br>` on a single line break |
+| Markdown Options | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | Adds a `<br>` on a single line break |
 | Common | paperback-writer.`scale` | Scale for page rendering |
 | PDF Options | paperback-writer.`displayHeaderFooter` | Displays page header and footer |
 | | paperback-writer.`headerTemplate` | HTML template for the print header |

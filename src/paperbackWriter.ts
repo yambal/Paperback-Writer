@@ -114,7 +114,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       return markdownToHtml({
         markdownString: editorText,
         styleTags: styleTags,
-        isAddBrOnSingleNewLine: pwConf.breaks
+        isAddBrOnSingleNewLine: pwConf.addBrOnSingleLineBreaksInMarkdown
       })
       .then((html) => {
         return exportHtml({htmlString: html, exportPath:tmpfilename})

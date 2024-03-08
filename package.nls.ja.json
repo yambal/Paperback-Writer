@@ -7,6 +7,8 @@
   "paperback-writer.customCSS.dsc": "使用するカスタムスタイルシート（CSS）のパスリスト",
   "paperback-writer.customCSSRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",
 
+  "paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc": "一行改行時に<br>を追加します",
+
   "$comment": "コマンド --------------------------------------------",
   "extension.paperback-writer.settings": "Markdownを他の形式にOutput (settings.json) ",
   "extension.paperback-writer.pdf": "MarkdownをPDFにOutput",
@@ -18,8 +20,6 @@
 
   "paperback-writer.includeDefaultStyles": "デフォルトスタイル",
   "paperback-writer.includeDefaultStyles.dsc": "デフォルトのスタイルを組み込む",
-
-  "paperback-writer.breaks.dsc": "一行改行時に<br>を追加します",
 
   "paperback-writer.baseFont.dsc": "ベースとなるフォント",
   "paperback-writer.codeFont.dsc": "コードに使用するフォント",
