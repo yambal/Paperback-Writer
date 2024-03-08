@@ -1,6 +1,6 @@
 {
-  "%paperback-writer.type": "Output formats",
-  "paperback-writer.type.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported."  ,
+  "paperback-writer.outputTypes": "Output formats",
+  "paperback-writer.outputTypes.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported."  ,
 
   "$comment": "Commands --------------------------------------------",
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",

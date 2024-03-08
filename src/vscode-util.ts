@@ -81,7 +81,7 @@ export const getActiveTextEditor = ():vscode.TextEditor | undefined => {
 }
 
 type PaperbackWriterConfiguration = {
-  type: PaperbackWriterOutputType[],
+  outputTypes: PaperbackWriterOutputType[],
   isConvertOnSave: boolean,
   convertOnSaveExclude: string[]
   outputDirectory: string
@@ -138,7 +138,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
   const wsc = vscode.workspace.getConfiguration('paperback-writer', scope)
   
   const pwf: PaperbackWriterConfiguration = {
-    type: wsc['type'],
+    outputTypes: wsc['outputTypes'],
     isConvertOnSave: wsc['isConvertOnSave'],
     convertOnSaveExclude: wsc['convertOnSaveExclude'],
     outputDirectory: wsc['outputDirectory'],

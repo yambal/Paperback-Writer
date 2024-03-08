@@ -135,7 +135,7 @@
       "type": "object",
       "title": "PaperBack Writer",
       "properties": {
-        "paperback-writer.type": {
+        "paperback-writer.outputTypes": {
           "type": "array",
           "default": [
             "pdf"
@@ -143,8 +143,8 @@
           "items": {
             "type": "string"
           },
-          "title": "%paperback-writer.type%",
-          "description": "%paperback-writer.type.dsc%",
+          "title": "%paperback-writer.outputTypes%",
+          "description": "%paperback-writer.outputTypes.dsc%",
           "order": 0
         },
         "paperback-writer.isConvertOnSave": {

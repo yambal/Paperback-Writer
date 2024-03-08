@@ -55,7 +55,7 @@
 
 | カテゴリ | オプション名 | 説明 |
 | --- | --- | --- |
-| 保存オプション | paperback-writer.`type` | 出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート |
+| 保存オプション | paperback-writer.`outputTypes` | 出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート |
 |  | paperback-writer.`isConvertOnSave` | 保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります |
 |  | paperback-writer.`convertOnSaveExclude` | 自動書き出しの対象外ファイル名 |
 |  | paperback-writer.`outputDirector` | 書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます |
