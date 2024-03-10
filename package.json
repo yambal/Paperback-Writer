@@ -338,10 +338,11 @@
           "scope": "resource",
           "order": 24
         },
-        "paperback-writer.image.jpeg.quality": {
-          "type": "number",
-          "default": 100,
-          "description": "%paperback-writer.image.jpeg.quality.dsc%"
+        "paperback-writer.image.omitBackground": {
+          "type": "boolean",
+          "default": false,
+          "description": "%paperback-writer.image.omitBackground.dsc%",
+          "order": 25
         },
         "paperback-writer.image.clip.x": {
           "type": [
@@ -349,7 +350,8 @@
             "null"
           ],
           "default": "",
-          "description": "%paperback-writer.image.clip.x.dsc%"
+          "description": "%paperback-writer.image.clip.x.dsc%",
+          "order": 26
         },
         "paperback-writer.image.clip.y": {
           "type": [
@@ -357,7 +359,8 @@
             "null"
           ],
           "default": "",
-          "description": "%paperback-writer.image.clip.y.dsc%"
+          "description": "%paperback-writer.image.clip.y.dsc%",
+          "order": 27
         },
         "paperback-writer.image.clip.width": {
           "type": [
@@ -365,7 +368,8 @@
             "null"
           ],
           "default": "",
-          "description": "%paperback-writer.image.clip.width.dsc%"
+          "description": "%paperback-writer.image.clip.width.dsc%",
+          "order": 28
         },
         "paperback-writer.image.clip.height": {
           "type": [
@@ -373,12 +377,14 @@
             "null"
           ],
           "default": "",
-          "description": "%paperback-writer.image.clip.height.dsc%"
+          "description": "%paperback-writer.image.clip.height.dsc%",
+          "order": 29
         },
-        "paperback-writer.omitBackground": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.omitBackground.dsc%"
+        "paperback-writer.image.jpeg.quality": {
+          "type": "number",
+          "default": 100,
+          "description": "%paperback-writer.image.jpeg.quality.dsc%",
+          "order": 30
         },
         "paperback-writer.addBrOnSingleLineBreaksInMarkdown": {
           "type": "boolean",

@@ -121,10 +121,8 @@ type PaperbackWriterConfiguration = {
       width: number | null
       height: number | null
     },
+    omitBackground: boolean
   } 
-
-  /** 背景の省略 */
-  omitBackground: boolean
 
   StatusbarMessageTimeout: number
 
@@ -176,9 +174,9 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
         width:  wsc['image']['clip']['width'],
         height: wsc['image']['clip']['height']
       },
+      omitBackground: wsc['image']['omitBackground'],
     },
-    
-    omitBackground: wsc['omitBackground'],
+
     StatusbarMessageTimeout: 10000,
     baseFont: wsc['baseFont'],
     codeFont: wsc['codeFont'],

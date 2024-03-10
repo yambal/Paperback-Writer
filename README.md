@@ -82,7 +82,7 @@ Visual Studio Code User and Workspace Settings
 | | paperback-writer.`image.clip.y` | Y coordinate of the top-left corner of the clip area |
 | | paperback-writer.`image.clip.width` | Width of the clip area |
 | | paperback-writer.`image.clip.height` | Height of the clip area |
-| | paperback-writer.`omitBackground` | Omits the background image. |
+| | paperback-writer.`image.omitBackground` | Omits the background image. |
 | Chromium | paperback-writer.`pathToAnExternalChromium` | Path to the executable file of Chromium or Chrome to run instead of the bundled Chromium |
 
 ## Release Notes

@@ -43,7 +43,7 @@
   "paperback-writer.image.clip.width.dsc": "クリップ領域の幅 (png/jpegのみ)",
   "paperback-writer.image.clip.height.dsc": "クリップ領域の高さ (png/jpegのみ)",
 
-  "paperback-writer.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
+  "paperback-writer.image.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
 
   
 

@@ -157,7 +157,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         imageOption: {
                           quality: pwConf.image.jpeg.quality,
                           clip: pwConf.image.clip,
-                          omitBackground: pwConf.omitBackground,
+                          omitBackground: pwConf.image.omitBackground,
                           fullPage: false
                         }
                       })

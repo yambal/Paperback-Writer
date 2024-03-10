@@ -82,11 +82,11 @@
 || paperback-writer.`PDF.margin.right` | ページ設定 : 右余白。単位 mm、cm、in、px |
 || paperback-writer.`PDF.margin.left` | ページ設定 : 左余白。単位 mm、cm、in、px |
 |PNG/JPEGオプション | paperback-writer.`image.jpeg.quality` | 画像品質(jpegのみ)、0-100 |
-|| paperback-writer`.image.clip.x` | クリップ領域の左上隅の x座標 |
-|| paperback-writer`.image.clip.y` | クリップ領域の左上隅の y座標 |
-|| paperback-writer`.image.clip.width` | クリップ領域の幅 |
-|| paperback-writer`.image.clip.height` | クリップ領域の高さ |
-|| paperback-writer.omitBackground | 背景画像を省略する。 |
+|| paperback-writer.`image.clip.x` | クリップ領域の左上隅の x座標 |
+|| paperback-writer.`image.clip.y` | クリップ領域の左上隅の y座標 |
+|| paperback-writer.`image.clip.width` | クリップ領域の幅 |
+|| paperback-writer.`image.clip.height` | クリップ領域の高さ |
+|| paperback-writer.`image.omitBackground` | 背景画像を省略する。 |
 | Chromium | paperback-writer.`pathToAnExternalChromium` | バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス |
 
 ## リリースノート
