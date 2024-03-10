@@ -70,7 +70,7 @@ Visual Studio Code User and Workspace Settings
 | | paperback-writer.`printBackground` | Prints background graphics |
 | | paperback-writer.`orientation` | Paper orientation |
 | | paperback-writer.`pageRange` | Page range for pdf only, e.g., '1-5, 8, 11-13' |
-| | paperback-writer.`format` | Paper size for pdf only, specifying width or height disables this |
+| | paperback-writer.`paperSizeFormat` | Paper size for pdf only, specifying width or height disables this |
 | | paperback-writer.`width` | Paper width for pdf only, units: mm, cm, in, px. Disables `format` if set |
 | | paperback-writer.`height` | Paper height for pdf only, units: mm, cm, in, px. Disables `format` if set |
 | | paperback-writer.`margin.top` | Page setting: top margin. Units mm, cm, in, px |

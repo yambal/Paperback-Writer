@@ -279,7 +279,7 @@
           "description": "%paperback-writer.pageRanges.dsc%",
           "scope": "resource"
         },
-        "paperback-writer.format": {
+        "paperback-writer.paperSizeFormat": {
           "type": "string",
           "enum": [
             "Letter",
@@ -295,7 +295,7 @@
             "A6"
           ],
           "default": "A4",
-          "description": "%paperback-writer.format.dsc%",
+          "description": "%paperback-writer.paperSizeFormat.dsc%",
           "scope": "resource"
         },
         "paperback-writer.width": {

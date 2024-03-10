@@ -33,10 +33,10 @@
 
   "paperback-writer.pageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",
 
-  "paperback-writer.format.dsc": "Paper size (pdf only), invalid if paper width or height is set.",
+  "paperback-writer.paperSizeFormat.dsc": "Paper size (pdf only), invalid if paper width or height is set.",
 
-  "paperback-writer.width.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Paper Size` will be disabled.",
-  "paperback-writer.height.dsc": "Paper height (pdf only), mm, cm, in, px units are available. If set, `Paper Size` will be disabled.",
+  "paperback-writer.width.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Paper Size Format` will be disabled.",
+  "paperback-writer.height.dsc": "Paper height (pdf only), mm, cm, in, px units are available. If set, `Paper Size Format` will be disabled.",
 
   "paperback-writer.margin.top.dsc": "Page Option. Border Top. units: mm, cm, in, px",
   "paperback-writer.margin.bottom.dsc": "Page Option. Border Bottom. units: mm, cm, in, px",
