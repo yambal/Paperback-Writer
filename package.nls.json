@@ -22,13 +22,13 @@
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
 
   "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
+
   "paperback-writer.pdfDisplayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
   "paperback-writer.pdfHeaderHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
   "paperback-writer.pdfFooterHtmlElementTemplate.dsc": "pdf only. HTML template for the print footer.",
   "paperback-writer.pdfPrintBackground.dsc": "Print background graphic (pdf only)",
   "paperback-writer.pdfPaperOrientation.dsc": "Page orientation. (pdf only)",
-
-  "paperback-writer.pageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",
+  "paperback-writer.pdfPageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",
 
   "paperback-writer.paperSizeFormat.dsc": "Paper size (pdf only), invalid if paper width or height is set.",
 

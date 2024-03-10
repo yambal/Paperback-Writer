@@ -267,10 +267,10 @@
           "description": "%paperback-writer.pdfPaperOrientation.dsc%",
           "scope": "resource"
         },
-        "paperback-writer.pageRanges": {
+        "paperback-writer.pdfPageRanges": {
           "type": "string",
           "default": "",
-          "description": "%paperback-writer.pageRanges.dsc%",
+          "description": "%paperback-writer.pdfPageRanges.dsc%",
           "scope": "resource"
         },
         "paperback-writer.paperSizeFormat": {

@@ -27,8 +27,7 @@
   "paperback-writer.pdfFooterHtmlElementTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
   "paperback-writer.pdfPrintBackground.dsc": "背景グラフィックを印刷する(pdfのみ)",
   "paperback-writer.pdfPaperOrientation.dsc": "用紙の向き(pdfのみ)",
-
-  "paperback-writer.pageRanges.dsc": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
+  "paperback-writer.pdfPageRanges.dsc": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
 
   "paperback-writer.paperSizeFormat.dsc": "用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。",
 
