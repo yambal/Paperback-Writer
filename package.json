@@ -197,7 +197,17 @@
           ],
           "default": "",
           "description": "%paperback-writer.style.font.baseFont.dsc%",
-          "order": 9
+          "order": 7
+        },
+        "paperback-writer.style.font.codeFont": {
+          "type": "string",
+          "enum": [
+            "",
+            "Source Code Pro : Code"
+          ],
+          "default": "",
+          "description": "%paperback-writer.style.font.codeFont.dsc%",
+          "order": 8
         },
         "paperback-writer.customCSS": {
           "type": "array",
@@ -206,22 +216,12 @@
             "type": "string"
           },
           "description": "%paperback-writer.customCSS.dsc%",
-          "order": 7
+          "order": 9
         },
         "paperback-writer.customCSSRelativePathFile": {
           "type": "boolean",
           "default": false,
           "description": "%paperback-writer.customCSSRelativePathFile.dsc%",
-          "order": 8
-        },
-        "paperback-writer.codeFont": {
-          "type": "string",
-          "enum": [
-            "",
-            "Source Code Pro : Code"
-          ],
-          "default": "",
-          "description": "%paperback-writer.codeFont.dsc%",
           "order": 10
         },
         "paperback-writer.renderScale": {

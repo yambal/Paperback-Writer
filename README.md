@@ -59,7 +59,7 @@ Visual Studio Code User and Workspace Settings
 |  | paperback-writer.style.includeDefaultStyle | Includes default styles |
 |  | paperback-writer.style.font.baseSize | Base font Size (px) |
 |  | paperback-writer.style.font.baseFont | Base font |
-|  | paperback-writer.`codeFont` | Code font |
+|  | paperback-writer.style.font.codeFont | Code font |
 | Syntax Highlighting Options |  |  |
 | Markdown Options | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | Adds a `<br>` on a single line break |
 | Common | paperback-writer.`renderScale` | Scale for page rendering |

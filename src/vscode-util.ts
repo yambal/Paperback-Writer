@@ -94,6 +94,7 @@ type PaperbackWriterConfiguration = {
     font: {
       baseSize: number
       baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
+      codeFont: "Source Code Pro : Code"
     }
   }
 
@@ -134,7 +135,7 @@ type PaperbackWriterConfiguration = {
   StatusbarMessageTimeout: number
 
   
-  codeFont: "Source Code Pro : Code"
+  
   
 }
 
@@ -155,6 +156,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       font: {
         baseSize: wsc['style']['font']['baseSize'],
         baseFont: wsc['style']['font']['baseFont'],
+        codeFont: wsc['style']['font']['codeFont'],
       },
     },
     addBrOnSingleLineBreaksInMarkdown: wsc['addBrOnSingleLineBreaksInMarkdown'],
@@ -192,7 +194,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
 
     StatusbarMessageTimeout: 10000,
     
-    codeFont: wsc['codeFont'],
+    
     
   }
   

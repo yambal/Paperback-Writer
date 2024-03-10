@@ -8,7 +8,7 @@
   "paperback-writer.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
   "paperback-writer.style.includeDefaultStyle.dsc": "Include the default styles.",
   "paperback-writer.style.font.baseFont.dsc": "Base font",
-  "paperback-writer.codeFont.dsc": "Code font",
+  "paperback-writer.style.font.codeFontt.dsc": "Code font",
   "paperback-writer.style.font.baseSize.dsc": "Base font Size (px)",
 
   "paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc": "Enable line breaks",

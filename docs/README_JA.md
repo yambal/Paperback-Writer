@@ -65,7 +65,7 @@
 |  | paperback-writer.style.includeDefaultStyle | デフォルトのスタイルを組み込む |
 |  | paperback-writer.style.font.baseSize | ベースとなるフォントサイズ（px） |
 |  | paperback-writer.style.font.baseFont | 基本となるフォント |
-|  | paperback-writer.`codeFont` | コードに使用するフォント |
+|  | paperback-writer.style.font.codeFont | コードに使用するフォント |
 | Markdownオプション | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`renderScale` | ページレンダリングのスケール |
 | PDFオプション | paperback-writer.`PDF.displayHeaderFooter` | ページヘッダーとフッターを表示 |
