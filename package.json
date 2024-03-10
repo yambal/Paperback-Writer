@@ -173,28 +173,19 @@
           "description": "%paperback-writer.outputDirectoryRelativePathFile.dsc%",
           "order": 4
         },
-        "paperback-writer.customCSS": {
-          "type": "array",
-          "default": [],
-          "items": {
-            "type": "string"
-          },
-          "description": "%paperback-writer.customCSS.dsc%",
-          "order": 5
-        },
-        "paperback-writer.customCSSRelativePathFile": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.customCSSRelativePathFile.dsc%",
-          "order": 6
-        },
-        "paperback-writer.includeDefaultStyles": {
+        "paperback-writer.style.includeDefaultStyle": {
           "type": "boolean",
           "default": true,
-          "description": "%paperback-writer.includeDefaultStyles.dsc%",
-          "order": 7
+          "description": "%paperback-writer.style.includeDefaultStyle.dsc%",
+          "order": 5
         },
-        "paperback-writer.baseFont": {
+        "paperback-writer.style.font.baseSize": {
+          "type": "number",
+          "default": 14,
+          "description": "%paperback-writer.style.font.baseSize.dsc%",
+          "order": 6
+        },
+        "paperback-writer.style.font.baseFont": {
           "type": "string",
           "enum": [
             "",
@@ -205,7 +196,22 @@
             "BIZ UDPMincho : JA,(CY,LA)"
           ],
           "default": "",
-          "description": "%paperback-writer.baseFont.dsc%",
+          "description": "%paperback-writer.style.font.baseFont.dsc%",
+          "order": 9
+        },
+        "paperback-writer.customCSS": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "description": "%paperback-writer.customCSS.dsc%",
+          "order": 7
+        },
+        "paperback-writer.customCSSRelativePathFile": {
+          "type": "boolean",
+          "default": false,
+          "description": "%paperback-writer.customCSSRelativePathFile.dsc%",
           "order": 8
         },
         "paperback-writer.codeFont": {
@@ -216,12 +222,6 @@
           ],
           "default": "",
           "description": "%paperback-writer.codeFont.dsc%",
-          "order": 9
-        },
-        "paperback-writer.baseFontSize": {
-          "type": "number",
-          "default": 14,
-          "description": "%paperback-writer.baseFontSize.dsc%",
           "order": 10
         },
         "paperback-writer.renderScale": {

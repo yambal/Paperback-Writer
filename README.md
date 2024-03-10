@@ -56,11 +56,10 @@ Visual Studio Code User and Workspace Settings
 |  | paperback-writer.`outputDirectoryRelativePathFile` | If set, the relative path specified for the export directory is interpreted relative to this file |
 | Style Options | paperback-writer.`customCSS` | List of paths to custom style sheets (CSS) |
 |  | paperback-writer.`customCSSRelativePathFile` | If set, integrates the path to the CSS file set in custom style without converting to a relative path |
-|  | paperback-writer.`includeDefaultStyles` | Includes default styles |
-|  | paperback-writer.`baseFont` | Base font |
+|  | paperback-writer.style.includeDefaultStyle | Includes default styles |
+|  | paperback-writer.style.font.baseSize | Base font Size (px) |
+|  | paperback-writer.style.font.baseFont | Base font |
 |  | paperback-writer.`codeFont` | Code font |
-|  | paperback-writer.`baseFontSize` | Base font Size (px) |
-
 | Syntax Highlighting Options |  |  |
 | Markdown Options | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | Adds a `<br>` on a single line break |
 | Common | paperback-writer.`renderScale` | Scale for page rendering |

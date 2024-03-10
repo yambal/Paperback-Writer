@@ -88,7 +88,14 @@ type PaperbackWriterConfiguration = {
   outputDirectoryRelativePathFile: boolean
   customCSS: string[]
   customCSSRelativePathFile: boolean
-  includeDefaultStyles: boolean
+
+  style: {
+    includeDefaultStyle: boolean
+    font: {
+      baseSize: number
+      baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
+    }
+  }
 
   addBrOnSingleLineBreaksInMarkdown: boolean
 
@@ -126,9 +133,9 @@ type PaperbackWriterConfiguration = {
 
   StatusbarMessageTimeout: number
 
-  baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
+  
   codeFont: "Source Code Pro : Code"
-  baseFontSize: number
+  
 }
 
 /** 設定を得る */
@@ -143,7 +150,13 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     outputDirectoryRelativePathFile: wsc['outputDirectoryRelativePathFile'],
     customCSS: wsc['customCSS'],
     customCSSRelativePathFile: wsc['customCSSRelativePathFile'],
-    includeDefaultStyles: wsc['includeDefaultStyles'],
+    style: {
+      includeDefaultStyle: wsc['style']['includeDefaultStyle'],
+      font: {
+        baseSize: wsc['style']['font']['baseSize'],
+        baseFont: wsc['style']['font']['baseFont'],
+      },
+    },
     addBrOnSingleLineBreaksInMarkdown: wsc['addBrOnSingleLineBreaksInMarkdown'],
     pathToAnExternalChromium: wsc['pathToAnExternalChromium'],
     renderScale: wsc['renderScale'],
@@ -178,9 +191,9 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     },
 
     StatusbarMessageTimeout: 10000,
-    baseFont: wsc['baseFont'],
+    
     codeFont: wsc['codeFont'],
-    baseFontSize: wsc['baseFontSize']
+    
   }
   
   return pwf

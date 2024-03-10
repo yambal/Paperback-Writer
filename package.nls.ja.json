@@ -6,10 +6,10 @@
   "paperback-writer.outputDirectoryRelativePathFile.dsc": "設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
   "paperback-writer.customCSS.dsc": "使用するカスタムスタイルシート（CSS）のパスリスト",
   "paperback-writer.customCSSRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",
-  "paperback-writer.includeDefaultStyles.dsc": "デフォルトのスタイルを組み込む",
-  "paperback-writer.baseFont.dsc": "ベースとなるフォント",
+  "paperback-writer.style.includeDefaultStyle.dsc": "デフォルトのスタイルを組み込む",
+  "paperback-writer.style.font.baseFont.dsc": "ベースとなるフォント",
   "paperback-writer.codeFont.dsc": "コードに使用するフォント",
-  "paperback-writer.baseFontSize.dsc": "ベースとなるフォントサイズ（px）",
+  "paperback-writer.style.font.baseSize.dsc": "ベースとなるフォントサイズ（px）",
 
   "paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc": "一行改行時に<br>を追加します",
 
@@ -42,10 +42,7 @@
   "paperback-writer.image.clip.y.dsc": "クリップ領域の左上隅の y座標 (png/jpegのみ)",
   "paperback-writer.image.clip.width.dsc": "クリップ領域の幅 (png/jpegのみ)",
   "paperback-writer.image.clip.height.dsc": "クリップ領域の高さ (png/jpegのみ)",
-
   "paperback-writer.image.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
-
-  
 
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。",
 

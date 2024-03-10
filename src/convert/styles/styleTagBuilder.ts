@@ -45,7 +45,7 @@ export const themeStyleTagsBuilder = ({
 
   try {
     // 1. vscodeのスタイルを読む。
-    const includeDefaultStyles = PwCnf.includeDefaultStyles
+    const includeDefaultStyles = PwCnf.style.includeDefaultStyle
     const builtInStyles: string[] = []
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
@@ -55,7 +55,7 @@ export const themeStyleTagsBuilder = ({
     }
 
     // 2. ベースフォントサイズ
-    builtInStyles.push(`html { font-size: ${PwCnf.baseFontSize}px; }`)
+    builtInStyles.push(`html { font-size: ${PwCnf.style.font.baseSize}px; }`)
       
     const minified = new CleanCSS({}).minify(builtInStyles.join('\n')).styles
     styleTags.push(`<style>${minified}</style>`)

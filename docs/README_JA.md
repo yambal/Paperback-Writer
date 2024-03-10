@@ -62,10 +62,10 @@
 |  | paperback-writer.`outputDirectoryRelativePathFile` | 設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます |
 | スタイルオプション | paperback-writer.`customCSS` | 使用するカスタムスタイルシート（CSS）のパスリスト |
 |  | paperback-writer.`customCSSRelativePathFile` | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
-|  | paperback-writer.`includeDefaultStyles` | デフォルトのスタイルを組み込む |
-|  | paperback-writer.`baseFont` | 基本となるフォント |
+|  | paperback-writer.style.includeDefaultStyle | デフォルトのスタイルを組み込む |
+|  | paperback-writer.style.font.baseSize | ベースとなるフォントサイズ（px） |
+|  | paperback-writer.style.font.baseFont | 基本となるフォント |
 |  | paperback-writer.`codeFont` | コードに使用するフォント |
-|  | paperback-writer.`baseFontSize` | ベースとなるフォントサイズ（px） |
 | Markdownオプション | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`renderScale` | ページレンダリングのスケール |
 | PDFオプション | paperback-writer.`PDF.displayHeaderFooter` | ページヘッダーとフッターを表示 |
