@@ -77,10 +77,10 @@
 || paperback-writer.`PDF.paperSizeFormat` | 用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。|
 || paperback-writer.`PDF.paperWidth` | 用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「PDF.PaperSizeFormat」は無効になります。|
 || paperback-writer.`PDF.paperHeight` | 用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「PDF.PaperSizeFormat」は無効になります。 |
-|| paperback-writer.pdfMargin.`top` | ページ設定 : 上余白。単位 mm、cm、in、px |
-|| paperback-writer.pdfMargin.`bottom` | ページ設定 : 下余白。単位 mm、cm、in、px |
-|| paperback-writer.pdfMargin.`right` | ページ設定 : 右余白。単位 mm、cm、in、px |
-|| paperback-writer.pdfMargin.`left` | ページ設定 : 左余白。単位 mm、cm、in、px |
+|| paperback-writer.`PDF.margin.top` | ページ設定 : 上余白。単位 mm、cm、in、px |
+|| paperback-writer.`PDF.margin.bottom` | ページ設定 : 下余白。単位 mm、cm、in、px |
+|| paperback-writer.`PDF.margin.right` | ページ設定 : 右余白。単位 mm、cm、in、px |
+|| paperback-writer.`PDF.margin.left` | ページ設定 : 左余白。単位 mm、cm、in、px |
 |PNG/JPEGオプション | paperback-writer.quality | 画像品質(jpegのみ)、0-100 |
 || paperback-writer.clip.x | クリップ領域の左上隅の x座標 |
 || paperback-writer.clip.y | クリップ領域の左上隅の y座標 |
