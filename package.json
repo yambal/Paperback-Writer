@@ -276,7 +276,7 @@
           "scope": "resource",
           "order": 17
         },
-        "paperback-writer.pdfPaperSizeFormat": {
+        "paperback-writer.PDF.PaperSizeFormat": {
           "type": "string",
           "enum": [
             "Letter",
@@ -292,7 +292,7 @@
             "A6"
           ],
           "default": "A4",
-          "description": "%paperback-writer.pdfPaperSizeFormat.dsc%",
+          "description": "%paperback-writer.PDF.PaperSizeFormat.dsc%",
           "scope": "resource",
           "order": 18
         },

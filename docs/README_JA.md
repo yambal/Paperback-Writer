@@ -74,9 +74,9 @@
 || paperback-writer.`PDF.printBackground` | 背景グラフィックを印刷する|
 || paperback-writer.`PDF.paperOrientation` | 用紙の向き|
 || paperback-writer.`PDF.PageRanges` | ページ範囲(pdfのみ), 例 '1-5, 8, 11-13|
-|| paperback-writer.`pdfPaperSizeFormat` | 用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。|
-|| paperback-writer.`pdfPaperWidth` | 用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「pdfPaperSizeFormat」は無効になります。|
-|| paperback-writer.`pdfPaperHeight` | 用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「pdfPaperSizeFormat」は無効になります。 |
+|| paperback-writer.`PDF.PaperSizeFormat` | 用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。|
+|| paperback-writer.`pdfPaperWidth` | 用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「PDF.PaperSizeFormat」は無効になります。|
+|| paperback-writer.`pdfPaperHeight` | 用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「PDF.PaperSizeFormat」は無効になります。 |
 || paperback-writer.pdfMargin.`top` | ページ設定 : 上余白。単位 mm、cm、in、px |
 || paperback-writer.pdfMargin.`bottom` | ページ設定 : 下余白。単位 mm、cm、in、px |
 || paperback-writer.pdfMargin.`right` | ページ設定 : 右余白。単位 mm、cm、in、px |
