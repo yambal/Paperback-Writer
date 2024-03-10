@@ -257,14 +257,14 @@
           "description": "%paperback-writer.pdfPrintBackground.dsc%",
           "scope": "resource"
         },
-        "paperback-writer.orientation": {
+        "paperback-writer.pdfPaperOrientation": {
           "type": "string",
           "enum": [
             "portrait",
             "landscape"
           ],
           "default": "portrait",
-          "description": "%paperback-writer.orientation.dsc%",
+          "description": "%paperback-writer.pdfPaperOrientation.dsc%",
           "scope": "resource"
         },
         "paperback-writer.pageRanges": {
