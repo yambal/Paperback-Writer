@@ -1,7 +1,7 @@
 {
   "paperback-writer.output.types.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported.",
   "paperback-writer.output.auto.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
-  "paperback-writer.listOfFileNamesExcludedFromAutoOutput.dsc": "Excluded file name of exportOnSave option",
+  "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": "Excluded file name of exportOnSave option",
   "paperback-writer.outputDirectory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
   "paperback-writer.outputDirectoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
   

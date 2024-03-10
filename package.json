@@ -152,13 +152,13 @@
           "description": "%paperback-writer.output.auto.dsc%",
           "order": 1
         },
-        "paperback-writer.listOfFileNamesExcludedFromAutoOutput": {
+        "paperback-writer.output.listOfFileNamesExcludedFromAuto": {
           "type": "array",
           "default": [],
           "items": {
             "type": "string"
           },
-          "description": "%paperback-writer.listOfFileNamesExcludedFromAutoOutput.dsc%",
+          "description": "%paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc%",
           "order": 2
         },
         "paperback-writer.outputDirectory": {

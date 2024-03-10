@@ -16,7 +16,7 @@ type Nls = {
   "extension.paperback-writer.html": string
   "extension.paperback-writer.all": string
   "paperback-writer.output.auto.dsc": string
-  "paperback-writer.listOfFileNamesExcludedFromAutoOutput.dsc": string
+  "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": string
   "paperback-writer.outputDirectory.dsc": string
   "paperback-writer.outputDirectoryRelativePathFile.dsc": string
 
@@ -83,10 +83,10 @@ export const getActiveTextEditor = ():vscode.TextEditor | undefined => {
 type PaperbackWriterConfiguration = {
   output: {
     types: PaperbackWriterOutputType[]
-    auto: boolean,
+    auto: boolean
+    listOfFileNamesExcludedFromAuto: string[]
   }
   
-  listOfFileNamesExcludedFromAutoOutput: string[]
   outputDirectory: string
   outputDirectoryRelativePathFile: boolean
   
