@@ -234,10 +234,9 @@
           "default": "",
           "description": "%paperback-writer.pathToAnExternalChromium.dsc%"
         },
-        "paperback-writer.scale": {
+        "paperback-writer.renderScale": {
           "type": "number",
           "default": 1,
-          "title": "%paperback-writer.scale%",
           "description": "%paperback-writer.scale.dsc%"
         },
         "paperback-writer.displayHeaderFooter": {

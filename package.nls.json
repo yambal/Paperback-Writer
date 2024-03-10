@@ -32,8 +32,7 @@
 
   "paperback-writer.pathToAnExternalChromium.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
 
-  "paperback-writer.scale": "PDF Rendering Scale",
-  "paperback-writer.scale.dsc": "Scale of the page rendering.",
+  "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
 
   "paperback-writer.headerTemplate.dsc": "pdf only. HTML template for the print header.",
 

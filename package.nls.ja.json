@@ -23,8 +23,7 @@
 
   "paperback-writer.pathToAnExternalChromium.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
 
-  "paperback-writer.scale": "PDFの描画スケール",
-  "paperback-writer.scale.dsc": "ページレンダリングのスケール",
+  "paperback-writer.renderScale.dsc": "ページレンダリングのスケール",
 
   "paperback-writer.headerTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
 

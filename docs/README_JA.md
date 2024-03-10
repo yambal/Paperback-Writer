@@ -66,10 +66,8 @@
 |  | paperback-writer.`baseFont` | 基本となるフォント |
 |  | paperback-writer.`codeFont` | コードに使用するフォント |
 |  | paperback-writer.`baseFontSize` | ベースとなるフォントサイズ（px） |
-
-| シンタックスハイライトオプション |  |  |
 | Markdownオプション | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | 一行改行時に<br>を追加します |
-| 共通 | paperback-writer.`scale` | ページレンダリングのスケール |
+| 共通 | paperback-writer.`renderScale` | ページレンダリングのスケール |
 | PDFオプション | paperback-writer.`displayHeaderFooter` | ページヘッダーとフッターを表示 |
 || paperback-writer.`headerTemplate` | 印刷ヘッダー用HTMLテンプレート|
 || paperback-writer.`footerTemplate.dsc` | 印刷フッター用HTMLテンプレート|

@@ -168,7 +168,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
                         exportPathName,
                         pdfOption: {
-                          scale: pwConf.scale,
+                          scale: pwConf.renderScale,
                           isDisplayHeaderAndFooter: pwConf.displayHeaderFooter,
                           headerTemplate: pwConf.headerTemplate,
                           footerTemplate: pwConf.footerTemplate,
