@@ -111,17 +111,17 @@ type PaperbackWriterConfiguration = {
       left: string
     }
   }
-
-  /** 画像の品質 */
-  quality: number
-
-  /** クリップ範囲 */
-  clip: {
-    x: number | null
-    y: number | null
-    width: number | null
-    height: number | null
-  },
+  image: {
+    jpeg: {
+      quality: number
+    }
+    clip: {
+      x: number | null
+      y: number | null
+      width: number | null
+      height: number | null
+    },
+  } 
 
   /** 背景の省略 */
   omitBackground: boolean
@@ -166,13 +166,18 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
         left: wsc['PDF']['margin']['left']
       },
     },
-    quality: wsc['quality'],
-    clip: {
-      x: wsc['clip']['x'],
-      y: wsc['clip']['y'],
-      width:  wsc['clip']['width'],
-      height: wsc['clip']['height']
+    image: {
+      jpeg: {
+        quality: wsc['image']['jpeg']['quality']
+      },
+      clip: {
+        x: wsc['image']['clip']['x'],
+        y: wsc['image']['clip']['y'],
+        width:  wsc['image']['clip']['width'],
+        height: wsc['image']['clip']['height']
+      },
     },
+    
     omitBackground: wsc['omitBackground'],
     StatusbarMessageTimeout: 10000,
     baseFont: wsc['baseFont'],

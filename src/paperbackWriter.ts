@@ -155,8 +155,8 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
                         exportPathName,
                         imageOption: {
-                          quality: pwConf.quality,
-                          clip: pwConf.clip,
+                          quality: pwConf.image.jpeg.quality,
+                          clip: pwConf.image.clip,
                           omitBackground: pwConf.omitBackground,
                           fullPage: false
                         }

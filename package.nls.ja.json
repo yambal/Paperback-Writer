@@ -37,11 +37,11 @@
   "paperback-writer.PDF.margin.right.dsc": "ページ設定 : 右余白。単位 mm、cm、in、px",
   "paperback-writer.PDF.margin.left.dsc": "ページ設定 : 左余白。単位 mm、cm、in、px",
 
-  "paperback-writer.quality.dsc": "画像品質(jpegのみ)、0-100",
-  "paperback-writer.clip.x.dsc": "クリップ領域の左上隅の x座標 (png/jpegのみ)",
-  "paperback-writer.clip.y.dsc": "クリップ領域の左上隅の y座標 (png/jpegのみ)",
-  "paperback-writer.clip.width.dsc": "クリップ領域の幅 (png/jpegのみ)",
-  "paperback-writer.clip.height.dsc": "クリップ領域の高さ (png/jpegのみ)",
+  "paperback-writer.image.jpeg.quality.dsc": "画像品質(jpegのみ)、0-100",
+  "paperback-writer.image.clip.x.dsc": "クリップ領域の左上隅の x座標 (png/jpegのみ)",
+  "paperback-writer.image.clip.y.dsc": "クリップ領域の左上隅の y座標 (png/jpegのみ)",
+  "paperback-writer.image.clip.width.dsc": "クリップ領域の幅 (png/jpegのみ)",
+  "paperback-writer.image.clip.height.dsc": "クリップ領域の高さ (png/jpegのみ)",
 
   "paperback-writer.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
 

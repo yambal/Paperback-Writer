@@ -77,11 +77,11 @@ Visual Studio Code User and Workspace Settings
 | | paperback-writer.`PDF.margin.bottom` | Page setting: bottom margin. Units mm, cm, in, px |
 | | paperback-writer.`PDF.margin.right` | Page setting: right margin. Units mm, cm, in, px |
 | | paperback-writer.`PDF.margin.left` | Page setting: left margin. Units mm, cm, in, px |
-| PNG/JPEG Options | paperback-writer.`quality` | Image quality for jpeg only, 0-100 |
-| | paperback-writer.clip.`x` | X coordinate of the top-left corner of the clip area |
-| | paperback-writer.clip.`y` | Y coordinate of the top-left corner of the clip area |
-| | paperback-writer.clip.`width` | Width of the clip area |
-| | paperback-writer.clip.`height` | Height of the clip area |
+| PNG/JPEG Options | paperback-writer.`image.jpeg.quality` | Image quality for jpeg only, 0-100 |
+| | paperback-writer.`image.clip.x` | X coordinate of the top-left corner of the clip area |
+| | paperback-writer.`image.clip.y` | Y coordinate of the top-left corner of the clip area |
+| | paperback-writer.`image.clip.width` | Width of the clip area |
+| | paperback-writer.`image.clip.height` | Height of the clip area |
 | | paperback-writer.`omitBackground` | Omits the background image. |
 | Chromium | paperback-writer.`pathToAnExternalChromium` | Path to the executable file of Chromium or Chrome to run instead of the bundled Chromium |
 

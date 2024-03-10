@@ -314,62 +314,66 @@
           "type": "string",
           "default": "1.5cm",
           "description": "%paperback-writer.PDF.margin.top.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 21
         },
         "paperback-writer.PDF.margin.bottom": {
           "type": "string",
           "default": "1cm",
           "description": "%paperback-writer.PDF.margin.bottom.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 22
         },
         "paperback-writer.PDF.margin.right": {
           "type": "string",
           "default": "1cm",
           "description": "%paperback-writer.PDF.margin.right.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 23
         },
         "paperback-writer.PDF.margin.left": {
           "type": "string",
           "default": "1cm",
           "description": "%paperback-writer.PDF.margin.left.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 24
         },
-        "paperback-writer.quality": {
+        "paperback-writer.image.jpeg.quality": {
           "type": "number",
           "default": 100,
-          "description": "%paperback-writer.quality.dsc%"
+          "description": "%paperback-writer.image.jpeg.quality.dsc%"
         },
-        "paperback-writer.clip.x": {
+        "paperback-writer.image.clip.x": {
           "type": [
             "number",
             "null"
           ],
           "default": "",
-          "description": "%paperback-writer.clip.x.dsc%"
+          "description": "%paperback-writer.image.clip.x.dsc%"
         },
-        "paperback-writer.clip.y": {
+        "paperback-writer.image.clip.y": {
           "type": [
             "number",
             "null"
           ],
           "default": "",
-          "description": "%paperback-writer.clip.y.dsc%"
+          "description": "%paperback-writer.image.clip.y.dsc%"
         },
-        "paperback-writer.clip.width": {
+        "paperback-writer.image.clip.width": {
           "type": [
             "number",
             "null"
           ],
           "default": "",
-          "description": "%paperback-writer.clip.width.dsc%"
+          "description": "%paperback-writer.image.clip.width.dsc%"
         },
-        "paperback-writer.clip.height": {
+        "paperback-writer.image.clip.height": {
           "type": [
             "number",
             "null"
           ],
           "default": "",
-          "description": "%paperback-writer.clip.height.dsc%"
+          "description": "%paperback-writer.image.clip.height.dsc%"
         },
         "paperback-writer.omitBackground": {
           "type": "boolean",
