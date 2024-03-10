@@ -152,11 +152,17 @@
           "description": "%paperback-writer.output.directory.dsc%",
           "order": 1
         },
+        "paperback-writer.output.directoryRelativePathFile": {
+          "type": "boolean",
+          "default": false,
+          "description": "%paperback-writer.output.directoryRelativePathFile.dsc%",
+          "order": 2
+        },
         "paperback-writer.output.auto": {       
           "type": "boolean",
           "default": false,
           "description": "%paperback-writer.output.auto.dsc%",
-          "order": 2
+          "order": 3
         },
         "paperback-writer.output.listOfFileNamesExcludedFromAuto": {
           "type": "array",
@@ -165,12 +171,6 @@
             "type": "string"
           },
           "description": "%paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc%",
-          "order": 3
-        },
-        "paperback-writer.outputDirectoryRelativePathFile": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.outputDirectoryRelativePathFile.dsc%",
           "order": 4
         },
         "paperback-writer.style.includeDefaultStyle": {
@@ -386,10 +386,10 @@
           "description": "%paperback-writer.image.jpeg.quality.dsc%",
           "order": 30
         },
-        "paperback-writer.addBrOnSingleLineBreaksInMarkdown": {
+        "paperback-writer.markdown.addBrOnSingleLineBreaks": {
           "type": "boolean",
           "default": false,
-          "description": "%paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc%"
+          "description": "%paperback-writer.markdown.addBrOnSingleLineBreaks.dsc%"
         },
         "paperback-writer.pathToAnExternalChromium": {
           "type": "string",

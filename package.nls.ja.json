@@ -3,7 +3,7 @@
   "paperback-writer.output.auto.dsc": "保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります",
   "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": "自動書き出しの対象外ファイル名",
   "paperback-writer.output.directory.dsc": "書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます",
-  "paperback-writer.outputDirectoryRelativePathFile.dsc": "設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
+  "paperback-writer.output.directoryRelativePathFile.dsc": "設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
   
   
   
@@ -14,7 +14,7 @@
   "paperback-writer.style.customCSS.dsc": "使用するカスタムスタイルシート（CSS）のパスリスト",
   "paperback-writer.style.customCSSRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",
 
-  "paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc": "一行改行時に<br>を追加します",
+  "paperback-writer.markdown.addBrOnSingleLineBreaks.dsc": "一行改行時に<br>を追加します",
 
   "$comment": "コマンド --------------------------------------------",
   "extension.paperback-writer.settings": "Markdownを他の形式にOutput (settings.json) ",

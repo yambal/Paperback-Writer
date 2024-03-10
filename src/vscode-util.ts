@@ -18,7 +18,7 @@ type Nls = {
   "paperback-writer.output.auto.dsc": string
   "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": string
   "paperback-writer.output.directory.dsc": string
-  "paperback-writer.outputDirectoryRelativePathFile.dsc": string
+  "paperback-writer.output.directoryRelativePathFile.dsc": string
 
   "markdown-pdf.outputDirector.notExist": string
 }
@@ -84,14 +84,10 @@ type PaperbackWriterConfiguration = {
   output: {
     types: PaperbackWriterOutputType[]
     directory: string
+    directoryRelativePathFile: boolean
     auto: boolean
     listOfFileNamesExcludedFromAuto: string[]
   }
-  
-  
-  outputDirectoryRelativePathFile: boolean
-  
-  
 
   style: {
     includeDefaultStyle: boolean
@@ -104,7 +100,9 @@ type PaperbackWriterConfiguration = {
     customCSSRelativePathFile: boolean
   }
 
-  addBrOnSingleLineBreaksInMarkdown: boolean
+  markdown: {
+    addBrOnSingleLineBreaks: boolean
+  }
 
   pathToAnExternalChromium: string
   renderScale: number
@@ -153,13 +151,11 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     output: {
       types: wsc['output']['types'],
       directory: wsc['output']['directory'],
+      directoryRelativePathFile: wsc['output']['directoryRelativePathFile'],
       auto: wsc['output']['auto'],
       listOfFileNamesExcludedFromAuto: wsc['output']['listOfFileNamesExcludedFromAuto']
     },
 
-    outputDirectoryRelativePathFile: wsc['outputDirectoryRelativePathFile'],
-    
-    
     style: {
       includeDefaultStyle: wsc['style']['includeDefaultStyle'],
       font: {
@@ -170,7 +166,11 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       customCSS: wsc['style']['customCSS'],
       customCSSRelativePathFile: wsc['style']['customCSSRelativePathFile'],
     },
-    addBrOnSingleLineBreaksInMarkdown: wsc['addBrOnSingleLineBreaksInMarkdown'],
+
+    markdown: {
+      addBrOnSingleLineBreaks: wsc['markdown']['addBrOnSingleLineBreaks'],
+    },
+    
     pathToAnExternalChromium: wsc['pathToAnExternalChromium'],
     renderScale: wsc['renderScale'],
     PDF: {

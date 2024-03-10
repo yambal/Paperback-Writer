@@ -3,7 +3,7 @@
   "paperback-writer.output.auto.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
   "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": "Excluded file name of exportOnSave option",
   "paperback-writer.output.directory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
-  "paperback-writer.outputDirectoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
+  "paperback-writer.output.directoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
   
   "paperback-writer.style.includeDefaultStyle.dsc": "Include the default styles.",
   "paperback-writer.style.font.baseFont.dsc": "Base font",
@@ -12,7 +12,7 @@
   "paperback-writer.style.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
   "paperback-writer.style.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
 
-  "paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc": "Enable line breaks",
+  "paperback-writer.markdown.addBrOnSingleLineBreaks.dsc": "Enable line breaks",
   
   "$comment": "Commands --------------------------------------------",
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",

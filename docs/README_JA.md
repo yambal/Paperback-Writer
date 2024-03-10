@@ -55,18 +55,18 @@
 
 | カテゴリ | オプション名 | 説明 |
 | --- | --- | --- |
-| 保存オプション | paperback-writer.output.types | 出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート |
-|  | paperback-writer.output.auto | 保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります |
-|  | paperback-writer.output.listOfFileNamesExcludedFromAuto | 自動書き出しの対象外ファイル名 |
-|  | paperback-writer.output.directory | 書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます |
-|  | paperback-writer.`outputDirectoryRelativePathFile` | 設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます |
-| スタイルオプション | paperback-writer.style.customCSS | 使用するカスタムスタイルシート（CSS）のパスリスト |
-|  | paperback-writer.style.customCSSRelativePathFile | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
-|  | paperback-writer.style.includeDefaultStyle | デフォルトのスタイルを組み込む |
-|  | paperback-writer.style.font.baseSize | ベースとなるフォントサイズ（px） |
-|  | paperback-writer.style.font.baseFont | 基本となるフォント |
-|  | paperback-writer.style.font.codeFont | コードに使用するフォント |
-| Markdownオプション | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | 一行改行時に<br>を追加します |
+| 保存オプション | paperback-writer.`output.types` | 出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート |
+|  | paperback-writer.`output.auto` | 保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります |
+|  | paperback-writer.`output.listOfFileNamesExcludedFromAuto` | 自動書き出しの対象外ファイル名 |
+|  | paperback-writer.`output.directory` | 書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます |
+|  | paperback-writer.`output.directoryRelativePathFile` | 設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます |
+| スタイルオプション | paperback-writer.`style.customCSS` | 使用するカスタムスタイルシート（CSS）のパスリスト |
+|  | paperback-writer.`style.customCSSRelativePathFile` | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
+|  | paperback-writer.`style.includeDefaultStyle` | デフォルトのスタイルを組み込む |
+|  | paperback-writer.`style.font.baseSize` | ベースとなるフォントサイズ（px） |
+|  | paperback-writer.`style.font.baseFont` | 基本となるフォント |
+|  | paperback-writer.`style.font.codeFont` | コードに使用するフォント |
+| Markdownオプション | paperback-writer.`markdown.addBrOnSingleLineBreaks` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`renderScale` | ページレンダリングのスケール |
 | PDFオプション | paperback-writer.`PDF.displayHeaderFooter` | ページヘッダーとフッターを表示 |
 || paperback-writer.`PDF.HeaderHtmlElementTemplate` | 印刷ヘッダー用HTMLテンプレート|
