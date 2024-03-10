@@ -158,7 +158,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       pageRanges: wsc['PDF']['pageRanges'],
       paperSizeFormat: wsc['PDF']['paperSizeFormat'],
       paperWidth: wsc['PDF']['paperWidth'],
-      paperHeight: wsc['PDF']['paperHeigh'],
+      paperHeight: wsc['PDF']['paperHeight'],
       margin: {
         top: wsc['PDF']['margin']['top'],
         right: wsc['PDF']['margin']['right'],

@@ -72,10 +72,9 @@ export const exportPdf = ({
   pdfOption,
 }: ExportPdfProps): Promise<void> => {
 
-  console.log(pdfOption)
-
   return new Promise((resolve, reject) => {
     const format = !pdfOption.width && !pdfOption.height ? pdfOption.format ?? 'A4' : ''
+
     const options = {
       path: exportPathName,
       scale: pdfOption.scale || 1,
@@ -96,6 +95,8 @@ export const exportPdf = ({
       },
       timeout: 0
     }
+
+    console.log(`format: ${options.format}, width: ${options.width}, height: ${options.height}`)
 
     /** PDF化 */
     return lunchedPuppeteerPage.pdf(options)
