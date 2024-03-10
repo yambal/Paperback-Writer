@@ -22,8 +22,8 @@
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
 
   "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
-  "paperback-writer.headerHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
-  "paperback-writer.footerHtmlElementTemplate.dsc": "pdf only. HTML template for the print footer.",
+  "paperback-writer.pdfHeaderHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
+  "paperback-writer.pdfFooterHtmlElementTemplate.dsc": "pdf only. HTML template for the print footer.",
 
   "paperback-writer.printBackground.dsc": "Print background graphic (pdf only)",
 

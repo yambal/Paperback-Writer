@@ -171,7 +171,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           scale: pwConf.renderScale,
                           isDisplayHeaderAndFooter: pwConf.displayHeaderFooter,
                           headerTemplate: pwConf.pdfHeaderHtmlElementTemplate,
-                          footerTemplate: pwConf.footerHtmlElementTemplate,
+                          footerTemplate: pwConf.pdfFooterHtmlElementTemplate,
                           isPrintBackground: pwConf.printBackground,
                           orientationIsLandscape: pwConf.orientation === 'landscape',
                           pageRanges: pwConf.pageRanges,

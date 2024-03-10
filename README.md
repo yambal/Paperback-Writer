@@ -66,7 +66,7 @@ Visual Studio Code User and Workspace Settings
 | Common | paperback-writer.`renderScale` | Scale for page rendering |
 | PDF Options | paperback-writer.`displayHeaderFooter` | Displays page header and footer |
 | | paperback-writer.`pdfHeaderHtmlElementTemplate` | HTML template for the print header |
-| | paperback-writer.`footerHtmlElementTemplate` | HTML template for the print footer |
+| | paperback-writer.`pdfFooterHtmlElementTemplate` | HTML template for the print footer |
 | | paperback-writer.`printBackground` | Prints background graphics |
 | | paperback-writer.`orientation` | Paper orientation |
 | | paperback-writer.`pageRange` | Page range for pdf only, e.g., '1-5, 8, 11-13' |

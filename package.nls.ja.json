@@ -23,7 +23,7 @@
 
   "paperback-writer.renderScale.dsc": "ページレンダリングのスケール",
   "paperback-writer.pdfHeaderHtmlElementTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
-  "paperback-writer.footerHtmlElementTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
+  "paperback-writer.pdfFooterHtmlElementTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
 
   "paperback-writer.printBackground.dsc": "背景グラフィックを印刷する(pdfのみ)",
 
