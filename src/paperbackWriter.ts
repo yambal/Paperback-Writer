@@ -178,7 +178,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           format: pwConf.pdfPaperSizeFormat,
                           width: pwConf.pdfPaperWidth,
                           height: pwConf.pdfPaperHeight,
-                          margin: pwConf.margin
+                          margin: pwConf.pdfMargin
                         }
                       })
                     }

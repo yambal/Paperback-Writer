@@ -33,10 +33,10 @@
   "paperback-writer.pdfPaperWidth.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Pdf Paper Size Format` will be disabled.",
   "paperback-writer.pdfPaperHeight.dsc": "Paper height (pdf only), mm, cm, in, px units are available. If set, `Pdf Paper Size Format` will be disabled.",
 
-  "paperback-writer.margin.top.dsc": "Page Option. Border Top. units: mm, cm, in, px",
-  "paperback-writer.margin.bottom.dsc": "Page Option. Border Bottom. units: mm, cm, in, px",
-  "paperback-writer.margin.right.dsc": "Page Option. Border Right. units: mm, cm, in, px",
-  "paperback-writer.margin.left.dsc": "Page Option. Border Left. units: mm, cm, in, px",
+  "paperback-writer.pdfMargin.top.dsc": "Page Option. Border Top. units: mm, cm, in, px",
+  "paperback-writer.pdfMargin.bottom.dsc": "Page Option. Border Bottom. units: mm, cm, in, px",
+  "paperback-writer.pdfMargin.right.dsc": "Page Option. Border Right. units: mm, cm, in, px",
+  "paperback-writer.pdfMargin.left.dsc": "Page Option. Border Left. units: mm, cm, in, px",
 
   "paperback-writer.quality.dsc": "Image quality. (png/jpeg only)",
   "paperback-writer.clip.x.dsc": "png and jpeg only. x-coordinate of top-left corner of clip area.",

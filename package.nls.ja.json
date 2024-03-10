@@ -31,11 +31,10 @@
   "paperback-writer.pdfPaperSizeFormat.dsc": "用紙サイズ(pdfのみ), 'Pdf Paper Width'や'Pdf Paper Height'を設定すると無効になります。",
   "paperback-writer.pdfPaperWidth.dsc": "用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「Pdf Paper Size Format」は無効になります。",
   "paperback-writer.pdfPaperHeight.dsc": "用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「Pdf Paper Size Format」は無効になります。",
-
-  "paperback-writer.margin.top.dsc": "ページ設定 : 上余白。単位 mm、cm、in、px",
-  "paperback-writer.margin.bottom.dsc": "ページ設定 : 下余白。単位 mm、cm、in、px",
-  "paperback-writer.margin.right.dsc": "ページ設定 : 右余白。単位 mm、cm、in、px",
-  "paperback-writer.margin.left.dsc": "ページ設定 : 左余白。単位 mm、cm、in、px",
+  "paperback-writer.pdfMargin.top.dsc": "ページ設定 : 上余白。単位 mm、cm、in、px",
+  "paperback-writer.pdfMargin.bottom.dsc": "ページ設定 : 下余白。単位 mm、cm、in、px",
+  "paperback-writer.pdfMargin.right.dsc": "ページ設定 : 右余白。単位 mm、cm、in、px",
+  "paperback-writer.pdfMargin.left.dsc": "ページ設定 : 左余白。単位 mm、cm、in、px",
 
   "paperback-writer.quality.dsc": "画像品質(jpegのみ)、0-100",
   "paperback-writer.clip.x.dsc": "クリップ領域の左上隅の x座標 (png/jpegのみ)",

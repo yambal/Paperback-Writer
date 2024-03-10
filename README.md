@@ -73,10 +73,10 @@ Visual Studio Code User and Workspace Settings
 | | paperback-writer.`pdfPaperSizeFormat` | Paper size for pdf only, specifying width or height disables this |
 | | paperback-writer.`pdfPaperWidth` | Paper width for pdf only, units: mm, cm, in, px. Disables `pdfPaperSizeFormat` if set |
 | | paperback-writer.`pdfPaperHeight` | Paper height for pdf only, units: mm, cm, in, px. Disables `pdfPaperSizeFormat` if set |
-| | paperback-writer.`margin.top` | Page setting: top margin. Units mm, cm, in, px |
-| | paperback-writer.`margin.bottom` | Page setting: bottom margin. Units mm, cm, in, px |
-| | paperback-writer.`margin.right` | Page setting: right margin. Units mm, cm, in, px |
-| | paperback-writer.`margin.left` | Page setting: left margin. Units mm, cm, in, px |
+| | paperback-writer.`pdfMargin.top` | Page setting: top margin. Units mm, cm, in, px |
+| | paperback-writer.`pdfMargin.bottom` | Page setting: bottom margin. Units mm, cm, in, px |
+| | paperback-writer.`pdfMargin.right` | Page setting: right margin. Units mm, cm, in, px |
+| | paperback-writer.`pdfMargin.left` | Page setting: left margin. Units mm, cm, in, px |
 | PNG/JPEG Options | paperback-writer.`quality` | Image quality for jpeg only, 0-100 |
 | | paperback-writer.clip.`x` | X coordinate of the top-left corner of the clip area |
 | | paperback-writer.clip.`y` | Y coordinate of the top-left corner of the clip area |

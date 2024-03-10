@@ -300,36 +300,38 @@
           "type": "string",
           "default": "",
           "description": "%paperback-writer.pdfPaperWidth.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 19
         },
         "paperback-writer.pdfPaperHeight": {
           "type": "string",
           "default": "",
           "description": "%paperback-writer.pdfPaperHeight.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 20
         },
-        "paperback-writer.margin.top": {
+        "paperback-writer.pdfMargin.top": {
           "type": "string",
           "default": "1.5cm",
-          "description": "%paperback-writer.margin.top.dsc%",
+          "description": "%paperback-writer.pdfMargin.top.dsc%",
           "scope": "resource"
         },
-        "paperback-writer.margin.bottom": {
+        "paperback-writer.pdfMargin.bottom": {
           "type": "string",
           "default": "1cm",
-          "description": "%paperback-writer.margin.bottom.dsc%",
+          "description": "%paperback-writer.pdfMargin.bottom.dsc%",
           "scope": "resource"
         },
-        "paperback-writer.margin.right": {
+        "paperback-writer.pdfMargin.right": {
           "type": "string",
           "default": "1cm",
-          "description": "%paperback-writer.margin.right.dsc%",
+          "description": "%paperback-writer.pdfMargin.right.dsc%",
           "scope": "resource"
         },
-        "paperback-writer.margin.left": {
+        "paperback-writer.pdfMargin.left": {
           "type": "string",
           "default": "1cm",
-          "description": "%paperback-writer.margin.left.dsc%",
+          "description": "%paperback-writer.pdfMargin.left.dsc%",
           "scope": "resource"
         },
         "paperback-writer.quality": {

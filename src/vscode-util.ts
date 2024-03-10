@@ -103,7 +103,7 @@ type PaperbackWriterConfiguration = {
   pdfPaperSizeFormat?: PdfFormat
   pdfPaperWidth: string
   pdfPaperHeight: string
-  margin: {
+  pdfMargin: {
     top: string
     right: string
     bottom: string
@@ -156,11 +156,11 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     pdfPaperSizeFormat: wsc['pdfPaperSizeFormat'],
     pdfPaperWidth: wsc['pdfPaperWidth'],
     pdfPaperHeight: wsc['height'],
-    margin: {
-      top: wsc['margin']['top'],
-      right: wsc['margin']['right'],
-      bottom: wsc['margin']['bottom'],
-      left: wsc['margin']['left']
+    pdfMargin: {
+      top: wsc['pdfMargin']['top'],
+      right: wsc['pdfMargin']['right'],
+      bottom: wsc['pdfMargin']['bottom'],
+      left: wsc['pdfMargin']['left']
     },
     quality: wsc['quality'],
     clip: {
