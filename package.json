@@ -229,11 +229,10 @@
           "default": false,
           "description": "%paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc%"
         },
-        "paperback-writer.executablePath": {
+        "paperback-writer.pathToAnExternalChromium": {
           "type": "string",
           "default": "",
-          "title": "%paperback-writer.executablePath%",
-          "description": "%paperback-writer.executablePath.dsc%"
+          "description": "%paperback-writer.pathToAnExternalChromium.dsc%"
         },
         "paperback-writer.scale": {
           "type": "number",

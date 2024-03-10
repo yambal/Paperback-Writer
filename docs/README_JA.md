@@ -89,7 +89,7 @@
 || paperback-writer.clip.width | クリップ領域の幅 |
 || paperback-writer.clip.height | クリップ領域の高さ |
 || paperback-writer.omitBackground | 背景画像を省略する。 |
-| Chromium | paperback-writer.`executablePath` | バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス |
+| Chromium | paperback-writer.`pathToAnExternalChromium` | バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス |
 
 ## リリースノート
 

@@ -30,7 +30,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
   const allOutputTypes: PaperbackWriterOutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
   try {
-    if (!checkPuppeteerBinary()) {
+    if (!checkPuppeteerBinary({pathToAnExternalChromium: pwConf.pathToAnExternalChromium})) {
       showMessage({
         message: `ChromiumまたはChromeが存在しません！`, // See https://github.com/yzane/vscode-markdown-pdf#install`,
         type: "warning"
@@ -119,7 +119,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       .then((html) => {
         return exportHtml({htmlString: html, exportPath:tmpfilename})
         .then((path) => {
-          lunchPuppeteer(pwConf.executablePath, vscode.env.language)
+          lunchPuppeteer(pwConf.pathToAnExternalChromium, vscode.env.language)
           .then((lunchedPuppeteer) => {
             return lunchedPuppeteer.page.goto(vscode.Uri.file(tmpfilename).toString(), { waitUntil: 'networkidle0' })
             .then(() => {

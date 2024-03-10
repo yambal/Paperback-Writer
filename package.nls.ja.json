@@ -21,7 +21,7 @@
   "extension.paperback-writer.html": "MarkdownをHTMLにOutput",
   "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGにOutput",
 
-  "paperback-writer.executablePath.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
+  "paperback-writer.pathToAnExternalChromium.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
 
   "paperback-writer.scale": "PDFの描画スケール",
   "paperback-writer.scale.dsc": "ページレンダリングのスケール",

@@ -92,7 +92,7 @@ type PaperbackWriterConfiguration = {
 
   addBrOnSingleLineBreaksInMarkdown: boolean
 
-  executablePath: string
+  pathToAnExternalChromium: string
   scale: number
   displayHeaderFooter: boolean
   headerTemplate: string
@@ -147,7 +147,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     customCSSRelativePathFile: wsc['customCSSRelativePathFile'],
     includeDefaultStyles: wsc['includeDefaultStyles'],
     addBrOnSingleLineBreaksInMarkdown: wsc['addBrOnSingleLineBreaksInMarkdown'],
-    executablePath: wsc['executablePath'],
+    pathToAnExternalChromium: wsc['pathToAnExternalChromium'],
     scale: wsc['scale'],
     displayHeaderFooter: wsc['displayHeaderFooter'],
     headerTemplate: wsc['headerTemplate'],

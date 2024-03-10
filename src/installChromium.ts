@@ -1,12 +1,17 @@
 import * as vscode from 'vscode'
 import { getPaperbackWriterConfiguration, showMessage } from './vscode-util'
-import { checkPuppeteerBinary } from './checkPuppeteerBinary'
-import path from 'path'
+import { CheckPuppeteerBinaryProps, checkPuppeteerBinary } from './checkPuppeteerBinary'
 
 /**
  * Chromiumをインストールする
  */
-export const installChromium = ():Promise<void> => {
+
+export type InstallChromiumProps = CheckPuppeteerBinaryProps &{
+}
+
+export const installChromium = ({
+  pathToAnExternalChromium = ''
+}: InstallChromiumProps):Promise<void> => {
 
   return new Promise((resolve, reject) => {
     const pwConf = getPaperbackWriterConfiguration()
@@ -40,7 +45,7 @@ export const installChromium = ():Promise<void> => {
       // Remove previous chromium revisions.
       const cleanupOldVersions = localRevisions.map((revision: any)  => browserFetcher.remove(revision))
 
-      if (checkPuppeteerBinary()) {
+      if (checkPuppeteerBinary({pathToAnExternalChromium})) {
         statusbarmessage.dispose()
         vscode.window.setStatusBarMessage('$(markdown) Chromium installation succeeded!', StatusbarMessageTimeout)
         vscode.window.showInformationMessage('[Markdown PDF] Chromiumのインストールに成功')

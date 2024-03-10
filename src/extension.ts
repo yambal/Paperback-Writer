@@ -69,10 +69,11 @@ export function deactivate() {}
 const checkPuppeteer = ():Promise<void> => {
 	return new Promise((resolve, reject) => {
 		try {
-			if (checkPuppeteerBinary()) {
+			const PwCnf = getPaperbackWriterConfiguration()
+			if (checkPuppeteerBinary({pathToAnExternalChromium: PwCnf.pathToAnExternalChromium})) {
 				resolve()
 			} else {
-				return installChromium()
+				return installChromium({pathToAnExternalChromium: PwCnf.pathToAnExternalChromium})
 				.then(() => {
 					resolve()
 				})

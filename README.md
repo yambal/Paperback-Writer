@@ -83,7 +83,7 @@ Visual Studio Code User and Workspace Settings
 | | paperback-writer.clip.`width` | Width of the clip area |
 | | paperback-writer.clip.`height` | Height of the clip area |
 | | paperback-writer.`omitBackground` | Omits the background image. |
-| Chromium | paperback-writer.`executablePath` | Path to the executable file of Chromium or Chrome to run instead of the bundled Chromium |
+| Chromium | paperback-writer.`pathToAnExternalChromium` | Path to the executable file of Chromium or Chrome to run instead of the bundled Chromium |
 
 ## Release Notes
 
