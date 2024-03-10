@@ -72,7 +72,7 @@ Visual Studio Code User and Workspace Settings
 | | paperback-writer.`pdfPageRanges` | Page range for pdf only, e.g., '1-5, 8, 11-13' |
 | | paperback-writer.`pdfPaperSizeFormat` | Paper size for pdf only, specifying width or height disables this |
 | | paperback-writer.`pdfPaperWidth` | Paper width for pdf only, units: mm, cm, in, px. Disables `pdfPaperSizeFormat` if set |
-| | paperback-writer.`height` | Paper height for pdf only, units: mm, cm, in, px. Disables `pdfPaperSizeFormat` if set |
+| | paperback-writer.`pdfPaperHeight` | Paper height for pdf only, units: mm, cm, in, px. Disables `pdfPaperSizeFormat` if set |
 | | paperback-writer.`margin.top` | Page setting: top margin. Units mm, cm, in, px |
 | | paperback-writer.`margin.bottom` | Page setting: bottom margin. Units mm, cm, in, px |
 | | paperback-writer.`margin.right` | Page setting: right margin. Units mm, cm, in, px |

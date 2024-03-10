@@ -302,10 +302,10 @@
           "description": "%paperback-writer.pdfPaperWidth.dsc%",
           "scope": "resource"
         },
-        "paperback-writer.height": {
+        "paperback-writer.pdfPaperHeight": {
           "type": "string",
           "default": "",
-          "description": "%paperback-writer.height.dsc%",
+          "description": "%paperback-writer.pdfPaperHeight.dsc%",
           "scope": "resource"
         },
         "paperback-writer.margin.top": {

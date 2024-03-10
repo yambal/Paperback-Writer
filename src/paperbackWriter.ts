@@ -177,7 +177,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           pageRanges: pwConf.pdfPageRanges,
                           format: pwConf.pdfPaperSizeFormat,
                           width: pwConf.pdfPaperWidth,
-                          height: pwConf.height,
+                          height: pwConf.pdfPaperHeight,
                           margin: pwConf.margin
                         }
                       })
