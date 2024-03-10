@@ -230,10 +230,10 @@
           "description": "%paperback-writer.renderScale.dsc%",
           "order": 11
         },
-        "paperback-writer.displayHeaderFooter": {
+        "paperback-writer.pdfDisplayHeaderFooter": {
           "type": "boolean",
           "default": true,
-          "description": "%paperback-writer.displayHeaderFooter.dsc%",
+          "description": "%paperback-writer.pdfDisplayHeaderFooter.dsc%",
           "scope": "resource",
           "order": 12
         },

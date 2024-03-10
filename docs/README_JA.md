@@ -68,7 +68,7 @@
 |  | paperback-writer.`baseFontSize` | ベースとなるフォントサイズ（px） |
 | Markdownオプション | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`renderScale` | ページレンダリングのスケール |
-| PDFオプション | paperback-writer.`displayHeaderFooter` | ページヘッダーとフッターを表示 |
+| PDFオプション | paperback-writer.`pdfDisplayHeaderFooter` | ページヘッダーとフッターを表示 |
 || paperback-writer.`pdfHeaderHtmlElementTemplate` | 印刷ヘッダー用HTMLテンプレート|
 || paperback-writer.`pdfFooterHtmlElementTemplate` | 印刷フッター用HTMLテンプレート|
 || paperback-writer.`printBackground` | 背景グラフィックを印刷する|

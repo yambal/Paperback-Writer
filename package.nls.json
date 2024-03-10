@@ -22,6 +22,7 @@
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
 
   "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
+  "paperback-writer.pdfDisplayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
   "paperback-writer.pdfHeaderHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
   "paperback-writer.pdfFooterHtmlElementTemplate.dsc": "pdf only. HTML template for the print footer.",
 
@@ -50,7 +51,7 @@
   "paperback-writer.omitBackground.dsc": "Omit background images. (png/jpeg only)",
 
 
-  "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
+  
 
   "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist.",  
 

@@ -94,7 +94,7 @@ type PaperbackWriterConfiguration = {
 
   pathToAnExternalChromium: string
   renderScale: number
-  displayHeaderFooter: boolean
+  pdfDisplayHeaderFooter: boolean
   pdfHeaderHtmlElementTemplate: string
   pdfFooterHtmlElementTemplate: string
   printBackground: boolean
@@ -149,7 +149,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     addBrOnSingleLineBreaksInMarkdown: wsc['addBrOnSingleLineBreaksInMarkdown'],
     pathToAnExternalChromium: wsc['pathToAnExternalChromium'],
     renderScale: wsc['renderScale'],
-    displayHeaderFooter: wsc['displayHeaderFooter'],
+    pdfDisplayHeaderFooter: wsc['pdfDisplayHeaderFooter'],
     pdfHeaderHtmlElementTemplate: wsc['pdfHeaderHtmlElementTemplate'],
     pdfFooterHtmlElementTemplate: wsc['pdfFooterHtmlElementTemplate'],
     printBackground: wsc['printBackground'],

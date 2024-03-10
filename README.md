@@ -64,7 +64,7 @@ Visual Studio Code User and Workspace Settings
 | Syntax Highlighting Options |  |  |
 | Markdown Options | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | Adds a `<br>` on a single line break |
 | Common | paperback-writer.`renderScale` | Scale for page rendering |
-| PDF Options | paperback-writer.`displayHeaderFooter` | Displays page header and footer |
+| PDF Options | paperback-writer.`pdfDisplayHeaderFooter` | Displays page header and footer |
 | | paperback-writer.`pdfHeaderHtmlElementTemplate` | HTML template for the print header |
 | | paperback-writer.`pdfFooterHtmlElementTemplate` | HTML template for the print footer |
 | | paperback-writer.`printBackground` | Prints background graphics |
