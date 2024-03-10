@@ -25,8 +25,7 @@
   "paperback-writer.pdfDisplayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
   "paperback-writer.pdfHeaderHtmlElementTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
   "paperback-writer.pdfFooterHtmlElementTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
-
-  "paperback-writer.printBackground.dsc": "背景グラフィックを印刷する(pdfのみ)",
+  "paperback-writer.pdfPrintBackground.dsc": "背景グラフィックを印刷する(pdfのみ)",
 
   "paperback-writer.orientation.dsc": "用紙の向き(pdfのみ)",
 

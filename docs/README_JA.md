@@ -71,7 +71,7 @@
 | PDFオプション | paperback-writer.`pdfDisplayHeaderFooter` | ページヘッダーとフッターを表示 |
 || paperback-writer.`pdfHeaderHtmlElementTemplate` | 印刷ヘッダー用HTMLテンプレート|
 || paperback-writer.`pdfFooterHtmlElementTemplate` | 印刷フッター用HTMLテンプレート|
-|| paperback-writer.`printBackground` | 背景グラフィックを印刷する|
+|| paperback-writer.`pdfPrintBackground` | 背景グラフィックを印刷する|
 || paperback-writer.`orientation` | 用紙の向き|
 || paperback-writer.`pageRange` | ページ範囲(pdfのみ), 例 '1-5, 8, 11-13|
 || paperback-writer.`paperSizeFormat` | 用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。|

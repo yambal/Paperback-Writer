@@ -25,8 +25,7 @@
   "paperback-writer.pdfDisplayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
   "paperback-writer.pdfHeaderHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
   "paperback-writer.pdfFooterHtmlElementTemplate.dsc": "pdf only. HTML template for the print footer.",
-
-  "paperback-writer.printBackground.dsc": "Print background graphic (pdf only)",
+  "paperback-writer.pdfPrintBackground.dsc": "Print background graphic (pdf only)",
 
   "paperback-writer.orientation.dsc": "Page orientation. (pdf only)",
 

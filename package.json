@@ -251,10 +251,10 @@
           "scope": "resource",
           "order": 14
         },
-        "paperback-writer.printBackground": {
+        "paperback-writer.pdfPrintBackground": {
           "type": "boolean",
           "default": true,
-          "description": "%paperback-writer.printBackground.dsc%",
+          "description": "%paperback-writer.pdfPrintBackground.dsc%",
           "scope": "resource"
         },
         "paperback-writer.orientation": {
