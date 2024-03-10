@@ -21,10 +21,8 @@
   "extension.paperback-writer.html": "MarkdownをHTMLにOutput",
   "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGにOutput",
 
-  "paperback-writer.pathToAnExternalChromium.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
-
   "paperback-writer.renderScale.dsc": "ページレンダリングのスケール",
-  "paperback-writer.headerHtmlElementTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
+  "paperback-writer.pdfHeaderHtmlElementTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
   "paperback-writer.footerHtmlElementTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
 
   "paperback-writer.printBackground.dsc": "背景グラフィックを印刷する(pdfのみ)",
@@ -53,5 +51,7 @@
 
   "paperback-writer.displayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
 
-  "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"
+  "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。",
+
+  "paperback-writer.pathToAnExternalChromium.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス"
 }

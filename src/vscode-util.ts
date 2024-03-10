@@ -95,7 +95,7 @@ type PaperbackWriterConfiguration = {
   pathToAnExternalChromium: string
   renderScale: number
   displayHeaderFooter: boolean
-  headerHtmlElementTemplate: string
+  pdfHeaderHtmlElementTemplate: string
   footerHtmlElementTemplate: string
   printBackground: boolean
   orientation: PdfOrientation
@@ -150,7 +150,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     pathToAnExternalChromium: wsc['pathToAnExternalChromium'],
     renderScale: wsc['renderScale'],
     displayHeaderFooter: wsc['displayHeaderFooter'],
-    headerHtmlElementTemplate: wsc['headerHtmlElementTemplate'],
+    pdfHeaderHtmlElementTemplate: wsc['pdfHeaderHtmlElementTemplate'],
     footerHtmlElementTemplate: wsc['footerHtmlElementTemplate'],
     printBackground: wsc['printBackground'],
     orientation: wsc['orientation'],

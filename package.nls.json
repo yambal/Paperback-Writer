@@ -19,9 +19,7 @@
   "extension.paperback-writer.png": "Output Markdown to PNG",
   "extension.paperback-writer.jpeg": "Output Markdown to JPEG",
   "extension.paperback-writer.html": "Output Markdown to HTML",
-  "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",  
-
-  "paperback-writer.pathToAnExternalChromium.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
+  "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
 
   "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
   "paperback-writer.headerHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
@@ -54,5 +52,7 @@
 
   "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
 
-  "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
+  "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist.",  
+
+  "paperback-writer.pathToAnExternalChromium.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium."
 }

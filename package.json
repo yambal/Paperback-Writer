@@ -224,38 +224,32 @@
           "description": "%paperback-writer.baseFontSize.dsc%",
           "order": 10
         },
-        "paperback-writer.addBrOnSingleLineBreaksInMarkdown": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc%"
-        },
-        "paperback-writer.pathToAnExternalChromium": {
-          "type": "string",
-          "default": "",
-          "description": "%paperback-writer.pathToAnExternalChromium.dsc%"
-        },
         "paperback-writer.renderScale": {
           "type": "number",
           "default": 1,
-          "description": "%paperback-writer.renderScale.dsc%"
+          "description": "%paperback-writer.renderScale.dsc%",
+          "order": 11
         },
         "paperback-writer.displayHeaderFooter": {
           "type": "boolean",
           "default": true,
           "description": "%paperback-writer.displayHeaderFooter.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 12
         },
-        "paperback-writer.headerHtmlElementTemplate": {
+        "paperback-writer.pdfHeaderHtmlElementTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \">%%ISO-DATE%%</div>",
-          "description": "%paperback-writer.headerHtmlElementTemplate.dsc%",
-          "scope": "resource"
+          "description": "%paperback-writer.pdfHeaderHtmlElementTemplate.dsc%",
+          "scope": "resource",
+          "order": 13
         },
         "paperback-writer.footerHtmlElementTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
           "description": "%paperback-writer.footerHtmlElementTemplate.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 14
         },
         "paperback-writer.printBackground": {
           "type": "boolean",
@@ -375,6 +369,16 @@
           "type": "boolean",
           "default": false,
           "description": "%paperback-writer.omitBackground.dsc%"
+        },
+        "paperback-writer.addBrOnSingleLineBreaksInMarkdown": {
+          "type": "boolean",
+          "default": false,
+          "description": "%paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc%"
+        },
+        "paperback-writer.pathToAnExternalChromium": {
+          "type": "string",
+          "default": "",
+          "description": "%paperback-writer.pathToAnExternalChromium.dsc%"
         }
       }
     }
