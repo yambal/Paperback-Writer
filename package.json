@@ -237,7 +237,7 @@
         "paperback-writer.renderScale": {
           "type": "number",
           "default": 1,
-          "description": "%paperback-writer.scale.dsc%"
+          "description": "%paperback-writer.renderScale.dsc%"
         },
         "paperback-writer.displayHeaderFooter": {
           "type": "boolean",
@@ -245,10 +245,10 @@
           "description": "%paperback-writer.displayHeaderFooter.dsc%",
           "scope": "resource"
         },
-        "paperback-writer.headerTemplate": {
+        "paperback-writer.headerHtmlElementTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \">%%ISO-DATE%%</div>",
-          "description": "%paperback-writer.headerTemplate.dsc%",
+          "description": "%paperback-writer.headerHtmlElementTemplate.dsc%",
           "scope": "resource"
         },
         "paperback-writer.footerTemplate": {

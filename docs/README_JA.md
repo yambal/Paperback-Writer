@@ -69,7 +69,7 @@
 | Markdownオプション | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`renderScale` | ページレンダリングのスケール |
 | PDFオプション | paperback-writer.`displayHeaderFooter` | ページヘッダーとフッターを表示 |
-|| paperback-writer.`headerTemplate` | 印刷ヘッダー用HTMLテンプレート|
+|| paperback-writer.`headerHtmlElementTemplate` | 印刷ヘッダー用HTMLテンプレート|
 || paperback-writer.`footerTemplate.dsc` | 印刷フッター用HTMLテンプレート|
 || paperback-writer.`printBackground` | 背景グラフィックを印刷する|
 || paperback-writer.`orientation` | 用紙の向き|

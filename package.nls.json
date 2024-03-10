@@ -34,7 +34,7 @@
 
   "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
 
-  "paperback-writer.headerTemplate.dsc": "pdf only. HTML template for the print header.",
+  "paperback-writer.headerHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
 
   "paperback-writer.footerTemplate.dsc": "pdf only. HTML template for the print footer.",
 
