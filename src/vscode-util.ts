@@ -152,9 +152,9 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     output: {
       types: wsc['output']['types'],
       auto: wsc['output']['auto'],
+      listOfFileNamesExcludedFromAuto: wsc['output']['listOfFileNamesExcludedFromAuto']
     },
     
-    listOfFileNamesExcludedFromAutoOutput: wsc['listOfFileNamesExcludedFromAutoOutput'],
     outputDirectory: wsc['outputDirectory'],
     outputDirectoryRelativePathFile: wsc['outputDirectoryRelativePathFile'],
     
