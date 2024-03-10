@@ -255,7 +255,8 @@
           "type": "boolean",
           "default": true,
           "description": "%paperback-writer.pdfPrintBackground.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 15
         },
         "paperback-writer.pdfPaperOrientation": {
           "type": "string",
@@ -265,15 +266,17 @@
           ],
           "default": "portrait",
           "description": "%paperback-writer.pdfPaperOrientation.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 16
         },
         "paperback-writer.pdfPageRanges": {
           "type": "string",
           "default": "",
           "description": "%paperback-writer.pdfPageRanges.dsc%",
-          "scope": "resource"
+          "scope": "resource",
+          "order": 17
         },
-        "paperback-writer.paperSizeFormat": {
+        "paperback-writer.pdfPaperSizeFormat": {
           "type": "string",
           "enum": [
             "Letter",
@@ -289,8 +292,9 @@
             "A6"
           ],
           "default": "A4",
-          "description": "%paperback-writer.paperSizeFormat.dsc%",
-          "scope": "resource"
+          "description": "%paperback-writer.pdfPaperSizeFormat.dsc%",
+          "scope": "resource",
+          "order": 18
         },
         "paperback-writer.width": {
           "type": "string",

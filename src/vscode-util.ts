@@ -100,9 +100,7 @@ type PaperbackWriterConfiguration = {
   pdfPrintBackground: boolean
   pdfPaperOrientation: PdfOrientation
   pdfPageRanges: string
-
-  /** ページのフォーマット */
-  paperSizeFormat?: PdfFormat
+  pdfPaperSizeFormat?: PdfFormat
   width: string
   height: string
   margin: {
@@ -154,8 +152,8 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     pdfFooterHtmlElementTemplate: wsc['pdfFooterHtmlElementTemplate'],
     pdfPrintBackground: wsc['pdfPrintBackground'],
     pdfPaperOrientation: wsc['pdfPaperOrientation'],
-    pdfPageRanges: wsc['pageRanges'],
-    paperSizeFormat: wsc['format'],
+    pdfPageRanges: wsc['pdfPageRanges'],
+    pdfPaperSizeFormat: wsc['pdfPaperSizeFormat'],
     width: wsc['width'],
     height: wsc['height'],
     margin: {
