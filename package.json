@@ -269,14 +269,14 @@
           "scope": "resource",
           "order": 16
         },
-        "paperback-writer.PDF.PageRanges": {
+        "paperback-writer.PDF.pageRanges": {
           "type": "string",
           "default": "",
-          "description": "%paperback-writer.PDF.PageRanges.dsc%",
+          "description": "%paperback-writer.PDF.pageRanges.dsc%",
           "scope": "resource",
           "order": 17
         },
-        "paperback-writer.PDF.PaperSizeFormat": {
+        "paperback-writer.PDF.paperSizeFormat": {
           "type": "string",
           "enum": [
             "Letter",
@@ -292,21 +292,21 @@
             "A6"
           ],
           "default": "A4",
-          "description": "%paperback-writer.PDF.PaperSizeFormat.dsc%",
+          "description": "%paperback-writer.PDF.paperSizeFormat.dsc%",
           "scope": "resource",
           "order": 18
         },
-        "paperback-writer.pdfPaperWidth": {
+        "paperback-writer.PDF.paperWidth": {
           "type": "string",
           "default": "",
-          "description": "%paperback-writer.pdfPaperWidth.dsc%",
+          "description": "%paperback-writer.PDF.paperWidth.dsc%",
           "scope": "resource",
           "order": 19
         },
-        "paperback-writer.pdfPaperHeight": {
+        "paperback-writer.PDF.paperHeight": {
           "type": "string",
           "default": "",
-          "description": "%paperback-writer.pdfPaperHeight.dsc%",
+          "description": "%paperback-writer.PDF.paperHeight.dsc%",
           "scope": "resource",
           "order": 20
         },

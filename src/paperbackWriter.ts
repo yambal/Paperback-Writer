@@ -176,8 +176,8 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           orientationIsLandscape: pwConf.PDF.paperOrientation === 'landscape',
                           pageRanges: pwConf.PDF.pageRanges,
                           format: pwConf.PDF.paperSizeFormat,
-                          width: pwConf.pdfPaperWidth,
-                          height: pwConf.pdfPaperHeight,
+                          width: pwConf.PDF.paperWidth,
+                          height: pwConf.PDF.paperHeight,
                           margin: pwConf.pdfMargin
                         }
                       })

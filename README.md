@@ -64,15 +64,15 @@ Visual Studio Code User and Workspace Settings
 | Syntax Highlighting Options |  |  |
 | Markdown Options | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | Adds a `<br>` on a single line break |
 | Common | paperback-writer.`renderScale` | Scale for page rendering |
-| PDF Options | paperback-writer.PDF.`displayHeaderFooter` | Displays page header and footer |
-| | paperback-writer.PDF.`headerHtmlElementTemplate` | HTML template for the print header |
-| | paperback-writer.PDF.`footerHtmlElementTemplate` | HTML template for the print footer |
-| | paperback-writer.PDF.`printBackground` | Prints background graphics |
-| | paperback-writer.PDF.`paperOrientation` | Paper orientation |
-| | paperback-writer.PDF.`PageRanges` | Page range for pdf only, e.g., '1-5, 8, 11-13' |
-| | paperback-writer.`PDF.PaperSizeFormat` | Paper size for pdf only, specifying width or height disables this |
-| | paperback-writer.`pdfPaperWidth` | Paper width for pdf only, units: mm, cm, in, px. Disables `PDF : PaperSizeFormat` if set |
-| | paperback-writer.`pdfPaperHeight` | Paper height for pdf only, units: mm, cm, in, px. Disables `PDF : PaperSizeFormat` if set |
+| PDF Options | paperback-writer.`PDF.displayHeaderFooter` | Displays page header and footer |
+| | paperback-writer.`PDF.headerHtmlElementTemplate` | HTML template for the print header |
+| | paperback-writer.`PDF.footerHtmlElementTemplate` | HTML template for the print footer |
+| | paperback-writer.`PDF.printBackground` | Prints background graphics |
+| | paperback-writer.`PDF.paperOrientation` | Paper orientation |
+| | paperback-writer.`PDF.pageRanges` | Page range for pdf only, e.g., '1-5, 8, 11-13' |
+| | paperback-writer.`PDF.paperSizeFormat` | Paper size for pdf only, specifying width or height disables this |
+| | paperback-writer.`PDF.paperWidth` | Paper width for pdf only, units: mm, cm, in, px. Disables `PDF : PaperSizeFormat` if set |
+| | paperback-writer.`PDF.paperHeight` | Paper height for pdf only, units: mm, cm, in, px. Disables `PDF : PaperSizeFormat` if set |
 | | paperback-writer.`pdfMargin.top` | Page setting: top margin. Units mm, cm, in, px |
 | | paperback-writer.`pdfMargin.bottom` | Page setting: bottom margin. Units mm, cm, in, px |
 | | paperback-writer.`pdfMargin.right` | Page setting: right margin. Units mm, cm, in, px |
