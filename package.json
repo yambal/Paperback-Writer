@@ -296,10 +296,10 @@
           "scope": "resource",
           "order": 18
         },
-        "paperback-writer.width": {
+        "paperback-writer.pdfPaperWidth": {
           "type": "string",
           "default": "",
-          "description": "%paperback-writer.width.dsc%",
+          "description": "%paperback-writer.pdfPaperWidth.dsc%",
           "scope": "resource"
         },
         "paperback-writer.height": {

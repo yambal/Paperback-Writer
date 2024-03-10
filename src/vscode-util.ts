@@ -101,7 +101,7 @@ type PaperbackWriterConfiguration = {
   pdfPaperOrientation: PdfOrientation
   pdfPageRanges: string
   pdfPaperSizeFormat?: PdfFormat
-  width: string
+  pdfPaperWidth: string
   height: string
   margin: {
     top: string
@@ -154,7 +154,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     pdfPaperOrientation: wsc['pdfPaperOrientation'],
     pdfPageRanges: wsc['pdfPageRanges'],
     pdfPaperSizeFormat: wsc['pdfPaperSizeFormat'],
-    width: wsc['width'],
+    pdfPaperWidth: wsc['pdfPaperWidth'],
     height: wsc['height'],
     margin: {
       top: wsc['margin']['top'],

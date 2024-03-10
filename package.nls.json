@@ -29,9 +29,8 @@
   "paperback-writer.pdfPrintBackground.dsc": "Print background graphic (pdf only)",
   "paperback-writer.pdfPaperOrientation.dsc": "Page orientation. (pdf only)",
   "paperback-writer.pdfPageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",
-  "paperback-writer.pdfPaperSizeFormat.dsc": "Paper size (pdf only), invalid if paper width or height is set.",
-
-  "paperback-writer.width.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Pdf Paper Size Format` will be disabled.",
+  "paperback-writer.pdfPaperSizeFormat.dsc": "Paper size (pdf only), invalid if paper 'Pdf Paper Width' or height is set.",
+  "paperback-writer.pdfPaperWidth.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Pdf Paper Size Format` will be disabled.",
   "paperback-writer.height.dsc": "Paper height (pdf only), mm, cm, in, px units are available. If set, `Pdf Paper Size Format` will be disabled.",
 
   "paperback-writer.margin.top.dsc": "Page Option. Border Top. units: mm, cm, in, px",
