@@ -1,14 +1,18 @@
 import { isExistsPath } from "./util"
 import { showMessage } from "./vscode-util"
-import * as vscode from 'vscode'
 
-export const checkPuppeteerBinary = () => {
+export type CheckPuppeteerBinaryProps = {
+  pathToAnExternalChromium: string
+}
+
+export const checkPuppeteerBinary = ({
+  pathToAnExternalChromium = ''
+}: CheckPuppeteerBinaryProps) => {
   console.group('checkPuppeteerBinary()')
   
   try {
     
-    const executablePath = vscode.workspace.getConfiguration('palerback-writer')['executablePath'] || ''
-    if (isExistsPath(executablePath)) {
+    if (isExistsPath(pathToAnExternalChromium)) {
       return true
     }
 

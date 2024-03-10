@@ -88,7 +88,7 @@ export const getOutputPathName = ({
       return outputPathName
     }
 
-    const outputDirectory = pwConf.outputDirectory
+    const outputDirectory = pwConf.output.directory
     if (outputDirectory.length === 0) {
       return outputPathName
     }
@@ -112,7 +112,7 @@ export const getOutputPathName = ({
 
     // 書き出しディレクトリを相対パスとして解釈する場合
     const workspaceFolder = getWorkspaceFolder(editorDocVsUrl)
-    if (pwConf.outputDirectoryRelativePathFile === false && workspaceFolder) {
+    if (pwConf.output.directoryRelativePathFile === false && workspaceFolder) {
       const outputDir = path.join(workspaceFolder.uri.fsPath, outputDirectory)
       mkdir(outputDir)
       return path.join(outputDir, path.basename(outputPathName))

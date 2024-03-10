@@ -1,7 +1,19 @@
 {
-  "%paperback-writer.type": "Output formats",
-  "paperback-writer.type.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported."  ,
+  "paperback-writer.output.types.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported.",
+  "paperback-writer.output.auto.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
+  "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": "Excluded file name of exportOnSave option",
+  "paperback-writer.output.directory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
+  "paperback-writer.output.directoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
+  
+  "paperback-writer.style.includeDefaultStyle.dsc": "Include the default styles.",
+  "paperback-writer.style.font.baseFont.dsc": "Base font",
+  "paperback-writer.style.font.codeFontt.dsc": "Code font",
+  "paperback-writer.style.font.baseSize.dsc": "Base font Size (px)",
+  "paperback-writer.style.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
+  "paperback-writer.style.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
 
+  "paperback-writer.markdown.addBrOnSingleLineBreaks.dsc": "Enable line breaks",
+  
   "$comment": "Commands --------------------------------------------",
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",
   "extension.paperback-writer.pdf": "Output Markdown to PDF",
@@ -10,71 +22,34 @@
   "extension.paperback-writer.html": "Output Markdown to HTML",
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
 
-  "paperback-writer.isConvertOnSave": "Enable Auto export on save",
-  "paperback-writer.isConvertOnSave.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
+  "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
 
-  "paperback-writer.convertOnSaveExclude": "Excluded from automatic exportOnSaves",
-  "paperback-writer.convertOnSaveExclude.dsc": "Excluded file name of exportOnSave option",
+  "paperback-writer.PDF.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
+  "paperback-writer.PDF.headerHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
+  "paperback-writer.PDF.footerHtmlElementTemplate.dsc": "pdf only. HTML template for the print footer.",
+  "paperback-writer.PDF.printBackground.dsc": "Print background graphic (pdf only)",
+  "paperback-writer.PDF.paperOrientation.dsc": "Page orientation. (pdf only)",
+  "paperback-writer.PDF.pageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",
+  "paperback-writer.PDF.paperSizeFormat.dsc": "Paper size (pdf only), invalid if paper 'Pdf Paper Width' or 'Pdf Paper Height' is set.",
+  "paperback-writer.PDF.paperWidth.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Pdf Paper Size Format` will be disabled.",
+  "paperback-writer.PDF.paperHeight.dsc": "Paper height (pdf only), mm, cm, in, px units are available. If set, `Pdf Paper Size Format` will be disabled.",
+  "paperback-writer.PDF.margin.top.dsc": "Page Option. Border Top. units: mm, cm, in, px",
+  "paperback-writer.PDF.margin.bottom.dsc": "Page Option. Border Bottom. units: mm, cm, in, px",
+  "paperback-writer.PDF.margin.right.dsc": "Page Option. Border Right. units: mm, cm, in, px",
+  "paperback-writer.PDF.margin.left.dsc": "Page Option. Border Left. units: mm, cm, in, px",
 
-  "paperback-writer.outputDirectory": "Export directory",
-  "paperback-writer.outputDirectory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
+  "paperback-writer.image.jpeg.quality.dsc": "Image quality. (jpeg only)",
+  "paperback-writer.image.clip.x.dsc": "png and jpeg only. x-coordinate of top-left corner of clip area.",
+  "paperback-writer.image.clip.y.dsc": "png and jpeg only. y-coordinate of top-left corner of clip area.",
+  "paperback-writer.image.clip.width.dsc": "png and jpeg only. Width of clip area.",
+  "paperback-writer.image.clip.height.dsc": "png and jpeg only. Height of clip area.",
 
-  "paperback-writer.outputDirectoryRelativePathFile": "Interpret the export directory as a relative path",
-  "paperback-writer.outputDirectoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
-
-  "paperback-writer.styles": "Custom Styles",
-  "paperback-writer.styles.dsc": "List of paths for custom stylesheets (CSS) to be used.",
-
-  "paperback-writer.stylesRelativePathFile": "Do not convert paths to custom styles",
-  "paperback-writer.stylesRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
-
-  "paperback-writer.includeDefaultStyles": "Incorporate default styles",
-  "paperback-writer.includeDefaultStyles.dsc": "Include the default styles.",
-
-  "paperback-writer.breaks.dsc": "Enable line breaks",
-
-  "paperback-writer.baseFont.dsc": "Base font",
-  "paperback-writer.codeFont.dsc": "Code font",
+  "paperback-writer.image.omitBackground.dsc": "Omit background images. (png/jpeg only)",
 
 
-  "paperback-writer.baseFontSize.dsc": "Base font Size (px)",
+  
 
-  "paperback-writer.executablePath": "External Chromium",
-  "paperback-writer.executablePath.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
+  "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist.",  
 
-  "paperback-writer.scale": "PDF Rendering Scale",
-  "paperback-writer.scale.dsc": "Scale of the page rendering.",
-
-  "paperback-writer.headerTemplate.dsc": "pdf only. HTML template for the print header.",
-
-  "paperback-writer.footerTemplate.dsc": "pdf only. HTML template for the print footer.",
-
-  "paperback-writer.printBackground.dsc": "Print background graphic (pdf only)",
-
-  "paperback-writer.orientation.dsc": "Page orientation. (pdf only)",
-
-  "paperback-writer.pageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",
-
-  "paperback-writer.format.dsc": "Paper size (pdf only), invalid if paper width or height is set.",
-
-  "paperback-writer.width.dsc": "Paper width (pdf only), mm, cm, in, px units are available. If set, `Paper Size` will be disabled.",
-  "paperback-writer.height.dsc": "Paper height (pdf only), mm, cm, in, px units are available. If set, `Paper Size` will be disabled.",
-
-  "paperback-writer.margin.top.dsc": "Page Option. Border Top. units: mm, cm, in, px",
-  "paperback-writer.margin.bottom.dsc": "Page Option. Border Bottom. units: mm, cm, in, px",
-  "paperback-writer.margin.right.dsc": "Page Option. Border Right. units: mm, cm, in, px",
-  "paperback-writer.margin.left.dsc": "Page Option. Border Left. units: mm, cm, in, px",
-
-  "paperback-writer.quality.dsc": "Image quality. (png/jpeg only)",
-  "paperback-writer.clip.x.dsc": "png and jpeg only. x-coordinate of top-left corner of clip area.",
-  "paperback-writer.clip.y.dsc": "png and jpeg only. y-coordinate of top-left corner of clip area.",
-  "paperback-writer.clip.width.dsc": "png and jpeg only. Width of clip area.",
-  "paperback-writer.clip.height.dsc": "png and jpeg only. Height of clip area.",
-
-  "paperback-writer.omitBackground.dsc": "Omit background images. (png/jpeg only)",
-
-
-  "paperback-writer.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
-
-  "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
+  "paperback-writer.pathToAnExternalChromium.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium."
 }

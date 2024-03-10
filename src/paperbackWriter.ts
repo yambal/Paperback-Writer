@@ -30,7 +30,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
   const allOutputTypes: PaperbackWriterOutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
   try {
-    if (!checkPuppeteerBinary()) {
+    if (!checkPuppeteerBinary({pathToAnExternalChromium: pwConf.pathToAnExternalChromium})) {
       showMessage({
         message: `ChromiumまたはChromeが存在しません！`, // See https://github.com/yzane/vscode-markdown-pdf#install`,
         type: "warning"
@@ -64,7 +64,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     let outputTypes: PaperbackWriterOutputType[] | undefined
     switch (command) {
       case 'settings':
-        outputTypes = pwConf.type || ['pdf']
+        outputTypes = pwConf.output.types || ['pdf']
         break
 
       case 'pdf':
@@ -114,12 +114,12 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       return markdownToHtml({
         markdownString: editorText,
         styleTags: styleTags,
-        isAddBrOnSingleNewLine: pwConf.breaks
+        isAddBrOnSingleNewLine: pwConf.markdown.addBrOnSingleLineBreaks
       })
       .then((html) => {
         return exportHtml({htmlString: html, exportPath:tmpfilename})
         .then((path) => {
-          lunchPuppeteer(pwConf.executablePath, vscode.env.language)
+          lunchPuppeteer(pwConf.pathToAnExternalChromium, vscode.env.language)
           .then((lunchedPuppeteer) => {
             return lunchedPuppeteer.page.goto(vscode.Uri.file(tmpfilename).toString(), { waitUntil: 'networkidle0' })
             .then(() => {
@@ -155,9 +155,9 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
                         exportPathName,
                         imageOption: {
-                          quality: pwConf.quality,
-                          clip: pwConf.clip,
-                          omitBackground: pwConf.omitBackground,
+                          quality: pwConf.image.jpeg.quality,
+                          clip: pwConf.image.clip,
+                          omitBackground: pwConf.image.omitBackground,
                           fullPage: false
                         }
                       })
@@ -168,17 +168,17 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
                         exportPathName,
                         pdfOption: {
-                          scale: pwConf.scale,
-                          isDisplayHeaderAndFooter: pwConf.displayHeaderFooter,
-                          headerTemplate: pwConf.headerTemplate,
-                          footerTemplate: pwConf.footerTemplate,
-                          isPrintBackground: pwConf.printBackground,
-                          orientationIsLandscape: pwConf.orientation === 'landscape',
-                          pageRanges: pwConf.pageRanges,
-                          format: pwConf.format,
-                          width: pwConf.width,
-                          height: pwConf.height,
-                          margin: pwConf.margin
+                          scale: pwConf.renderScale,
+                          isDisplayHeaderAndFooter: pwConf.PDF.displayHeaderFooter,
+                          headerTemplate: pwConf.PDF.headerHtmlElementTemplate,
+                          footerTemplate: pwConf.PDF.footerHtmlElementTemplate,
+                          isPrintBackground: pwConf.PDF.printBackground,
+                          orientationIsLandscape: pwConf.PDF.paperOrientation === 'landscape',
+                          pageRanges: pwConf.PDF.pageRanges,
+                          format: pwConf.PDF.paperSizeFormat,
+                          width: pwConf.PDF.paperWidth,
+                          height: pwConf.PDF.paperHeight,
+                          margin: pwConf.PDF.margin
                         }
                       })
                     }
@@ -232,7 +232,7 @@ const isMarkdownPdfOnSaveExclude = () => {
 
 		if (editor) {
 			const filename = path.basename(editor.document.fileName)
-			const excludePatterns = PwCnf.convertOnSaveExclude || ''
+			const excludePatterns = PwCnf.output.listOfFileNamesExcludedFromAuto || ''
 			if (excludePatterns && Array.isArray(excludePatterns) && excludePatterns.length > 0) {
 				return excludePatterns.find((excludePattern) => {
 					var re = new RegExp(excludePattern)

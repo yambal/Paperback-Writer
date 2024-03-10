@@ -55,7 +55,7 @@ export const activate = async (context: vscode.ExtensionContext) => {
 
 	/** 自動保存 */
 	const PwCnf = getPaperbackWriterConfiguration()
-	if (PwCnf.isConvertOnSave) {
+	if (PwCnf.output.auto) {
 		var disposable_onsave = vscode.workspace.onDidSaveTextDocument(() => { 
 			autoSave()
 		})
@@ -69,10 +69,11 @@ export function deactivate() {}
 const checkPuppeteer = ():Promise<void> => {
 	return new Promise((resolve, reject) => {
 		try {
-			if (checkPuppeteerBinary()) {
+			const PwCnf = getPaperbackWriterConfiguration()
+			if (checkPuppeteerBinary({pathToAnExternalChromium: PwCnf.pathToAnExternalChromium})) {
 				resolve()
 			} else {
-				return installChromium()
+				return installChromium({pathToAnExternalChromium: PwCnf.pathToAnExternalChromium})
 				.then(() => {
 					resolve()
 				})

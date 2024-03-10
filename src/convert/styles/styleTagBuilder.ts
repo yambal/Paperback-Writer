@@ -45,7 +45,7 @@ export const themeStyleTagsBuilder = ({
 
   try {
     // 1. vscodeのスタイルを読む。
-    const includeDefaultStyles = PwCnf.includeDefaultStyles
+    const includeDefaultStyles = PwCnf.style.includeDefaultStyle
     const builtInStyles: string[] = []
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
@@ -55,13 +55,13 @@ export const themeStyleTagsBuilder = ({
     }
 
     // 2. ベースフォントサイズ
-    builtInStyles.push(`html { font-size: ${PwCnf.baseFontSize}px; }`)
+    builtInStyles.push(`html { font-size: ${PwCnf.style.font.baseSize}px; }`)
       
     const minified = new CleanCSS({}).minify(builtInStyles.join('\n')).styles
     styleTags.push(`<style>${minified}</style>`)
 
     // 3. markdown.styles(ユーザー)設定のスタイルを読む
-    const styles = PwCnf.styles
+    const styles = PwCnf.style.customCSS
     if (styles && Array.isArray(styles) && styles.length > 0) {
       styles.forEach((styleFilePath, index) => {
         const href = fixHref(editorDocVsUrl, styleFilePath)
@@ -108,7 +108,7 @@ const fixHref = (editorDocVsUri: vscode.Uri, workspaceFilePath: string) => {
 
     // ワークスペースがあり、markdown-pdf.stylesRelativePathFileがfalseの場合、ワークスペース相対パスを使用する。
     const workspaceFolder = getWorkspaceFolder(editorDocVsUri)
-    if (workspaceFolder && !PwCnf.stylesRelativePathFile) {
+    if (workspaceFolder && !PwCnf.style.customCSSRelativePathFile) {
       // 編集ファイルのディレクトリのパス
       const editorDocUri = path.dirname(editorDocVsUri.fsPath)
 

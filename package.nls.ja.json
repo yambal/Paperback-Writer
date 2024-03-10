@@ -1,7 +1,21 @@
 {
-  "%paperback-writer.type": "出力形式",
-  "paperback-writer.type.dsc": "出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート",
+  "paperback-writer.output.types.dsc": "出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート",
+  "paperback-writer.output.auto.dsc": "保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります",
+  "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": "自動書き出しの対象外ファイル名",
+  "paperback-writer.output.directory.dsc": "書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます",
+  "paperback-writer.output.directoryRelativePathFile.dsc": "設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
   
+  
+  
+  "paperback-writer.style.includeDefaultStyle.dsc": "デフォルトのスタイルを組み込む",
+  "paperback-writer.style.font.baseFont.dsc": "ベースとなるフォント",
+  "paperback-writer.style.font.codeFont.dsc": "コードに使用するフォント",
+  "paperback-writer.style.font.baseSize.dsc": "ベースとなるフォントサイズ（px）",
+  "paperback-writer.style.customCSS.dsc": "使用するカスタムスタイルシート（CSS）のパスリスト",
+  "paperback-writer.style.customCSSRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",
+
+  "paperback-writer.markdown.addBrOnSingleLineBreaks.dsc": "一行改行時に<br>を追加します",
+
   "$comment": "コマンド --------------------------------------------",
   "extension.paperback-writer.settings": "Markdownを他の形式にOutput (settings.json) ",
   "extension.paperback-writer.pdf": "MarkdownをPDFにOutput",
@@ -10,69 +24,30 @@
   "extension.paperback-writer.html": "MarkdownをHTMLにOutput",
   "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGにOutput",
 
-  "paperback-writer.isConvertOnSave": "自動書き出し",
-  "paperback-writer.isConvertOnSave.dsc": "保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります",
+  "paperback-writer.renderScale.dsc": "ページレンダリングのスケール",
 
-  "paperback-writer.convertOnSaveExclude": "自動書き出しの対象外",
-  "paperback-writer.convertOnSaveExclude.dsc": "自動書き出しの対象外ファイル名",
+  "paperback-writer.PDF.displayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
+  "paperback-writer.PDF.headerHtmlElementTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
+  "paperback-writer.PDF.footerHtmlElementTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
+  "paperback-writer.PDF.printBackgroundd.dsc": "背景グラフィックを印刷する(pdfのみ)",
+  "paperback-writer.PDF.paperOrientation.dsc": "用紙の向き(pdfのみ)",
+  "paperback-writer.PDF.pageRanges.dsc": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
+  "paperback-writer.PDF.paperSizeFormat.dsc": "用紙サイズ(pdfのみ), 'Pdf Paper Width'や'Pdf Paper Height'を設定すると無効になります。",
+  "paperback-writer.PDF.paperWidth.dsc": "用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「Pdf Paper Size Format」は無効になります。",
+  "paperback-writer.PDF.paperHeight.dsc": "用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「Pdf Paper Size Format」は無効になります。",
+  "paperback-writer.PDF.margin.top.dsc": "ページ設定 : 上余白。単位 mm、cm、in、px",
+  "paperback-writer.PDF.margin.bottom.dsc": "ページ設定 : 下余白。単位 mm、cm、in、px",
+  "paperback-writer.PDF.margin.right.dsc": "ページ設定 : 右余白。単位 mm、cm、in、px",
+  "paperback-writer.PDF.margin.left.dsc": "ページ設定 : 左余白。単位 mm、cm、in、px",
 
-  "paperback-writer.outputDirectory": "書き出しディレクトリ",
-  "paperback-writer.outputDirectory.dsc": "書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます",
+  "paperback-writer.image.jpeg.quality.dsc": "画像品質(jpegのみ)、0-100",
+  "paperback-writer.image.clip.x.dsc": "クリップ領域の左上隅の x座標 (png/jpegのみ)",
+  "paperback-writer.image.clip.y.dsc": "クリップ領域の左上隅の y座標 (png/jpegのみ)",
+  "paperback-writer.image.clip.width.dsc": "クリップ領域の幅 (png/jpegのみ)",
+  "paperback-writer.image.clip.height.dsc": "クリップ領域の高さ (png/jpegのみ)",
+  "paperback-writer.image.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
 
-  "paperback-writer.outputDirectoryRelativePathFile": "書き出しディレクトリを相対パスとして解釈",
-  "paperback-writer.outputDirectoryRelativePathFile.dsc": "設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
+  "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。",
 
-  "paperback-writer.styles": "カスタムスタイル",
-  "paperback-writer.styles.dsc": "使用するカスタムスタイルシート（CSS）のパスリスト",
-
-  "paperback-writer.stylesRelativePathFile": "カスタムスタイルのパスを変換しない",
-  "paperback-writer.stylesRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",
-
-  "paperback-writer.includeDefaultStyles": "デフォルトスタイル",
-  "paperback-writer.includeDefaultStyles.dsc": "デフォルトのスタイルを組み込む",
-
-  "paperback-writer.breaks.dsc": "一行改行時に<br>を追加します",
-
-  "paperback-writer.baseFont.dsc": "ベースとなるフォント",
-  "paperback-writer.codeFont.dsc": "コードに使用するフォント",
-
-  "paperback-writer.baseFontSize.dsc": "ベースとなるフォントサイズ（px）",
-
-  "paperback-writer.executablePath": "外部Chrome",
-  "paperback-writer.executablePath.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
-
-  "paperback-writer.scale": "PDFの描画スケール",
-  "paperback-writer.scale.dsc": "ページレンダリングのスケール",
-
-  "paperback-writer.headerTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
-
-  "paperback-writer.footerTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
-
-  "paperback-writer.printBackground.dsc": "背景グラフィックを印刷する(pdfのみ)",
-
-  "paperback-writer.orientation.dsc": "用紙の向き(pdfのみ)",
-
-  "paperback-writer.pageRanges.dsc": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
-
-  "paperback-writer.format.dsc": "用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。",
-
-  "paperback-writer.width.dsc": "用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
-  "paperback-writer.height.dsc": "用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「用紙サイズ」は無効になります。",
-
-  "paperback-writer.margin.top.dsc": "ページ設定 : 上余白。単位 mm、cm、in、px",
-  "paperback-writer.margin.bottom.dsc": "ページ設定 : 下余白。単位 mm、cm、in、px",
-  "paperback-writer.margin.right.dsc": "ページ設定 : 右余白。単位 mm、cm、in、px",
-  "paperback-writer.margin.left.dsc": "ページ設定 : 左余白。単位 mm、cm、in、px",
-
-  "paperback-writer.quality.dsc": "画像品質(jpegのみ)、0-100",
-  "paperback-writer.clip.x.dsc": "クリップ領域の左上隅の x座標 (png/jpegのみ)",
-  "paperback-writer.clip.y.dsc": "クリップ領域の左上隅の y座標 (png/jpegのみ)",
-  "paperback-writer.clip.width.dsc": "クリップ領域の幅 (png/jpegのみ)",
-  "paperback-writer.clip.height.dsc": "クリップ領域の高さ (png/jpegのみ)",
-
-  "paperback-writer.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
-
-  "paperback-writer.displayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
-
-  "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。"
+  "paperback-writer.pathToAnExternalChromium.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス"
 }

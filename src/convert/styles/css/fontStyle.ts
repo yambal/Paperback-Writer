@@ -142,7 +142,7 @@ export const buildFontQuerys = ():FontQuery[] => {
   const language = getEnvLanguage()
 
   // 1. ベースフォント
-  switch (pwConf.baseFont) {
+  switch (pwConf.style.font.baseFont) {
     case 'Noto Sans : CY,JA,LA,VI':
       fontQuerys.push({target: 'body', fontSet: 'notoSan', language})
       break
@@ -168,7 +168,7 @@ export const buildFontQuerys = ():FontQuery[] => {
       break
   }
 
-  switch (pwConf.baseFont) {
+  switch (pwConf.style.font.codeFont) {
     default:
       fontQuerys.push({target: '.hljs-row-code, .code-inline', fontSet: 'SourceCodePro', language})
   }

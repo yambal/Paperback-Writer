@@ -15,10 +15,10 @@ type Nls = {
   "extension.paperback-writer.jpeg": string
   "extension.paperback-writer.html": string
   "extension.paperback-writer.all": string
-  "paperback-writer.isConvertOnSave": string
-  "paperback-writer.convertOnSaveExclude": string
-  "paperback-writer.outputDirectory": string
-  "paperback-writer.outputDirectoryRelativePathFile": string
+  "paperback-writer.output.auto.dsc": string
+  "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": string
+  "paperback-writer.output.directory.dsc": string
+  "paperback-writer.output.directoryRelativePathFile.dsc": string
 
   "markdown-pdf.outputDirector.notExist": string
 }
@@ -81,56 +81,66 @@ export const getActiveTextEditor = ():vscode.TextEditor | undefined => {
 }
 
 type PaperbackWriterConfiguration = {
-  type: PaperbackWriterOutputType[],
-  isConvertOnSave: boolean,
-  convertOnSaveExclude: string[]
-  outputDirectory: string
-  outputDirectoryRelativePathFile: boolean
-  styles: string[]
-  stylesRelativePathFile: boolean
-  includeDefaultStyles: boolean
-
-  breaks: boolean
-
-  executablePath: string
-  scale: number
-  displayHeaderFooter: boolean
-  headerTemplate: string
-  footerTemplate: string
-  printBackground: boolean
-  orientation: PdfOrientation
-  pageRanges: string
-
-  /** ページのフォーマット */
-  format?: PdfFormat
-  width: string
-  height: string
-  margin: {
-    top: string
-    right: string
-    bottom: string
-    left: string
+  output: {
+    types: PaperbackWriterOutputType[]
+    directory: string
+    directoryRelativePathFile: boolean
+    auto: boolean
+    listOfFileNamesExcludedFromAuto: string[]
   }
 
-  /** 画像の品質 */
-  quality: number
+  style: {
+    includeDefaultStyle: boolean
+    font: {
+      baseSize: number
+      baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
+      codeFont: "Source Code Pro : Code"
+    }
+    customCSS: string[]
+    customCSSRelativePathFile: boolean
+  }
 
-  /** クリップ範囲 */
-  clip: {
-    x: number | null
-    y: number | null
-    width: number | null
-    height: number | null
-  },
+  markdown: {
+    addBrOnSingleLineBreaks: boolean
+  }
 
-  /** 背景の省略 */
-  omitBackground: boolean
+  pathToAnExternalChromium: string
+  renderScale: number
+  PDF: {
+    displayHeaderFooter: boolean
+    headerHtmlElementTemplate: string
+    footerHtmlElementTemplate: string
+    printBackground: boolean
+    paperOrientation: PdfOrientation
+    pageRanges: string
+    paperSizeFormat?: PdfFormat
+    paperWidth: string
+    paperHeight: string
+    margin: {
+      top: string
+      right: string
+      bottom: string
+      left: string
+    }
+  }
+  image: {
+    jpeg: {
+      quality: number
+    }
+    clip: {
+      x: number | null
+      y: number | null
+      width: number | null
+      height: number | null
+    },
+    omitBackground: boolean
+  } 
 
   StatusbarMessageTimeout: number
 
-  baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
-  codeFont: "Source Code Pro : Code"
-  baseFontSize: number
+  
+  
+  
 }
 
 /** 設定を得る */
@@ -138,44 +148,65 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
   const wsc = vscode.workspace.getConfiguration('paperback-writer', scope)
   
   const pwf: PaperbackWriterConfiguration = {
-    type: wsc['type'],
-    isConvertOnSave: wsc['isConvertOnSave'],
-    convertOnSaveExclude: wsc['convertOnSaveExclude'],
-    outputDirectory: wsc['outputDirectory'],
-    outputDirectoryRelativePathFile: wsc['outputDirectoryRelativePathFile'],
-    styles: wsc['styles'],
-    stylesRelativePathFile: wsc['stylesRelativePathFile'],
-    includeDefaultStyles: wsc['includeDefaultStyles'],
-    breaks: wsc['breaks'],
-    executablePath: wsc['executablePath'],
-    scale: wsc['scale'],
-    displayHeaderFooter: wsc['displayHeaderFooter'],
-    headerTemplate: wsc['headerTemplate'],
-    footerTemplate: wsc['footerTemplate'],
-    printBackground: wsc['printBackground'],
-    orientation: wsc['orientation'],
-    pageRanges: wsc['pageRanges'],
-    format: wsc['format'],
-    width: wsc['width'],
-    height: wsc['height'],
-    margin: {
-      top: wsc['margin']['top'],
-      right: wsc['margin']['right'],
-      bottom: wsc['margin']['bottom'],
-      left: wsc['margin']['left']
+    output: {
+      types: wsc['output']['types'],
+      directory: wsc['output']['directory'],
+      directoryRelativePathFile: wsc['output']['directoryRelativePathFile'],
+      auto: wsc['output']['auto'],
+      listOfFileNamesExcludedFromAuto: wsc['output']['listOfFileNamesExcludedFromAuto']
     },
-    quality: wsc['quality'],
-    clip: {
-      x: wsc['clip']['x'],
-      y: wsc['clip']['y'],
-      width:  wsc['clip']['width'],
-      height: wsc['clip']['height']
+
+    style: {
+      includeDefaultStyle: wsc['style']['includeDefaultStyle'],
+      font: {
+        baseSize: wsc['style']['font']['baseSize'],
+        baseFont: wsc['style']['font']['baseFont'],
+        codeFont: wsc['style']['font']['codeFont'],
+      },
+      customCSS: wsc['style']['customCSS'],
+      customCSSRelativePathFile: wsc['style']['customCSSRelativePathFile'],
     },
-    omitBackground: wsc['omitBackground'],
+
+    markdown: {
+      addBrOnSingleLineBreaks: wsc['markdown']['addBrOnSingleLineBreaks'],
+    },
+    
+    pathToAnExternalChromium: wsc['pathToAnExternalChromium'],
+    renderScale: wsc['renderScale'],
+    PDF: {
+      displayHeaderFooter: wsc['PDF']['displayHeaderFooter'],
+      headerHtmlElementTemplate: wsc['PDF']['headerHtmlElementTemplate'],
+      footerHtmlElementTemplate: wsc['PDF']['footerHtmlElementTemplate'],
+      printBackground: wsc['PDF']['printBackground'],
+      paperOrientation: wsc['PDF']['paperOrientation'],
+      pageRanges: wsc['PDF']['pageRanges'],
+      paperSizeFormat: wsc['PDF']['paperSizeFormat'],
+      paperWidth: wsc['PDF']['paperWidth'],
+      paperHeight: wsc['PDF']['paperHeight'],
+      margin: {
+        top: wsc['PDF']['margin']['top'],
+        right: wsc['PDF']['margin']['right'],
+        bottom: wsc['PDF']['margin']['bottom'],
+        left: wsc['PDF']['margin']['left']
+      },
+    },
+    image: {
+      jpeg: {
+        quality: wsc['image']['jpeg']['quality']
+      },
+      clip: {
+        x: wsc['image']['clip']['x'],
+        y: wsc['image']['clip']['y'],
+        width:  wsc['image']['clip']['width'],
+        height: wsc['image']['clip']['height']
+      },
+      omitBackground: wsc['image']['omitBackground'],
+    },
+
     StatusbarMessageTimeout: 10000,
-    baseFont: wsc['baseFont'],
-    codeFont: wsc['codeFont'],
-    baseFontSize: wsc['baseFontSize']
+    
+    
+    
   }
   
   return pwf
