@@ -21,22 +21,11 @@
   "extension.paperback-writer.html": "Output Markdown to HTML",
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",  
 
-  
-
-  
-
-
-
-
-  
-
   "paperback-writer.pathToAnExternalChromium.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
 
   "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
-
   "paperback-writer.headerHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
-
-  "paperback-writer.footerTemplate.dsc": "pdf only. HTML template for the print footer.",
+  "paperback-writer.footerHtmlElementTemplate.dsc": "pdf only. HTML template for the print footer.",
 
   "paperback-writer.printBackground.dsc": "Print background graphic (pdf only)",
 

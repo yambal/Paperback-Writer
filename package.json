@@ -251,10 +251,10 @@
           "description": "%paperback-writer.headerHtmlElementTemplate.dsc%",
           "scope": "resource"
         },
-        "paperback-writer.footerTemplate": {
+        "paperback-writer.footerHtmlElementTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
-          "description": "%paperback-writer.footerTemplate.dsc%",
+          "description": "%paperback-writer.footerHtmlElementTemplate.dsc%",
           "scope": "resource"
         },
         "paperback-writer.printBackground": {

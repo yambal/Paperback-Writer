@@ -24,10 +24,8 @@
   "paperback-writer.pathToAnExternalChromium.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
 
   "paperback-writer.renderScale.dsc": "ページレンダリングのスケール",
-
   "paperback-writer.headerHtmlElementTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
-
-  "paperback-writer.footerTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
+  "paperback-writer.footerHtmlElementTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
 
   "paperback-writer.printBackground.dsc": "背景グラフィックを印刷する(pdfのみ)",
 
