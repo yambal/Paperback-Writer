@@ -194,11 +194,6 @@
           "description": "%paperback-writer.includeDefaultStyles.dsc%",
           "order": 7
         },
-        "paperback-writer.addBrOnSingleLineBreaksInMarkdown": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc%"
-        },
         "paperback-writer.baseFont": {
           "type": "string",
           "enum": [
@@ -210,7 +205,8 @@
             "BIZ UDPMincho : JA,(CY,LA)"
           ],
           "default": "",
-          "description": "%paperback-writer.baseFont.dsc%"
+          "description": "%paperback-writer.baseFont.dsc%",
+          "order": 8
         },
         "paperback-writer.codeFont": {
           "type": "string",
@@ -219,12 +215,19 @@
             "Source Code Pro : Code"
           ],
           "default": "",
-          "description": "%paperback-writer.codeFont.dsc%"
+          "description": "%paperback-writer.codeFont.dsc%",
+          "order": 9
         },
         "paperback-writer.baseFontSize": {
           "type": "number",
           "default": 14,
-          "description": "%paperback-writer.baseFontSize.dsc%"
+          "description": "%paperback-writer.baseFontSize.dsc%",
+          "order": 10
+        },
+        "paperback-writer.addBrOnSingleLineBreaksInMarkdown": {
+          "type": "boolean",
+          "default": false,
+          "description": "%paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc%"
         },
         "paperback-writer.executablePath": {
           "type": "string",

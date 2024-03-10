@@ -63,6 +63,10 @@
 | スタイルオプション | paperback-writer.`customCSS` | 使用するカスタムスタイルシート（CSS）のパスリスト |
 |  | paperback-writer.`customCSSRelativePathFile` | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
 |  | paperback-writer.`includeDefaultStyles` | デフォルトのスタイルを組み込む |
+|  | paperback-writer.`baseFont` | 基本となるフォント |
+|  | paperback-writer.`codeFont` | コードに使用するフォント |
+|  | paperback-writer.`baseFontSize` | ベースとなるフォントサイズ（px） |
+
 | シンタックスハイライトオプション |  |  |
 | Markdownオプション | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`scale` | ページレンダリングのスケール |
