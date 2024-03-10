@@ -94,11 +94,13 @@ type PaperbackWriterConfiguration = {
 
   pathToAnExternalChromium: string
   renderScale: number
-  pdfDisplayHeaderFooter: boolean
-  pdfHeaderHtmlElementTemplate: string
-  pdfFooterHtmlElementTemplate: string
-  pdfPrintBackground: boolean
-  pdfPaperOrientation: PdfOrientation
+  PDF: {
+    displayHeaderFooter: boolean
+    headerHtmlElementTemplate: string
+    footerHtmlElementTemplate: string
+    printBackground: boolean
+    paperOrientation: PdfOrientation
+  }
   pdfPageRanges: string
   pdfPaperSizeFormat?: PdfFormat
   pdfPaperWidth: string
@@ -147,11 +149,13 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     addBrOnSingleLineBreaksInMarkdown: wsc['addBrOnSingleLineBreaksInMarkdown'],
     pathToAnExternalChromium: wsc['pathToAnExternalChromium'],
     renderScale: wsc['renderScale'],
-    pdfDisplayHeaderFooter: wsc['pdfDisplayHeaderFooter'],
-    pdfHeaderHtmlElementTemplate: wsc['pdfHeaderHtmlElementTemplate'],
-    pdfFooterHtmlElementTemplate: wsc['pdfFooterHtmlElementTemplate'],
-    pdfPrintBackground: wsc['pdfPrintBackground'],
-    pdfPaperOrientation: wsc['pdfPaperOrientation'],
+    PDF: {
+      displayHeaderFooter: wsc['PDF']['displayHeaderFooter'],
+      headerHtmlElementTemplate: wsc['PDF']['headerHtmlElementTemplate'],
+      footerHtmlElementTemplate: wsc['PDF']['footerHtmlElementTemplate'],
+      printBackground: wsc['PDF']['printBackground'],
+      paperOrientation: wsc['PDF']['paperOrientation'],
+    },
     pdfPageRanges: wsc['pdfPageRanges'],
     pdfPaperSizeFormat: wsc['pdfPaperSizeFormat'],
     pdfPaperWidth: wsc['pdfPaperWidth'],

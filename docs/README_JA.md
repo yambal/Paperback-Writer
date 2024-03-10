@@ -68,11 +68,11 @@
 |  | paperback-writer.`baseFontSize` | ベースとなるフォントサイズ（px） |
 | Markdownオプション | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`renderScale` | ページレンダリングのスケール |
-| PDFオプション | paperback-writer.`pdfDisplayHeaderFooter` | ページヘッダーとフッターを表示 |
-|| paperback-writer.`pdfHeaderHtmlElementTemplate` | 印刷ヘッダー用HTMLテンプレート|
-|| paperback-writer.`pdfFooterHtmlElementTemplate` | 印刷フッター用HTMLテンプレート|
-|| paperback-writer.`pdfPrintBackground` | 背景グラフィックを印刷する|
-|| paperback-writer.`pdfPaperOrientation` | 用紙の向き|
+| PDFオプション | paperback-writer.`PDF.displayHeaderFooter` | ページヘッダーとフッターを表示 |
+|| paperback-writer.`PDF.HeaderHtmlElementTemplate` | 印刷ヘッダー用HTMLテンプレート|
+|| paperback-writer.`PDF.FooterHtmlElementTemplate` | 印刷フッター用HTMLテンプレート|
+|| paperback-writer.`PDF.printBackground` | 背景グラフィックを印刷する|
+|| paperback-writer.`PDF.paperOrientation` | 用紙の向き|
 || paperback-writer.`pdfPageRanges` | ページ範囲(pdfのみ), 例 '1-5, 8, 11-13|
 || paperback-writer.`pdfPaperSizeFormat` | 用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。|
 || paperback-writer.`pdfPaperWidth` | 用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「pdfPaperSizeFormat」は無効になります。|

@@ -22,11 +22,12 @@
   "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGにOutput",
 
   "paperback-writer.renderScale.dsc": "ページレンダリングのスケール",
-  "paperback-writer.pdfDisplayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
-  "paperback-writer.pdfHeaderHtmlElementTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
-  "paperback-writer.pdfFooterHtmlElementTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
-  "paperback-writer.pdfPrintBackground.dsc": "背景グラフィックを印刷する(pdfのみ)",
-  "paperback-writer.pdfPaperOrientation.dsc": "用紙の向き(pdfのみ)",
+
+  "paperback-writer.PDF.displayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
+  "paperback-writer.PDF.headerHtmlElementTemplate.dsc": "印刷ヘッダー用HTMLテンプレート(pdfのみ)",
+  "paperback-writer.PDF.footerHtmlElementTemplate.dsc": "印刷フッター用HTMLテンプレート(pdfのみ)",
+  "paperback-writer.PDF.printBackgroundd.dsc": "背景グラフィックを印刷する(pdfのみ)",
+  "paperback-writer.PDF.paperOrientation.dsc": "用紙の向き(pdfのみ)",
   "paperback-writer.pdfPageRanges.dsc": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",
   "paperback-writer.pdfPaperSizeFormat.dsc": "用紙サイズ(pdfのみ), 'Pdf Paper Width'や'Pdf Paper Height'を設定すると無効になります。",
   "paperback-writer.pdfPaperWidth.dsc": "用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「Pdf Paper Size Format」は無効になります。",

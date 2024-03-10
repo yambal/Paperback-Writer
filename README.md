@@ -64,11 +64,11 @@ Visual Studio Code User and Workspace Settings
 | Syntax Highlighting Options |  |  |
 | Markdown Options | paperback-writer.`addBrOnSingleLineBreaksInMarkdown` | Adds a `<br>` on a single line break |
 | Common | paperback-writer.`renderScale` | Scale for page rendering |
-| PDF Options | paperback-writer.`pdfDisplayHeaderFooter` | Displays page header and footer |
-| | paperback-writer.`pdfHeaderHtmlElementTemplate` | HTML template for the print header |
-| | paperback-writer.`pdfFooterHtmlElementTemplate` | HTML template for the print footer |
-| | paperback-writer.`pdfPrintBackground` | Prints background graphics |
-| | paperback-writer.`pdfPaperOrientation` | Paper orientation |
+| PDF Options | paperback-writer.PDF.`displayHeaderFooter` | Displays page header and footer |
+| | paperback-writer.PDF.`headerHtmlElementTemplate` | HTML template for the print header |
+| | paperback-writer.PDF.`footerHtmlElementTemplate` | HTML template for the print footer |
+| | paperback-writer.PDF.`printBackground` | Prints background graphics |
+| | paperback-writer.PDF.`paperOrientation` | Paper orientation |
 | | paperback-writer.`pdfPageRanges` | Page range for pdf only, e.g., '1-5, 8, 11-13' |
 | | paperback-writer.`pdfPaperSizeFormat` | Paper size for pdf only, specifying width or height disables this |
 | | paperback-writer.`pdfPaperWidth` | Paper width for pdf only, units: mm, cm, in, px. Disables `pdfPaperSizeFormat` if set |

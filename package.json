@@ -230,42 +230,42 @@
           "description": "%paperback-writer.renderScale.dsc%",
           "order": 11
         },
-        "paperback-writer.pdfDisplayHeaderFooter": {
+        "paperback-writer.PDF.displayHeaderFooter": {
           "type": "boolean",
           "default": true,
-          "description": "%paperback-writer.pdfDisplayHeaderFooter.dsc%",
+          "description": "%paperback-writer.PDF.displayHeaderFooter.dsc%",
           "scope": "resource",
           "order": 12
         },
-        "paperback-writer.pdfHeaderHtmlElementTemplate": {
+        "paperback-writer.PDF.headerHtmlElementTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \">%%ISO-DATE%%</div>",
-          "description": "%paperback-writer.pdfHeaderHtmlElementTemplate.dsc%",
+          "description": "%paperback-writer.PDF.headerHtmlElementTemplate.dsc%",
           "scope": "resource",
           "order": 13
         },
-        "paperback-writer.pdfFooterHtmlElementTemplate": {
+        "paperback-writer.PDF.footerHtmlElementTemplate": {
           "type": "string",
           "default": "<div style=\"font-size: 9px; margin: 0 auto;\"> <span class='pageNumber'></span> / <span class='totalPages'></span></div>",
-          "description": "%paperback-writer.pdfFooterHtmlElementTemplate.dsc%",
+          "description": "%paperback-writer.PDF.footerHtmlElementTemplate.dsc%",
           "scope": "resource",
           "order": 14
         },
-        "paperback-writer.pdfPrintBackground": {
+        "paperback-writer.PDF.printBackground": {
           "type": "boolean",
           "default": true,
-          "description": "%paperback-writer.pdfPrintBackground.dsc%",
+          "description": "%paperback-writer.PDF.printBackground.dsc%",
           "scope": "resource",
           "order": 15
         },
-        "paperback-writer.pdfPaperOrientation": {
+        "paperback-writer.PDF.paperOrientation": {
           "type": "string",
           "enum": [
             "portrait",
             "landscape"
           ],
           "default": "portrait",
-          "description": "%paperback-writer.pdfPaperOrientation.dsc%",
+          "description": "%paperback-writer.PDF.paperOrientation.dsc%",
           "scope": "resource",
           "order": 16
         },
