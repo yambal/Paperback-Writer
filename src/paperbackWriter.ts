@@ -64,7 +64,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     let outputTypes: PaperbackWriterOutputType[] | undefined
     switch (command) {
       case 'settings':
-        outputTypes = pwConf.outputTypes || ['pdf']
+        outputTypes = pwConf.output.types || ['pdf']
         break
 
       case 'pdf':

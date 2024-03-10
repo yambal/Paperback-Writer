@@ -135,7 +135,7 @@
       "type": "object",
       "title": "PaperBack Writer",
       "properties": {
-        "paperback-writer.outputTypes": {
+        "paperback-writer.output.types": {
           "type": "array",
           "default": [
             "pdf"
@@ -143,13 +143,13 @@
           "items": {
             "type": "string"
           },
-          "description": "%paperback-writer.outputTypes.dsc%",
+          "description": "%paperback-writer.output.types.dsc%",
           "order": 0
         },
-        "paperback-writer.autoOutput": {       
+        "paperback-writer.output.auto": {       
           "type": "boolean",
           "default": false,
-          "description": "%paperback-writer.autoOutput.dsc%",
+          "description": "%paperback-writer.output.auto.dsc%",
           "order": 1
         },
         "paperback-writer.listOfFileNamesExcludedFromAutoOutput": {

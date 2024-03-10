@@ -37,7 +37,7 @@
 
 ### 自動Output
 
-1. **settings.json**に`"paperback-writer.autoOutput": true`オプションを追加
+1. **settings.json**に`"paperback-writer.output.auto": true`オプションを追加
    * あるいは「拡張機能の設定」で`autoOutput`にチェックを入れる
 1. Visual Studio Codeを再起動
 1. Markdownファイルを開く
@@ -55,13 +55,13 @@
 
 | カテゴリ | オプション名 | 説明 |
 | --- | --- | --- |
-| 保存オプション | paperback-writer.`outputTypes` | 出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート |
-|  | paperback-writer.`autoOutput` | 保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります |
+| 保存オプション | paperback-writer.output.types | 出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート |
+|  | paperback-writer.output.auto | 保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります |
 |  | paperback-writer.`listOfFileNamesExcludedFromAutoOutput` | 自動書き出しの対象外ファイル名 |
 |  | paperback-writer.`outputDirector` | 書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます |
 |  | paperback-writer.`outputDirectoryRelativePathFile` | 設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます |
-| スタイルオプション | paperback-writer.`customCSS` | 使用するカスタムスタイルシート（CSS）のパスリスト |
-|  | paperback-writer.`customCSSRelativePathFile` | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
+| スタイルオプション | paperback-writer.style.customCSS | 使用するカスタムスタイルシート（CSS）のパスリスト |
+|  | paperback-writer.style.customCSSRelativePathFile | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
 |  | paperback-writer.style.includeDefaultStyle | デフォルトのスタイルを組み込む |
 |  | paperback-writer.style.font.baseSize | ベースとなるフォントサイズ（px） |
 |  | paperback-writer.style.font.baseFont | 基本となるフォント |

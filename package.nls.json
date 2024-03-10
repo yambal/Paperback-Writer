@@ -1,15 +1,16 @@
 {
-  "paperback-writer.outputTypes.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported.",
-  "paperback-writer.autoOutput.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
+  "paperback-writer.output.types.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported.",
+  "paperback-writer.output.auto.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
   "paperback-writer.listOfFileNamesExcludedFromAutoOutput.dsc": "Excluded file name of exportOnSave option",
   "paperback-writer.outputDirectory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
   "paperback-writer.outputDirectoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
-  "paperback-writer.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
-  "paperback-writer.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
+  
   "paperback-writer.style.includeDefaultStyle.dsc": "Include the default styles.",
   "paperback-writer.style.font.baseFont.dsc": "Base font",
   "paperback-writer.style.font.codeFontt.dsc": "Code font",
   "paperback-writer.style.font.baseSize.dsc": "Base font Size (px)",
+  "paperback-writer.style.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
+  "paperback-writer.style.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
 
   "paperback-writer.addBrOnSingleLineBreaksInMarkdown.dsc": "Enable line breaks",
   

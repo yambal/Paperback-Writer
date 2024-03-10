@@ -15,7 +15,7 @@ type Nls = {
   "extension.paperback-writer.jpeg": string
   "extension.paperback-writer.html": string
   "extension.paperback-writer.all": string
-  "paperback-writer.autoOutput.dsc": string
+  "paperback-writer.output.auto.dsc": string
   "paperback-writer.listOfFileNamesExcludedFromAutoOutput.dsc": string
   "paperback-writer.outputDirectory.dsc": string
   "paperback-writer.outputDirectoryRelativePathFile.dsc": string
@@ -81,13 +81,16 @@ export const getActiveTextEditor = ():vscode.TextEditor | undefined => {
 }
 
 type PaperbackWriterConfiguration = {
-  outputTypes: PaperbackWriterOutputType[],
-  autoOutput: boolean,
+  output: {
+    types: PaperbackWriterOutputType[]
+    auto: boolean,
+  }
+  
   listOfFileNamesExcludedFromAutoOutput: string[]
   outputDirectory: string
   outputDirectoryRelativePathFile: boolean
-  customCSS: string[]
-  customCSSRelativePathFile: boolean
+  
+  
 
   style: {
     includeDefaultStyle: boolean
@@ -96,6 +99,8 @@ type PaperbackWriterConfiguration = {
       baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
       codeFont: "Source Code Pro : Code"
     }
+    customCSS: string[]
+    customCSSRelativePathFile: boolean
   }
 
   addBrOnSingleLineBreaksInMarkdown: boolean
@@ -144,13 +149,16 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
   const wsc = vscode.workspace.getConfiguration('paperback-writer', scope)
   
   const pwf: PaperbackWriterConfiguration = {
-    outputTypes: wsc['outputTypes'],
-    autoOutput: wsc['autoOutput'],
+    output: {
+      types: wsc['output']['types'],
+      auto: wsc['output']['auto'],
+    },
+    
     listOfFileNamesExcludedFromAutoOutput: wsc['listOfFileNamesExcludedFromAutoOutput'],
     outputDirectory: wsc['outputDirectory'],
     outputDirectoryRelativePathFile: wsc['outputDirectoryRelativePathFile'],
-    customCSS: wsc['customCSS'],
-    customCSSRelativePathFile: wsc['customCSSRelativePathFile'],
+    
+    
     style: {
       includeDefaultStyle: wsc['style']['includeDefaultStyle'],
       font: {
@@ -158,6 +166,8 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
         baseFont: wsc['style']['font']['baseFont'],
         codeFont: wsc['style']['font']['codeFont'],
       },
+      customCSS: wsc['style']['customCSS'],
+      customCSSRelativePathFile: wsc['style']['customCSSRelativePathFile'],
     },
     addBrOnSingleLineBreaksInMarkdown: wsc['addBrOnSingleLineBreaksInMarkdown'],
     pathToAnExternalChromium: wsc['pathToAnExternalChromium'],
