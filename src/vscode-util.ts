@@ -17,7 +17,7 @@ type Nls = {
   "extension.paperback-writer.all": string
   "paperback-writer.output.auto.dsc": string
   "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": string
-  "paperback-writer.outputDirectory.dsc": string
+  "paperback-writer.output.directory.dsc": string
   "paperback-writer.outputDirectoryRelativePathFile.dsc": string
 
   "markdown-pdf.outputDirector.notExist": string
@@ -83,11 +83,12 @@ export const getActiveTextEditor = ():vscode.TextEditor | undefined => {
 type PaperbackWriterConfiguration = {
   output: {
     types: PaperbackWriterOutputType[]
+    directory: string
     auto: boolean
     listOfFileNamesExcludedFromAuto: string[]
   }
   
-  outputDirectory: string
+  
   outputDirectoryRelativePathFile: boolean
   
   
@@ -151,11 +152,11 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
   const pwf: PaperbackWriterConfiguration = {
     output: {
       types: wsc['output']['types'],
+      directory: wsc['output']['directory'],
       auto: wsc['output']['auto'],
       listOfFileNamesExcludedFromAuto: wsc['output']['listOfFileNamesExcludedFromAuto']
     },
-    
-    outputDirectory: wsc['outputDirectory'],
+
     outputDirectoryRelativePathFile: wsc['outputDirectoryRelativePathFile'],
     
     

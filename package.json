@@ -146,11 +146,17 @@
           "description": "%paperback-writer.output.types.dsc%",
           "order": 0
         },
+        "paperback-writer.output.directory": {
+          "type": "string",
+          "default": "",
+          "description": "%paperback-writer.output.directory.dsc%",
+          "order": 1
+        },
         "paperback-writer.output.auto": {       
           "type": "boolean",
           "default": false,
           "description": "%paperback-writer.output.auto.dsc%",
-          "order": 1
+          "order": 2
         },
         "paperback-writer.output.listOfFileNamesExcludedFromAuto": {
           "type": "array",
@@ -159,12 +165,6 @@
             "type": "string"
           },
           "description": "%paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc%",
-          "order": 2
-        },
-        "paperback-writer.outputDirectory": {
-          "type": "string",
-          "default": "",
-          "description": "%paperback-writer.outputDirectory.dsc%",
           "order": 3
         },
         "paperback-writer.outputDirectoryRelativePathFile": {

@@ -52,7 +52,7 @@ Visual Studio Code User and Workspace Settings
 | Save Options | paperback-writer.output.types | Output formats: pdf, html, png, jpeg. Supports multiple output formats |
 |  | paperback-writer.output.auto | Enables automatic export upon saving. You need to restart Visual Studio Code to apply the settings |
 |  | paperback-writer.output.listOfFileNamesExcludedFromAuto | Filenames excluded from automatic export |
-|  | paperback-writer.`outputDirectory` | Specifies the directory for exports. If empty, exports are placed in the same location as the source files |
+|  | paperback-writer.output.directory | Specifies the directory for exports. If empty, exports are placed in the same location as the source files |
 |  | paperback-writer.`outputDirectoryRelativePathFile` | If set, the relative path specified for the export directory is interpreted relative to this file |
 | Style Options | paperback-writer.style.customCSS | List of paths to custom style sheets (CSS) |
 |  | paperback-writer.style.customCSSRelativePathFile | If set, integrates the path to the CSS file set in custom style without converting to a relative path |

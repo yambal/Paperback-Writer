@@ -88,7 +88,7 @@ export const getOutputPathName = ({
       return outputPathName
     }
 
-    const outputDirectory = pwConf.outputDirectory
+    const outputDirectory = pwConf.output.directory
     if (outputDirectory.length === 0) {
       return outputPathName
     }
