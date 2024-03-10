@@ -209,19 +209,19 @@
           "description": "%paperback-writer.style.font.codeFont.dsc%",
           "order": 8
         },
-        "paperback-writer.customCSS": {
+        "paperback-writer.style.customCSS": {
           "type": "array",
           "default": [],
           "items": {
             "type": "string"
           },
-          "description": "%paperback-writer.customCSS.dsc%",
+          "description": "%paperback-writer.style.customCSS.dsc%",
           "order": 9
         },
-        "paperback-writer.customCSSRelativePathFile": {
+        "paperback-writer.style.customCSSRelativePathFile": {
           "type": "boolean",
           "default": false,
-          "description": "%paperback-writer.customCSSRelativePathFile.dsc%",
+          "description": "%paperback-writer.style.customCSSRelativePathFile.dsc%",
           "order": 10
         },
         "paperback-writer.renderScale": {
