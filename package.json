@@ -269,10 +269,10 @@
           "scope": "resource",
           "order": 16
         },
-        "paperback-writer.pdfPageRanges": {
+        "paperback-writer.PDF.PageRanges": {
           "type": "string",
           "default": "",
-          "description": "%paperback-writer.pdfPageRanges.dsc%",
+          "description": "%paperback-writer.PDF.PageRanges.dsc%",
           "scope": "resource",
           "order": 17
         },
