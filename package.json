@@ -56,11 +56,6 @@
         "command": "extension.paperback-writer.all",
         "title": "%extension.paperback-writer.all%",
         "group": "paperback-writer"
-      },
-      {
-        "command": "extension.paperback-writer.helloWorld",
-        "title": "Hello World",
-        "group": "paperback-writer"
       }
     ],
     "menus": {
