@@ -78,3 +78,5 @@ npx vsce package
 vsce login {publisher name}
 vsce publish
 ``
+
+See https://code.visualstudio.com/api/references/extension-manifest
