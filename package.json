@@ -1,11 +1,12 @@
 {
   "name": "paperback-writer",
   "displayName": "paperback-writer",
-  "description": "Create Paperback ",
-  "version": "0.0.1",
+  "description": "Create Paperback",
+  "version": "0.0.2",
+  "publisher": "JuneYAMAMOTO",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/dondoko-susumu/react-native-card-media.git"
+    "url": "https://github.com/yambal/Paperback-Writer.git"
   },
   "engines": {
     "vscode": "^1.86.0"
