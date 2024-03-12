@@ -168,7 +168,7 @@ export const buildFontQuerys = ():FontQuery[] => {
       break
   }
 
-  switch (pwConf.style.font.codeFont) {
+  switch (pwConf.style.syntaxHighlighting.font) {
     default:
       fontQuerys.push({target: '.hljs-row-code, .code-inline', fontSet: 'SourceCodePro', language})
   }

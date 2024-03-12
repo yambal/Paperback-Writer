@@ -8,8 +8,9 @@
   "paperback-writer.style.typography.h1HeaderScale.dsc": "Automatically adjusts H1 to H6 font sizes based on a predefined jump ratio and the H1-body text size ratio.",
   "paperback-writer.style.includeDefaultStyle.dsc": "Include the default styles.",
   "paperback-writer.style.font.baseFont.dsc": "Base font",
-  "paperback-writer.style.font.codeFontt.dsc": "Code font",
   "paperback-writer.style.font.baseSize.dsc": "Base font Size (px)",
+  "paperback-writer.style.syntaxHighlighting.font.dsc": "Syntax-highlighting font",
+  "paperback-writer.style.syntaxHighlighting.theme.dsc": "Syntax-highlighting theme",
   "paperback-writer.style.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
   "paperback-writer.style.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
 

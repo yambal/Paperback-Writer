@@ -2,7 +2,7 @@ import path from "path"
 import * as vscode from 'vscode'
 import { VscodeEnvLanguage, getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
 import { vscodeMarkdownStyle } from "./css/vscodeMarkdownStyle"
-import { codeCss } from "../markdown/renderer/codeCss"
+import { CodeTheme, codeThemeToCss } from "../markdown/renderer/codeCss"
 import { remedyCss } from "./css/remedyCss"
 import { FontSetId, getFontFamily } from "./css/fontStyle"
 import { blockquoteCss } from "./css/blockquoteCss"
@@ -13,14 +13,22 @@ var CleanCSS = require('clean-css')
 export type StyleTagBuilderProps = {
   editorDocVsUrl: ThemeStyleTagBuilderProps['editorDocVsUrl']
   fontQuerys: GetFontStyleTagsProps['fontQuerys']
+  codeTheme?: CodeTheme | ""
 }
 
 export const styleTagBuilder = ({
   editorDocVsUrl,
-  fontQuerys
+  fontQuerys,
+  codeTheme
 }:StyleTagBuilderProps) => {
+  if (!codeTheme || codeTheme.length === 0) {
+    codeTheme = undefined
+  }
 
-  const styleTags = themeStyleTagsBuilder({editorDocVsUrl})
+  const styleTags = themeStyleTagsBuilder({
+    editorDocVsUrl,
+    codeTheme
+  })
   const fontStyleTags = fontStyleTagsBuilder({fontQuerys})
 
   return fontStyleTags + '\n' + styleTags
@@ -29,7 +37,8 @@ export const styleTagBuilder = ({
 
 // ------------------------------
 type ThemeStyleTagBuilderProps = {
-  editorDocVsUrl: vscode.Uri
+  editorDocVsUrl: vscode.Uri,
+  codeTheme?: CodeTheme
 }
 type BuildedStyle = string
 
@@ -37,7 +46,8 @@ type BuildedStyle = string
  * テーマに関するスタイルタグを生成する
  */
 export const themeStyleTagsBuilder = ({
-  editorDocVsUrl
+  editorDocVsUrl,
+  codeTheme
 }: ThemeStyleTagBuilderProps): string => {
   const styleTags: string[] = []
   const styleLinks: string[] = []
@@ -51,7 +61,7 @@ export const themeStyleTagsBuilder = ({
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
       builtInStyles.push(vscodeMarkdownStyle)
-      builtInStyles.push(codeCss({}))
+      builtInStyles.push(codeThemeToCss({theme: codeTheme}))
       builtInStyles.push(blockquoteCss())
     }
 

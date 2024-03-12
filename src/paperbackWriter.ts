@@ -108,7 +108,8 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       // スタイルタグを生成
       const styleTags  = styleTagBuilder({
         editorDocVsUrl, 
-        fontQuerys:buildFontQuerys()
+        fontQuerys:buildFontQuerys(),
+        codeTheme: pwConf.style.syntaxHighlighting.theme
       })
 
       return markdownToHtml({

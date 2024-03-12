@@ -200,13 +200,13 @@
           ],
           "default": 2,
           "description": "%paperback-writer.style.typography.h1HeaderScale.dsc%",
-          "order": 7
+          "order": 6
         },
         "paperback-writer.style.font.baseSize": {
           "type": "number",
           "default": 14,
           "description": "%paperback-writer.style.font.baseSize.dsc%",
-          "order": 8
+          "order": 7
         },
         "paperback-writer.style.font.baseFont": {
           "type": "string",
@@ -220,16 +220,27 @@
           ],
           "default": "",
           "description": "%paperback-writer.style.font.baseFont.dsc%",
-          "order": 9
+          "order": 8
         },
-        "paperback-writer.style.font.codeFont": {
+        "paperback-writer.style.syntaxHighlighting.font": {
           "type": "string",
           "enum": [
             "",
             "Source Code Pro : Code"
           ],
           "default": "",
-          "description": "%paperback-writer.style.font.codeFont.dsc%",
+          "description": "%paperback-writer.style.syntaxHighlighting.font.dsc%",
+          "order": 9
+        },
+        "paperback-writer.style.syntaxHighlighting.theme": {
+          "type": "string",
+          "enum": [
+            "",
+            "White & Black: Light",
+            "White & Black: Dark"
+          ],
+          "default": "",
+          "description": "%paperback-writer.style.syntaxHighlighting.theme.dsc%",
           "order": 10
         },
         "paperback-writer.style.customCSS": {
@@ -265,7 +276,7 @@
           "default": "<div style=\"font-size: 9px; margin-left: 1cm;\"> <span class='title'></span></div> <div style=\"font-size: 9px; margin-left: auto; margin-right: 1cm; \">%%ISO-DATE%%</div>",
           "description": "%paperback-writer.PDF.headerHtmlElementTemplate.dsc%",
           "scope": "resource",
-          "order": 14
+          "order": 15
         },
         "paperback-writer.PDF.footerHtmlElementTemplate": {
           "type": "string",

@@ -60,7 +60,8 @@ Visual Studio Code User and Workspace Settings
 |  | paperback-writer.`style.typography.h1HeaderScale` | Automatically adjusts H1 to H6 font sizes based on a predefined jump ratio and the H1-body text size ratio. |
 |  | paperback-writer.`style.font.baseSize` | Base font Size (px) |
 |  | paperback-writer.`style.font.baseFont` | Base font |
-|  | paperback-writer.`style.font.codeFont` | Code font |
+|  | paperback-writer.`style.syntaxHighlighting.theme` | Syntax-highlighting theme |
+|  | paperback-writer.`style.syntaxHighlighting.font` | Code font |
 | Markdown Options | paperback-writer.`markdown.addBrOnSingleLineBreaks` | Adds a `<br>` on a single line break |
 | Common | paperback-writer.`renderScale` | Scale for page rendering |
 | PDF Options | paperback-writer.`PDF.displayHeaderFooter` | Displays page header and footer |
