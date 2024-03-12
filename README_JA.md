@@ -2,7 +2,7 @@
 
 この拡張機能は、MarkdownファイルをPDF、HTML、PNG、JPEGファイルに変換します。
 
-[English](https://yambal.github.io/Paperback-Writer)
+[English](./README.md)
 
 ## 機能
 

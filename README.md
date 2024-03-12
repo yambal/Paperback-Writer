@@ -2,7 +2,7 @@
 
 This extension converts Markdown files into PDF, HTML, PNG, and JPEG files.
 
-[日本語:Japanese](https://yambal.github.io/Paperback-Writer/docs/README_JA)
+[日本語:Japanese](./README_JA.md)
 
 ## Features
 The following features are supported:
