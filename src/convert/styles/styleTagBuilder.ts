@@ -6,6 +6,7 @@ import { codeCss } from "../markdown/renderer/codeCss"
 import { remedyCss } from "./css/remedyCss"
 import { FontSetId, getFontFamily } from "./css/fontStyle"
 import { blockquoteCss } from "./css/blockquoteCss"
+import { headerCss } from "./css/headerCss"
 
 var CleanCSS = require('clean-css')
 
@@ -54,8 +55,14 @@ export const themeStyleTagsBuilder = ({
       builtInStyles.push(blockquoteCss())
     }
 
-    // 2. ベースフォントサイズ
+    // 2. header
     builtInStyles.push(`html { font-size: ${PwCnf.style.font.baseSize}px; }`)
+
+    // 3. ベースフォントサイズ
+    builtInStyles.push(headerCss({
+      h1Scale: PwCnf.style.typography.h1HeaderScale
+    }))
+
       
     const minified = new CleanCSS({}).minify(builtInStyles.join('\n')).styles
     styleTags.push(`<style>${minified}</style>`)

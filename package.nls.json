@@ -5,6 +5,7 @@
   "paperback-writer.output.directory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
   "paperback-writer.output.directoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
   
+  "paperback-writer.style.typography.h1HeaderScale.dsc": "Automatically adjusts H1 to H6 font sizes based on a predefined jump ratio and the H1-body text size ratio.",
   "paperback-writer.style.includeDefaultStyle.dsc": "Include the default styles.",
   "paperback-writer.style.font.baseFont.dsc": "Base font",
   "paperback-writer.style.font.codeFontt.dsc": "Code font",
