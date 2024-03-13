@@ -5,7 +5,7 @@ var os = require('os')
 
 import localeEn from "../package.nls.json"
 import localeJa from "../package.nls.ja.json"
-import { CodeTheme } from './convert/markdown/renderer/codeCss'
+import { CodeThemeName } from './convert/markdown/renderer/codeCss'
 
 // ------------------------------
 // 言語辞書
@@ -101,7 +101,8 @@ type PaperbackWriterConfiguration = {
     customCSSRelativePathFile: boolean
     syntaxHighlighting: {
       font: "Source Code Pro : Code"
-      theme: CodeTheme | ""
+      showLineNumbers: boolean
+      themeName: CodeThemeName | ""
     }
     typography: {
       h1HeaderScale: number
@@ -178,7 +179,8 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       },
       syntaxHighlighting: {
         font: wsc['style']['syntaxHighlighting']['font'],
-        theme: wsc['style']['syntaxHighlighting']['theme']
+        showLineNumbers: wsc['style']['syntaxHighlighting']['showLineNumbers'],
+        themeName: wsc['style']['syntaxHighlighting']['theme']
       }
     },
 

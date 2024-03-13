@@ -12,6 +12,7 @@
   "paperback-writer.style.font.baseFont.dsc": "ベースとなるフォント",
   "paperback-writer.style.font.baseSize.dsc": "ベースとなるフォントサイズ（px）",
   "paperback-writer.style.syntaxHighlighting.font.dsc": "コードハイライトに使用するフォント",
+  "paperback-writer.style.syntaxHighlighting.showLineNumbers.dsc": "コードハイライトに行番号を表示",
   "paperback-writer.style.syntaxHighlighting.theme.dsc": "コードハイライトのテーマ",
   "paperback-writer.style.customCSS.dsc": "使用するカスタムスタイルシート（CSS）のパスリスト",
   "paperback-writer.style.customCSSRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",

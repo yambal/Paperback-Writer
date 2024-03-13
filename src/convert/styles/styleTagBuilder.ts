@@ -2,7 +2,7 @@ import path from "path"
 import * as vscode from 'vscode'
 import { VscodeEnvLanguage, getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
 import { vscodeMarkdownStyle } from "./css/vscodeMarkdownStyle"
-import { CodeTheme, codeThemeToCss } from "../markdown/renderer/codeCss"
+import { CodeThemeToCssProps, codeThemeToCss } from "../markdown/renderer/codeCss"
 import { remedyCss } from "./css/remedyCss"
 import { FontSetId, getFontFamily } from "./css/fontStyle"
 import { blockquoteCss } from "./css/blockquoteCss"
@@ -13,7 +13,7 @@ var CleanCSS = require('clean-css')
 export type StyleTagBuilderProps = {
   editorDocVsUrl: ThemeStyleTagBuilderProps['editorDocVsUrl']
   fontQuerys: GetFontStyleTagsProps['fontQuerys']
-  codeTheme?: CodeTheme | ""
+  codeTheme?: CodeThemeToCssProps['theme']
 }
 
 export const styleTagBuilder = ({
@@ -21,9 +21,6 @@ export const styleTagBuilder = ({
   fontQuerys,
   codeTheme
 }:StyleTagBuilderProps) => {
-  if (!codeTheme || codeTheme.length === 0) {
-    codeTheme = undefined
-  }
 
   const styleTags = themeStyleTagsBuilder({
     editorDocVsUrl,
@@ -36,9 +33,9 @@ export const styleTagBuilder = ({
 
 
 // ------------------------------
-type ThemeStyleTagBuilderProps = {
+export type ThemeStyleTagBuilderProps = {
   editorDocVsUrl: vscode.Uri,
-  codeTheme?: CodeTheme
+  codeTheme?: CodeThemeToCssProps['theme']
 }
 type BuildedStyle = string
 

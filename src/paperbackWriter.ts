@@ -109,7 +109,10 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       const styleTags  = styleTagBuilder({
         editorDocVsUrl, 
         fontQuerys:buildFontQuerys(),
-        codeTheme: pwConf.style.syntaxHighlighting.theme
+        codeTheme: {
+          themeName: pwConf.style.syntaxHighlighting.themeName,
+          showLineNumbers: pwConf.style.syntaxHighlighting.showLineNumbers
+        }
       })
 
       return markdownToHtml({

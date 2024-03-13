@@ -2,6 +2,7 @@ import { darken, readableColor } from 'polished'
 
 export type HilightJsStyleProps = {
   baseColor?: string
+  showLineNumbers?: boolean
   box?: {
     round?: string
     borderWidth?: number
@@ -29,6 +30,7 @@ export type HilightJsStyleProps = {
 export const codeCss = (
   {
     baseColor = `#444444`,
+    showLineNumbers = true,
     box ={},
     block = {}
   }: HilightJsStyleProps
@@ -200,9 +202,10 @@ export const codeCss = (
   }
 
   .code-block-row {
-    display: grid;
-    grid-template-columns: 5em auto;
+    ${showLineNumbers ?`display: grid;
+    grid-template-columns: 5em auto;` : ''}
   }
+
   .code-block pre {
     margin: 0;
   }
@@ -211,6 +214,7 @@ export const codeCss = (
   }
 
   .code-block-row-number {
+    ${!showLineNumbers ? `display: none;` : ''}
     padding: 0 0.5em;
     border-right: 1px solid var(--border-color);
     text-align: right;
@@ -233,21 +237,35 @@ export const codeCss = (
 }
 
 // Code Theming
-export type CodeTheme = "White & Black: Dark" | "White & Black: Light"
+export type CodeThemeName = "White & Black: Dark" | "White & Black: Light"
 
 export type CodeThemeToCssProps = {
   /** テーマ名 */
-  theme?: CodeTheme
+  theme?: {
+    themeName: CodeThemeName | ""
+    showLineNumbers: boolean
+  }
 }
 
 /**
  * テーマ名からCSSを生成する
  */
-export const codeThemeToCss = ( { theme }: CodeThemeToCssProps): string => {
-  switch (theme) {
+export const codeThemeToCss = ( {
+  theme
+}: CodeThemeToCssProps): string => {
+
+  console.log(theme)
+
+  const {
+    themeName,
+    showLineNumbers = true
+  } = theme ?? {}
+
+  switch (themeName) {
     case "White & Black: Light":
       return codeCss({
         baseColor: `#000000`,
+        showLineNumbers,
         box: {
           backgroundColor: `#FFFFFF`,
           borderColor: `#000000`,
@@ -273,6 +291,7 @@ export const codeThemeToCss = ( { theme }: CodeThemeToCssProps): string => {
     case "White & Black: Dark":
       return codeCss({
         baseColor: `#FFFFFF`,
+        showLineNumbers,
         box: {
           backgroundColor: `#000000`,
           borderColor: `#FFFFFF`,
