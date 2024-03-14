@@ -1,6 +1,9 @@
 import { PDFOptions } from "puppeteer"
 import { LunchedPuppeteer } from "../lunchPuppeteer"
 
+const CM_TO_PX_RATE = 28
+const FONTSIZE_TO_HEIGHT_RATE = 1.15
+
 export type PuppeteerPdfOutputType = "pdf"
 
 export type PdfFormat = "Letter" | "Legal" | "Tabloid" | "Ledger" | "A0" | "A1" | "A2" | "A3" | "A4" | "A5" | "A6"
@@ -62,6 +65,8 @@ export type ExportPdfProps = {
 
   /** PDFのオプション */
   pdfOption: PdfOption
+} & {
+  headerProps: Omit<HeaderProps, "headerMargin">
 }
 
 /**
@@ -71,16 +76,37 @@ export const exportPdf = ({
   lunchedPuppeteerPage,
   exportPathName,
   pdfOption,
+  headerProps,
 }: ExportPdfProps): Promise<void> => {
 
   return new Promise((resolve, reject) => {
     const format: PdfFormat | undefined = !pdfOption.width && !pdfOption.height ? pdfOption.format ?? 'A4' : undefined
 
+    // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
+    const marginWithHeaderHeight = getMarginWithHeaderHeight({
+      headerFontSize: headerProps.headerFontSize,
+      headerMargin: pdfOption.margin,
+      isDisplayHeaderAndFooter:pdfOption.isDisplayHeaderAndFooter
+    })
+
     const options: PDFOptions = {
       path: exportPathName,
       scale: pdfOption.scale || 1,
       displayHeaderFooter: pdfOption.isDisplayHeaderAndFooter,
-      headerTemplate: transformTemplate(header({})),
+      headerTemplate: transformTemplate(header({
+        headerItems: headerProps.headerItems,
+        headerFontSize: headerProps.headerFontSize,
+        headerMargin: {
+          /**
+           * ヘッダーのマージンは、PDFのマージンを使用し、
+           * PDFのマージンは、marginWithHeaderHeight で計算した値を使用する
+           * このことで、ヘッダーはマージン内に収まり、本文はそれを重ならないようにマージンを取る
+           **/
+          top: pdfOption.margin.top,
+          right: pdfOption.margin.right,
+          left: pdfOption.margin.left
+        }
+      })),
       footerTemplate: transformTemplate(pdfOption.footerTemplate),
       printBackground: pdfOption.isPrintBackground,
       landscape: pdfOption.orientationIsLandscape,
@@ -89,7 +115,7 @@ export const exportPdf = ({
       width: pdfOption.width || '',
       height: pdfOption.height || '',
       margin: {
-        top: pdfOption.margin.top || '',
+        top: marginWithHeaderHeight || '',
         right: pdfOption.margin.right || '',
         bottom: pdfOption.margin.bottom || '',
         left: pdfOption.margin.left || ''
@@ -125,39 +151,35 @@ export const transformTemplate = (templateText: string) => {
   return templateText
 }
 
+// ヘッダーのHTML -------------------------------------
 type HeaderItems = "title" | "pageNumber" | "date" | "url"
 type HeaderProps = {
-  items: HeaderItems[]
-  fontSize?: number
+  headerItems?: HeaderItems[]
+  headerFontSize?: number
+  headerMargin?: PDFOptions['margin']
 }
 
+/**
+ * ヘッダーのHTML要素を生成する
+ */
 const header = ({
-  items =['title', 'pageNumber', 'date'],
-  fontSize = 14
-}: HeaderProps) => {
-  /**
-   * 本体と関係ない文脈
-   **/
-  // mm、cm、in、px
-  // 1cm = 28.35px
+  headerItems =['title', 'pageNumber'],
+  headerFontSize = 14,
+  headerMargin
+}: HeaderProps): string => {
 
-  const headerMargin = {
-    top: toPx('0cm') - 36,
-    right: toPx('1cm'),
-    left: toPx('1cm')
-  }
+  // ヘッダーのテンプレートに使用するマージンを計算する
+  const m = getCalculatedHeaderMargin({headerMargin})
 
-  console.log('headerMargin: ', `${headerMargin.top}px ${headerMargin.right}px 0 ${headerMargin.left}px`)
+  // ヘッダーのテンプレートに使用するフォントサイズを計算する
+  const fs = getCalculatedHeaderFontSize({headerFontSize})
 
-  const headerFontSize = fontSize // * 2
-
-
-  const itemsElement = items.map((item, index) => {
+  const itemsElement = headerItems.map((item, index) => {
     if (item === 'title') {
       return `<span class='title'></span>`
     }
     if (item === 'pageNumber') {
-      return `<div><span class='pageNumber'></span> 世界の大手企業 <span class='totalPages'></span></div>`
+      return `<div><span class='pageNumber'></span> / <span class='totalPages'></span></div>`
     }
     if (item === 'date') {
       return `<span class='date'>%%ISO-DATE%%</span>`
@@ -168,17 +190,82 @@ const header = ({
   })
 
   return `
-  <div style="width: 100%; margin: ${headerMargin.top}px ${headerMargin.right}px 0 ${headerMargin.left}px; height: ${headerFontSize}px; font-size: 10px; display: flex; justify-content: space-between; align-items: center; background-color: red;">
+  <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin: ${m.top}px ${m.right}px 0 ${m.left}px; font-size: ${fs}px;">
     ${itemsElement.join('\n')}
   </div>
   `
 }
 
-const toPx = (value: string) => {
+// ヘッダーのテンプレートに使用するマージン -------------------------------------
+type CalcHeaderMarginProps = {
+  headerMargin: HeaderProps['headerMargin']
+}
+
+/**
+ * PDFのオプション指定のマージンからヘッダーのテンプレートに使用するマージンを計算する
+ */
+const getCalculatedHeaderMargin = ({headerMargin}: CalcHeaderMarginProps) => {
+  const {
+    top = '1cm',
+    left = '1cm',
+    right = '1cm'
+  } = headerMargin ?? {}
+
+  return {
+    top: toPx(String(top)) - 16,
+    right: toPx(String(left)),
+    left: toPx(String(right))
+  }
+}
+
+// ヘッダーフォントサイズ -------------------------------------
+type GetCalculatedHeaderFontSizeProps = {
+  headerFontSize?: HeaderProps['headerFontSize']
+}
+
+/**
+ * ヘッダーのテンプレートに使用するフォントサイズを計算する
+ */
+const getCalculatedHeaderFontSize = ({
+  headerFontSize = 14
+}: GetCalculatedHeaderFontSizeProps) => {
+  return headerFontSize * 0.75
+}
+
+
+// ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算 -------------------------------------
+type GetHeaderHeightProps = HeaderProps & {
+  isDisplayHeaderAndFooter: PdfOption['isDisplayHeaderAndFooter']
+}
+
+/**
+ * ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
+ */
+export const getMarginWithHeaderHeight = ({
+  headerFontSize = 14,
+  headerMargin,
+  isDisplayHeaderAndFooter
+}: GetHeaderHeightProps) => {
+  // ヘッダーを表示しない場合はそのまま返す
+  if (!isDisplayHeaderAndFooter) {
+    return headerMargin?.top
+  }
+
+  // ヘッダーのテンプレートに使用するフォントサイズを計算する
+  const px = getCalculatedHeaderFontSize({headerFontSize})
+
+  // マージン指定のピクセル値を取得
+  const pdfMt = toPx(String(headerMargin?.top ?? '1cm'))
+
+  return `${(pdfMt + (px * FONTSIZE_TO_HEIGHT_RATE)) / CM_TO_PX_RATE}cm` 
+
+}
+
+const toPx = (value: string):number => {
   // 単位と数値を抽出
   const match = value.match(/^(\d+(?:\.\d+)?)(cm|mm|in)$/)
   if (!match) {
-    throw new Error('Invalid input')
+    return parseFloat(value)
   }
 
   const num = parseFloat(match[1])
@@ -187,12 +274,12 @@ const toPx = (value: string) => {
   // 単位に応じてピクセル値に変換
   switch (unit) {
     case 'cm':
-      return num * 28
+      return num * CM_TO_PX_RATE
     case 'mm':
-      return num * 2.8
+      return num * CM_TO_PX_RATE / 10
     case 'in':
-      return num * 96
+      return num * CM_TO_PX_RATE * 2.54
     default:
-      throw new Error('Unsupported unit')
+      return num
   }
 }
