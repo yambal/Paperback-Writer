@@ -163,7 +163,7 @@
           "description": "%paperback-writer.output.directoryRelativePathFile.dsc%",
           "order": 2
         },
-        "paperback-writer.output.auto": {       
+        "paperback-writer.output.auto": {
           "type": "boolean",
           "default": false,
           "description": "%paperback-writer.output.auto.dsc%",
@@ -458,6 +458,7 @@
     "@types/minify": "^9.1.4",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/puppeteer": "^7.0.4",
     "@types/vscode": "^1.86.0",
     "@types/webpack-env": "^1.18.4",
     "@typescript-eslint/eslint-plugin": "^7.0.2",

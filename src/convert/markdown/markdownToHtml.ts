@@ -5,6 +5,9 @@ import { defautTemplate } from '../templates/defaultTemplate'
 import { ruby } from './extentions/rubyExtention'
 
 export type MarkdownToHtmlProps = {
+  /** 文章のタイトル */
+  title: string
+
   /** マークダウンテキスト */
   markdownString: string
 
@@ -17,6 +20,7 @@ export type MarkdownToHtmlProps = {
  * Markdown から HTML に変換する
  */
 export const markdownToHtml = ({
+  title,
   markdownString,
   styleTags,
   isAddBrOnSingleNewLine = false
@@ -32,7 +36,7 @@ export const markdownToHtml = ({
       const htmlBodyString = await marked(markdownString)
 
       let html = ejs.render(defautTemplate, {
-        title: 'Markdown to HTML',
+        title,
         body: htmlBodyString,
         style: styleTags
       })
