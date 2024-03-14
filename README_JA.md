@@ -66,7 +66,8 @@
 |  | paperback-writer.`style.typography.h1HeaderScale` | 設定したジャンプ率に基づき、H1タグと本文のサイズ比を元に、H6からH1までの見出しタグのフォントサイズを自動的に調整します。 |
 |  | paperback-writer.`style.font.baseSize` | ベースとなるフォントサイズ（px） |
 |  | paperback-writer.`style.font.baseFont` | 基本となるフォント |
-|  | paperback-writer.`style.syntaxHighlighting.font` | コードに使用するフォント |
+|  | paperback-writer.`style.syntaxHighlighting.font` | コードハイライトに使用するフォント |
+|  | paperback-writer.`style.syntaxHighlighting.showLineNumbers` | コードハイライトに行番号を表示する |
 |  | paperback-writer.`style.syntaxHighlighting.theme` | コードハイライトのテーマ |
 | Markdownオプション | paperback-writer.`markdown.addBrOnSingleLineBreaks` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`renderScale` | ページレンダリングのスケール |

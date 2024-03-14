@@ -232,6 +232,12 @@
           "description": "%paperback-writer.style.syntaxHighlighting.font.dsc%",
           "order": 9
         },
+        "paperback-writer.style.syntaxHighlighting.showLineNumbers": {
+          "type": "boolean",
+          "default": true,
+          "description": "%paperback-writer.style.syntaxHighlighting.showLineNumbers.dsc%",
+          "order": 9
+        },
         "paperback-writer.style.syntaxHighlighting.theme": {
           "type": "string",
           "enum": [

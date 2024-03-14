@@ -10,6 +10,7 @@
   "paperback-writer.style.font.baseFont.dsc": "Base font",
   "paperback-writer.style.font.baseSize.dsc": "Base font Size (px)",
   "paperback-writer.style.syntaxHighlighting.font.dsc": "Syntax-highlighting font",
+  "paperback-writer.style.syntaxHighlighting.showLineNumbers.dsc": "Syntax-highlighting show line numbers",
   "paperback-writer.style.syntaxHighlighting.theme.dsc": "Syntax-highlighting theme",
   "paperback-writer.style.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
   "paperback-writer.style.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
