@@ -9,7 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- v0.0.3 H1 Header Scale
+- v0.0.3
+  - H1 Header Scale
+  - Syntax-highlighting theming
 
 ### Fixed
 - 
