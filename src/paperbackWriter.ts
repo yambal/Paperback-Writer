@@ -189,8 +189,12 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           margin: pwConf.PDF.margin
                         },
                         headerProps: {
-                          headerFontSize: 10,
-                          headerItems: [`title`, 'pageNumber', 'date']
+                          fontSize: 10,
+                          headerItems: [`title`, 'date']
+                        },
+                        footerProps: {
+                          fontSize: 10,
+                          footerItems: ['pageNumber']
                         }
                       })
                     }

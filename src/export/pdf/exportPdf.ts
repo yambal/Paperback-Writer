@@ -1,6 +1,7 @@
 import { PDFOptions } from "puppeteer"
 import { LunchedPuppeteer } from "../../lunchPuppeteer"
-import { HeaderProps, getMarginWithHeaderHeight, pdfHeader } from "./pdfHeader"
+import { PdfHeaderProps, getMarginWithHeaderHeight, pdfHeader } from "./pdfHeader"
+import { pdfFooter, getMarginWitFooterHeight, PdfFooterProps } from "./pdfFooter"
 
 
 
@@ -66,7 +67,8 @@ export type ExportPdfProps = {
   /** PDFのオプション */
   pdfOption: PdfOption
 } & {
-  headerProps: Omit<HeaderProps, "headerMargin">
+  headerProps: Omit<PdfHeaderProps, "pdfMargin">,
+  footerProps: Omit<PdfFooterProps, "pdfMargin">,
 }
 
 /**
@@ -77,6 +79,7 @@ export const exportPdf = ({
   exportPathName,
   pdfOption,
   headerProps,
+  footerProps
 }: ExportPdfProps): Promise<void> => {
 
   return new Promise((resolve, reject) => {
@@ -84,10 +87,18 @@ export const exportPdf = ({
 
     // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
     const marginWithHeaderHeight = getMarginWithHeaderHeight({
-      headerFontSize: headerProps.headerFontSize,
-      headerMargin: pdfOption.margin,
+      fontSize: headerProps.fontSize,
+      pdfMargin: pdfOption.margin,
       isDisplayHeaderAndFooter:pdfOption.isDisplayHeaderAndFooter
     })
+
+    const marginWithFooterHeight =  getMarginWitFooterHeight({
+      fontSize: headerProps.fontSize,
+      pdfMargin: pdfOption.margin,
+      isDisplayHeaderAndFooter:pdfOption.isDisplayHeaderAndFooter
+    })
+
+    console.log(`marginWithHeaderHeight: ${marginWithHeaderHeight}, marginWithFooterHeight: ${marginWithFooterHeight}`)
 
     const options: PDFOptions = {
       path: exportPathName,
@@ -95,19 +106,14 @@ export const exportPdf = ({
       displayHeaderFooter: pdfOption.isDisplayHeaderAndFooter,
       headerTemplate: transformTemplate(pdfHeader({
         headerItems: headerProps.headerItems,
-        headerFontSize: headerProps.headerFontSize,
-        headerMargin: {
-          /**
-           * ヘッダーのマージンは、PDFのマージンを使用し、
-           * PDFのマージンは、marginWithHeaderHeight で計算した値を使用する
-           * このことで、ヘッダーはマージン内に収まり、本文はそれを重ならないようにマージンを取る
-           **/
-          top: pdfOption.margin.top,
-          right: pdfOption.margin.right,
-          left: pdfOption.margin.left
-        }
+        fontSize: headerProps.fontSize,
+        pdfMargin: pdfOption.margin
       })),
-      footerTemplate: transformTemplate(pdfOption.footerTemplate),
+      footerTemplate: transformTemplate(pdfFooter({
+        footerItems: footerProps.footerItems,
+        fontSize: footerProps.fontSize,
+        pdfMargin: pdfOption.margin
+      })),
       printBackground: pdfOption.isPrintBackground,
       landscape: pdfOption.orientationIsLandscape,
       pageRanges: pdfOption.pageRanges || '',
@@ -117,14 +123,11 @@ export const exportPdf = ({
       margin: {
         top: marginWithHeaderHeight || '',
         right: pdfOption.margin.right || '',
-        bottom: pdfOption.margin.bottom || '',
+        bottom: marginWithFooterHeight || '',
         left: pdfOption.margin.left || ''
       },
       timeout: 0
     }
-
-    console.log(`format: ${options.format}, width: ${options.width}, height: ${options.height}`)
-    console.log(`margin: ${options.margin?.top}, ${options.margin?.right}, ${options.margin?.bottom}, ${options.margin?.left}`)
 
     /** PDF化 */
     return lunchedPuppeteerPage.pdf(options)

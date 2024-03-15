@@ -1,31 +1,24 @@
 import { PdfOption } from "./exportPdf"
-import { HeaderFooterItems, getCalculatedFontSize, getCalculatedHeaderMargin, toPx } from "./pdfHeaderFooterUtil"
-import { FONTSIZE_TO_HEIGHT_RATE, CM_TO_PX_RATE } from "./pdfHeaderFooterUtil"
+import { CM_TO_PX_RATE, FONTSIZE_TO_HEIGHT_RATE, HeaderFooterItems, getCalculatedHeaderMargin, toPx } from "./pdfHeaderFooterUtil"
+import { getCalculatedFontSize } from "./pdfHeaderFooterUtil"
 
-// ヘッダーのHTML -------------------------------------
-
-export type PdfHeaderProps = {
-  headerItems?: HeaderFooterItems[]
+export type PdfFooterProps = {
+  footerItems?: HeaderFooterItems[]
   fontSize?: number
   pdfMargin?: PdfOption['margin']
 }
 
-/**
- * ヘッダーのHTML要素を生成する
- */
-export const pdfHeader = ({
-  headerItems =['title', 'pageNumber'],
+export const pdfFooter = ({
+  footerItems =['title', 'pageNumber'],
   fontSize = 14,
   pdfMargin
-}: PdfHeaderProps): string => {
+}: PdfFooterProps) => {
 
-  // ヘッダーのテンプレートに使用するマージンを計算する
   const m = getCalculatedHeaderMargin({pdfMargin})
 
-  // ヘッダーのテンプレートに使用するフォントサイズを計算する
   const fs = getCalculatedFontSize({fontSize})
 
-  const itemsElement = headerItems.map((item, index) => {
+  const itemsElement = footerItems.map((item, index) => {
     if (item === 'title') {
       return `<span class='title'></span>`
     }
@@ -41,25 +34,27 @@ export const pdfHeader = ({
   })
 
   return `
-  <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin: ${m.top}px ${m.right}px 0 ${m.left}px; font-size: ${fs}px;">
-    ${itemsElement.join('\n')}
+  <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin: 0 ${m.right}px ${m.bottom}px ${m.left}px; font-size: ${fs}px;">
+    <div>left</div>
+    <div>center</div>
+    <div>light</div>
   </div>
-  `
+`
 }
 
 // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算 -------------------------------------
-type GetHeaderHeightProps = PdfHeaderProps & {
+type GetMarginWitFooterHeightProps = PdfFooterProps & {
   isDisplayHeaderAndFooter: PdfOption['isDisplayHeaderAndFooter']
 }
 
 /**
  * ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
  */
-export const getMarginWithHeaderHeight = ({
+export const getMarginWitFooterHeight = ({
   fontSize = 14,
   pdfMargin,
   isDisplayHeaderAndFooter
-}: GetHeaderHeightProps) => {
+}: GetMarginWitFooterHeightProps) => {
   // ヘッダーを表示しない場合はそのまま返す
   if (!isDisplayHeaderAndFooter) {
     return pdfMargin?.top
@@ -69,9 +64,8 @@ export const getMarginWithHeaderHeight = ({
   const px = getCalculatedFontSize({fontSize})
 
   // マージン指定のピクセル値を取得
-  const pdfMt = toPx(String(pdfMargin?.top ?? '1cm'))
+  const pdfMt = toPx(String(pdfMargin?.bottom ?? '1cm'))
 
   return `${(pdfMt + (px * FONTSIZE_TO_HEIGHT_RATE)) / CM_TO_PX_RATE}cm` 
 
 }
-
