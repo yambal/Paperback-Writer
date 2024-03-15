@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { PdfFormat, PdfOrientation } from './export/exportPdf'
+import { PdfFormat, PdfOrientation } from './export/pdf/exportPdf'
 import { PaperbackWriterOutputType } from './paperbackWriter'
 var os = require('os')
 

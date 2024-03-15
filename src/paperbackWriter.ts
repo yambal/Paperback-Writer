@@ -1,7 +1,7 @@
 import path from "path"
 import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode-util"
 import { markdownToHtml } from "./convert/markdown/markdownToHtml"
-import { PuppeteerPdfOutputType, exportPdf } from "./export/exportPdf"
+import { PuppeteerPdfOutputType, exportPdf } from "./export/pdf/exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'

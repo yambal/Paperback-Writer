@@ -1,5 +1,5 @@
 import { PDFOptions } from "puppeteer"
-import { LunchedPuppeteer } from "../lunchPuppeteer"
+import { LunchedPuppeteer } from "../../lunchPuppeteer"
 import { HeaderProps, getMarginWithHeaderHeight, pdfHeader } from "./pdfHeader"
 
 
