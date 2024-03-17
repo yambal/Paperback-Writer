@@ -10,6 +10,7 @@ import { deleteFile, getOutputPathName } from "./util"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 import { styleTagBuilder } from "./convert/styles/styleTagBuilder"
 import { buildFontQuerys } from "./convert/styles/css/fontStyle"
+import { getHeaderFooterFontSize } from "./export/pdf/pdfHeaderFooterUtil"
 
 /** このExtentionが出力できる拡張子 */
 export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
@@ -172,6 +173,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                     }
 
                     if (outputType === 'pdf') {
+
                       return exportPdf({
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
                         exportPathName,
@@ -187,11 +189,11 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           margin: pwConf.PDF.margin
                         },
                         headerProps: {
-                          fontSize: 10,
+                          fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.header.fontSize}),
                           headerItems: pwConf.PDF.header.items
                         },
                         footerProps: {
-                          fontSize: 10,
+                          fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.footer.fontSize}),
                           footerItems: pwConf.PDF.footer.items
                         }
                       })

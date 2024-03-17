@@ -83,6 +83,8 @@ export const getActiveTextEditor = ():vscode.TextEditor | undefined => {
   return vscode.window.activeTextEditor
 }
 
+type HeaderFooterFOntSize = "50%" | "60%" | "70%" | "80%" | "90%"
+
 type PaperbackWriterConfiguration = {
   output: {
     types: PaperbackWriterOutputType[]
@@ -121,9 +123,11 @@ type PaperbackWriterConfiguration = {
     displayHeaderFooter: boolean
     header: {
       items: HeaderFooterItems[]
+      fontSize: HeaderFooterFOntSize
     }
     footer: {
       items: HeaderFooterItems[]
+      fontSize: HeaderFooterFOntSize
     }
     printBackground: boolean
     paperOrientation: PdfOrientation
@@ -196,10 +200,12 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     PDF: {
       displayHeaderFooter: wsc['PDF']['displayHeaderFooter'],
       header: {
-        items: wsc['PDF']['header']['items']
+        items: wsc['PDF']['header']['items'],
+        fontSize: wsc['PDF']['header']['fontSize']
       },
       footer: {
-        items: wsc['PDF']['footer']['items']
+        items: wsc['PDF']['footer']['items'],
+        fontSize: wsc['PDF']['footer']['fontSize']
       },
       printBackground: wsc['PDF']['printBackground'],
       paperOrientation: wsc['PDF']['paperOrientation'],
