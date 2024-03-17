@@ -40,8 +40,6 @@ export const pdfFooter = ({
 
   const justify = footerItems.length === 1 ? 'center' : 'space-between'
 
-  console.log(`m.bottom: ${m.bottom}`)
-
   return `
   <div style="width: 100%; display: flex; justify-content: ${justify}; align-items: center; margin: 0 ${m.right}px ${m.bottom}px ${m.left}px; font-size: ${fs}px;">
     ${itemsElement.join('\n')}
@@ -68,7 +66,9 @@ export const getMarginWitFooterHeight = ({
     return pdfMargin?.top
   }
 
-  const pdfMb = toPx(String(pdfMargin?.bottom ?? '1cm'))
+  const mb = pdfMargin?.bottom ? String(pdfMargin.bottom) : '1cm'
+
+  const pdfMb = toPx(mb)
 
   return `${(pdfMb + fontSize) / CM_TO_PX_RATE}cm` 
 

@@ -43,6 +43,10 @@ export const getCalculatedHeaderMargin = ({pdfMargin}: CalcHeaderMarginProps) =>
 }
 
 export const toPx = (value: string):number => {
+  if (!value || value.length === 0) {
+    return 0
+  }
+
   // 単位と数値を抽出
   const match = value.match(/^(\d+(?:\.\d+)?)(cm|mm|in)$/)
   if (!match) {

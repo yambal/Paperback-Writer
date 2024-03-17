@@ -53,22 +53,22 @@ export const exportPdf = ({
       path: exportPathName,
       scale: pdfOption.scale || 1,
       displayHeaderFooter: pdfOption.displayHeaderFooter,
-      headerTemplate: transformTemplate(pdfHeader({
+      headerTemplate: pdfHeader({
         headerItems: headerProps.headerItems,
         fontSize: headerProps.fontSize,
         pdfMargin: pdfOption.margin
-      })),
-      footerTemplate: transformTemplate(pdfFooter({
+      }),
+      footerTemplate: pdfFooter({
         footerItems: footerProps.footerItems,
         fontSize: footerProps.fontSize,
         pdfMargin: pdfOption.margin
-      })),
+      }),
       printBackground: pdfOption.printBackground,
-      landscape: pdfOption.landscape || true,
+      landscape: pdfOption.landscape,
       pageRanges: pdfOption.pageRanges || '',
       format: format,
-      width: pdfOption.width || '',
-      height: pdfOption.height || '',
+      width: pdfOption.width,
+      height: pdfOption.height,
       margin: {
         top: marginWithHeaderHeight || '',
         right: pdfOption.margin?.right || '',
@@ -88,18 +88,3 @@ export const exportPdf = ({
     })
   })
 }
-
-export const transformTemplate = (templateText: string) => {
-  if (templateText.indexOf('%%ISO-DATETIME%%') !== -1) {
-    templateText = templateText.replace('%%ISO-DATETIME%%', new Date().toISOString().substr(0, 19).replace('T', ' '))
-  }
-  if (templateText.indexOf('%%ISO-DATE%%') !== -1) {
-    templateText = templateText.replace('%%ISO-DATE%%', new Date().toISOString().substr(0, 10))
-  }
-  if (templateText.indexOf('%%ISO-TIME%%') !== -1) {
-    templateText = templateText.replace('%%ISO-TIME%%', new Date().toISOString().substr(11, 8))
-  }
-
-  return templateText
-}
-

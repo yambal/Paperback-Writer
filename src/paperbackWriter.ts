@@ -174,6 +174,12 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
                     if (outputType === 'pdf') {
 
+                      console.log('pwConf.PDF.paperOrientation >', pwConf.PDF.paperOrientation)
+
+                      const width = pwConf.PDF.paperWidth && pwConf.PDF.paperWidth.length > 0 ? pwConf.PDF.paperWidth : undefined
+                      const height = pwConf.PDF.paperHeight && pwConf.PDF.paperHeight.length > 0 ? pwConf.PDF.paperHeight : undefined
+                      const format = width && height ? undefined : pwConf.PDF.paperSizeFormat
+
                       return exportPdf({
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
                         exportPathName,
@@ -183,9 +189,9 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           printBackground: pwConf.PDF.printBackground,
                           landscape: pwConf.PDF.paperOrientation === 'landscape',
                           pageRanges: pwConf.PDF.pageRanges,
-                          format: pwConf.PDF.paperSizeFormat,
-                          width: pwConf.PDF.paperWidth,
-                          height: pwConf.PDF.paperHeight,
+                          format: format,
+                          width: width,
+                          height: height,
                           margin: pwConf.PDF.margin
                         },
                         headerProps: {

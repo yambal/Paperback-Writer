@@ -9,17 +9,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- 
+
+### Fixed
+
+- v0.0.5
+  - Bug-fix
+    - Paper orientation
+    - Margin
+
+### Changed
+
 - v0.0.3
   - H1 Header Scale
   - Syntax-highlighting theming
   - Syntax Highlighting: Show Line Numbers
-
-### Fixed
-- 
-
-### Changed
-
-- 
 
 ### Removed
 

@@ -72,7 +72,9 @@ export const getMarginWithHeaderHeight = ({
     return pdfMargin?.top
   }
 
-  const pdfMt = toPx(String(pdfMargin?.top ?? '1cm'))
+  const mt = pdfMargin?.top ? String(pdfMargin.top) : '1cm'
+
+  const pdfMt = toPx(mt)
 
   return `${(pdfMt + fontSize) / CM_TO_PX_RATE}cm` 
 }
