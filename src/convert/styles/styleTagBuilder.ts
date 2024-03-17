@@ -57,6 +57,7 @@ export const themeStyleTagsBuilder = ({
     const builtInStyles: string[] = []
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
+      builtInStyles.push(`body { line-height: 1.75rem; }`)
       builtInStyles.push(vscodeMarkdownStyle)
       builtInStyles.push(codeThemeToCss({theme: codeTheme}))
       builtInStyles.push(blockquoteCss())
