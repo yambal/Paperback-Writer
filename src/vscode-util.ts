@@ -1,10 +1,11 @@
 import * as vscode from 'vscode'
-import { PdfFormat, PdfOrientation } from './export/exportPdf'
+import { PdfFormat, PdfOrientation } from './export/pdf/exportPdf'
 import { PaperbackWriterOutputType } from './paperbackWriter'
 var os = require('os')
 
 import localeEn from "../package.nls.json"
 import localeJa from "../package.nls.ja.json"
+import { CodeThemeName } from './convert/markdown/renderer/codeCss'
 
 // ------------------------------
 // 言語辞書
@@ -94,10 +95,18 @@ type PaperbackWriterConfiguration = {
     font: {
       baseSize: number
       baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
-      codeFont: "Source Code Pro : Code"
+      
     }
     customCSS: string[]
     customCSSRelativePathFile: boolean
+    syntaxHighlighting: {
+      font: "Source Code Pro : Code"
+      showLineNumbers: boolean
+      themeName: CodeThemeName | ""
+    }
+    typography: {
+      h1HeaderScale: number
+    }
   }
 
   markdown: {
@@ -161,10 +170,18 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       font: {
         baseSize: wsc['style']['font']['baseSize'],
         baseFont: wsc['style']['font']['baseFont'],
-        codeFont: wsc['style']['font']['codeFont'],
+        
       },
       customCSS: wsc['style']['customCSS'],
       customCSSRelativePathFile: wsc['style']['customCSSRelativePathFile'],
+      typography: {
+        h1HeaderScale: wsc['style']['typography']['h1HeaderScale'],
+      },
+      syntaxHighlighting: {
+        font: wsc['style']['syntaxHighlighting']['font'],
+        showLineNumbers: wsc['style']['syntaxHighlighting']['showLineNumbers'],
+        themeName: wsc['style']['syntaxHighlighting']['theme']
+      }
     },
 
     markdown: {

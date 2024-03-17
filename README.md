@@ -2,7 +2,7 @@
 
 This extension converts Markdown files into PDF, HTML, PNG, and JPEG files.
 
-[日本語:Japanese](https://yambal.github.io/Paperback-Writer/docs/README_JA)
+[日本語:Japanese](./README_JA.md)
 
 ## Features
 The following features are supported:
@@ -57,9 +57,12 @@ Visual Studio Code User and Workspace Settings
 | Style Options | paperback-writer.`style.customCSS` | List of paths to custom style sheets (CSS) |
 |  | paperback-writer.`style.customCSSRelativePathFile` | If set, integrates the path to the CSS file set in custom style without converting to a relative path |
 |  | paperback-writer.`style.includeDefaultStyle` | Includes default styles |
+|  | paperback-writer.`style.typography.h1HeaderScale` | Automatically adjusts H1 to H6 font sizes based on a predefined jump ratio and the H1-body text size ratio. |
 |  | paperback-writer.`style.font.baseSize` | Base font Size (px) |
 |  | paperback-writer.`style.font.baseFont` | Base font |
-|  | paperback-writer.`style.font.codeFont` | Code font |
+|  | paperback-writer.`style.syntaxHighlighting.theme` | Syntax-highlighting theme |
+|  | paperback-writer.`style.syntaxHighlighting.showLineNumbers` | Syntax-highlighting show line number |
+|  | paperback-writer.`style.syntaxHighlighting.font` | Code font |
 | Markdown Options | paperback-writer.`markdown.addBrOnSingleLineBreaks` | Adds a `<br>` on a single line break |
 | Common | paperback-writer.`renderScale` | Scale for page rendering |
 | PDF Options | paperback-writer.`PDF.displayHeaderFooter` | Displays page header and footer |

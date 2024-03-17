@@ -1,7 +1,7 @@
 import path from "path"
 import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode-util"
 import { markdownToHtml } from "./convert/markdown/markdownToHtml"
-import { PuppeteerPdfOutputType, exportPdf } from "./export/exportPdf"
+import { PuppeteerPdfOutputType, exportPdf } from "./export/pdf/exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
@@ -102,16 +102,24 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
     if (outputTypes && outputTypes.length > 0) {
       const editorText = editor.document.getText()
+
+      /** 文章のタイトルはファイル名（拡張子抜き）とする */
+      const docTitle = path.basename(editorCocPathName).split('.').slice(0, -1).join('.')
       const f = path.parse(editorCocPathName)
       const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
       // スタイルタグを生成
       const styleTags  = styleTagBuilder({
         editorDocVsUrl, 
-        fontQuerys:buildFontQuerys()
+        fontQuerys:buildFontQuerys(),
+        codeTheme: {
+          themeName: pwConf.style.syntaxHighlighting.themeName,
+          showLineNumbers: pwConf.style.syntaxHighlighting.showLineNumbers
+        }
       })
 
       return markdownToHtml({
+        title: docTitle,
         markdownString: editorText,
         styleTags: styleTags,
         isAddBrOnSingleNewLine: pwConf.markdown.addBrOnSingleLineBreaks
@@ -179,6 +187,14 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           width: pwConf.PDF.paperWidth,
                           height: pwConf.PDF.paperHeight,
                           margin: pwConf.PDF.margin
+                        },
+                        headerProps: {
+                          fontSize: 10,
+                          headerItems: [`title`, 'date']
+                        },
+                        footerProps: {
+                          fontSize: 10,
+                          footerItems: ['pageNumber', 'date']
                         }
                       })
                     }

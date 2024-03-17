@@ -2,7 +2,7 @@
 
 この拡張機能は、MarkdownファイルをPDF、HTML、PNG、JPEGファイルに変換します。
 
-[English](https://yambal.github.io/Paperback-Writer)
+[English](./README.md)
 
 ## 機能
 
@@ -63,9 +63,12 @@
 | スタイルオプション | paperback-writer.`style.customCSS` | 使用するカスタムスタイルシート（CSS）のパスリスト |
 |  | paperback-writer.`style.customCSSRelativePathFile` | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
 |  | paperback-writer.`style.includeDefaultStyle` | デフォルトのスタイルを組み込む |
+|  | paperback-writer.`style.typography.h1HeaderScale` | 設定したジャンプ率に基づき、H1タグと本文のサイズ比を元に、H6からH1までの見出しタグのフォントサイズを自動的に調整します。 |
 |  | paperback-writer.`style.font.baseSize` | ベースとなるフォントサイズ（px） |
 |  | paperback-writer.`style.font.baseFont` | 基本となるフォント |
-|  | paperback-writer.`style.font.codeFont` | コードに使用するフォント |
+|  | paperback-writer.`style.syntaxHighlighting.font` | コードハイライトに使用するフォント |
+|  | paperback-writer.`style.syntaxHighlighting.showLineNumbers` | コードハイライトに行番号を表示する |
+|  | paperback-writer.`style.syntaxHighlighting.theme` | コードハイライトのテーマ |
 | Markdownオプション | paperback-writer.`markdown.addBrOnSingleLineBreaks` | 一行改行時に<br>を追加します |
 | 共通 | paperback-writer.`renderScale` | ページレンダリングのスケール |
 | PDFオプション | paperback-writer.`PDF.displayHeaderFooter` | ページヘッダーとフッターを表示 |

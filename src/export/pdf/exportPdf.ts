@@ -1,4 +1,9 @@
-import { LunchedPuppeteer } from "../lunchPuppeteer"
+import { PDFOptions } from "puppeteer"
+import { LunchedPuppeteer } from "../../lunchPuppeteer"
+import { PdfHeaderProps, getMarginWithHeaderHeight, pdfHeader } from "./pdfHeader"
+import { pdfFooter, getMarginWitFooterHeight, PdfFooterProps } from "./pdfFooter"
+
+
 
 export type PuppeteerPdfOutputType = "pdf"
 
@@ -61,6 +66,9 @@ export type ExportPdfProps = {
 
   /** PDFのオプション */
   pdfOption: PdfOption
+} & {
+  headerProps: Omit<PdfHeaderProps, "pdfMargin">,
+  footerProps: Omit<PdfFooterProps, "pdfMargin">,
 }
 
 /**
@@ -70,17 +78,42 @@ export const exportPdf = ({
   lunchedPuppeteerPage,
   exportPathName,
   pdfOption,
+  headerProps,
+  footerProps
 }: ExportPdfProps): Promise<void> => {
 
   return new Promise((resolve, reject) => {
-    const format = !pdfOption.width && !pdfOption.height ? pdfOption.format ?? 'A4' : ''
+    const format: PdfFormat | undefined = !pdfOption.width && !pdfOption.height ? pdfOption.format ?? 'A4' : undefined
 
-    const options = {
+    // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
+    const marginWithHeaderHeight = getMarginWithHeaderHeight({
+      fontSize: headerProps.fontSize,
+      pdfMargin: pdfOption.margin,
+      isDisplayHeaderAndFooter:pdfOption.isDisplayHeaderAndFooter
+    })
+
+    const marginWithFooterHeight =  getMarginWitFooterHeight({
+      fontSize: headerProps.fontSize,
+      pdfMargin: pdfOption.margin,
+      isDisplayHeaderAndFooter:pdfOption.isDisplayHeaderAndFooter
+    })
+
+    console.log(`marginWithHeaderHeight: ${marginWithHeaderHeight}, marginWithFooterHeight: ${marginWithFooterHeight}`)
+
+    const options: PDFOptions = {
       path: exportPathName,
       scale: pdfOption.scale || 1,
       displayHeaderFooter: pdfOption.isDisplayHeaderAndFooter,
-      headerTemplate: transformTemplate(pdfOption.headerTemplate),
-      footerTemplate: transformTemplate(pdfOption.footerTemplate),
+      headerTemplate: transformTemplate(pdfHeader({
+        headerItems: headerProps.headerItems,
+        fontSize: headerProps.fontSize,
+        pdfMargin: pdfOption.margin
+      })),
+      footerTemplate: transformTemplate(pdfFooter({
+        footerItems: footerProps.footerItems,
+        fontSize: footerProps.fontSize,
+        pdfMargin: pdfOption.margin
+      })),
       printBackground: pdfOption.isPrintBackground,
       landscape: pdfOption.orientationIsLandscape,
       pageRanges: pdfOption.pageRanges || '',
@@ -88,15 +121,13 @@ export const exportPdf = ({
       width: pdfOption.width || '',
       height: pdfOption.height || '',
       margin: {
-        top: pdfOption.margin.top || '',
+        top: marginWithHeaderHeight || '',
         right: pdfOption.margin.right || '',
-        bottom: pdfOption.margin.bottom || '',
+        bottom: marginWithFooterHeight || '',
         left: pdfOption.margin.left || ''
       },
       timeout: 0
     }
-
-    console.log(`format: ${options.format}, width: ${options.width}, height: ${options.height}`)
 
     /** PDF化 */
     return lunchedPuppeteerPage.pdf(options)
@@ -122,3 +153,4 @@ export const transformTemplate = (templateText: string) => {
 
   return templateText
 }
+
