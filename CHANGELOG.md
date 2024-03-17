@@ -9,17 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- v0.0.3
-  - H1 Header Scale
-  - Syntax-highlighting theming
-  - Syntax Highlighting: Show Line Numbers
+- 
 
 ### Fixed
 - 
 
 ### Changed
 
-- 
+- v0.0.3
+  - H1 Header Scale
+  - Syntax-highlighting theming
+  - Syntax Highlighting: Show Line Numbers
+  - Refactoring of headers and footers
 
 ### Removed
 
