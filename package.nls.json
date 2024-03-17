@@ -28,8 +28,6 @@
   "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
 
   "paperback-writer.PDF.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
-  "paperback-writer.PDF.headerHtmlElementTemplate.dsc": "pdf only. HTML template for the print header.",
-  "paperback-writer.PDF.footerHtmlElementTemplate.dsc": "pdf only. HTML template for the print footer.",
   "paperback-writer.PDF.printBackground.dsc": "Print background graphic (pdf only)",
   "paperback-writer.PDF.paperOrientation.dsc": "Page orientation. (pdf only)",
   "paperback-writer.PDF.pageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",

@@ -177,11 +177,11 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         exportPathName,
                         pdfOption: {
                           scale: pwConf.renderScale,
-                          isDisplayHeaderAndFooter: pwConf.PDF.displayHeaderFooter,
-                          headerTemplate: pwConf.PDF.headerHtmlElementTemplate,
-                          footerTemplate: pwConf.PDF.footerHtmlElementTemplate,
-                          isPrintBackground: pwConf.PDF.printBackground,
-                          orientationIsLandscape: pwConf.PDF.paperOrientation === 'landscape',
+                          displayHeaderFooter: pwConf.PDF.displayHeaderFooter,
+                         //headerTemplate: pwConf.PDF.headerHtmlElementTemplate,
+                         // footerTemplate: pwConf.PDF.footerHtmlElementTemplate,
+                          printBackground: pwConf.PDF.printBackground,
+                          landscape: pwConf.PDF.paperOrientation === 'landscape',
                           pageRanges: pwConf.PDF.pageRanges,
                           format: pwConf.PDF.paperSizeFormat,
                           width: pwConf.PDF.paperWidth,
@@ -189,8 +189,12 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           margin: pwConf.PDF.margin
                         },
                         headerProps: {
-                          headerFontSize: 10,
-                          headerItems: [`title`, 'pageNumber', 'date']
+                          fontSize: 10,
+                          headerItems: [`title`, 'date']
+                        },
+                        footerProps: {
+                          fontSize: 10,
+                          footerItems: ['pageNumber', 'date']
                         }
                       })
                     }
