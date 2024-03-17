@@ -277,6 +277,17 @@
           "scope": "resource",
           "order": 14
         },
+        "paperback-writer.PDF.headerItems": {
+          "type": "array",
+          "default": [
+            "title"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "%paperback-writer.PDF.headerItems.dsc%",
+          "order": 15
+        },
         "paperback-writer.PDF.printBackground": {
           "type": "boolean",
           "default": true,
