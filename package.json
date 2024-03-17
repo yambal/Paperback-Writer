@@ -277,7 +277,7 @@
           "scope": "resource",
           "order": 14
         },
-        "paperback-writer.PDF.headerItems": {
+        "paperback-writer.PDF.header.items": {
           "type": "array",
           "default": [
             "title"
@@ -285,10 +285,10 @@
           "items": {
             "type": "string"
           },
-          "description": "%paperback-writer.PDF.headerItems.dsc%",
+          "description": "%paperback-writer.PDF.header.items.dsc%",
           "order": 15
         },
-        "paperback-writer.PDF.footerItems": {
+        "paperback-writer.PDF.footer.items": {
           "type": "array",
           "default": [
             "pageNumber"
@@ -296,7 +296,7 @@
           "items": {
             "type": "string"
           },
-          "description": "%paperback-writer.PDF.footerItems.dsc%",
+          "description": "%paperback-writer.PDF.footer.items.dsc%",
           "order": 16
         },
         "paperback-writer.PDF.printBackground": {
