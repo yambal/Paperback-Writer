@@ -66,8 +66,7 @@ Visual Studio Code User and Workspace Settings
 | Markdown Options | paperback-writer.`markdown.addBrOnSingleLineBreaks` | Adds a `<br>` on a single line break |
 | Common | paperback-writer.`renderScale` | Scale for page rendering |
 | PDF Options | paperback-writer.`PDF.displayHeaderFooter` | Displays page header and footer |
-| | paperback-writer.`PDF.headerHtmlElementTemplate` | HTML template for the print header |
-| | paperback-writer.`PDF.footerHtmlElementTemplate` | HTML template for the print footer |
+| | paperback-writer.`PDF.headerItems` | Items to display in the header. You can combine `title`, `pageNumber`, `date`, and `url`. |
 | | paperback-writer.`PDF.printBackground` | Prints background graphics |
 | | paperback-writer.`PDF.paperOrientation` | Paper orientation |
 | | paperback-writer.`PDF.pageRanges` | Page range for pdf only, e.g., '1-5, 8, 11-13' |

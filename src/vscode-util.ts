@@ -1,11 +1,13 @@
 import * as vscode from 'vscode'
-import { PdfFormat, PdfOrientation } from './export/pdf/exportPdf'
+import { PdfOrientation } from './export/pdf/exportPdf'
 import { PaperbackWriterOutputType } from './paperbackWriter'
 var os = require('os')
 
 import localeEn from "../package.nls.json"
 import localeJa from "../package.nls.ja.json"
 import { CodeThemeName } from './convert/markdown/renderer/codeCss'
+import { PaperFormat } from 'puppeteer'
+import { HeaderFooterItems } from './export/pdf/pdfHeaderFooterUtil'
 
 // ------------------------------
 // 言語辞書
@@ -117,10 +119,11 @@ type PaperbackWriterConfiguration = {
   renderScale: number
   PDF: {
     displayHeaderFooter: boolean
+    headerItems: HeaderFooterItems[]
     printBackground: boolean
     paperOrientation: PdfOrientation
     pageRanges: string
-    paperSizeFormat?: PdfFormat
+    paperSizeFormat?: PaperFormat
     paperWidth: string
     paperHeight: string
     margin: {
@@ -144,16 +147,14 @@ type PaperbackWriterConfiguration = {
   } 
 
   StatusbarMessageTimeout: number
-
-  
-  
-  
 }
 
 /** 設定を得る */
 export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScope | null | undefined): PaperbackWriterConfiguration => {
   const wsc = vscode.workspace.getConfiguration('paperback-writer', scope)
-  
+
+  const paperSizeFormat = !wsc['PDF']['paperSizeFormat'] || wsc['PDF']['paperSizeFormat'].length === 0 ? undefined : wsc['PDF']['paperSizeFormat']
+
   const pwf: PaperbackWriterConfiguration = {
     output: {
       types: wsc['output']['types'],
@@ -168,7 +169,6 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       font: {
         baseSize: wsc['style']['font']['baseSize'],
         baseFont: wsc['style']['font']['baseFont'],
-        
       },
       customCSS: wsc['style']['customCSS'],
       customCSSRelativePathFile: wsc['style']['customCSSRelativePathFile'],
@@ -190,10 +190,11 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     renderScale: wsc['renderScale'],
     PDF: {
       displayHeaderFooter: wsc['PDF']['displayHeaderFooter'],
+      headerItems: wsc['PDF']['headerItems'],
       printBackground: wsc['PDF']['printBackground'],
       paperOrientation: wsc['PDF']['paperOrientation'],
       pageRanges: wsc['PDF']['pageRanges'],
-      paperSizeFormat: wsc['PDF']['paperSizeFormat'],
+      paperSizeFormat,
       paperWidth: wsc['PDF']['paperWidth'],
       paperHeight: wsc['PDF']['paperHeight'],
       margin: {

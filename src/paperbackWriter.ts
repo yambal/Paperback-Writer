@@ -190,7 +190,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         },
                         headerProps: {
                           fontSize: 10,
-                          headerItems: [`title`, 'date']
+                          headerItems: pwConf.PDF.headerItems
                         },
                         footerProps: {
                           fontSize: 10,
