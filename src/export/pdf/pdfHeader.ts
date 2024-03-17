@@ -1,13 +1,18 @@
-import { PdfOption } from "./exportPdf"
-import { CM_TO_PX_RATE, HeaderFooterItems, getCalculatedHeaderFooterTemplateFontSize,
-   getCalculatedHeaderMargin, toPx } from "./pdfHeaderFooterUtil"
+import { PDFOptions } from "puppeteer"
+import {
+  CM_TO_PX_RATE,
+  HeaderFooterItems,
+  getCalculatedHeaderFooterTemplateFontSize,
+  getCalculatedHeaderMargin,
+  toPx
+} from "./pdfHeaderFooterUtil"
 
 // ヘッダーのHTML -------------------------------------
 
 export type PdfHeaderProps = {
   headerItems?: HeaderFooterItems[]
   fontSize?: number
-  pdfMargin?: PdfOption['margin']
+  pdfMargin?: PDFOptions['margin']
 }
 
 /**
@@ -51,7 +56,7 @@ export const pdfHeader = ({
 
 // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算 -------------------------------------
 type GetHeaderHeightProps = PdfHeaderProps & {
-  isDisplayHeaderAndFooter: PdfOption['isDisplayHeaderAndFooter']
+  isDisplayHeaderAndFooter: PDFOptions['displayHeaderFooter']
 }
 
 /**
