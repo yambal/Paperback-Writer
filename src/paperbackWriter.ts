@@ -10,6 +10,7 @@ import { deleteFile, getOutputPathName } from "./util"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 import { styleTagBuilder } from "./convert/styles/styleTagBuilder"
 import { buildFontQuerys } from "./convert/styles/css/fontStyle"
+import { getHeaderFooterFontSize } from "./export/pdf/pdfHeaderFooterUtil"
 
 /** このExtentionが出力できる拡張子 */
 export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
@@ -172,16 +173,15 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                     }
 
                     if (outputType === 'pdf') {
+
                       return exportPdf({
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
                         exportPathName,
                         pdfOption: {
                           scale: pwConf.renderScale,
-                          isDisplayHeaderAndFooter: pwConf.PDF.displayHeaderFooter,
-                          headerTemplate: pwConf.PDF.headerHtmlElementTemplate,
-                          footerTemplate: pwConf.PDF.footerHtmlElementTemplate,
-                          isPrintBackground: pwConf.PDF.printBackground,
-                          orientationIsLandscape: pwConf.PDF.paperOrientation === 'landscape',
+                          displayHeaderFooter: pwConf.PDF.displayHeaderFooter,
+                          printBackground: pwConf.PDF.printBackground,
+                          landscape: pwConf.PDF.paperOrientation === 'landscape',
                           pageRanges: pwConf.PDF.pageRanges,
                           format: pwConf.PDF.paperSizeFormat,
                           width: pwConf.PDF.paperWidth,
@@ -189,12 +189,12 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           margin: pwConf.PDF.margin
                         },
                         headerProps: {
-                          fontSize: 10,
-                          headerItems: [`title`, 'date']
+                          fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.header.fontSize}),
+                          headerItems: pwConf.PDF.header.items
                         },
                         footerProps: {
-                          fontSize: 10,
-                          footerItems: ['pageNumber', 'date']
+                          fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.footer.fontSize}),
+                          footerItems: pwConf.PDF.footer.items
                         }
                       })
                     }

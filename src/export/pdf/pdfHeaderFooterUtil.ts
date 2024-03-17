@@ -65,3 +65,17 @@ export const toPx = (value: string):number => {
   }
 }
 
+
+type GetHeaderFooterFontSizeProps = {
+  baseFontSize: number
+  rate: string
+}
+/**
+ * 本文のフォントサイズの何％をヘッダー・フッターのフォントサイズとするかを計算する
+ */
+export const getHeaderFooterFontSize = ({baseFontSize, rate}: GetHeaderFooterFontSizeProps) => {
+  const res = Math.round(parseInt(rate) / 100 * baseFontSize)
+  console.log(`getHeaderFooterFontSize: ${res}`)
+  return res
+}
+
