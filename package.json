@@ -2,7 +2,7 @@
   "name": "paperback-writer",
   "displayName": "PaperBack Writer",
   "description": "Convert Markdown to PDF",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "publisher": "JuneYAMAMOTO",
   "repository": {
     "type": "git",
