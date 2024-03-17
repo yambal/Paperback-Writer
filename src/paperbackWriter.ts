@@ -178,8 +178,6 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         pdfOption: {
                           scale: pwConf.renderScale,
                           displayHeaderFooter: pwConf.PDF.displayHeaderFooter,
-                         //headerTemplate: pwConf.PDF.headerHtmlElementTemplate,
-                         // footerTemplate: pwConf.PDF.footerHtmlElementTemplate,
                           printBackground: pwConf.PDF.printBackground,
                           landscape: pwConf.PDF.paperOrientation === 'landscape',
                           pageRanges: pwConf.PDF.pageRanges,
@@ -194,7 +192,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         },
                         footerProps: {
                           fontSize: 10,
-                          footerItems: ['pageNumber', 'date']
+                          footerItems: pwConf.PDF.footerItems
                         }
                       })
                     }

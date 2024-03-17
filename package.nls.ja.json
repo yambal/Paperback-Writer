@@ -30,7 +30,8 @@
   "paperback-writer.renderScale.dsc": "ページレンダリングのスケール",
 
   "paperback-writer.PDF.displayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
-  "paperback-writer.PDF.headerItems.dsc": "ヘッダーに表示するアイテム。title, pageNumber, date, url を組み合わせる事ができます (pdf only)",
+  "paperback-writer.PDF.headerItems.dsc": "ヘッダーに表示するアイテム。title, pageNumber, date, url を組み合わせる事ができます(pdfのみ)",
+  "paperback-writer.PDF.footerItems.dsc": "フッターに表示するアイテム。title, pageNumber, date, url を組み合わせる事ができます(pdfのみ)",
   "paperback-writer.PDF.printBackgroundd.dsc": "背景グラフィックを印刷する(pdfのみ)",
   "paperback-writer.PDF.paperOrientation.dsc": "用紙の向き(pdfのみ)",
   "paperback-writer.PDF.pageRanges.dsc": "ページ範囲(pdfのみ), 例 '1-5, 8, 11-13'",

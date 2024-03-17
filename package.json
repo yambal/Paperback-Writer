@@ -288,6 +288,17 @@
           "description": "%paperback-writer.PDF.headerItems.dsc%",
           "order": 15
         },
+        "paperback-writer.PDF.footerItems": {
+          "type": "array",
+          "default": [
+            "pageNumber"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "%paperback-writer.PDF.footerItems.dsc%",
+          "order": 16
+        },
         "paperback-writer.PDF.printBackground": {
           "type": "boolean",
           "default": true,

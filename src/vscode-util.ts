@@ -120,6 +120,7 @@ type PaperbackWriterConfiguration = {
   PDF: {
     displayHeaderFooter: boolean
     headerItems: HeaderFooterItems[]
+    footerItems: HeaderFooterItems[]
     printBackground: boolean
     paperOrientation: PdfOrientation
     pageRanges: string
@@ -191,6 +192,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
     PDF: {
       displayHeaderFooter: wsc['PDF']['displayHeaderFooter'],
       headerItems: wsc['PDF']['headerItems'],
+      footerItems: wsc['PDF']['footerItems'],
       printBackground: wsc['PDF']['printBackground'],
       paperOrientation: wsc['PDF']['paperOrientation'],
       pageRanges: wsc['PDF']['pageRanges'],

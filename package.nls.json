@@ -29,6 +29,7 @@
 
   "paperback-writer.PDF.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
   "paperback-writer.PDF.headerItems.dsc": "Items to display in the header. You can combine title, pageNumber, date, and url. (pdf only)",
+  "paperback-writer.PDF.footerItems.dsc": "Items to display in the footer. You can combine title, pageNumber, date, and url. (pdf only)",
   "paperback-writer.PDF.printBackground.dsc": "Print background graphic (pdf only)",
   "paperback-writer.PDF.paperOrientation.dsc": "Page orientation. (pdf only)",
   "paperback-writer.PDF.pageRanges.dsc": "Page range (pdf only), e.g. '1-5, 8, 11-13'",
