@@ -1,6 +1,6 @@
 import { PdfOption } from "./exportPdf"
-import { HeaderFooterItems, getCalculatedFontSize, getCalculatedHeaderMargin, toPx } from "./pdfHeaderFooterUtil"
-import { FONTSIZE_TO_HEIGHT_RATE, CM_TO_PX_RATE } from "./pdfHeaderFooterUtil"
+import { CM_TO_PX_RATE, HeaderFooterItems, getCalculatedHeaderFooterTemplateFontSize,
+   getCalculatedHeaderMargin, toPx } from "./pdfHeaderFooterUtil"
 
 // ヘッダーのHTML -------------------------------------
 
@@ -23,7 +23,7 @@ export const pdfHeader = ({
   const m = getCalculatedHeaderMargin({pdfMargin})
 
   // ヘッダーのテンプレートに使用するフォントサイズを計算する
-  const fs = getCalculatedFontSize({fontSize})
+  const fs = getCalculatedHeaderFooterTemplateFontSize({fontSize})
 
   const itemsElement = headerItems.map((item, index) => {
     if (item === 'title') {
@@ -40,8 +40,10 @@ export const pdfHeader = ({
     }
   })
 
+  const justify = headerItems.length === 1 ? 'center' : 'space-between'
+
   return `
-  <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin: ${m.top}px ${m.right}px 0 ${m.left}px; font-size: ${fs}px;">
+  <div style="width: 100%; display: flex; justify-content: ${justify}; align-items: center; margin: ${m.top}px ${m.right}px 0 ${m.left}px; font-size: ${fs}px;">
     ${itemsElement.join('\n')}
   </div>
   `
@@ -65,13 +67,8 @@ export const getMarginWithHeaderHeight = ({
     return pdfMargin?.top
   }
 
-  // ヘッダーのテンプレートに使用するフォントサイズを計算する
-  const px = getCalculatedFontSize({fontSize})
-
-  // マージン指定のピクセル値を取得
   const pdfMt = toPx(String(pdfMargin?.top ?? '1cm'))
 
-  return `${(pdfMt + (px * FONTSIZE_TO_HEIGHT_RATE)) / CM_TO_PX_RATE}cm` 
-
+  return `${(pdfMt + fontSize) / CM_TO_PX_RATE}cm` 
 }
 

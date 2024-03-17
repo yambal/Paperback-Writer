@@ -1,6 +1,6 @@
 import { PdfOption } from "./exportPdf"
-import { CM_TO_PX_RATE, FONTSIZE_TO_HEIGHT_RATE, HeaderFooterItems, getCalculatedHeaderMargin, toPx } from "./pdfHeaderFooterUtil"
-import { getCalculatedFontSize } from "./pdfHeaderFooterUtil"
+import { CM_TO_PX_RATE, HeaderFooterItems, getCalculatedHeaderFooterTemplateFontSize,
+   getCalculatedHeaderMargin, toPx } from "./pdfHeaderFooterUtil"
 
 export type PdfFooterProps = {
   footerItems?: HeaderFooterItems[]
@@ -16,7 +16,7 @@ export const pdfFooter = ({
 
   const m = getCalculatedHeaderMargin({pdfMargin})
 
-  const fs = getCalculatedFontSize({fontSize})
+  const fs = getCalculatedHeaderFooterTemplateFontSize({fontSize})
 
   const itemsElement = footerItems.map((item, index) => {
     if (item === 'title') {
@@ -33,13 +33,16 @@ export const pdfFooter = ({
     }
   })
 
+  const justify = footerItems.length === 1 ? 'center' : 'space-between'
+
+  console.log(`m.bottom: ${m.bottom}`)
+
   return `
-  <div style="width: 100%; display: flex; justify-content: space-between; align-items: center; margin: 0 ${m.right}px ${m.bottom}px ${m.left}px; font-size: ${fs}px;">
-    <div>left</div>
-    <div>center</div>
-    <div>light</div>
+  <div style="width: 100%; display: flex; justify-content: ${justify}; align-items: center; margin: 0 ${m.right}px ${m.bottom}px ${m.left}px; font-size: ${fs}px;">
+    ${itemsElement.join('\n')}
   </div>
-`
+  `
+
 }
 
 // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算 -------------------------------------
@@ -60,12 +63,8 @@ export const getMarginWitFooterHeight = ({
     return pdfMargin?.top
   }
 
-  // ヘッダーのテンプレートに使用するフォントサイズを計算する
-  const px = getCalculatedFontSize({fontSize})
+  const pdfMb = toPx(String(pdfMargin?.bottom ?? '1cm'))
 
-  // マージン指定のピクセル値を取得
-  const pdfMt = toPx(String(pdfMargin?.bottom ?? '1cm'))
-
-  return `${(pdfMt + (px * FONTSIZE_TO_HEIGHT_RATE)) / CM_TO_PX_RATE}cm` 
+  return `${(pdfMb + fontSize) / CM_TO_PX_RATE}cm` 
 
 }

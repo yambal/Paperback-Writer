@@ -1,7 +1,6 @@
 import { PDFOptions } from "puppeteer"
 
 export const CM_TO_PX_RATE = 28
-export const FONTSIZE_TO_HEIGHT_RATE = 1.15
 
 export type HeaderFooterItems = "title" | "pageNumber" | "date" | "url"
 
@@ -12,11 +11,12 @@ type GetCalculatedFontSizeProps = {
 /**
  * ヘッダーのテンプレートに使用するフォントサイズを計算する
  */
-export const getCalculatedFontSize = ({
+export const getCalculatedHeaderFooterTemplateFontSize = ({
   fontSize = 14
 }: GetCalculatedFontSizeProps) => {
   return fontSize * 0.75
 }
+
 
 // ヘッダーのテンプレートに使用するマージン -------------------------------------
 type CalcHeaderMarginProps = {
@@ -38,7 +38,7 @@ export const getCalculatedHeaderMargin = ({pdfMargin}: CalcHeaderMarginProps) =>
     top: toPx(String(top)) - 16,
     right: toPx(String(left)),
     left: toPx(String(right)),
-    bottom: toPx(String(bottom)) - 16
+    bottom: toPx(String(bottom)) -16
   }
 }
 

@@ -194,7 +194,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         },
                         footerProps: {
                           fontSize: 10,
-                          footerItems: ['pageNumber']
+                          footerItems: ['pageNumber', 'date']
                         }
                       })
                     }
