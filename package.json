@@ -149,24 +149,28 @@
               "type": "string"
             },
             "description": "%paperback-writer.output.types.dsc%",
+            "scope": "resource",
             "order": 0
           },
           "paperback-writer.output.directory": {
             "type": "string",
             "default": "",
             "description": "%paperback-writer.output.directory.dsc%",
+            "scope": "resource",
             "order": 1
           },
           "paperback-writer.output.directoryRelativePathFile": {
             "type": "boolean",
             "default": false,
             "description": "%paperback-writer.output.directoryRelativePathFile.dsc%",
+            "scope": "resource",
             "order": 2
           },
           "paperback-writer.output.auto": {
             "type": "boolean",
             "default": false,
             "description": "%paperback-writer.output.auto.dsc%",
+            "scope": "resource",
             "order": 3
           },
           "paperback-writer.output.listOfFileNamesExcludedFromAuto": {
@@ -176,12 +180,14 @@
               "type": "string"
             },
             "description": "%paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc%",
+            "scope": "resource",
             "order": 4
           },
           "paperback-writer.renderScale": {
             "type": "number",
             "default": 1,
             "description": "%paperback-writer.renderScale.dsc%",
+            "scope": "resource",
             "order": 6
           }
         }
@@ -193,6 +199,7 @@
             "type": "boolean",
             "default": true,
             "description": "%paperback-writer.style.includeDefaultStyle.dsc%",
+            "scope": "resource",
             "order": 0
           },
           "paperback-writer.style.typography.lineHeight": {
@@ -209,6 +216,7 @@
             ],
             "default": 1.5,
             "description": "%paperback-writer.style.typography.lineHeight.dsc%",
+            "scope": "resource",
             "order": 1
           },
           "paperback-writer.style.typography.h1HeaderScale": {
@@ -227,12 +235,14 @@
             ],
             "default": 2,
             "description": "%paperback-writer.style.typography.h1HeaderScale.dsc%",
+            "scope": "resource",
             "order": 2
           },
           "paperback-writer.style.font.baseSize": {
             "type": "number",
             "default": 14,
             "description": "%paperback-writer.style.font.baseSize.dsc%",
+            "scope": "resource",
             "order": 3
           },
           "paperback-writer.style.font.baseFont": {
@@ -247,6 +257,7 @@
             ],
             "default": "",
             "description": "%paperback-writer.style.font.baseFont.dsc%",
+            "scope": "resource",
             "order": 4
           },
           "paperback-writer.style.syntaxHighlighting.font": {
@@ -257,12 +268,14 @@
             ],
             "default": "",
             "description": "%paperback-writer.style.syntaxHighlighting.font.dsc%",
+            "scope": "resource",
             "order": 5
           },
           "paperback-writer.style.syntaxHighlighting.showLineNumbers": {
             "type": "boolean",
             "default": true,
             "description": "%paperback-writer.style.syntaxHighlighting.showLineNumbers.dsc%",
+            "scope": "resource",
             "order": 6
           },
           "paperback-writer.style.syntaxHighlighting.theme": {
@@ -274,6 +287,7 @@
             ],
             "default": "",
             "description": "%paperback-writer.style.syntaxHighlighting.theme.dsc%",
+            "scope": "resource",
             "order": 7
           }
         }
@@ -288,12 +302,14 @@
               "type": "string"
             },
             "description": "%paperback-writer.style.customCSS.dsc%",
+            "scope": "resource",
             "order": 0
           },
           "paperback-writer.style.customCSSRelativePathFile": {
             "type": "boolean",
             "default": false,
             "description": "%paperback-writer.style.customCSSRelativePathFile.dsc%",
+            "scope": "resource",
             "order": 1
           }
         }
@@ -317,6 +333,7 @@
               "type": "string"
             },
             "description": "%paperback-writer.PDF.header.items.dsc%",
+            "scope": "resource",
             "order": 1
           },
           "paperback-writer.PDF.header.fontSize": {
@@ -330,6 +347,7 @@
             ],
             "default": "60%",
             "description": "%paperback-writer.PDF.header.fontSize.dsc%",
+            "scope": "resource",
             "order": 2
           },
           "paperback-writer.PDF.header.margin": {
@@ -343,6 +361,7 @@
             ],
             "default": "1cm",
             "description": "%paperback-writer.PDF.header.margin.dsc%",
+            "scope": "resource",
             "order": 3
           },
           "paperback-writer.PDF.footer.items": {
@@ -354,6 +373,7 @@
               "type": "string"
             },
             "description": "%paperback-writer.PDF.footer.items.dsc%",
+            "scope": "resource",
             "order": 4
           },
           "paperback-writer.PDF.footer.fontSize": {
@@ -367,6 +387,7 @@
             ],
             "default": "60%",
             "description": "%paperback-writer.PDF.footer.fontSize.dsc%",
+            "scope": "resource",
             "order": 5
           },
           "paperback-writer.PDF.footer.margin": {
@@ -380,6 +401,7 @@
             ],
             "default": "1cm",
             "description": "%paperback-writer.PDF.footer.margin.dsc%",
+            "scope": "resource",
             "order": 6
           },
           "paperback-writer.PDF.printBackground": {
@@ -478,6 +500,7 @@
             "type": "boolean",
             "default": false,
             "description": "%paperback-writer.image.omitBackground.dsc%",
+            "scope": "resource",
             "order": 0
           },
           "paperback-writer.image.clip.x": {
@@ -487,6 +510,7 @@
             ],
             "default": "",
             "description": "%paperback-writer.image.clip.x.dsc%",
+            "scope": "resource",
             "order": 1
           },
           "paperback-writer.image.clip.y": {
@@ -496,6 +520,7 @@
             ],
             "default": "",
             "description": "%paperback-writer.image.clip.y.dsc%",
+            "scope": "resource",
             "order": 2
           },
           "paperback-writer.image.clip.width": {
@@ -505,6 +530,7 @@
             ],
             "default": "",
             "description": "%paperback-writer.image.clip.width.dsc%",
+            "scope": "resource",
             "order": 3
           },
           "paperback-writer.image.clip.height": {
@@ -514,12 +540,14 @@
             ],
             "default": "",
             "description": "%paperback-writer.image.clip.height.dsc%",
+            "scope": "resource",
             "order": 4
           },
           "paperback-writer.image.jpeg.quality": {
             "type": "number",
             "default": 100,
             "description": "%paperback-writer.image.jpeg.quality.dsc%",
+            "scope": "resource",
             "order": 5
           }
         }
@@ -531,7 +559,8 @@
             "type": "boolean",
             "default": false,
             "description": "%paperback-writer.markdown.addBrOnSingleLineBreaks.dsc%",
-            "order": 0
+            "order": 0,
+            "scope": "resource"
           }
         }
       },
@@ -542,7 +571,8 @@
             "type": "string",
             "default": "",
             "description": "%paperback-writer.pathToAnExternalChromium.dsc%",
-            "order": 0
+            "order": 0,
+            "scope": "machine"
           }
         }
       }
