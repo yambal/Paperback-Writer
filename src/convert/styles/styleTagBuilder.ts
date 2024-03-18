@@ -55,26 +55,22 @@ export const themeStyleTagsBuilder = ({
     // 1. vscodeのスタイルを読む。
     const includeDefaultStyles = PwCnf.style.includeDefaultStyle
     const builtInStyles: string[] = []
+    
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
       builtInStyles.push(vscodeMarkdownStyle)
       builtInStyles.push(codeThemeToCss({theme: codeTheme}))
       builtInStyles.push(blockquoteCss())
+      builtInStyles.push(`html { font-size: ${PwCnf.style.font.baseSize}px; }`)
+      builtInStyles.push(headerCss({
+        h1Scale: PwCnf.style.typography.h1HeaderScale
+      }))
+
+      const minified = new CleanCSS({}).minify(builtInStyles.join('\n')).styles
+      styleTags.push(`<style>${minified}</style>`)
     }
-
-    // 2. header
-    builtInStyles.push(`html { font-size: ${PwCnf.style.font.baseSize}px; }`)
-
-    // 3. ベースフォントサイズ
-    builtInStyles.push(headerCss({
-      h1Scale: PwCnf.style.typography.h1HeaderScale
-    }))
-
-      
-    const minified = new CleanCSS({}).minify(builtInStyles.join('\n')).styles
-    styleTags.push(`<style>${minified}</style>`)
-
-    // 3. markdown.styles(ユーザー)設定のスタイルを読む
+    
+    // 2. markdown.styles(ユーザー)設定のスタイルを読む
     const styles = PwCnf.style.customCSS
     if (styles && Array.isArray(styles) && styles.length > 0) {
       styles.forEach((styleFilePath, index) => {
