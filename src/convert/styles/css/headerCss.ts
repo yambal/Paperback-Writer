@@ -25,6 +25,10 @@ export const headerCss = ({
     h4 { font-size: ${h4Scale}rem; }
     h5 { font-size: ${h5Scale}rem; }
     h6 { font-size: ${h6Scale}rem; }
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 0;
+    }
   `
 
 }

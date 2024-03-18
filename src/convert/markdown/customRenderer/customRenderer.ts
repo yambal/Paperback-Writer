@@ -2,14 +2,11 @@ import { marked,  } from 'marked'
 import hljs, { HighlightResult } from "highlight.js"
 import { hasExtension } from '../../../util'
 
-
-
-
 /**
+ * Marked Custom Renderer 
  * @see https://marked.js.org/using_pro#use
  */
-
-export const markedPWRenderer = () => {
+export const customRenderer = () => {
   const renderer = new marked.Renderer()
 
   renderer.heading = (text, level) => {
@@ -68,9 +65,12 @@ export const markedPWRenderer = () => {
     </div>`
     }).join(`\n`)
 
+    const filenameElement = fileName ? `<div class="code-block-filename">${fileName}</div>` : '<!-- no filename -->'
+    const languageElement = languageName ? `<div class="code-block-language">${languageName}</div>` : `<!-- no language (${result.language}?) -->`
+
     return `<div class="code-block">
-  <div class="code-block-filename">${fileName}</div>
-  <div class="code-block-language">${result.language}</div>
+  ${filenameElement}
+  ${languageElement}
   ${numberedValue}
 </div>`
   }

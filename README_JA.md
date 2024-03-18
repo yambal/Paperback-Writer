@@ -63,6 +63,7 @@
 | スタイルオプション | paperback-writer.`style.customCSS` | 使用するカスタムスタイルシート（CSS）のパスリスト |
 |  | paperback-writer.`style.customCSSRelativePathFile` | 設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます |
 |  | paperback-writer.`style.includeDefaultStyle` | デフォルトのスタイルを組み込む |
+|  | paperback-writer.`style.typography.lineHeight` | 行送り (line height) |
 |  | paperback-writer.`style.typography.h1HeaderScale` | 設定したジャンプ率に基づき、H1タグと本文のサイズ比を元に、H6からH1までの見出しタグのフォントサイズを自動的に調整します。 |
 |  | paperback-writer.`style.font.baseSize` | ベースとなるフォントサイズ（px） |
 |  | paperback-writer.`style.font.baseFont` | 基本となるフォント |
@@ -74,8 +75,10 @@
 | PDFオプション | paperback-writer.`PDF.displayHeaderFooter` | ページヘッダーとフッターを表示 |  
 || paperback-writer.`PDF.header.items` | ヘッダーに表示するアイテム。`title`, `pageNumber`, `date`, `url` を組み合わせる事ができます (pdf only) |
 || paperback-writer.`PDF.header.fontSize` | ヘッダーのフォントサイズ(本文のベースサイズとの比較)(pdf only) |
+|| paperback-writer.`PDF.header.margin` | ヘッダーと本文の間のマージン(pdfのみ) |
 || paperback-writer.`PDF.footer.items` | フッターに表示するアイテム。`title`, `pageNumber`, `date`, `url` を組み合わせる事ができます (pdf only) |
 || paperback-writer.`PDF.footer.fontSize` | フッターのフォントサイズ(本文のベースサイズとの比較)(pdf only) |
+|| paperback-writer.`PDF.footer.margin` | フッターと本文の間のマージン(pdfのみ) |
 || paperback-writer.`PDF.printBackground` | 背景グラフィックを印刷する|
 || paperback-writer.`PDF.paperOrientation` | 用紙の向き|
 || paperback-writer.`PDF.pageRanges` | ページ範囲(pdfのみ), 例 '1-5, 8, 11-13|
