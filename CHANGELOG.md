@@ -9,9 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- lineHeight
-- Margin between the header and the body text.
-- Margin between the footer and the body text.
+- 
 
 ### Fixed
 
@@ -19,7 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Remove header top margin
+- 
 
 ### Removed
 
@@ -31,10 +29,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Syntax-highlighting theming
 - Syntax Highlighting: Show Line Numbers
 
-## [0.0.5] - 2023-03-05
+## [0.0.5] - 2023-03-17
 ### Fixed
 - Bug-fix
   - Paper orientation
   - Margin
+
+## [0.0.6] - 2023-03-18
+### Added
+- lineHeight
+- Margin between the header and the body text.
+- Margin between the footer and the body text.
+
+### Changed
+- Remove header top margin
 
 
