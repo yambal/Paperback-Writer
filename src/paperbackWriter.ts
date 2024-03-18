@@ -24,10 +24,11 @@ export type paperbackWriterOptionType = {
 }
 
 export const paperbackWriter = async ({ command }: paperbackWriterOptionType) => {
-  console.group(`paperbackWriter({ command: ${command} })`)
+
+  // ステータスバー
+  const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100)
 
   const pwConf = getPaperbackWriterConfiguration()
-
   const allOutputTypes: PaperbackWriterOutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
   try {
@@ -99,6 +100,9 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       return
     }
 
+    statusBarItem.text = `$(paperbackwriter-logo) working...`
+    statusBarItem.show()
+
     if (outputTypes && outputTypes.length > 0) {
       const editorText = editor.document.getText()
 
@@ -118,6 +122,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
         }
       })
 
+      statusBarItem.text = `$(paperbackwriter-logo) build html`
       return markdownToHtml({
         title: docTitle,
         markdownString: editorText,
@@ -125,17 +130,23 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
         isAddBrOnSingleNewLine: pwConf.markdown.addBrOnSingleLineBreaks
       })
       .then((html) => {
+        statusBarItem.text = `$(paperbackwriter-logo) save template html`
         return exportHtml({htmlString: html, exportPath:tmpfilename})
         .then((path) => {
+          statusBarItem.text = `$(paperbackwriter-logo) lunch puppeteer`
           lunchPuppeteer(pwConf.pathToAnExternalChromium, vscode.env.language)
           .then((lunchedPuppeteer) => {
+            statusBarItem.text = `$(paperbackwriter-logo) rendering`
             return lunchedPuppeteer.page.goto(vscode.Uri.file(tmpfilename).toString(), { waitUntil: 'networkidle0' })
             .then(() => {
               if (outputTypes) {
                 const tasks = outputTypes.map((outputType, index) => {
+                  statusBarItem.text = `$(paperbackwriter-logo) output ${outputType}`
+
                   const outputPathName = editorCocPathName.replace(ext, '.' + outputType)
     
                   if (editorDocumentLanguageId === "markdown" && outputType === 'html') {
+                    
                     return exportHtml({htmlString: html, exportPath: outputPathName})
     
                   } else if (editorDocumentLanguageId === "markdown" && outputType !== 'html') {      
@@ -199,11 +210,16 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                     return null
                   }
                 })
-    
                 Promise.all(tasks)
                 .then(() => {
+                  statusBarItem.text = `$(paperbackwriter-logo) finish output. delete ${tmpfilename}`
                   deleteFile(tmpfilename)
+
+                  statusBarItem.text = `$(paperbackwriter-logo) close puppeteer`
                   lunchedPuppeteer.browser.close()
+                })
+                .finally(() => {
+                  statusBarItem.hide()
                 })
               }
             })
