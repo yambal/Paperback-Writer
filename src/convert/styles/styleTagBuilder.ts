@@ -11,18 +11,21 @@ var CleanCSS = require('clean-css')
 
 export type StyleTagBuilderProps = {
   editorDocVsUrl: ThemeStyleTagBuilderProps['editorDocVsUrl']
+  lineHeight?: number
   fontQuerys: GetFontStyleTagsProps['fontQuerys']
   codeTheme?: CustomRendererCodeBlockThemeCSSGeneratorProps['theme']
 }
 
 export const styleTagBuilder = ({
   editorDocVsUrl,
+  lineHeight = 1.5,
   fontQuerys,
   codeTheme
 }:StyleTagBuilderProps) => {
 
   const styleTags = themeStyleTagsBuilder({
     editorDocVsUrl,
+    lineHeight,
     codeTheme
   })
   const fontStyleTags = fontStyleTagsBuilder({fontQuerys})
@@ -34,6 +37,7 @@ export const styleTagBuilder = ({
 // ------------------------------
 export type ThemeStyleTagBuilderProps = {
   editorDocVsUrl: vscode.Uri,
+  lineHeight?: number
   codeTheme?: CustomRendererCodeBlockThemeCSSGeneratorProps['theme']
 }
 type BuildedStyle = string
@@ -43,6 +47,7 @@ type BuildedStyle = string
  */
 export const themeStyleTagsBuilder = ({
   editorDocVsUrl,
+  lineHeight = 1.5,
   codeTheme
 }: ThemeStyleTagBuilderProps): string => {
   const styleTags: string[] = []
@@ -56,7 +61,7 @@ export const themeStyleTagsBuilder = ({
     const builtInStyles: string[] = []
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
-      builtInStyles.push(`body { line-height: 1.75rem; }`)
+      builtInStyles.push(`body { line-height: ${lineHeight}rem; }`)
       builtInStyles.push(customRendererCodeBlockThemeCSSGenerator({theme: codeTheme}))
       builtInStyles.push(blockquoteCss())
     }
@@ -68,7 +73,6 @@ export const themeStyleTagsBuilder = ({
     builtInStyles.push(headerCss({
       h1Scale: PwCnf.style.typography.h1HeaderScale
     }))
-
       
     const minified = new CleanCSS({}).minify(builtInStyles.join('\n')).styles
     styleTags.push(`<style>${minified}</style>`)

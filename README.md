@@ -57,6 +57,7 @@ Visual Studio Code User and Workspace Settings
 | Style Options | paperback-writer.`style.customCSS` | List of paths to custom style sheets (CSS) |
 |  | paperback-writer.`style.customCSSRelativePathFile` | If set, integrates the path to the CSS file set in custom style without converting to a relative path |
 |  | paperback-writer.`style.includeDefaultStyle` | Includes default styles |
+|  | paperback-writer.`style.typography.lineHeight` | leading (line height) |
 |  | paperback-writer.`style.typography.h1HeaderScale` | Automatically adjusts H1 to H6 font sizes based on a predefined jump ratio and the H1-body text size ratio. |
 |  | paperback-writer.`style.font.baseSize` | Base font Size (px) |
 |  | paperback-writer.`style.font.baseFont` | Base font |

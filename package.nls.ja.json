@@ -8,6 +8,7 @@
   
   
   "paperback-writer.style.includeDefaultStyle.dsc": "デフォルトのスタイルを組み込む",
+  "paperback-writer.style.typography.lineHeight.dsc": "行送り (line height)",
   "paperback-writer.style.typography.h1HeaderScale.dsc": "設定したジャンプ率に基づき、H1タグと本文のサイズ比を元に、H6からH1までの見出しタグのフォントサイズを自動的に調整します。",
   "paperback-writer.style.font.baseFont.dsc": "ベースとなるフォント",
   "paperback-writer.style.font.baseSize.dsc": "ベースとなるフォントサイズ（px）",

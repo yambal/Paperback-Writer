@@ -232,8 +232,8 @@ export const customRendererCodeBlockCSSGenerator = (
   .code-inline {
     background-color: var(--bg-color);
     color: var(--base-color);
-    padding: 0.1em 0.3em;
-    border-radius: 0.3em;
+    padding: 0.025em 0.2em;
+    border-radius: 0.2em;
     border: 1px solid var(--border-color);
   }
   `

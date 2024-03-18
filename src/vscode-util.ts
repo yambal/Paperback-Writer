@@ -5,9 +5,10 @@ var os = require('os')
 
 import localeEn from "../package.nls.json"
 import localeJa from "../package.nls.ja.json"
-import { CodeThemeName } from './convert/markdown/customRenderer/customRendererCodeBlockCSSGenerator'
+import {  } from './convert/markdown/customRenderer/customRendererCodeBlockCSSGenerator'
 import { PaperFormat } from 'puppeteer'
 import { HeaderFooterItems } from './export/pdf/pdfHeaderFooterUtil'
+import { CodeThemeName } from './convert/markdown/customRenderer/customRendererCodeBlockThemeCSSGenerator'
 
 // ------------------------------
 // 言語辞書
@@ -109,6 +110,7 @@ type PaperbackWriterConfiguration = {
       themeName: CodeThemeName | ""
     }
     typography: {
+      lineHeight: number
       h1HeaderScale: number
     }
   }
@@ -182,6 +184,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       customCSS: wsc['style']['customCSS'],
       customCSSRelativePathFile: wsc['style']['customCSSRelativePathFile'],
       typography: {
+        lineHeight: wsc['style']['typography']['lineHeight'],
         h1HeaderScale: wsc['style']['typography']['h1HeaderScale'],
       },
       syntaxHighlighting: {
