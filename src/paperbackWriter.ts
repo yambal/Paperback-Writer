@@ -197,11 +197,13 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         },
                         headerProps: {
                           fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.header.fontSize}),
-                          headerItems: pwConf.PDF.header.items
+                          headerItems: pwConf.PDF.header.items,
+                          headerMargin: pwConf.PDF.header.margin
                         },
                         footerProps: {
                           fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.footer.fontSize}),
-                          footerItems: pwConf.PDF.footer.items
+                          footerItems: pwConf.PDF.footer.items,
+                          footerMargin: pwConf.PDF.footer.margin
                         }
                       })
                     }

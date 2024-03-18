@@ -69,8 +69,10 @@ Visual Studio Code User and Workspace Settings
 | PDF Options | paperback-writer.`PDF.displayHeaderFooter` | Displays page header and footer |
 | | paperback-writer.`PDF.header.items` | Items to display in the header. You can combine `title`, `pageNumber`, `date`, and `url`. |
 | | paperback-writer.`PDF.header.fontSize` | Header font size (in comparison with the body text) (pdf only) |
+| | paperback-writer.`PDF.header.margin` | Margin between the header and the body text. (pdf only) |
 | | paperback-writer.`PDF.footer.items` | Items to display in the footer. You can combine `title`, `pageNumber`, `date`, and `url`. |
 | | paperback-writer.`PDF.footer.fontSize` | Footer font size (in comparison with the body text) (pdf only) |
+| | paperback-writer.`PDF.footer.margin` | Margin between the footer and the body text. (pdf only) |
 | | paperback-writer.`PDF.printBackground` | Prints background graphics |
 | | paperback-writer.`PDF.paperOrientation` | Paper orientation |
 | | paperback-writer.`PDF.pageRanges` | Page range for pdf only, e.g., '1-5, 8, 11-13' |

@@ -37,12 +37,14 @@ export const exportPdf = ({
     // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
     const marginWithHeaderHeight = getMarginWithHeaderHeight({
       fontSize: headerProps.fontSize,
+      headerMargin: headerProps.headerMargin,
       pdfMargin: pdfOption.margin,
       isDisplayHeaderAndFooter:pdfOption.displayHeaderFooter
     })
 
     const marginWithFooterHeight =  getMarginWitFooterHeight({
       fontSize: headerProps.fontSize,
+      footerMargin: footerProps.footerMargin,
       pdfMargin: pdfOption.margin,
       isDisplayHeaderAndFooter:pdfOption.displayHeaderFooter
     })
@@ -56,11 +58,13 @@ export const exportPdf = ({
       headerTemplate: pdfHeader({
         headerItems: headerProps.headerItems,
         fontSize: headerProps.fontSize,
+        headerMargin: headerProps.headerMargin,
         pdfMargin: pdfOption.margin
       }),
       footerTemplate: pdfFooter({
         footerItems: footerProps.footerItems,
         fontSize: footerProps.fontSize,
+        footerMargin: footerProps.footerMargin,
         pdfMargin: pdfOption.margin
       }),
       printBackground: pdfOption.printBackground,

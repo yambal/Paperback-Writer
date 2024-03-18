@@ -75,8 +75,10 @@
 | PDFオプション | paperback-writer.`PDF.displayHeaderFooter` | ページヘッダーとフッターを表示 |  
 || paperback-writer.`PDF.header.items` | ヘッダーに表示するアイテム。`title`, `pageNumber`, `date`, `url` を組み合わせる事ができます (pdf only) |
 || paperback-writer.`PDF.header.fontSize` | ヘッダーのフォントサイズ(本文のベースサイズとの比較)(pdf only) |
+|| paperback-writer.`PDF.header.margin` | ヘッダーと本文の間のマージン(pdfのみ) |
 || paperback-writer.`PDF.footer.items` | フッターに表示するアイテム。`title`, `pageNumber`, `date`, `url` を組み合わせる事ができます (pdf only) |
 || paperback-writer.`PDF.footer.fontSize` | フッターのフォントサイズ(本文のベースサイズとの比較)(pdf only) |
+|| paperback-writer.`PDF.footer.margin` | フッターと本文の間のマージン(pdfのみ) |
 || paperback-writer.`PDF.printBackground` | 背景グラフィックを印刷する|
 || paperback-writer.`PDF.paperOrientation` | 用紙の向き|
 || paperback-writer.`PDF.pageRanges` | ページ範囲(pdfのみ), 例 '1-5, 8, 11-13|

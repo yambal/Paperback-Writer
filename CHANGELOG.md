@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - lineHeight
+- Margin between the header and the body text.
+- Margin between the footer and the body text.
 
 ### Fixed
 
