@@ -1,6 +1,6 @@
 import path from "path"
 import * as vscode from 'vscode'
-import { VscodeEnvLanguage, getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
+import { VscodeEnvLanguage, getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode"
 import { remedyCss } from "./css/remedyCss"
 import { FontSetId, getFontFamily } from "./css/fontStyle"
 import { blockquoteCss } from "./css/blockquoteCss"

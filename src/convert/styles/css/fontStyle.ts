@@ -1,4 +1,4 @@
-import { VscodeEnvLanguage, getEnvLanguage, getPaperbackWriterConfiguration } from "../../../vscode-util"
+import { VscodeEnvLanguage, getEnvLanguage, getPaperbackWriterConfiguration } from "../../../vscode"
 import { FontQuery } from "../styleTagBuilder"
 
 /**

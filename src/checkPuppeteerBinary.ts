@@ -1,5 +1,5 @@
 import { isExistsPath } from "./util"
-import { showMessage } from "./vscode-util"
+import { showMessage } from "./vscode"
 
 export type CheckPuppeteerBinaryProps = {
   pathToAnExternalChromium: string

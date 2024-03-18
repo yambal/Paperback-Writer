@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from "path"
-import { getNls, getPaperbackWriterConfiguration, getWorkspaceFolder, showMessage } from './vscode-util'
+import { getNls, getPaperbackWriterConfiguration, getWorkspaceFolder, showMessage } from './vscode'
 import { mkdirp } from "mkdirp"
 import os from "os"
 import * as vscode from 'vscode'

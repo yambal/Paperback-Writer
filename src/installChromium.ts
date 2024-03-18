@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { getPaperbackWriterConfiguration, showMessage } from './vscode-util'
+import { getPaperbackWriterConfiguration, showMessage } from './vscode'
 import { CheckPuppeteerBinaryProps, checkPuppeteerBinary } from './checkPuppeteerBinary'
 
 /**
