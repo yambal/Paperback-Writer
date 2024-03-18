@@ -11,8 +11,10 @@ export type MarkdownToHtmlProps = {
   /** マークダウンテキスト */
   markdownString: string
 
+  /** Headerに挿入するCSS */
   styleTags?: string
 
+  /** 改行を<br />に変換するか */
   isAddBrOnSingleNewLine?: boolean
 }
 
