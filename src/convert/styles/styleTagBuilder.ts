@@ -1,19 +1,18 @@
 import path from "path"
 import * as vscode from 'vscode'
 import { VscodeEnvLanguage, getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
-import { vscodeMarkdownStyle } from "./css/vscodeMarkdownStyle"
-import { CodeThemeToCssProps, codeThemeToCss } from "../markdown/renderer/codeCss"
 import { remedyCss } from "./css/remedyCss"
 import { FontSetId, getFontFamily } from "./css/fontStyle"
 import { blockquoteCss } from "./css/blockquoteCss"
 import { headerCss } from "./css/headerCss"
+import { CustomRendererCodeBlockThemeCSSGeneratorProps, customRendererCodeBlockThemeCSSGenerator } from "../markdown/customRenderer/customRendererCodeBlockThemeCSSGenerator"
 
 var CleanCSS = require('clean-css')
 
 export type StyleTagBuilderProps = {
   editorDocVsUrl: ThemeStyleTagBuilderProps['editorDocVsUrl']
   fontQuerys: GetFontStyleTagsProps['fontQuerys']
-  codeTheme?: CodeThemeToCssProps['theme']
+  codeTheme?: CustomRendererCodeBlockThemeCSSGeneratorProps['theme']
 }
 
 export const styleTagBuilder = ({
@@ -35,7 +34,7 @@ export const styleTagBuilder = ({
 // ------------------------------
 export type ThemeStyleTagBuilderProps = {
   editorDocVsUrl: vscode.Uri,
-  codeTheme?: CodeThemeToCssProps['theme']
+  codeTheme?: CustomRendererCodeBlockThemeCSSGeneratorProps['theme']
 }
 type BuildedStyle = string
 
@@ -58,8 +57,7 @@ export const themeStyleTagsBuilder = ({
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
       builtInStyles.push(`body { line-height: 1.75rem; }`)
-      builtInStyles.push(vscodeMarkdownStyle)
-      builtInStyles.push(codeThemeToCss({theme: codeTheme}))
+      builtInStyles.push(customRendererCodeBlockThemeCSSGenerator({theme: codeTheme}))
       builtInStyles.push(blockquoteCss())
     }
 

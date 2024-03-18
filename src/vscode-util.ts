@@ -5,7 +5,7 @@ var os = require('os')
 
 import localeEn from "../package.nls.json"
 import localeJa from "../package.nls.ja.json"
-import { CodeThemeName } from './convert/markdown/renderer/codeCss'
+import { CodeThemeName } from './convert/markdown/customRenderer/customRendererCodeBlockCSSGenerator'
 import { PaperFormat } from 'puppeteer'
 import { HeaderFooterItems } from './export/pdf/pdfHeaderFooterUtil'
 
