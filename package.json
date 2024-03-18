@@ -136,360 +136,391 @@
         }
       ]
     },
-    "configuration": {
-      "type": "object",
-      "title": "PaperBack Writer",
-      "properties": {
-        "paperback-writer.output.types": {
-          "type": "array",
-          "default": [
-            "pdf"
-          ],
-          "items": {
-            "type": "string"
+    "configuration": [
+      {
+        "title": "%Output%",
+        "properties": {
+          "paperback-writer.output.types": {
+            "type": "array",
+            "default": [
+              "pdf"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "%paperback-writer.output.types.dsc%",
+            "order": 0
           },
-          "description": "%paperback-writer.output.types.dsc%",
-          "order": 0
-        },
-        "paperback-writer.output.directory": {
-          "type": "string",
-          "default": "",
-          "description": "%paperback-writer.output.directory.dsc%",
-          "order": 1
-        },
-        "paperback-writer.output.directoryRelativePathFile": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.output.directoryRelativePathFile.dsc%",
-          "order": 2
-        },
-        "paperback-writer.output.auto": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.output.auto.dsc%",
-          "order": 3
-        },
-        "paperback-writer.output.listOfFileNamesExcludedFromAuto": {
-          "type": "array",
-          "default": [],
-          "items": {
-            "type": "string"
+          "paperback-writer.output.directory": {
+            "type": "string",
+            "default": "",
+            "description": "%paperback-writer.output.directory.dsc%",
+            "order": 1
           },
-          "description": "%paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc%",
-          "order": 4
-        },
-        "paperback-writer.style.includeDefaultStyle": {
-          "type": "boolean",
-          "default": true,
-          "description": "%paperback-writer.style.includeDefaultStyle.dsc%",
-          "order": 5
-        },
-        "paperback-writer.style.typography.lineHeight": {
-          "type": "number",
-          "enum": [
-            1.25,
-            1.375,
-            1.5,
-            1.625,
-            1.75,
-            1.875,
-            2,
-            2.5
-          ],
-          "default": 1.5,
-          "description": "%paperback-writer.style.typography.lineHeight.dsc%",
-          "order": 6
-        },
-        "paperback-writer.style.typography.h1HeaderScale": {
-          "type": "number",
-          "enum": [
-            5,
-            4.5,
-            4,
-            3.5,
-            3,
-            2.5,
-            2,
-            1.75,
-            1.5,
-            1.25
-          ],
-          "default": 2,
-          "description": "%paperback-writer.style.typography.h1HeaderScale.dsc%",
-          "order": 7
-        },
-        "paperback-writer.style.font.baseSize": {
-          "type": "number",
-          "default": 14,
-          "description": "%paperback-writer.style.font.baseSize.dsc%",
-          "order": 8
-        },
-        "paperback-writer.style.font.baseFont": {
-          "type": "string",
-          "enum": [
-            "",
-            "Noto Sans : CY,JA,LA,VI",
-            "Noto : CY,JA,LA,VI",
-            "Roboto : CY,GR,LA,VI",
-            "BIZ UDPGothic : JA,(CY,LA)",
-            "BIZ UDPMincho : JA,(CY,LA)"
-          ],
-          "default": "",
-          "description": "%paperback-writer.style.font.baseFont.dsc%",
-          "order": 9
-        },
-        "paperback-writer.style.syntaxHighlighting.font": {
-          "type": "string",
-          "enum": [
-            "",
-            "Source Code Pro : Code"
-          ],
-          "default": "",
-          "description": "%paperback-writer.style.syntaxHighlighting.font.dsc%",
-          "order": 10
-        },
-        "paperback-writer.style.syntaxHighlighting.showLineNumbers": {
-          "type": "boolean",
-          "default": true,
-          "description": "%paperback-writer.style.syntaxHighlighting.showLineNumbers.dsc%",
-          "order": 11
-        },
-        "paperback-writer.style.syntaxHighlighting.theme": {
-          "type": "string",
-          "enum": [
-            "",
-            "White & Black: Light",
-            "White & Black: Dark"
-          ],
-          "default": "",
-          "description": "%paperback-writer.style.syntaxHighlighting.theme.dsc%",
-          "order": 12
-        },
-        "paperback-writer.style.customCSS": {
-          "type": "array",
-          "default": [],
-          "items": {
-            "type": "string"
+          "paperback-writer.output.directoryRelativePathFile": {
+            "type": "boolean",
+            "default": false,
+            "description": "%paperback-writer.output.directoryRelativePathFile.dsc%",
+            "order": 2
           },
-          "description": "%paperback-writer.style.customCSS.dsc%",
-          "order": 13
-        },
-        "paperback-writer.style.customCSSRelativePathFile": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.style.customCSSRelativePathFile.dsc%",
-          "order": 14
-        },
-        "paperback-writer.renderScale": {
-          "type": "number",
-          "default": 1,
-          "description": "%paperback-writer.renderScale.dsc%",
-          "order": 15
-        },
-        "paperback-writer.PDF.displayHeaderFooter": {
-          "type": "boolean",
-          "default": true,
-          "description": "%paperback-writer.PDF.displayHeaderFooter.dsc%",
-          "scope": "resource",
-          "order": 16
-        },
-        "paperback-writer.PDF.header.items": {
-          "type": "array",
-          "default": [
-            "title"
-          ],
-          "items": {
-            "type": "string"
+          "paperback-writer.output.auto": {
+            "type": "boolean",
+            "default": false,
+            "description": "%paperback-writer.output.auto.dsc%",
+            "order": 3
           },
-          "description": "%paperback-writer.PDF.header.items.dsc%",
-          "order": 17
-        },
-        "paperback-writer.PDF.header.fontSize": {
-          "type": "string",
-          "enum": [
-            "50%",
-            "60%",
-            "70%",
-            "80%",
-            "90%"
-          ],
-          "default": "60%",
-          "description": "%paperback-writer.PDF.header.fontSize.dsc%",
-          "order": 18
-        },
-        "paperback-writer.PDF.footer.items": {
-          "type": "array",
-          "default": [
-            "pageNumber"
-          ],
-          "items": {
-            "type": "string"
+          "paperback-writer.output.listOfFileNamesExcludedFromAuto": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "description": "%paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc%",
+            "order": 4
           },
-          "description": "%paperback-writer.PDF.footer.items.dsc%",
-          "order": 19
-        },
-        "paperback-writer.PDF.footer.fontSize": {
-          "type": "string",
-          "enum": [
-            "50%",
-            "60%",
-            "70%",
-            "80%",
-            "90%"
-          ],
-          "default": "60%",
-          "description": "%paperback-writer.PDF.footer.fontSize.dsc%",
-          "order": 20
-        },
-        "paperback-writer.PDF.printBackground": {
-          "type": "boolean",
-          "default": true,
-          "description": "%paperback-writer.PDF.printBackground.dsc%",
-          "scope": "resource",
-          "order": 21
-        },
-        "paperback-writer.PDF.paperOrientation": {
-          "type": "string",
-          "enum": [
-            "portrait",
-            "landscape"
-          ],
-          "default": "portrait",
-          "description": "%paperback-writer.PDF.paperOrientation.dsc%",
-          "scope": "resource",
-          "order": 22
-        },
-        "paperback-writer.PDF.pageRanges": {
-          "type": "string",
-          "default": "",
-          "description": "%paperback-writer.PDF.pageRanges.dsc%",
-          "scope": "resource",
-          "order": 23
-        },
-        "paperback-writer.PDF.paperSizeFormat": {
-          "type": "string",
-          "enum": [
-            "Letter",
-            "Legal",
-            "Tabloid",
-            "Ledger",
-            "A0",
-            "A1",
-            "A2",
-            "A3",
-            "A4",
-            "A5",
-            "A6"
-          ],
-          "default": "A4",
-          "description": "%paperback-writer.PDF.paperSizeFormat.dsc%",
-          "scope": "resource",
-          "order": 24
-        },
-        "paperback-writer.PDF.paperWidth": {
-          "type": "string",
-          "default": "",
-          "description": "%paperback-writer.PDF.paperWidth.dsc%",
-          "scope": "resource",
-          "order": 25
-        },
-        "paperback-writer.PDF.paperHeight": {
-          "type": "string",
-          "default": "",
-          "description": "%paperback-writer.PDF.paperHeight.dsc%",
-          "scope": "resource",
-          "order": 26
-        },
-        "paperback-writer.PDF.margin.top": {
-          "type": "string",
-          "default": "1.5cm",
-          "description": "%paperback-writer.PDF.margin.top.dsc%",
-          "scope": "resource",
-          "order": 27
-        },
-        "paperback-writer.PDF.margin.bottom": {
-          "type": "string",
-          "default": "1cm",
-          "description": "%paperback-writer.PDF.margin.bottom.dsc%",
-          "scope": "resource",
-          "order": 28
-        },
-        "paperback-writer.PDF.margin.right": {
-          "type": "string",
-          "default": "1cm",
-          "description": "%paperback-writer.PDF.margin.right.dsc%",
-          "scope": "resource",
-          "order": 29
-        },
-        "paperback-writer.PDF.margin.left": {
-          "type": "string",
-          "default": "1cm",
-          "description": "%paperback-writer.PDF.margin.left.dsc%",
-          "scope": "resource",
-          "order": 30
-        },
-        "paperback-writer.image.omitBackground": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.image.omitBackground.dsc%",
-          "order": 31
-        },
-        "paperback-writer.image.clip.x": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "default": "",
-          "description": "%paperback-writer.image.clip.x.dsc%",
-          "order": 32
-        },
-        "paperback-writer.image.clip.y": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "default": "",
-          "description": "%paperback-writer.image.clip.y.dsc%",
-          "order": 33
-        },
-        "paperback-writer.image.clip.width": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "default": "",
-          "description": "%paperback-writer.image.clip.width.dsc%",
-          "order": 34
-        },
-        "paperback-writer.image.clip.height": {
-          "type": [
-            "number",
-            "null"
-          ],
-          "default": "",
-          "description": "%paperback-writer.image.clip.height.dsc%",
-          "order": 35
-        },
-        "paperback-writer.image.jpeg.quality": {
-          "type": "number",
-          "default": 100,
-          "description": "%paperback-writer.image.jpeg.quality.dsc%",
-          "order": 36
-        },
-        "paperback-writer.markdown.addBrOnSingleLineBreaks": {
-          "type": "boolean",
-          "default": false,
-          "description": "%paperback-writer.markdown.addBrOnSingleLineBreaks.dsc%",
-          "order": 37
-        },
-        "paperback-writer.pathToAnExternalChromium": {
-          "type": "string",
-          "default": "",
-          "description": "%paperback-writer.pathToAnExternalChromium.dsc%",
-          "order": 99
+          "paperback-writer.renderScale": {
+            "type": "number",
+            "default": 1,
+            "description": "%paperback-writer.renderScale.dsc%",
+            "order": 15
+          }
+        }
+      },
+      {
+        "title": "%BuildInStyle%",
+        "properties": {
+          "paperback-writer.style.includeDefaultStyle": {
+            "type": "boolean",
+            "default": true,
+            "description": "%paperback-writer.style.includeDefaultStyle.dsc%",
+            "order": 5
+          },
+          "paperback-writer.style.typography.lineHeight": {
+            "type": "number",
+            "enum": [
+              1.25,
+              1.375,
+              1.5,
+              1.625,
+              1.75,
+              1.875,
+              2,
+              2.5
+            ],
+            "default": 1.5,
+            "description": "%paperback-writer.style.typography.lineHeight.dsc%",
+            "order": 6
+          },
+          "paperback-writer.style.typography.h1HeaderScale": {
+            "type": "number",
+            "enum": [
+              5,
+              4.5,
+              4,
+              3.5,
+              3,
+              2.5,
+              2,
+              1.75,
+              1.5,
+              1.25
+            ],
+            "default": 2,
+            "description": "%paperback-writer.style.typography.h1HeaderScale.dsc%",
+            "order": 7
+          },
+          "paperback-writer.style.font.baseSize": {
+            "type": "number",
+            "default": 14,
+            "description": "%paperback-writer.style.font.baseSize.dsc%",
+            "order": 8
+          },
+          "paperback-writer.style.font.baseFont": {
+            "type": "string",
+            "enum": [
+              "",
+              "Noto Sans : CY,JA,LA,VI",
+              "Noto : CY,JA,LA,VI",
+              "Roboto : CY,GR,LA,VI",
+              "BIZ UDPGothic : JA,(CY,LA)",
+              "BIZ UDPMincho : JA,(CY,LA)"
+            ],
+            "default": "",
+            "description": "%paperback-writer.style.font.baseFont.dsc%",
+            "order": 9
+          },
+          "paperback-writer.style.syntaxHighlighting.font": {
+            "type": "string",
+            "enum": [
+              "",
+              "Source Code Pro : Code"
+            ],
+            "default": "",
+            "description": "%paperback-writer.style.syntaxHighlighting.font.dsc%",
+            "order": 10
+          },
+          "paperback-writer.style.syntaxHighlighting.showLineNumbers": {
+            "type": "boolean",
+            "default": true,
+            "description": "%paperback-writer.style.syntaxHighlighting.showLineNumbers.dsc%",
+            "order": 11
+          },
+          "paperback-writer.style.syntaxHighlighting.theme": {
+            "type": "string",
+            "enum": [
+              "",
+              "White & Black: Light",
+              "White & Black: Dark"
+            ],
+            "default": "",
+            "description": "%paperback-writer.style.syntaxHighlighting.theme.dsc%",
+            "order": 12
+          }
+        }
+      },
+      {
+        "title": "%CustomStyle%",
+        "properties": {
+          "paperback-writer.style.customCSS": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "description": "%paperback-writer.style.customCSS.dsc%",
+            "order": 13
+          },
+          "paperback-writer.style.customCSSRelativePathFile": {
+            "type": "boolean",
+            "default": false,
+            "description": "%paperback-writer.style.customCSSRelativePathFile.dsc%",
+            "order": 14
+          }
+        }
+      },
+      {
+        "title": "%PDF%",
+        "properties": {
+          "paperback-writer.PDF.displayHeaderFooter": {
+            "type": "boolean",
+            "default": true,
+            "description": "%paperback-writer.PDF.displayHeaderFooter.dsc%",
+            "scope": "resource",
+            "order": 16
+          },
+          "paperback-writer.PDF.header.items": {
+            "type": "array",
+            "default": [
+              "title"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "%paperback-writer.PDF.header.items.dsc%",
+            "order": 17
+          },
+          "paperback-writer.PDF.header.fontSize": {
+            "type": "string",
+            "enum": [
+              "50%",
+              "60%",
+              "70%",
+              "80%",
+              "90%"
+            ],
+            "default": "60%",
+            "description": "%paperback-writer.PDF.header.fontSize.dsc%",
+            "order": 18
+          },
+          "paperback-writer.PDF.footer.items": {
+            "type": "array",
+            "default": [
+              "pageNumber"
+            ],
+            "items": {
+              "type": "string"
+            },
+            "description": "%paperback-writer.PDF.footer.items.dsc%",
+            "order": 19
+          },
+          "paperback-writer.PDF.footer.fontSize": {
+            "type": "string",
+            "enum": [
+              "50%",
+              "60%",
+              "70%",
+              "80%",
+              "90%"
+            ],
+            "default": "60%",
+            "description": "%paperback-writer.PDF.footer.fontSize.dsc%",
+            "order": 20
+          },
+          "paperback-writer.PDF.printBackground": {
+            "type": "boolean",
+            "default": true,
+            "description": "%paperback-writer.PDF.printBackground.dsc%",
+            "scope": "resource",
+            "order": 21
+          },
+          "paperback-writer.PDF.paperOrientation": {
+            "type": "string",
+            "enum": [
+              "portrait",
+              "landscape"
+            ],
+            "default": "portrait",
+            "description": "%paperback-writer.PDF.paperOrientation.dsc%",
+            "scope": "resource",
+            "order": 22
+          },
+          "paperback-writer.PDF.pageRanges": {
+            "type": "string",
+            "default": "",
+            "description": "%paperback-writer.PDF.pageRanges.dsc%",
+            "scope": "resource",
+            "order": 23
+          },
+          "paperback-writer.PDF.paperSizeFormat": {
+            "type": "string",
+            "enum": [
+              "Letter",
+              "Legal",
+              "Tabloid",
+              "Ledger",
+              "A0",
+              "A1",
+              "A2",
+              "A3",
+              "A4",
+              "A5",
+              "A6"
+            ],
+            "default": "A4",
+            "description": "%paperback-writer.PDF.paperSizeFormat.dsc%",
+            "scope": "resource",
+            "order": 24
+          },
+          "paperback-writer.PDF.paperWidth": {
+            "type": "string",
+            "default": "",
+            "description": "%paperback-writer.PDF.paperWidth.dsc%",
+            "scope": "resource",
+            "order": 25
+          },
+          "paperback-writer.PDF.paperHeight": {
+            "type": "string",
+            "default": "",
+            "description": "%paperback-writer.PDF.paperHeight.dsc%",
+            "scope": "resource",
+            "order": 26
+          },
+          "paperback-writer.PDF.margin.top": {
+            "type": "string",
+            "default": "1.5cm",
+            "description": "%paperback-writer.PDF.margin.top.dsc%",
+            "scope": "resource",
+            "order": 27
+          },
+          "paperback-writer.PDF.margin.bottom": {
+            "type": "string",
+            "default": "1cm",
+            "description": "%paperback-writer.PDF.margin.bottom.dsc%",
+            "scope": "resource",
+            "order": 28
+          },
+          "paperback-writer.PDF.margin.right": {
+            "type": "string",
+            "default": "1cm",
+            "description": "%paperback-writer.PDF.margin.right.dsc%",
+            "scope": "resource",
+            "order": 29
+          },
+          "paperback-writer.PDF.margin.left": {
+            "type": "string",
+            "default": "1cm",
+            "description": "%paperback-writer.PDF.margin.left.dsc%",
+            "scope": "resource",
+            "order": 30
+          }
+        }
+      },
+      {
+        "title": "%Image%",
+        "properties": {
+          "paperback-writer.image.omitBackground": {
+            "type": "boolean",
+            "default": false,
+            "description": "%paperback-writer.image.omitBackground.dsc%",
+            "order": 31
+          },
+          "paperback-writer.image.clip.x": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "default": "",
+            "description": "%paperback-writer.image.clip.x.dsc%",
+            "order": 32
+          },
+          "paperback-writer.image.clip.y": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "default": "",
+            "description": "%paperback-writer.image.clip.y.dsc%",
+            "order": 33
+          },
+          "paperback-writer.image.clip.width": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "default": "",
+            "description": "%paperback-writer.image.clip.width.dsc%",
+            "order": 34
+          },
+          "paperback-writer.image.clip.height": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "default": "",
+            "description": "%paperback-writer.image.clip.height.dsc%",
+            "order": 35
+          },
+          "paperback-writer.image.jpeg.quality": {
+            "type": "number",
+            "default": 100,
+            "description": "%paperback-writer.image.jpeg.quality.dsc%",
+            "order": 36
+          }
+        }
+      },
+      {
+        "title": "%Markdown%",
+        "properties": {
+          "paperback-writer.markdown.addBrOnSingleLineBreaks": {
+            "type": "boolean",
+            "default": false,
+            "description": "%paperback-writer.markdown.addBrOnSingleLineBreaks.dsc%",
+            "order": 37
+          }
+        }
+      },
+      {
+        "title": "%System%",
+        "properties": {
+          "paperback-writer.pathToAnExternalChromium": {
+            "type": "string",
+            "default": "",
+            "description": "%paperback-writer.pathToAnExternalChromium.dsc%",
+            "order": 99
+          }
         }
       }
-    }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "yarn run package",

@@ -1,23 +1,4 @@
 {
-  "paperback-writer.output.types.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported.",
-  "paperback-writer.output.auto.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
-  "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": "Excluded file name of exportOnSave option",
-  "paperback-writer.output.directory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
-  "paperback-writer.output.directoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
-  
-  "paperback-writer.style.typography.h1HeaderScale.dsc": "Automatically adjusts H1 to H6 font sizes based on a predefined jump ratio and the H1-body text size ratio.",
-  "paperback-writer.style.includeDefaultStyle.dsc": "Include the default styles.",
-  "paperback-writer.style.typography.lineHeight.dsc": "leading (line height)",
-  "paperback-writer.style.font.baseFont.dsc": "Base font",
-  "paperback-writer.style.font.baseSize.dsc": "Base font Size (px)",
-  "paperback-writer.style.syntaxHighlighting.font.dsc": "Syntax-highlighting font",
-  "paperback-writer.style.syntaxHighlighting.showLineNumbers.dsc": "Syntax-highlighting show line numbers",
-  "paperback-writer.style.syntaxHighlighting.theme.dsc": "Syntax-highlighting theme",
-  "paperback-writer.style.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
-  "paperback-writer.style.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
-
-  "paperback-writer.markdown.addBrOnSingleLineBreaks.dsc": "Enable line breaks",
-  
   "$comment": "Commands --------------------------------------------",
   "extension.paperback-writer.settings": "Output Markdown to other formats (settings.json) ",
   "extension.paperback-writer.pdf": "Output Markdown to PDF",
@@ -26,8 +7,29 @@
   "extension.paperback-writer.html": "Output Markdown to HTML",
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
 
+  "Output": "Output",
+  "paperback-writer.output.types.dsc": "Output formats: PDF, HTML, PNG, JPEG. Multiple output formats are supported.",
+  "paperback-writer.output.auto.dsc": "Enable Auto export on save. To apply the settings, you need to restart Visual Studio Code",
+  "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": "Excluded file name of exportOnSave option",
+  "paperback-writer.output.directory.dsc": "Specify the directory to export to. If left empty, the file will be exported to the same location as the source file.",
+  "paperback-writer.output.directoryRelativePathFile.dsc": "If set, the relative path specified in the export directory will be interpreted as relative to the location of that file.",
   "paperback-writer.renderScale.dsc": "Scale of the page rendering.",
+  
+  "BuildInStyle": "Build-in style",
+  "paperback-writer.style.typography.h1HeaderScale.dsc": "Automatically adjusts H1 to H6 font sizes based on a predefined jump ratio and the H1-body text size ratio.",
+  "paperback-writer.style.includeDefaultStyle.dsc": "Include the default styles.",
+  "paperback-writer.style.typography.lineHeight.dsc": "leading (line height)",
+  "paperback-writer.style.font.baseFont.dsc": "Base font",
+  "paperback-writer.style.font.baseSize.dsc": "Base font Size (px)",
+  "paperback-writer.style.syntaxHighlighting.font.dsc": "Syntax-highlighting font",
+  "paperback-writer.style.syntaxHighlighting.showLineNumbers.dsc": "Syntax-highlighting show line numbers",
+  "paperback-writer.style.syntaxHighlighting.theme.dsc": "Syntax-highlighting theme",
 
+  "CustomStyle": "Custom style",
+  "paperback-writer.style.customCSS": "List of paths for custom stylesheets (CSS) to be used.",
+  "paperback-writer.style.customCSSRelativePathFile.dsc": "If set, incorporate the paths to the CSS files specified in custom styles as is (without converting to relative paths).",
+
+  "PDF": "PDF",
   "paperback-writer.PDF.displayHeaderFooter.dsc" : "Display header and footer. (pdf only)",
   "paperback-writer.PDF.header.items.dsc": "Items to display in the header. You can combine title, pageNumber, date, and url. (pdf only)",
   "paperback-writer.PDF.header.fontSize.dsc": "Header font size (in comparison with the body text) (pdf only)",
@@ -44,18 +46,21 @@
   "paperback-writer.PDF.margin.right.dsc": "Page Option. Border Right. units: mm, cm, in, px",
   "paperback-writer.PDF.margin.left.dsc": "Page Option. Border Left. units: mm, cm, in, px",
 
+  "Image": "Image",
   "paperback-writer.image.jpeg.quality.dsc": "Image quality. (jpeg only)",
   "paperback-writer.image.clip.x.dsc": "png and jpeg only. x-coordinate of top-left corner of clip area.",
   "paperback-writer.image.clip.y.dsc": "png and jpeg only. y-coordinate of top-left corner of clip area.",
   "paperback-writer.image.clip.width.dsc": "png and jpeg only. Width of clip area.",
   "paperback-writer.image.clip.height.dsc": "png and jpeg only. Height of clip area.",
-
   "paperback-writer.image.omitBackground.dsc": "Omit background images. (png/jpeg only)",
 
+  "Markdown": "Markdown",
+  "paperback-writer.markdown.addBrOnSingleLineBreaks.dsc": "Enable line breaks",
+
+  "System": "System",
+  "paperback-writer.pathToAnExternalChromium.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
+
+  "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
 
   
-
-  "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist.",  
-
-  "paperback-writer.pathToAnExternalChromium.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium."
 }

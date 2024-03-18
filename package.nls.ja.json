@@ -1,12 +1,22 @@
 {
+  "$comment": "コマンド --------------------------------------------",
+  "extension.paperback-writer.settings": "Markdownを他の形式にOutput (settings.json) ",
+  "extension.paperback-writer.pdf": "MarkdownをPDFにOutput",
+  "extension.paperback-writer.png": "MarkdownをPNGにOutput",
+  "extension.paperback-writer.jpeg": "MarkdownをJPEGにOutput",
+  "extension.paperback-writer.html": "MarkdownをHTMLにOutput",
+  "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGにOutput",
+  
+  
+  "Output": "書き出し",
   "paperback-writer.output.types.dsc": "出力形式 : pdf、html、png、jpeg 複数の出力形式をサポート",
   "paperback-writer.output.auto.dsc": "保存時に自動書き出しを有効にします。設定を適用するには、Visual Studio Codeを再起動する必要があります",
   "paperback-writer.output.listOfFileNamesExcludedFromAuto.dsc": "自動書き出しの対象外ファイル名",
   "paperback-writer.output.directory.dsc": "書き出し先のディレクトリを指定します。空の場合、変換元ファイルと同じ場所に書き出しされます",
   "paperback-writer.output.directoryRelativePathFile.dsc": "設定されている場合、書き出しディレクトリで設定された相対パスは、そのファイルからの相対パスとして解釈されます",
+  "paperback-writer.renderScale.dsc": "ページレンダリングのスケール",
   
-  
-  
+  "BuildInStyle": "組込スタイル",
   "paperback-writer.style.includeDefaultStyle.dsc": "デフォルトのスタイルを組み込む",
   "paperback-writer.style.typography.lineHeight.dsc": "行送り (line height)",
   "paperback-writer.style.typography.h1HeaderScale.dsc": "設定したジャンプ率に基づき、H1タグと本文のサイズ比を元に、H6からH1までの見出しタグのフォントサイズを自動的に調整します。",
@@ -15,24 +25,15 @@
   "paperback-writer.style.syntaxHighlighting.font.dsc": "コードハイライトに使用するフォント",
   "paperback-writer.style.syntaxHighlighting.showLineNumbers.dsc": "コードハイライトに行番号を表示",
   "paperback-writer.style.syntaxHighlighting.theme.dsc": "コードハイライトのテーマ",
+  
+  "CustomStyle": "カスタムスタイル",
   "paperback-writer.style.customCSS.dsc": "使用するカスタムスタイルシート（CSS）のパスリスト",
   "paperback-writer.style.customCSSRelativePathFile.dsc": "設定されている場合、カスタムスタイルで設定されたCSSファイルへのパスを（相対パスに変換せずに）そのまま組み込みます",
 
-  "paperback-writer.markdown.addBrOnSingleLineBreaks.dsc": "一行改行時に<br>を追加します",
-
-  "$comment": "コマンド --------------------------------------------",
-  "extension.paperback-writer.settings": "Markdownを他の形式にOutput (settings.json) ",
-  "extension.paperback-writer.pdf": "MarkdownをPDFにOutput",
-  "extension.paperback-writer.png": "MarkdownをPNGにOutput",
-  "extension.paperback-writer.jpeg": "MarkdownをJPEGにOutput",
-  "extension.paperback-writer.html": "MarkdownをHTMLにOutput",
-  "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGにOutput",
-
-  "paperback-writer.renderScale.dsc": "ページレンダリングのスケール",
-
+  "PDF": "PDF",
   "paperback-writer.PDF.displayHeaderFooter.dsc" : "ページヘッダーとフッターを表示(pdfのみ)",
   "paperback-writer.PDF.header.items.dsc": "ヘッダーのフォントサイズ(本文のベースサイズとの比較)(pdfのみ)",
-  "paperback-writer.PDF.header.fontSize.dsc": "Header font size (in comparison with the body text) (pdf only)",
+  "paperback-writer.PDF.header.fontSize.dsc": "ヘッダーのフォントサイズ(本文のベースサイズとの比較)(pdf only)",
   "paperback-writer.PDF.footerItems.dsc": "フッターに表示するアイテム。title, pageNumber, date, url を組み合わせる事ができます(pdfのみ)",
   "paperback-writer.PDF.footer.fontSize.dsc": "フッターのフォントサイズ(本文のベースサイズとの比較)(pdf only)",
   "paperback-writer.PDF.printBackgroundd.dsc": "背景グラフィックを印刷する(pdfのみ)",
@@ -46,6 +47,7 @@
   "paperback-writer.PDF.margin.right.dsc": "ページ設定 : 右余白。単位 mm、cm、in、px",
   "paperback-writer.PDF.margin.left.dsc": "ページ設定 : 左余白。単位 mm、cm、in、px",
 
+  "Image": "画像",
   "paperback-writer.image.jpeg.quality.dsc": "画像品質(jpegのみ)、0-100",
   "paperback-writer.image.clip.x.dsc": "クリップ領域の左上隅の x座標 (png/jpegのみ)",
   "paperback-writer.image.clip.y.dsc": "クリップ領域の左上隅の y座標 (png/jpegのみ)",
@@ -53,6 +55,10 @@
   "paperback-writer.image.clip.height.dsc": "クリップ領域の高さ (png/jpegのみ)",
   "paperback-writer.image.omitBackground.dsc": "背景画像を省略する。(png/jpegのみ)",
 
+  "Markdown": "マークダウン",
+  "paperback-writer.markdown.addBrOnSingleLineBreaks.dsc": "一行改行時に改行を追加します",
+
+  "System": "システム",
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。",
 
   "paperback-writer.pathToAnExternalChromium.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス"
