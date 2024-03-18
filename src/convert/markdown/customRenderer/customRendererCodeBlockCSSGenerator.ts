@@ -27,7 +27,10 @@ export type HilightJsStyleProps = {
   }
 }
 
-export const codeCss = (
+/**
+ * Marked Custom Renderer の コードブロックに関するCSSを生成する
+ */
+export const customRendererCodeBlockCSSGenerator = (
   {
     baseColor = `#444444`,
     showLineNumbers = true,
@@ -229,92 +232,9 @@ export const codeCss = (
   .code-inline {
     background-color: var(--bg-color);
     color: var(--base-color);
-    padding: 0.1em 0.3em;
-    border-radius: 0.3em;
+    padding: 0.025em 0.2em;
+    border-radius: 0.2em;
     border: 1px solid var(--border-color);
   }
   `
-}
-
-// Code Theming
-export type CodeThemeName = "White & Black: Dark" | "White & Black: Light"
-
-export type CodeThemeToCssProps = {
-  /** テーマ名 */
-  theme?: {
-    themeName: CodeThemeName | ""
-    showLineNumbers: boolean
-  }
-}
-
-/**
- * テーマ名からCSSを生成する
- */
-export const codeThemeToCss = ( {
-  theme
-}: CodeThemeToCssProps): string => {
-
-  console.log(theme)
-
-  const {
-    themeName,
-    showLineNumbers = true
-  } = theme ?? {}
-
-  switch (themeName) {
-    case "White & Black: Light":
-      return codeCss({
-        baseColor: `#000000`,
-        showLineNumbers,
-        box: {
-          backgroundColor: `#FFFFFF`,
-          borderColor: `#000000`,
-          borderWidth: 1
-        },
-        block: {
-          commentColor: `#000000`,
-          punctuationColor: `#000000`,
-          stringColor: `#000000`,
-          sectionTitleColor: `#000000`,
-          tagColor: `#000000`,
-          nameColor: `#000000`,
-          builtInColor: `#000000`,
-          basicElementsColor: `#000000`,
-          structureColor: `#000000`,
-          codeElementsColor: `#000000`,
-          metaColor: `#000000`,
-          literalColor: `#000000`,
-          attrColor: `#000000`,
-        }
-      })
-
-    case "White & Black: Dark":
-      return codeCss({
-        baseColor: `#FFFFFF`,
-        showLineNumbers,
-        box: {
-          backgroundColor: `#000000`,
-          borderColor: `#FFFFFF`,
-          borderWidth: 1
-        },
-        block: {
-          commentColor: `#FFFFFF`,
-          punctuationColor: `#FFFFFF`,
-          stringColor: `#FFFFFF`,
-          sectionTitleColor: `#FFFFFF`,
-          tagColor: `#FFFFFF`,
-          nameColor: `#FFFFFF`,
-          builtInColor: `#FFFFFF`,
-          basicElementsColor: `#FFFFFF`,
-          structureColor: `#FFFFFF`,
-          codeElementsColor: `#FFFFFF`,
-          metaColor: `#FFFFFF`,
-          literalColor: `#FFFFFF`,
-          attrColor: `#FFFFFF`,
-        }
-      })
-
-    default:
-      return codeCss({})
-  }
 }

@@ -5,9 +5,10 @@ var os = require('os')
 
 import localeEn from "../package.nls.json"
 import localeJa from "../package.nls.ja.json"
-import { CodeThemeName } from './convert/markdown/renderer/codeCss'
+import {  } from './convert/markdown/customRenderer/customRendererCodeBlockCSSGenerator'
 import { PaperFormat } from 'puppeteer'
 import { HeaderFooterItems } from './export/pdf/pdfHeaderFooterUtil'
+import { CodeThemeName } from './convert/markdown/customRenderer/customRendererCodeBlockThemeCSSGenerator'
 
 // ------------------------------
 // 言語辞書
@@ -109,6 +110,7 @@ type PaperbackWriterConfiguration = {
       themeName: CodeThemeName | ""
     }
     typography: {
+      lineHeight: number
       h1HeaderScale: number
     }
   }
@@ -124,10 +126,12 @@ type PaperbackWriterConfiguration = {
     header: {
       items: HeaderFooterItems[]
       fontSize: HeaderFooterFOntSize
+      margin: string
     }
     footer: {
       items: HeaderFooterItems[]
       fontSize: HeaderFooterFOntSize
+      margin: string
     }
     printBackground: boolean
     paperOrientation: PdfOrientation
@@ -182,6 +186,7 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       customCSS: wsc['style']['customCSS'],
       customCSSRelativePathFile: wsc['style']['customCSSRelativePathFile'],
       typography: {
+        lineHeight: wsc['style']['typography']['lineHeight'],
         h1HeaderScale: wsc['style']['typography']['h1HeaderScale'],
       },
       syntaxHighlighting: {
@@ -201,11 +206,13 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       displayHeaderFooter: wsc['PDF']['displayHeaderFooter'],
       header: {
         items: wsc['PDF']['header']['items'],
-        fontSize: wsc['PDF']['header']['fontSize']
+        fontSize: wsc['PDF']['header']['fontSize'],
+        margin: wsc['PDF']['header']['margin']
       },
       footer: {
         items: wsc['PDF']['footer']['items'],
-        fontSize: wsc['PDF']['footer']['fontSize']
+        fontSize: wsc['PDF']['footer']['fontSize'],
+        margin: wsc['PDF']['footer']['margin']
       },
       printBackground: wsc['PDF']['printBackground'],
       paperOrientation: wsc['PDF']['paperOrientation'],

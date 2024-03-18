@@ -1,29 +1,31 @@
 import path from "path"
 import * as vscode from 'vscode'
 import { VscodeEnvLanguage, getHomeDirPath, getPaperbackWriterConfiguration, getUri, getVscodeUri, getWorkspaceFolder, showMessage } from "../../vscode-util"
-import { vscodeMarkdownStyle } from "./css/vscodeMarkdownStyle"
-import { CodeThemeToCssProps, codeThemeToCss } from "../markdown/renderer/codeCss"
 import { remedyCss } from "./css/remedyCss"
 import { FontSetId, getFontFamily } from "./css/fontStyle"
 import { blockquoteCss } from "./css/blockquoteCss"
 import { headerCss } from "./css/headerCss"
+import { CustomRendererCodeBlockThemeCSSGeneratorProps, customRendererCodeBlockThemeCSSGenerator } from "../markdown/customRenderer/customRendererCodeBlockThemeCSSGenerator"
 
 var CleanCSS = require('clean-css')
 
 export type StyleTagBuilderProps = {
   editorDocVsUrl: ThemeStyleTagBuilderProps['editorDocVsUrl']
+  lineHeight?: number
   fontQuerys: GetFontStyleTagsProps['fontQuerys']
-  codeTheme?: CodeThemeToCssProps['theme']
+  codeTheme?: CustomRendererCodeBlockThemeCSSGeneratorProps['theme']
 }
 
 export const styleTagBuilder = ({
   editorDocVsUrl,
+  lineHeight = 1.5,
   fontQuerys,
   codeTheme
 }:StyleTagBuilderProps) => {
 
   const styleTags = themeStyleTagsBuilder({
     editorDocVsUrl,
+    lineHeight,
     codeTheme
   })
   const fontStyleTags = fontStyleTagsBuilder({fontQuerys})
@@ -35,7 +37,8 @@ export const styleTagBuilder = ({
 // ------------------------------
 export type ThemeStyleTagBuilderProps = {
   editorDocVsUrl: vscode.Uri,
-  codeTheme?: CodeThemeToCssProps['theme']
+  lineHeight?: number
+  codeTheme?: CustomRendererCodeBlockThemeCSSGeneratorProps['theme']
 }
 type BuildedStyle = string
 
@@ -44,6 +47,7 @@ type BuildedStyle = string
  */
 export const themeStyleTagsBuilder = ({
   editorDocVsUrl,
+  lineHeight = 1.5,
   codeTheme
 }: ThemeStyleTagBuilderProps): string => {
   const styleTags: string[] = []
@@ -58,8 +62,8 @@ export const themeStyleTagsBuilder = ({
     
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
-      builtInStyles.push(vscodeMarkdownStyle)
-      builtInStyles.push(codeThemeToCss({theme: codeTheme}))
+      builtInStyles.push(`body { line-height: ${lineHeight}rem; }`)
+      builtInStyles.push(customRendererCodeBlockThemeCSSGenerator({theme: codeTheme}))
       builtInStyles.push(blockquoteCss())
       builtInStyles.push(`html { font-size: ${PwCnf.style.font.baseSize}px; }`)
       builtInStyles.push(headerCss({
@@ -69,8 +73,8 @@ export const themeStyleTagsBuilder = ({
       const minified = new CleanCSS({}).minify(builtInStyles.join('\n')).styles
       styleTags.push(`<style>${minified}</style>`)
     }
-    
-    // 2. markdown.styles(ユーザー)設定のスタイルを読む
+
+    // 3. markdown.styles(ユーザー)設定のスタイルを読む
     const styles = PwCnf.style.customCSS
     if (styles && Array.isArray(styles) && styles.length > 0) {
       styles.forEach((styleFilePath, index) => {

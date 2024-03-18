@@ -10,6 +10,7 @@ import {
 export type PdfFooterProps = {
   footerItems?: HeaderFooterItems[]
   fontSize?: number
+  footerMargin: string
   pdfMargin?: PDFOptions['margin']
 }
 
@@ -51,6 +52,7 @@ export const pdfFooter = ({
 // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算 -------------------------------------
 type GetMarginWitFooterHeightProps = PdfFooterProps & {
   isDisplayHeaderAndFooter: PDFOptions['displayHeaderFooter']
+  footerMargin: string
 }
 
 /**
@@ -59,6 +61,7 @@ type GetMarginWitFooterHeightProps = PdfFooterProps & {
 export const getMarginWitFooterHeight = ({
   fontSize = 14,
   pdfMargin,
+  footerMargin,
   isDisplayHeaderAndFooter
 }: GetMarginWitFooterHeightProps) => {
   // ヘッダーを表示しない場合はそのまま返す
@@ -68,8 +71,9 @@ export const getMarginWitFooterHeight = ({
 
   const mb = pdfMargin?.bottom ? String(pdfMargin.bottom) : '1cm'
 
+  const footerMarginPx = toPx(footerMargin)
   const pdfMb = toPx(mb)
 
-  return `${(pdfMb + fontSize) / CM_TO_PX_RATE}cm` 
+  return `${(pdfMb + fontSize + footerMarginPx) / CM_TO_PX_RATE}cm` 
 
 }

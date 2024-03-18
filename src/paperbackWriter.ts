@@ -99,8 +99,6 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       return
     }
 
-    console.log(`outputTypes: ${outputTypes}`)
-
     if (outputTypes && outputTypes.length > 0) {
       const editorText = editor.document.getText()
 
@@ -111,7 +109,8 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
       // スタイルタグを生成
       const styleTags  = styleTagBuilder({
-        editorDocVsUrl, 
+        editorDocVsUrl,
+        lineHeight: pwConf.style.typography.lineHeight,
         fontQuerys:buildFontQuerys(),
         codeTheme: {
           themeName: pwConf.style.syntaxHighlighting.themeName,
@@ -134,7 +133,6 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
             .then(() => {
               if (outputTypes) {
                 const tasks = outputTypes.map((outputType, index) => {
-                  console.log(`${index + 1}/${outputTypes?.length} (${editorCocPathName}) : ${editorDocumentLanguageId} -> ${outputType}`)
                   const outputPathName = editorCocPathName.replace(ext, '.' + outputType)
     
                   if (editorDocumentLanguageId === "markdown" && outputType === 'html') {
@@ -151,13 +149,6 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                       return
                     }
 
-                    console.group()
-                    console.log('outputPathName: ', editorCocPathName)
-                    console.log('outputPathName > ', outputPathName)
-                    console.log('editorDocVsUrl >', editorDocVsUrl)
-                    console.log(' > exportPathName', exportPathName)
-                    console.groupEnd
-
                     if (outputType === 'png' || outputType === 'jpeg') {
                       return exportImage({
                         outputType,
@@ -173,8 +164,6 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                     }
 
                     if (outputType === 'pdf') {
-
-                      console.log('pwConf.PDF.paperOrientation >', pwConf.PDF.paperOrientation)
 
                       const width = pwConf.PDF.paperWidth && pwConf.PDF.paperWidth.length > 0 ? pwConf.PDF.paperWidth : undefined
                       const height = pwConf.PDF.paperHeight && pwConf.PDF.paperHeight.length > 0 ? pwConf.PDF.paperHeight : undefined
@@ -196,11 +185,13 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         },
                         headerProps: {
                           fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.header.fontSize}),
-                          headerItems: pwConf.PDF.header.items
+                          headerItems: pwConf.PDF.header.items,
+                          headerMargin: pwConf.PDF.header.margin
                         },
                         footerProps: {
                           fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.footer.fontSize}),
-                          footerItems: pwConf.PDF.footer.items
+                          footerItems: pwConf.PDF.footer.items,
+                          footerMargin: pwConf.PDF.footer.margin
                         }
                       })
                     }
