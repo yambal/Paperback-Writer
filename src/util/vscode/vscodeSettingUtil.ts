@@ -7,6 +7,9 @@ import { CodeThemeName } from '../../convert/markdown/customRenderer/customRende
 
 type HeaderFooterFontSize = "50%" | "60%" | "70%" | "80%" | "90%"
 
+export type BaseFont = "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
+export type SyntaxHighlightingFont = "" | "Source Code Pro : Code"
+
 type PaperbackWriterConfiguration = {
   output: {
     types: PaperbackWriterOutputType[]
@@ -20,7 +23,7 @@ type PaperbackWriterConfiguration = {
     includeDefaultStyle: boolean
     font: {
       baseSize: number
-      baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
+      baseFont: BaseFont
     }
     customCSS: string[]
     customCSSRelativePathFile: boolean

@@ -3,6 +3,7 @@ import {
   getEnvLanguage,
   getPaperbackWriterConfiguration
 } from "../../../util"
+import { BaseFont, SyntaxHighlightingFont } from "../../../util/vscode/vscodeSettingUtil"
 import { FontQuery } from "../styleTagBuilder"
 
 /**
@@ -138,7 +139,15 @@ export const getFontFamily = ({
 /**
  * 設定からFontQueryを生成する
  **/
-export const buildFontQuerys = ():FontQuery[] => {
+export type BuildFontQuerysProps = {
+  baseFont: BaseFont
+  syntaxHighlightingFont: SyntaxHighlightingFont
+}
+
+export const buildFontQuerys = ({
+  baseFont,
+  syntaxHighlightingFont
+}: BuildFontQuerysProps):FontQuery[] => {
   const pwConf = getPaperbackWriterConfiguration()
 
   const fontQuerys: FontQuery[] = []
@@ -146,7 +155,7 @@ export const buildFontQuerys = ():FontQuery[] => {
   const language = getEnvLanguage()
 
   // 1. ベースフォント
-  switch (pwConf.style.font.baseFont) {
+  switch (baseFont) {
     case 'Noto Sans : CY,JA,LA,VI':
       fontQuerys.push({target: 'body', fontSet: 'notoSan', language})
       break
@@ -172,7 +181,7 @@ export const buildFontQuerys = ():FontQuery[] => {
       break
   }
 
-  switch (pwConf.style.syntaxHighlighting.font) {
+  switch (syntaxHighlightingFont) {
     default:
       fontQuerys.push({target: '.hljs-row-code, .code-inline', fontSet: 'SourceCodePro', language})
   }

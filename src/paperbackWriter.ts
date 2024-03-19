@@ -8,16 +8,14 @@ import {
   getOutputPathName,
   getNls
 } from "./util"
-import { markdownToHtml } from "./convert/markdown/markdownToHtml"
 import { PuppeteerPdfOutputType, exportPdf } from "./export/pdf/exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
 import { exportHtml } from "./export/exportHtml"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
-import { styleTagBuilder } from "./convert/styles/styleTagBuilder"
-import { buildFontQuerys } from "./convert/styles/css/fontStyle"
 import { getHeaderFooterFontSize } from "./export/pdf/pdfHeaderFooterUtil"
+import { htmlBuilder } from "./convert/htmlBuilder"
 
 /** このExtentionが出力できる拡張子 */
 export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
@@ -123,27 +121,25 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       const f = path.parse(editorCocPathName)
       const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
-      // スタイルタグを生成
-      const styleTags  = styleTagBuilder({
+      statusBarItem.text = addIcon(nls["Parsing Markdown"])
+      return htmlBuilder({
+        title: docTitle,
+        markdownString: editorText,
+        isAddBrOnSingleNewLine: pwConf.markdown.addBrOnSingleLineBreaks,
         editorDocVsUrl,
         lineHeight: pwConf.style.typography.lineHeight,
-        fontQuerys:buildFontQuerys(),
         codeTheme: {
           themeName: pwConf.style.syntaxHighlighting.themeName,
           showLineNumbers: pwConf.style.syntaxHighlighting.showLineNumbers
-        }
-      })
-
-      statusBarItem.text = addIcon(nls["Parsing Markdown"])
-      return markdownToHtml({
-        title: docTitle,
-        markdownString: editorText,
-        styleTags: styleTags,
-        isAddBrOnSingleNewLine: pwConf.markdown.addBrOnSingleLineBreaks
+        },
+        baseFont: pwConf.style.font.baseFont,
+        syntaxHighlightingFont: pwConf.style.syntaxHighlighting.font
       })
       .then((html) => {
         statusBarItem.text = addIcon(nls["Saving temporary files"] + ` ${tmpfilename}`)
+
         return exportHtml({htmlString: html, exportPath:tmpfilename})
+
         .then((path) => {
           statusBarItem.text = addIcon(nls["Starting renderer (Puppeteer)"])
           lunchPuppeteer(pwConf.pathToAnExternalChromium, vscode.env.language)

@@ -1,18 +1,11 @@
 import { marked } from 'marked'
-import ejs from 'ejs'
 import { customRenderer } from './customRenderer/customRenderer'
-import { defautTemplate } from '../templates/defaultTemplate'
+
 import { ruby } from './extentions/rubyExtention'
 
 export type MarkdownToHtmlProps = {
-  /** 文章のタイトル */
-  title: string
-
   /** マークダウンテキスト */
   markdownString: string
-
-  /** Headerに挿入するCSS */
-  styleTags?: string
 
   /** 改行を<br />に変換するか */
   isAddBrOnSingleNewLine?: boolean
@@ -21,10 +14,8 @@ export type MarkdownToHtmlProps = {
 /**
  * Markdown から HTML に変換する
  */
-export const markdownToHtml = ({
-  title,
+export const markdownToHtmlBody = ({
   markdownString,
-  styleTags,
   isAddBrOnSingleNewLine = false
 }: MarkdownToHtmlProps): Promise<string> => {
   return new Promise(async (resolve, reject) => {
@@ -36,13 +27,7 @@ export const markdownToHtml = ({
       })
       const htmlBodyString = await marked(markdownString)
 
-      let html = ejs.render(defautTemplate, {
-        title,
-        body: htmlBodyString,
-        style: styleTags
-      })
-
-      resolve(html)
+      resolve(htmlBodyString)
 
     } catch (error) {
       reject(error)

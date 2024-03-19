@@ -18,9 +18,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.0.5] - 2023-03-17
 ### Fixed
-- Bug-fix
-  - Paper orientation
-  - Margin
+- Paper orientation
+- Margin
 
 ## [0.0.3] - 2023-03-05
 ### Changed
@@ -36,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- 
+- Line-height
 
 ### Changed
 

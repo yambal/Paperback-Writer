@@ -10,25 +10,28 @@ import {
   showMessage
 } from "../../util"
 import { remedyCss } from "./css/remedyCss"
-import { FontSetId, getFontFamily } from "./css/fontStyle"
+import { FontSetId, buildFontQuerys, getFontFamily } from "./css/fontStyle"
 import { blockquoteCss } from "./css/blockquoteCss"
 import { headerCss } from "./css/headerCss"
 import { CustomRendererCodeBlockThemeCSSGeneratorProps, customRendererCodeBlockThemeCSSGenerator } from "../markdown/customRenderer/customRendererCodeBlockThemeCSSGenerator"
+import { BaseFont, SyntaxHighlightingFont } from "../../util/vscode/vscodeSettingUtil"
 
 var CleanCSS = require('clean-css')
 
 export type StyleTagBuilderProps = {
   editorDocVsUrl: ThemeStyleTagBuilderProps['editorDocVsUrl']
   lineHeight?: number
-  fontQuerys: GetFontStyleTagsProps['fontQuerys']
   codeTheme?: CustomRendererCodeBlockThemeCSSGeneratorProps['theme']
+  baseFont: BaseFont
+  syntaxHighlightingFont: SyntaxHighlightingFont
 }
 
 export const styleTagBuilder = ({
   editorDocVsUrl,
   lineHeight = 1.5,
-  fontQuerys,
-  codeTheme
+  codeTheme,
+  baseFont,
+  syntaxHighlightingFont
 }:StyleTagBuilderProps) => {
 
   const styleTags = themeStyleTagsBuilder({
@@ -36,11 +39,14 @@ export const styleTagBuilder = ({
     lineHeight,
     codeTheme
   })
-  const fontStyleTags = fontStyleTagsBuilder({fontQuerys})
+
+  const fontStyleTags = fontStyleTagsBuilder({
+    baseFont,
+    syntaxHighlightingFont
+  })
 
   return fontStyleTags + '\n' + styleTags
 }
-
 
 // ------------------------------
 export type ThemeStyleTagBuilderProps = {
@@ -70,7 +76,7 @@ export const themeStyleTagsBuilder = ({
     
     if (includeDefaultStyles) {
       builtInStyles.push(remedyCss)
-      builtInStyles.push(`body { line-height: ${lineHeight}rem; }`)
+      builtInStyles.push(`body { line-height: ${lineHeight}em; }`)
       builtInStyles.push(customRendererCodeBlockThemeCSSGenerator({theme: codeTheme}))
       builtInStyles.push(blockquoteCss())
       builtInStyles.push(`html { font-size: ${PwCnf.style.font.baseSize}px; }`)
@@ -165,12 +171,20 @@ export type FontQuery = {
 }
 
 type GetFontStyleTagsProps = {
-  fontQuerys: FontQuery[]
+  baseFont: BaseFont
+  syntaxHighlightingFont: SyntaxHighlightingFont
 }
 
-const fontStyleTagsBuilder = ({
-  fontQuerys
+export const fontStyleTagsBuilder = ({
+  baseFont,
+  syntaxHighlightingFont
 }: GetFontStyleTagsProps) => {
+
+  const fontQuerys = buildFontQuerys({
+    baseFont,
+    syntaxHighlightingFont
+  })
+
   const fontCsss: string[] = []
   const googleFontNames: string[] = []
   fontQuerys.forEach((fontQuery) => {
