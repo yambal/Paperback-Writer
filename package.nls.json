@@ -62,7 +62,20 @@
   "System": "System",
   "paperback-writer.pathToAnExternalChromium.dsc": "Path to a Chromium or Chrome executable to run instead of the bundled Chromium.",
 
-  "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist."
+  "markdown-pdf.outputDirector.notExist": "The output directory specified by the outputDirectory option does not exist.",
 
-  
+  "$comment-msg": "Messages --------------------------------------------",
+  "working...": "working...",
+  "Parsing Markdown": "Parsing Markdown",
+  "Saving temporary files": "Saving temporary files",
+  "Starting renderer (Puppeteer)": "Starting renderer (Puppeteer)",
+  "Rendering": "Rendering",
+  "Outputting": "Outputting",
+  "Deleting temporary files": "Deleting temporary files",
+  "Shutting down renderer (Puppeteer)": "Shutting down renderer (Puppeteer)",
+  "Finishing export": "Finishing export",
+  "Chromium or Chrome is not found!": "Chromium or Chrome is not found!",
+  "The editor is not active.": "The editor is not active.",
+  "Markdown file is not active in the editor": "Markdown file is not active in the editor",
+  "Support outputting in the formats of HTML, PDF, PNG, and JPEG" : "Support outputting in the formats of HTML, PDF, PNG, and JPEG"
 }

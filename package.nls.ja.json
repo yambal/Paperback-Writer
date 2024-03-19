@@ -63,5 +63,21 @@
   "System": "システム",
   "markdown-pdf.outputDirector.notExist": "outputDirectoryオプションで指定された出力ディレクトリが存在しません。",
 
-  "paperback-writer.pathToAnExternalChromium.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス"
+  "paperback-writer.pathToAnExternalChromium.dsc": "バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス",
+
+  "$comment-msg": "Messages --------------------------------------------",
+  "working...": "処理中...",
+  "Parsing Markdown": "マークダウンを解析しています",
+  "Saving temporary files": "一時ファイルを保存",
+  "Starting renderer (Puppeteer)": "レンダラー(Puppeteer)を起動",
+  "Rendering": "レンダリングしています",
+  "Outputting": "書き出しています",
+  "Deleting temporary files": "一時ファイルを削除しています",
+  "Shutting down renderer (Puppeteer)": "レンダラー(Puppeteer)をシャットダウンしています",
+  "Finishing export": "書き出しを終了",
+
+  "Chromium or Chrome is not found!": "ChromiumまたはChromeが存在しません！",
+  "The editor is not active.": "エディターがアクティヴになっていません",
+  "Markdown file is not active in the editor": "エディターでマークダウンファイルがアクティブになっていません",
+  "Support outputting in the formats of HTML, PDF, PNG, and JPEG" : "html, pdf, png, jpeg、のフォーマットの書き出しをサポートしています"
 }

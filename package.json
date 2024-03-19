@@ -2,7 +2,7 @@
   "name": "paperback-writer",
   "displayName": "PaperBack Writer",
   "description": "Convert Markdown to PDF",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "JuneYAMAMOTO",
   "repository": {
     "type": "git",
@@ -22,10 +22,26 @@
     "pdf",
     "export"
   ],
-  "icon": "paperbackWriter.png",
+  "icon": "media/paperbackWriter.png",
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "icons": {
+      "paperbackwriter-logo": {
+        "description": "media/paperbackwriter logo",
+        "default": {
+          "fontPath": "media/icomoon.woff",
+          "fontCharacter": "\\e903"
+        }
+      },
+      "paperbackwriter-smile": {
+        "description": "smile icon",
+        "default": {
+          "fontPath": "media/icomoon.woff",
+          "fontCharacter": "\\e9e0"
+        }
+      }
+    },
     "commands": [
       {
         "command": "extension.paperback-writer.settings",
