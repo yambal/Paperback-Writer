@@ -28,7 +28,7 @@
   "contributes": {
     "icons": {
       "paperbackwriter-logo": {
-        "description": "Skedulo icon",
+        "description": "paperbackwriter logo",
         "default": {
           "fontPath": "src/media/icomoon.woff",
           "fontCharacter": "\\e903"
