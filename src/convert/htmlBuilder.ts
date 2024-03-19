@@ -1,46 +1,37 @@
 import { MarkdownToHtmlProps, markdownToHtmlBody } from "./markdown/markdownToHtmlBody"
 import ejs from 'ejs'
 import { defautTemplate } from "./templates/defaultTemplate"
-import { StyleTagBuilderProps, styleTagBuilder } from "./styles/styleTagBuilder"
-import { BaseFont } from "../util/vscode/vscodeSettingUtil"
+import { StyleTagBuilderProps, styleTagBuilder } from "./styles/styleTag/styleTagBuilder"
 
-type HtmlBuilderProps = 
-  MarkdownToHtmlProps &
-  Omit<StyleTagBuilderProps, "fontQuerys"> &
-  {
-    /** 文章のタイトル */
-    title: string
-  
-    /** Headerに挿入するCSS */
-    styleTags?: string
-
-    baseFont: BaseFont
-  }
+type HtmlBuilderProps = {
+  markdownProps: MarkdownToHtmlProps
+} & StyleTagBuilderProps &
+{
+  title: string
+}
 
 export const htmlBuilder = ({
   title,
-  markdownString,
-  isAddBrOnSingleNewLine,
-  editorDocVsUrl,
-  lineHeight,
-  codeTheme,
-  baseFont,
-  syntaxHighlightingFont
+  markdownProps,
+  buildInStyleTagBuilderProps,
+  fontStyleTagsBuilderProps,
+  userStyleTagsBuilderProps,
+  includeDefaultStyles,
 }: HtmlBuilderProps):Promise<string> => {
   return new Promise(async (resolve, reject) => {
     try {
+      const { markdownString, isAddBrOnSingleNewLine } = markdownProps
       markdownToHtmlBody({
         markdownString,
         isAddBrOnSingleNewLine
       })
       .then(htmlBodyString => {
 
-        const styleTags  = styleTagBuilder({
-          editorDocVsUrl,
-          lineHeight,
-          codeTheme,
-          baseFont,
-          syntaxHighlightingFont
+        const styleTags = styleTagBuilder({
+          buildInStyleTagBuilderProps,
+          fontStyleTagsBuilderProps,
+          userStyleTagsBuilderProps,
+          includeDefaultStyles
         })
 
         let html = ejs.render(defautTemplate, {

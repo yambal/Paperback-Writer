@@ -124,16 +124,28 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       statusBarItem.text = addIcon(nls["Parsing Markdown"])
       return htmlBuilder({
         title: docTitle,
-        markdownString: editorText,
-        isAddBrOnSingleNewLine: pwConf.markdown.addBrOnSingleLineBreaks,
-        editorDocVsUrl,
-        lineHeight: pwConf.style.typography.lineHeight,
-        codeTheme: {
-          themeName: pwConf.style.syntaxHighlighting.themeName,
-          showLineNumbers: pwConf.style.syntaxHighlighting.showLineNumbers
+        markdownProps: {
+          markdownString: editorText,
+          isAddBrOnSingleNewLine: pwConf.markdown.addBrOnSingleLineBreaks,
         },
-        baseFont: pwConf.style.font.baseFont,
-        syntaxHighlightingFont: pwConf.style.syntaxHighlighting.font
+        buildInStyleTagBuilderProps: {
+          baseFontSize: pwConf.style.font.baseSize,
+          lineHeight: pwConf.style.typography.lineHeight,
+          codeTheme: {
+            themeName: pwConf.style.syntaxHighlighting.themeName,
+            showLineNumbers: pwConf.style.syntaxHighlighting.showLineNumbers
+          },
+          h1HeaderScale: pwConf.style.typography.h1HeaderScale
+        },
+        fontStyleTagsBuilderProps: {
+          baseFont: pwConf.style.font.baseFont,
+          syntaxHighlightingFont: pwConf.style.syntaxHighlighting.font,
+        },
+        userStyleTagsBuilderProps: {
+          editorDocVsUrl,
+          userCustomCss: pwConf.style.customCSS
+        },
+        includeDefaultStyles: pwConf.style.includeDefaultStyle
       })
       .then((html) => {
         statusBarItem.text = addIcon(nls["Saving temporary files"] + ` ${tmpfilename}`)

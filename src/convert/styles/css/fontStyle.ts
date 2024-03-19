@@ -4,7 +4,12 @@ import {
   getPaperbackWriterConfiguration
 } from "../../../util"
 import { BaseFont, SyntaxHighlightingFont } from "../../../util/vscode/vscodeSettingUtil"
-import { FontQuery } from "../styleTagBuilder"
+
+type FontQuery = {
+  language?: VscodeEnvLanguage
+  target: string
+  fontSet: FontSetId
+}
 
 /**
  * フォントに関する定義
