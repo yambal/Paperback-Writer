@@ -21,7 +21,6 @@ type PaperbackWriterConfiguration = {
     font: {
       baseSize: number
       baseFont: "" | "Noto Sans : CY,JA,LA,VI" | "Noto Serif : CY,JA,LA,VI" | "Roboto : CY,GR,LA,VI" | "BIZ UDPGothic : JA,(CY,LA)" | "BIZ UDPMincho : JA,(CY,LA)"
-      
     }
     customCSS: string[]
     customCSSRelativePathFile: boolean

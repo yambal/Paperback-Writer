@@ -7,8 +7,6 @@ export type CheckPuppeteerBinaryProps = {
 export const checkPuppeteerBinary = ({
   pathToAnExternalChromium = ''
 }: CheckPuppeteerBinaryProps) => {
-  console.group('checkPuppeteerBinary()')
-  
   try {
     
     if (isExistsPath(pathToAnExternalChromium)) {
@@ -30,8 +28,5 @@ export const checkPuppeteerBinary = ({
       message: `checkPuppeteerBinary(): ${error}`,
       type: "error"
     })
-
-  } finally {
-    console.groupEnd()
-  }
+  } 
 }

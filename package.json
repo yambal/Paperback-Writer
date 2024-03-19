@@ -22,7 +22,7 @@
     "pdf",
     "export"
   ],
-  "icon": "paperbackWriter.png",
+  "icon": "src/media/paperbackWriter.png",
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
@@ -32,6 +32,13 @@
         "default": {
           "fontPath": "src/media/icomoon.woff",
           "fontCharacter": "\\e903"
+        }
+      },
+      "paperbackwriter-smile": {
+        "description": "smile icon",
+        "default": {
+          "fontPath": "src/media/icomoon.woff",
+          "fontCharacter": "\\e9e0"
         }
       }
     },

@@ -1,7 +1,5 @@
 export { showMessage } from './vscodeMessage'
 export {
-  getLang,
-  getNls,
   getActiveTextEditor,
   getVscodeUri,
   getUri,
@@ -12,4 +10,8 @@ export {
   getEditorDocumentLanguageId
 } from './vscodeFileUtil'
 export { getPaperbackWriterConfiguration } from './vscodeSettingUtil'
+export {
+  getLang,
+  getNls,
+} from './vscodeLanguage'
 export type { VscodeEnvLanguage } from './types'
