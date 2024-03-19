@@ -2,7 +2,7 @@
 // このモジュールをインポートし、以下のコードでvscodeというエイリアスで参照します。
 import * as vscode from 'vscode'
 import { checkPuppeteerBinary } from './checkPuppeteerBinary'
-import { getPaperbackWriterConfiguration, showMessage } from './vscode'
+import { getPaperbackWriterConfiguration, showMessage } from './util'
 import { installChromium } from './installChromium'
 import { paperbackWriter, autoSave } from './paperbackWriter'
 

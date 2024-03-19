@@ -2,10 +2,8 @@ import * as vscode from 'vscode'
 
 var os = require('os')
 
-import localeEn from "../../package.nls.json"
-import localeJa from "../../package.nls.ja.json"
-import {  } from '../convert/markdown/customRenderer/customRendererCodeBlockCSSGenerator'
-
+import localeEn from "../../../package.nls.json"
+import localeJa from "../../../package.nls.ja.json"
 import { VscodeEnvLanguage } from './types'
 
 // ------------------------------

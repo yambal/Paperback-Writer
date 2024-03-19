@@ -1,12 +1,18 @@
 import path from "path"
-import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode"
+import {
+  getActiveTextEditor,
+  getEditorDocumentLanguageId,
+  getPaperbackWriterConfiguration,
+  showMessage,
+  deleteFile,
+  getOutputPathName
+} from "./util"
 import { markdownToHtml } from "./convert/markdown/markdownToHtml"
 import { PuppeteerPdfOutputType, exportPdf } from "./export/pdf/exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
 import { exportHtml } from "./export/exportHtml"
-import { deleteFile, getOutputPathName } from "./util"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 import { styleTagBuilder } from "./convert/styles/styleTagBuilder"
 import { buildFontQuerys } from "./convert/styles/css/fontStyle"
