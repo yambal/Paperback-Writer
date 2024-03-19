@@ -2,7 +2,7 @@
 // このモジュールをインポートし、以下のコードでvscodeというエイリアスで参照します。
 import * as vscode from 'vscode'
 import { checkPuppeteerBinary } from './checkPuppeteerBinary'
-import { getPaperbackWriterConfiguration, showMessage } from './vscode-util'
+import { getPaperbackWriterConfiguration, showMessage } from './util'
 import { installChromium } from './installChromium'
 import { paperbackWriter, autoSave } from './paperbackWriter'
 
@@ -10,12 +10,7 @@ import { paperbackWriter, autoSave } from './paperbackWriter'
 // 拡張機能が有効になるのは、コマンドが最初に実行されたときです。
 export const activate = async (context: vscode.ExtensionContext) => {
 	checkPuppeteer()
-	.then(() => {
-		showMessage({
-			message: 'Congratulations, your extension "paperback-writer" is now active!',
-			type: 'info'
-		})
-	}).catch((error) => {
+	.catch((error) => {
 		showMessage({
 			message: error.message,
 			type: 'error'

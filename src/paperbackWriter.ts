@@ -1,12 +1,19 @@
 import path from "path"
-import { getActiveTextEditor, getEditorDocumentLanguageId, getPaperbackWriterConfiguration, showMessage } from "./vscode-util"
+import {
+  getActiveTextEditor,
+  getEditorDocumentLanguageId,
+  getPaperbackWriterConfiguration,
+  showMessage,
+  deleteFile,
+  getOutputPathName,
+  getNls
+} from "./util"
 import { markdownToHtml } from "./convert/markdown/markdownToHtml"
 import { PuppeteerPdfOutputType, exportPdf } from "./export/pdf/exportPdf"
 import { checkPuppeteerBinary } from "./checkPuppeteerBinary"
 import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
 import { exportHtml } from "./export/exportHtml"
-import { deleteFile, getOutputPathName } from "./util"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 import { styleTagBuilder } from "./convert/styles/styleTagBuilder"
 import { buildFontQuerys } from "./convert/styles/css/fontStyle"
@@ -23,18 +30,23 @@ export type paperbackWriterOptionType = {
   command: PaperbackWriterCommandType
 }
 
+const addIcon = (text: string) => {
+  return `$(paperbackwriter-logo) ${text}`
+}
+
 export const paperbackWriter = async ({ command }: paperbackWriterOptionType) => {
-  console.group(`paperbackWriter({ command: ${command} })`)
+  const nls = getNls()
+  // ステータスバー
+  const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100)
 
   const pwConf = getPaperbackWriterConfiguration()
-
   const allOutputTypes: PaperbackWriterOutputType[] = ['html', 'pdf', 'png', 'jpeg']
 
   try {
     if (!checkPuppeteerBinary({pathToAnExternalChromium: pwConf.pathToAnExternalChromium})) {
       showMessage({
-        message: `ChromiumまたはChromeが存在しません！`, // See https://github.com/yzane/vscode-markdown-pdf#install`,
-        type: "warning"
+        message: nls["Chromium or Chrome is not found!"], // See https://github.com/yzane/vscode-markdown-pdf#install`,
+        type: "error"
       })
       return
     }
@@ -42,7 +54,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     const editor = getActiveTextEditor()
     if (!editor) {
       showMessage({
-        message: 'No active Editor!',
+        message: nls["The editor is not active."],
         type: 'warning'
       })
       return
@@ -55,7 +67,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     var editorDocumentLanguageId = getEditorDocumentLanguageId()
     if (editorDocumentLanguageId !== 'markdown' && editorDocumentLanguageId !== 'html') {
       showMessage({
-        message: 'It is not a markdown mode!',
+        message: nls["Markdown file is not active in the editor"],
         type: 'warning'
       })
       return
@@ -90,7 +102,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
       default:
         showMessage({
-          message: 'markdownPdf().1 Supported formats: html, pdf, png, jpeg.',
+          message: nls["Support outputting in the formats of HTML, PDF, PNG, and JPEG"],
           type: 'error'
         })
         return
@@ -98,6 +110,10 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
     if (!outputTypes) {
       return
     }
+
+    
+    statusBarItem.text = addIcon(nls["working..."])
+    statusBarItem.show()
 
     if (outputTypes && outputTypes.length > 0) {
       const editorText = editor.document.getText()
@@ -118,6 +134,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
         }
       })
 
+      statusBarItem.text = addIcon(nls["Parsing Markdown"])
       return markdownToHtml({
         title: docTitle,
         markdownString: editorText,
@@ -125,17 +142,23 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
         isAddBrOnSingleNewLine: pwConf.markdown.addBrOnSingleLineBreaks
       })
       .then((html) => {
+        statusBarItem.text = addIcon(nls["Saving temporary files"] + ` ${tmpfilename}`)
         return exportHtml({htmlString: html, exportPath:tmpfilename})
         .then((path) => {
+          statusBarItem.text = addIcon(nls["Starting renderer (Puppeteer)"])
           lunchPuppeteer(pwConf.pathToAnExternalChromium, vscode.env.language)
           .then((lunchedPuppeteer) => {
+            statusBarItem.text = addIcon(nls["Rendering"])
             return lunchedPuppeteer.page.goto(vscode.Uri.file(tmpfilename).toString(), { waitUntil: 'networkidle0' })
             .then(() => {
               if (outputTypes) {
+                statusBarItem.text = addIcon(nls.Outputting + ` (${outputTypes.join(', ')})`)
                 const tasks = outputTypes.map((outputType, index) => {
+                 
                   const outputPathName = editorCocPathName.replace(ext, '.' + outputType)
     
                   if (editorDocumentLanguageId === "markdown" && outputType === 'html') {
+                    
                     return exportHtml({htmlString: html, exportPath: outputPathName})
     
                   } else if (editorDocumentLanguageId === "markdown" && outputType !== 'html') {      
@@ -199,22 +222,32 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                     return null
                   }
                 })
-    
                 Promise.all(tasks)
                 .then(() => {
+                  statusBarItem.text =  statusBarItem.text = addIcon(nls["Deleting temporary files"] + `${tmpfilename}`)
                   deleteFile(tmpfilename)
+
+                  statusBarItem.text = addIcon(nls["Shutting down renderer (Puppeteer)"])
                   lunchedPuppeteer.browser.close()
+
+                  showMessage({ message: nls["Finishing export"], type: 'info' })
+                })
+                .finally(() => {
+                  statusBarItem.text = addIcon(nls["Finishing export"])
+                  setTimeout(() => {
+                    statusBarItem.hide()
+                  }, 3000)
                 })
               }
             })
           })
         })
-      })
-      
+      })      
     }
   } catch (error) {
-    console.error('paperbackWriter()', error)
+    console.error('error ', error)
   } finally { 
+
     console.groupEnd()
   }
 }
