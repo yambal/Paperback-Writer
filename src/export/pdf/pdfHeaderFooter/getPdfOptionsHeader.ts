@@ -7,29 +7,59 @@ import {
   toPx
 } from "./pdfHeaderFooterUtil"
 
+export type PdfHeaderProps = PdfHeaderTemplateProps & GetHeaderHeightProps
+export type PdfOptionsHeader = {
+  pdfOptionsHeaderTemplate: string
+  pdfOptionsMarginTop: string | number | undefined
+}
+
+export const getPdfOptionsHeader = ({
+  headerItems,
+  hederFontSize,
+  pdfMargin,
+  headerMargin,
+  isDisplayHeaderAndFooter
+}: PdfHeaderProps): PdfOptionsHeader => {
+  const pdfOptionsHeaderTemplate = pdfHeaderTemplate({
+    headerItems,
+    hederFontSize,
+    pdfMargin,
+  })
+  const pdfOptionsMarginTop = getMarginWithHeaderHeight({
+    hederFontSize,
+    pdfMargin,
+    headerMargin,
+    isDisplayHeaderAndFooter,
+  })
+
+  return {
+    pdfOptionsHeaderTemplate,
+    pdfOptionsMarginTop
+  }
+}
+
 // ヘッダーのHTML -------------------------------------
 
-export type PdfHeaderProps = {
-  headerItems?: HeaderFooterItems[]
-  headerMargin: string,
-  fontSize?: number
-  pdfMargin?: PDFOptions['margin']
+type PdfHeaderTemplateProps = {
+  headerItems: HeaderFooterItems[]
+  hederFontSize: number
+  pdfMargin: PDFOptions['margin']
 }
 
 /**
  * ヘッダーのHTML要素を生成する
  */
-export const pdfHeader = ({
-  headerItems =['title', 'pageNumber'],
-  fontSize = 14,
+const pdfHeaderTemplate = ({
+  headerItems,
+  hederFontSize,
   pdfMargin
-}: PdfHeaderProps): string => {
+}: PdfHeaderTemplateProps): string => {
 
   // ヘッダーのテンプレートに使用するマージンを計算する
   const m = getCalculatedHeaderMargin({pdfMargin})
 
   // ヘッダーのテンプレートに使用するフォントサイズを計算する
-  const fs = getCalculatedHeaderFooterTemplateFontSize({fontSize})
+  const fs = getCalculatedHeaderFooterTemplateFontSize({fontSize: hederFontSize})
 
   const itemsElement = headerItems.map((item, index) => {
     if (item === 'title') {
@@ -48,24 +78,28 @@ export const pdfHeader = ({
 
   const justify = headerItems.length === 1 ? 'center' : 'space-between'
 
-  return `
+  const pdfOptionsHeaderTemplate = `
   <div style="width: 100%; display: flex; justify-content: ${justify}; align-items: center; margin: ${m.top}px ${m.right}px 0 ${m.left}px; font-size: ${fs}px;">
     ${itemsElement.join('\n')}
   </div>
   `
+
+  return pdfOptionsHeaderTemplate
 }
 
 // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算 -------------------------------------
-type GetHeaderHeightProps = PdfHeaderProps & {
+type GetHeaderHeightProps = {
+  hederFontSize?: number
   isDisplayHeaderAndFooter: PDFOptions['displayHeaderFooter']
   headerMargin: string
+  pdfMargin?: PDFOptions['margin']
 }
 
 /**
  * ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
  */
-export const getMarginWithHeaderHeight = ({
-  fontSize = 14,
+const getMarginWithHeaderHeight = ({
+  hederFontSize = 14,
   pdfMargin,
   headerMargin,
   isDisplayHeaderAndFooter
@@ -80,6 +114,6 @@ export const getMarginWithHeaderHeight = ({
   const pdfMt = toPx(mt)
   const headerMarginPx = toPx(headerMargin)
 
-  return `${(pdfMt + fontSize + headerMarginPx) / CM_TO_PX_RATE}cm` 
+  return `${(pdfMt + hederFontSize + headerMarginPx) / CM_TO_PX_RATE}cm` 
 }
 

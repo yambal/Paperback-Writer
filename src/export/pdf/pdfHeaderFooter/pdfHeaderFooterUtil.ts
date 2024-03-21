@@ -3,9 +3,11 @@ import { PDFOptions } from "puppeteer"
 export const CM_TO_PX_RATE = 28
 
 export type HeaderFooterItems = "title" | "pageNumber" | "date" | "url"
+export type HeaderFooterFontSize = number
 
-type GetCalculatedFontSizeProps = {
-  fontSize?: number
+// ヘッダーのテンプレートに使用するフォントサイズを計算する -----------------------
+type GetCalculatedHeaderFooterTemplateFontSizeProps = {
+  fontSize?: HeaderFooterFontSize
 }
 
 /**
@@ -13,7 +15,7 @@ type GetCalculatedFontSizeProps = {
  */
 export const getCalculatedHeaderFooterTemplateFontSize = ({
   fontSize = 14
-}: GetCalculatedFontSizeProps) => {
+}: GetCalculatedHeaderFooterTemplateFontSizeProps) => {
   return fontSize * 0.75
 }
 
@@ -79,7 +81,6 @@ type GetHeaderFooterFontSizeProps = {
  */
 export const getHeaderFooterFontSize = ({baseFontSize, rate}: GetHeaderFooterFontSizeProps) => {
   const res = Math.round(parseInt(rate) / 100 * baseFontSize)
-  console.log(`getHeaderFooterFontSize: ${res}`)
   return res
 }
 

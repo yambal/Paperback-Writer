@@ -1,7 +1,8 @@
 import { PDFOptions, PaperFormat } from "puppeteer"
 import { LunchedPuppeteer } from "../../lunchPuppeteer"
-import { PdfHeaderProps, getMarginWithHeaderHeight, pdfHeader } from "./pdfHeader"
-import { pdfFooter, getMarginWitFooterHeight, PdfFooterProps } from "./pdfFooter"
+import { PdfHeaderProps } from "./pdfHeaderFooter/getPdfOptionsHeader"
+import { PdfFooterProps } from "./pdfHeaderFooter/getPdfOptionsFooter"
+import { getPdfOptionsHeaderFooter } from "./pdfHeaderFooter/getPdfOptionsHeaderFooter"
 
 export type PuppeteerPdfOutputType = "pdf"
 export type PdfOrientation = "portrait" | "landscape"
@@ -16,8 +17,16 @@ export type ExportPdfProps = {
   /** PDFのオプション */
   pdfOption: PDFOptions
 } & {
-  headerProps: Omit<PdfHeaderProps, "pdfMargin">,
-  footerProps: Omit<PdfFooterProps, "pdfMargin">,
+  headerProps: {
+    headerItems: PdfHeaderProps['headerItems']
+    headerMargin: PdfHeaderProps['headerMargin']
+    hederFontSize: PdfHeaderProps['hederFontSize']
+  }
+  footerProps: {
+    footerItems: PdfFooterProps['footerItems']
+    footerMargin: PdfFooterProps['footerMargin']
+    footerFontSize: PdfFooterProps['footerFontSize']
+  }
 }
 
 /**
@@ -35,38 +44,28 @@ export const exportPdf = ({
     const format: PaperFormat | undefined = !pdfOption.width && !pdfOption.height ? pdfOption.format ?? 'A4' : undefined
 
     // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
-    const marginWithHeaderHeight = getMarginWithHeaderHeight({
-      fontSize: headerProps.fontSize,
+    const {
+      pdfOptionsHeaderTemplate,
+      pdfOptionsMarginTop,
+      pdfOptionsFooterTemplate,
+      pdfOptionsMarginBottom
+    } = getPdfOptionsHeaderFooter({
+      headerItems: headerProps.headerItems,
       headerMargin: headerProps.headerMargin,
-      pdfMargin: pdfOption.margin,
-      isDisplayHeaderAndFooter:pdfOption.displayHeaderFooter
-    })
-
-    const marginWithFooterHeight =  getMarginWitFooterHeight({
-      fontSize: headerProps.fontSize,
+      footerItems: footerProps.footerItems,
       footerMargin: footerProps.footerMargin,
+      hederFontSize: headerProps.hederFontSize,
+      footerFontSize: footerProps.footerFontSize,
       pdfMargin: pdfOption.margin,
-      isDisplayHeaderAndFooter:pdfOption.displayHeaderFooter
+      isDisplayHeaderAndFooter: pdfOption.displayHeaderFooter
     })
-
-    console.log(`marginWithHeaderHeight: ${marginWithHeaderHeight}, marginWithFooterHeight: ${marginWithFooterHeight}`)
 
     const options: PDFOptions = {
       path: exportPathName,
       scale: pdfOption.scale || 1,
       displayHeaderFooter: pdfOption.displayHeaderFooter,
-      headerTemplate: pdfHeader({
-        headerItems: headerProps.headerItems,
-        fontSize: headerProps.fontSize,
-        headerMargin: headerProps.headerMargin,
-        pdfMargin: pdfOption.margin
-      }),
-      footerTemplate: pdfFooter({
-        footerItems: footerProps.footerItems,
-        fontSize: footerProps.fontSize,
-        footerMargin: footerProps.footerMargin,
-        pdfMargin: pdfOption.margin
-      }),
+      headerTemplate: pdfOptionsHeaderTemplate,
+      footerTemplate: pdfOptionsFooterTemplate,
       printBackground: pdfOption.printBackground,
       landscape: pdfOption.landscape,
       pageRanges: pdfOption.pageRanges || '',
@@ -74,9 +73,9 @@ export const exportPdf = ({
       width: pdfOption.width,
       height: pdfOption.height,
       margin: {
-        top: marginWithHeaderHeight || '',
+        top: pdfOptionsMarginTop || '',
         right: pdfOption.margin?.right || '',
-        bottom: marginWithFooterHeight || '',
+        bottom: pdfOptionsMarginBottom || '',
         left: pdfOption.margin?.left || ''
       },
       timeout: 0

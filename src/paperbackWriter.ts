@@ -14,7 +14,7 @@ import { lunchPuppeteer } from "./lunchPuppeteer"
 import * as vscode from 'vscode'
 import { exportHtml } from "./export/exportHtml"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
-import { getHeaderFooterFontSize } from "./export/pdf/pdfHeaderFooterUtil"
+import { getHeaderFooterFontSize } from "./export/pdf/pdfHeaderFooter/pdfHeaderFooterUtil"
 import { htmlBuilder } from "./convert/htmlBuilder"
 
 /** このExtentionが出力できる拡張子 */
@@ -216,12 +216,12 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                           margin: pwConf.PDF.margin
                         },
                         headerProps: {
-                          fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.header.fontSize}),
+                          hederFontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.header.fontSize}),
                           headerItems: pwConf.PDF.header.items,
                           headerMargin: pwConf.PDF.header.margin
                         },
                         footerProps: {
-                          fontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.footer.fontSize}),
+                          footerFontSize: getHeaderFooterFontSize({baseFontSize: pwConf.style.font.baseSize, rate: pwConf.PDF.footer.fontSize}),
                           footerItems: pwConf.PDF.footer.items,
                           footerMargin: pwConf.PDF.footer.margin
                         }

@@ -2,7 +2,7 @@ import * as vscode from 'vscode'
 import { PdfOrientation } from '../../export/pdf/exportPdf'
 import { PaperbackWriterOutputType } from '../../paperbackWriter'
 import { PaperFormat } from 'puppeteer'
-import { HeaderFooterItems } from '../../export/pdf/pdfHeaderFooterUtil'
+import { HeaderFooterItems } from '../../export/pdf/pdfHeaderFooter/pdfHeaderFooterUtil'
 import { CodeThemeName } from '../../convert/markdown/customRenderer/customRendererCodeBlockThemeCSSGenerator'
 
 type HeaderFooterFontSize = "50%" | "60%" | "70%" | "80%" | "90%"

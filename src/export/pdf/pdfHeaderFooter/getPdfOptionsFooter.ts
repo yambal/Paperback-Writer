@@ -1,28 +1,60 @@
 import { PDFOptions } from "puppeteer"
 import {
   CM_TO_PX_RATE,
+  HeaderFooterFontSize,
   HeaderFooterItems,
   getCalculatedHeaderFooterTemplateFontSize,
   getCalculatedHeaderMargin,
   toPx
 } from "./pdfHeaderFooterUtil"
 
-export type PdfFooterProps = {
-  footerItems?: HeaderFooterItems[]
-  fontSize?: number
-  footerMargin: string
+export type PdfFooterProps = PdfFooterTemplateProps & GetMarginWitFooterHeightProps
+export type PdfOptionsFooter = {
+  pdfOptionsFooterTemplate: string
+  pdfOptionsMarginBottom: string | number | undefined
+}
+
+export const getPdfOptionsFooter = ({
+  footerItems,
+  footerFontSize,
+  pdfMargin,
+  footerMargin,
+  isDisplayHeaderAndFooter
+}: PdfFooterProps): PdfOptionsFooter => {
+  const pdfOptionsFooterTemplate = pdfFooterTemplate({
+    footerItems,
+    footerFontSize,
+    pdfMargin,
+  })
+
+  const pdfOptionsMarginBottom = getMarginWitFooterHeight({
+    footerFontSize,
+    pdfMargin,
+    footerMargin,
+    isDisplayHeaderAndFooter,
+  })
+
+  return {
+    pdfOptionsFooterTemplate,
+    pdfOptionsMarginBottom
+  }
+}
+
+export type PdfFooterTemplateProps = {
+  footerItems: HeaderFooterItems[]
+  footerFontSize: HeaderFooterFontSize
   pdfMargin?: PDFOptions['margin']
 }
 
-export const pdfFooter = ({
-  footerItems =['title', 'pageNumber'],
-  fontSize = 14,
-  pdfMargin
-}: PdfFooterProps) => {
+export const pdfFooterTemplate = ({
+  footerItems,
+  footerFontSize,
+  pdfMargin,
+}: PdfFooterTemplateProps): string => {
 
   const m = getCalculatedHeaderMargin({pdfMargin})
 
-  const fs = getCalculatedHeaderFooterTemplateFontSize({fontSize})
+  const fs = getCalculatedHeaderFooterTemplateFontSize({fontSize: footerFontSize})
 
   const itemsElement = footerItems.map((item, index) => {
     if (item === 'title') {
@@ -41,25 +73,28 @@ export const pdfFooter = ({
 
   const justify = footerItems.length === 1 ? 'center' : 'space-between'
 
-  return `
+  const pdfOptionsFooterTemplate = `
   <div style="width: 100%; display: flex; justify-content: ${justify}; align-items: center; margin: 0 ${m.right}px ${m.bottom}px ${m.left}px; font-size: ${fs}px;">
     ${itemsElement.join('\n')}
   </div>
   `
 
+  return pdfOptionsFooterTemplate
 }
 
 // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算 -------------------------------------
-type GetMarginWitFooterHeightProps = PdfFooterProps & {
+type GetMarginWitFooterHeightProps = {
   isDisplayHeaderAndFooter: PDFOptions['displayHeaderFooter']
   footerMargin: string
+  pdfMargin: PDFOptions['margin']
+  footerFontSize?: HeaderFooterFontSize
 }
 
 /**
  * ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
  */
-export const getMarginWitFooterHeight = ({
-  fontSize = 14,
+const getMarginWitFooterHeight = ({
+  footerFontSize = 14,
   pdfMargin,
   footerMargin,
   isDisplayHeaderAndFooter
@@ -74,6 +109,6 @@ export const getMarginWitFooterHeight = ({
   const footerMarginPx = toPx(footerMargin)
   const pdfMb = toPx(mb)
 
-  return `${(pdfMb + fontSize + footerMarginPx) / CM_TO_PX_RATE}cm` 
+  return `${(pdfMb + footerFontSize + footerMarginPx) / CM_TO_PX_RATE}cm` 
 
 }
