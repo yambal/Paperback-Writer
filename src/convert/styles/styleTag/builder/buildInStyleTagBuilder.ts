@@ -2,6 +2,7 @@ import { remedyCss } from "../../css/remedyCss"
 import { blockquoteCss } from "../../css/blockquoteCss"
 import { headerCss } from "../../css/headerCss"
 import { CustomRendererCodeBlockThemeCSSGeneratorProps, customRendererCodeBlockThemeCSSGenerator } from "../../../markdown/customRenderer/customRendererCodeBlockThemeCSSGenerator"
+import { imageExtentionCss } from "../../../markdown/extentions/imageExtentionCss"
 
 var CleanCSS = require('clean-css')
 
@@ -32,6 +33,7 @@ export const buildInStyleTagBuilder = ({
   builtInStyles.push(`body { line-height: ${lineHeight}em; }`)
   builtInStyles.push(headerCss({h1Scale: h1HeaderScale}))
   builtInStyles.push(customRendererCodeBlockThemeCSSGenerator({theme: codeTheme}))
+  builtInStyles.push(imageExtentionCss())
   builtInStyles.push(blockquoteCss())
 
   const minified = new CleanCSS({}).minify(builtInStyles.join('\n')).styles
