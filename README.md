@@ -2,7 +2,8 @@
 
 This extension converts Markdown files into PDF, HTML, PNG, and JPEG files.
 
-[日本語:Japanese](./README_JA.md)
+- [日本語:Japanese (GitHub Pages)](https://yambal.github.io/Paperback-Writer/README_JA.html)
+- [PaperBack Writer (Visual Studio Code)](https://marketplace.visualstudio.com/items?itemName=JuneYAMAMOTO.paperback-writer)
 
 ## Features
 The following features are supported:

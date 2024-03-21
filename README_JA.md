@@ -2,7 +2,8 @@
 
 この拡張機能は、MarkdownファイルをPDF、HTML、PNG、JPEGファイルに変換します。
 
-[English](./README.md)
+- [English (GitHub Pages)](https://yambal.github.io/Paperback-Writer/)
+- [PaperBack Writer (Visual Studio Code)](https://marketplace.visualstudio.com/items?itemName=JuneYAMAMOTO.paperback-writer)
 
 ## 機能
 
