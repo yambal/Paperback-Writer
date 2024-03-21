@@ -122,6 +122,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
       const tmpfilename = path.join(f.dir, f.name + '_tmp.html')
 
       statusBarItem.text = addIcon(nls["Parsing Markdown"])
+      
       return htmlBuilder({
         title: docTitle,
         markdownProps: {

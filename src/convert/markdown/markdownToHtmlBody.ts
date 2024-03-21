@@ -1,7 +1,8 @@
 import { marked } from 'marked'
 import { customRenderer } from './customRenderer/customRenderer'
 
-import { ruby } from './extentions/rubyExtention'
+// import { ruby } from './extentions/rubyExtention'
+import { image } from './extentions/imageExtentions'
 
 export type MarkdownToHtmlProps = {
   /** マークダウンテキスト */
@@ -22,7 +23,7 @@ export const markdownToHtmlBody = ({
     try {
       marked.use({
         renderer: customRenderer(),
-        extensions: [ruby],
+        extensions: [image],
         breaks: isAddBrOnSingleNewLine
       })
       const htmlBodyString = await marked(markdownString)

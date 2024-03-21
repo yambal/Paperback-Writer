@@ -8,23 +8,23 @@ export const ruby: TokenizerAndRendererExtension = {
   name: 'ruby',
   level: 'inline',                                                 // Is this a block-level or inline-level tokenizer?
   start(src: string) {
-    return src.match(/\{[^|]*\|[^}]*}/)?.index
+    return src.match(/!\{([^}]+)\}\(([^)]+)\)/)?.index
   },
   tokenizer(src: string, tokens: any[]) {
-    const rule = /\{([^|]*)\|([^}]*)}/                            // {傀儡|かいらい}
+    const rule = /!\{([^}]+)\}\(([^)]+)\)/                            // {傀儡|かいらい}
     const match = rule.exec(src)
-    if (match) {  
+    if (match) {
       const token: Token = {                                      // トークンを生成
         type: 'ruby',                                             // "name" と一致させる
         raw: match[0],                                            // Text to consume from the source
-        text: this.lexer.inlineTokens(match[1].trim()),           // マッチしたものを、さらにInlineレベルのパーサーにかける
+        text: match[1].trim(),           // マッチしたものを、さらにInlineレベルのパーサーにかける
         ruby: match[2].trim(),                                    // ルビの文字列(パーサーにかけない場合)
-        tokens: []
+        tokens
       }
       return token
     }
   },
   renderer(this, token): string {
-    return `<ruby>${this.parser.parseInline(token.text)}<rp>(</rp><rt>${token.ruby}</rt><rp>)</rp></ruby>`
+    return `<ruby>${token.text}<rp>(</rp><rt>${token.ruby}</rt><rp>)</rp></ruby>`
   }
 }
