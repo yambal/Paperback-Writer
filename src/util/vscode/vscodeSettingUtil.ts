@@ -59,7 +59,7 @@ type PaperbackWriterConfiguration = {
     printBackground: boolean
     paperOrientation: PdfOrientation
     pageRanges: string
-    paperSizeFormat?: PaperFormat
+    paperSizeFormat?: PaperFormat & ""
     paperWidth: string
     paperHeight: string
     margin: {

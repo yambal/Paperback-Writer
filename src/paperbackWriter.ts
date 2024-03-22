@@ -16,6 +16,7 @@ import { exportHtml } from "./export/exportHtml"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 import { getHeaderFooterFontSize } from "./export/pdf/pdfHeaderFooter/pdfHeaderFooterUtil"
 import { htmlBuilder } from "./convert/htmlBuilder"
+import { pdfFormatPolicy } from "./export/pdf/formatConv"
 
 /** このExtentionが出力できる拡張子 */
 export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
@@ -197,9 +198,16 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
                     if (outputType === 'pdf') {
 
-                      const width = pwConf.PDF.paperWidth && pwConf.PDF.paperWidth.length > 0 ? pwConf.PDF.paperWidth : undefined
-                      const height = pwConf.PDF.paperHeight && pwConf.PDF.paperHeight.length > 0 ? pwConf.PDF.paperHeight : undefined
-                      const format = width && height ? undefined : pwConf.PDF.paperSizeFormat
+                      // Format
+                      const {
+                        format,
+                        width,
+                        height
+                      } = pdfFormatPolicy({
+                        inFormat: pwConf.PDF.paperSizeFormat,
+                        inWidth: pwConf.PDF.paperWidth,
+                        inHeight: pwConf.PDF.paperHeight
+                      })
 
                       return exportPdf({
                         lunchedPuppeteerPage: lunchedPuppeteer.page,

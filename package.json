@@ -448,6 +448,7 @@
           "paperback-writer.PDF.paperSizeFormat": {
             "type": "string",
             "enum": [
+              "",
               "Letter",
               "Legal",
               "Tabloid",
