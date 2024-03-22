@@ -63,10 +63,8 @@ type PaperbackWriterConfiguration = {
     paperWidth: string
     paperHeight: string
     margin: {
-      top: string
-      right: string
-      bottom: string
-      left: string
+      vertical: string
+      horizontal: string
     }
   }
   image: {
@@ -144,10 +142,8 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       paperWidth: wsc['PDF']['paperWidth'],
       paperHeight: wsc['PDF']['paperHeight'],
       margin: {
-        top: wsc['PDF']['margin']['top'],
-        right: wsc['PDF']['margin']['right'],
-        bottom: wsc['PDF']['margin']['bottom'],
-        left: wsc['PDF']['margin']['left']
+        vertical: wsc['PDF']['margin']['vertical'],
+        horizontal: wsc['PDF']['margin']['horizontal']
       },
     },
     image: {

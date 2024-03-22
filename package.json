@@ -480,33 +480,19 @@
             "scope": "resource",
             "order": 12
           },
-          "paperback-writer.PDF.margin.top": {
+          "paperback-writer.PDF.margin.vertical": {
             "type": "string",
             "default": "1.5cm",
-            "description": "%paperback-writer.PDF.margin.top.dsc%",
+            "description": "%paperback-writer.PDF.margin.vertical.dsc%",
             "scope": "resource",
             "order": 13
           },
-          "paperback-writer.PDF.margin.bottom": {
+          "paperback-writer.PDF.margin.horizontal": {
             "type": "string",
             "default": "1cm",
-            "description": "%paperback-writer.PDF.margin.bottom.dsc%",
-            "scope": "resource",
-            "order": 14
-          },
-          "paperback-writer.PDF.margin.right": {
-            "type": "string",
-            "default": "1cm",
-            "description": "%paperback-writer.PDF.margin.right.dsc%",
+            "description": "%paperback-writer.PDF.margin.horizontal.dsc%",
             "scope": "resource",
             "order": 15
-          },
-          "paperback-writer.PDF.margin.left": {
-            "type": "string",
-            "default": "1cm",
-            "description": "%paperback-writer.PDF.margin.left.dsc%",
-            "scope": "resource",
-            "order": 16
           }
         }
       },

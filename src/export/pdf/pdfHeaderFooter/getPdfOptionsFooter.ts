@@ -10,7 +10,7 @@ import {
 
 export type PdfFooterProps = PdfFooterTemplateProps & GetMarginWitFooterHeightProps
 export type PdfOptionsFooter = {
-  pdfOptionsFooterTemplate: string
+  PDFOptionsFooterTemplate: string
   pdfOptionsMarginBottom: string | number | undefined
 }
 
@@ -21,7 +21,7 @@ export const getPdfOptionsFooter = ({
   footerMargin,
   isDisplayHeaderAndFooter
 }: PdfFooterProps): PdfOptionsFooter => {
-  const pdfOptionsFooterTemplate = pdfFooterTemplate({
+  const PDFOptionsFooterTemplate = pdfFooterTemplate({
     footerItems,
     footerFontSize,
     pdfMargin,
@@ -35,7 +35,7 @@ export const getPdfOptionsFooter = ({
   })
 
   return {
-    pdfOptionsFooterTemplate,
+    PDFOptionsFooterTemplate,
     pdfOptionsMarginBottom
   }
 }

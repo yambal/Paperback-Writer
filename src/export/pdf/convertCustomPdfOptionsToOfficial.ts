@@ -1,4 +1,5 @@
 import { PDFOptions, PaperFormat } from "puppeteer"
+import { CustomPDFOptions } from "./exportPdf"
 
 /**
 puppeteer supports the following paper formats:
@@ -61,50 +62,67 @@ const getSanitizedPaperFormat = (format?: any): PaperFormat | undefined  => {
   return hit[0]
 }
 
+// 独自拡張したPDFオプションのうち、width, height, format, margin をオフィシャルなオプションに変換する -----------------------
 export type FormatConvProps = {
   /** 拡張機能では、Puppeteer で期待されたものの他に、空白とundefinedを許容する */
-  inFormat?: PaperFormat | "",
-  inWidth?: PDFOptions['width'],
-  inHeight?: PDFOptions['height']
+  customPDFOptionsFormat?: PaperFormat | "",
+  customPDFOptionsWidth?: CustomPDFOptions['width'],
+  customPDFOptionsHeight?: CustomPDFOptions['height']
+  customPDFOptionsMargin: CustomPDFOptions['margin']
 }
 
-type PdfFormatWidthHeight = {
-  format: PDFOptions['format']
-  width: PDFOptions['width'],
-  height: PDFOptions['height']
+type PDFOptionsPageSettings = {
+  PDFOptionsPaperFormat: PDFOptions['format']
+  PDFOptionsWidth: PDFOptions['width'],
+  PDFOptionsHeight: PDFOptions['height']
+  PDFOptionsMargin: PDFOptions['margin']
 }
 
-export const pdfFormatPolicy = ({
-  inFormat,
-  inWidth,
-  inHeight
-}:FormatConvProps):PdfFormatWidthHeight  => {
+/**
+ * 独自拡張したPDFオプションのうち、width, height, format, margin をオフィシャルなオプションに変換する
+ */
+export const convertCustomPdfOptionsToOfficial = ({
+  customPDFOptionsFormat,
+  customPDFOptionsWidth,
+  customPDFOptionsHeight,
+  customPDFOptionsMargin
+}:FormatConvProps): PDFOptionsPageSettings  => {
   
   // オフィシャルなPaperFormatに変換する、変換できない場合はundefinedを返す
-  const sanitizedPaperFormat = getSanitizedPaperFormat(inFormat)
+  const sanitizedPaperFormat = getSanitizedPaperFormat(customPDFOptionsFormat)
+
+  const margin: PDFOptions['margin'] = {
+    top: customPDFOptionsMargin.vertical,
+    right: customPDFOptionsMargin.horizontal,
+    bottom: customPDFOptionsMargin.vertical,
+    left: customPDFOptionsMargin.horizontal
+  }
 
   // オフィシャルなPaperFormatである場合は、width, height は無視する
   if (sanitizedPaperFormat) {
     return {
-      format: sanitizedPaperFormat,
-      width: undefined,
-      height: undefined
+      PDFOptionsPaperFormat: sanitizedPaperFormat,
+      PDFOptionsWidth: undefined,
+      PDFOptionsHeight: undefined,
+      PDFOptionsMargin: margin
     }
   }
 
   // Formatが正しくないが、width, height も正しくない場合は、A4 とする
-  if (!isValiable(inWidth) || !isValiable(inHeight)) {
+  if (!isValiable(customPDFOptionsWidth) || !isValiable(customPDFOptionsHeight)) {
     return {
-      format: 'A4',
-      width: undefined,
-      height: undefined
+      PDFOptionsPaperFormat: 'A4',
+      PDFOptionsWidth: undefined,
+      PDFOptionsHeight: undefined,
+      PDFOptionsMargin: margin
     }
   }
 
   // Formatが正しくないが、width, height が正しいと思われるときは、width, height を優先する
   return {
-    format: undefined,
-    width: inWidth,
-    height: inHeight
+    PDFOptionsPaperFormat: undefined,
+    PDFOptionsWidth: customPDFOptionsWidth,
+    PDFOptionsHeight: customPDFOptionsHeight,
+    PDFOptionsMargin: margin
   }
 }

@@ -9,7 +9,7 @@ import {
 
 export type PdfHeaderProps = PdfHeaderTemplateProps & GetHeaderHeightProps
 export type PdfOptionsHeader = {
-  pdfOptionsHeaderTemplate: string
+  PDFOptionsHeaderTemplate: string
   pdfOptionsMarginTop: string | number | undefined
 }
 
@@ -20,7 +20,7 @@ export const getPdfOptionsHeader = ({
   headerMargin,
   isDisplayHeaderAndFooter
 }: PdfHeaderProps): PdfOptionsHeader => {
-  const pdfOptionsHeaderTemplate = pdfHeaderTemplate({
+  const PDFOptionsHeaderTemplate = pdfHeaderTemplate({
     headerItems,
     hederFontSize,
     pdfMargin,
@@ -33,7 +33,7 @@ export const getPdfOptionsHeader = ({
   })
 
   return {
-    pdfOptionsHeaderTemplate,
+    PDFOptionsHeaderTemplate,
     pdfOptionsMarginTop
   }
 }

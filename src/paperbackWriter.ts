@@ -16,7 +16,6 @@ import { exportHtml } from "./export/exportHtml"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 import { getHeaderFooterFontSize } from "./export/pdf/pdfHeaderFooter/pdfHeaderFooterUtil"
 import { htmlBuilder } from "./convert/htmlBuilder"
-import { pdfFormatPolicy } from "./export/pdf/formatConv"
 
 /** このExtentionが出力できる拡張子 */
 export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
@@ -198,29 +197,18 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
 
                     if (outputType === 'pdf') {
 
-                      // Format
-                      const {
-                        format,
-                        width,
-                        height
-                      } = pdfFormatPolicy({
-                        inFormat: pwConf.PDF.paperSizeFormat,
-                        inWidth: pwConf.PDF.paperWidth,
-                        inHeight: pwConf.PDF.paperHeight
-                      })
-
                       return exportPdf({
                         lunchedPuppeteerPage: lunchedPuppeteer.page,
                         exportPathName,
-                        pdfOption: {
+                        customPDFOptions: {
                           scale: pwConf.renderScale,
                           displayHeaderFooter: pwConf.PDF.displayHeaderFooter,
                           printBackground: pwConf.PDF.printBackground,
                           landscape: pwConf.PDF.paperOrientation === 'landscape',
                           pageRanges: pwConf.PDF.pageRanges,
-                          format: format,
-                          width: width,
-                          height: height,
+                          format: pwConf.PDF.paperSizeFormat,
+                          width: pwConf.PDF.paperWidth,
+                          height: pwConf.PDF.paperHeight,
                           margin: pwConf.PDF.margin
                         },
                         headerProps: {

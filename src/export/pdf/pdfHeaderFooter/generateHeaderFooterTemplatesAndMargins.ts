@@ -15,9 +15,16 @@ export type GetPdfOptionsHeaderFooterProps = {
   footerFontSize?: PdfFooterProps['footerFontSize']
   }
   
-  export type PdfOptionsHeaderFooter = PdfOptionsHeader & PdfOptionsFooter
+  export type PdfOptionsHeaderFooter = {
+    PDFOptionsHeaderTemplate: string
+    PDFOptionsFooterTemplate: string
+    PDFOptionsMarginWithHeaderFooter: PDFOptions['margin']
+  }
   
-  export const getPdfOptionsHeaderFooter = ({
+  /**
+   * ヘッダーとフッターのテンプレートを生成し、必要なマージンも算出する
+   */
+  export const generateHeaderFooterTemplatesAndMargins = ({
     headerItems = ['title'],
     footerItems = ['pageNumber'],
     hederFontSize = 14,
@@ -28,7 +35,7 @@ export type GetPdfOptionsHeaderFooterProps = {
     isDisplayHeaderAndFooter = true
   }: GetPdfOptionsHeaderFooterProps): PdfOptionsHeaderFooter => {
     const {
-      pdfOptionsHeaderTemplate,
+      PDFOptionsHeaderTemplate,
       pdfOptionsMarginTop
     } = getPdfOptionsHeader({
       headerItems,
@@ -39,7 +46,7 @@ export type GetPdfOptionsHeaderFooterProps = {
     })
   
     const {
-      pdfOptionsFooterTemplate,
+      PDFOptionsFooterTemplate,
       pdfOptionsMarginBottom
     } = getPdfOptionsFooter({
       footerItems,
@@ -48,10 +55,15 @@ export type GetPdfOptionsHeaderFooterProps = {
       footerMargin,
       isDisplayHeaderAndFooter
     })
+
     return {
-      pdfOptionsHeaderTemplate,
-      pdfOptionsMarginTop,
-      pdfOptionsFooterTemplate,
-      pdfOptionsMarginBottom
+      PDFOptionsHeaderTemplate,
+      PDFOptionsFooterTemplate,
+      PDFOptionsMarginWithHeaderFooter: {
+        top: pdfOptionsMarginTop,
+        bottom: pdfOptionsMarginBottom,
+        left: pdfMargin?.left ?? '',
+        right: pdfMargin?.right ?? ''
+      }
     }
   }
