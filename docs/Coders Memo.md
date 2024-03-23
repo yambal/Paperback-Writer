@@ -47,3 +47,7 @@ vsce login {publisher name}
 ```
 vsce publish
 ```
+
+## 配布場所
+https://marketplace.visualstudio.com/items?itemName=JuneYAMAMOTO.paperback-writer
+https://marketplace.visualstudio.com/manage/publishers/JuneYAMAMOTO/extensions/paperback-writer/hub

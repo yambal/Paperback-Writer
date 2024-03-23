@@ -2,7 +2,8 @@
 
 この拡張機能は、MarkdownファイルをPDF、HTML、PNG、JPEGファイルに変換します。
 
-[English](./README.md)
+- [English (GitHub Pages)](https://yambal.github.io/Paperback-Writer/)
+- [PaperBack Writer (Visual Studio Code)](https://marketplace.visualstudio.com/items?itemName=JuneYAMAMOTO.paperback-writer)
 
 ## 機能
 
@@ -82,9 +83,9 @@
 || paperback-writer.`PDF.printBackground` | 背景グラフィックを印刷する|
 || paperback-writer.`PDF.paperOrientation` | 用紙の向き|
 || paperback-writer.`PDF.pageRanges` | ページ範囲(pdfのみ), 例 '1-5, 8, 11-13|
-|| paperback-writer.`PDF.paperSizeFormat` | 用紙サイズ(pdfのみ), 用紙幅や高さを設定すると無効になります。|
-|| paperback-writer.`PDF.paperWidth` | 用紙幅(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「PDF.PaperSizeFormat」は無効になります。|
-|| paperback-writer.`PDF.paperHeight` | 用紙高さ(pdfのみ), mm, cm, in, pxの単位が利用できます. 設定した場合「PDF.PaperSizeFormat」は無効になります。 |
+|| paperback-writer.`PDF.paperSizeFormat` | 用紙サイズ(pdfのみ)、指定した場合、用紙幅/用紙幅は無視されます |
+|| paperback-writer.`PDF.paperWidth` | 用紙幅(pdfのみ), 用紙サイズが指定されているときは無視されます。mm, cm, in, pxの単位が利用できます |
+|| paperback-writer.`PDF.paperHeight` | 用紙高さ(pdfのみ), 用紙サイズが指定されているときは無視されます。mm, cm, in, pxの単位が利用できます |
 || paperback-writer.`PDF.margin.top` | ページ設定 : 上余白。単位 mm、cm、in、px |
 || paperback-writer.`PDF.margin.bottom` | ページ設定 : 下余白。単位 mm、cm、in、px |
 || paperback-writer.`PDF.margin.right` | ページ設定 : 右余白。単位 mm、cm、in、px |
@@ -96,6 +97,21 @@
 || paperback-writer.`image.clip.height` | クリップ領域の高さ |
 || paperback-writer.`image.omitBackground` | 背景画像を省略する。 |
 | Chromium | paperback-writer.`pathToAnExternalChromium` | バンドルされたChromiumの代わりに実行するChromiumまたはChromeの実行ファイルへのパス |
+
+### ``PDF.paperSizeFormat``について
+用紙サイズの指定である``PDF.paperSizeFormat``について説明します
+
+``PDF.paperSizeFormat``は、PDF文書の用紙サイズを指定するために使用されます。この設定では、標準の用紙サイズ（例えばLetter、A4など）を指定できるほか、特定の用紙幅（``PDF.paperWidth``）と用紙高さ（``PDF.paperHeight``）を指定してカスタムサイズの用紙を定義することも可能です。ただし、標準の用紙サイズが指定された場合、``PDF.paperWidth``と``PDF.paperHeight``で指定されたカスタムサイズは無視されます。そのため、カスタムサイズを使用したい場合は、``PDF.paperSizeFormat``で空白を選択してから、``PDF.paperWidth``と``PDF.paperHeight``に具体的な寸法を入力する必要があります。
+
+用紙サイズには``Japanese Postcard 100x148``(日本の郵便ハガキのサイズ)も用意しています
+
+特殊な用紙サイズに Kindle direct publishing 向けの設定が（いくつか）用意されています
+| 選択肢 | 解説 | 備考 |  |
+| --- | --- | --- | --- |
+| KDP-PB 139.7x215.9 no bleed | kindle direct publishing の ペーパーバック：139.7x215.9mm 裁ち落としなし | 最低マージン：上下6.4mm、左右9.6mm | kdp.amazon.com |
+| ADP-PB (JP) 148x210 no bleed | kindle direct publishing の ペーパーバック：148x210mm 裁ち落としなし| 最低マージン：上下6.4mm、左右9.6mm | kdp.amazon.co.jp |
+
+
 
 ## リリースノート
 

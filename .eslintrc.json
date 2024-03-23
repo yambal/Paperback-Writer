@@ -16,14 +16,11 @@
                 "format": [ "camelCase", "PascalCase" ]
             }
         ],
-        "@typescript-eslint/semi": "warn",
+        "@typescript-eslint/semi": "off",
         "curly": "warn",
         "eqeqeq": "warn",
         "no-throw-literal": "warn",
-        "semi": ["error", "never", {"beforeStatementContinuationChars": "never"}],
-        "semi-spacing": ["error", {"after": true, "before": false}],
-        "semi-style": ["error", "first"],
-        "no-extra-semi": "error",
+        "semi": "off",
         "no-unexpected-multiline": "error",
         "no-unreachable": "error"
     },

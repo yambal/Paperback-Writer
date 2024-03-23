@@ -1,10 +1,26 @@
 import { PDFOptions, PaperFormat } from "puppeteer"
 import { LunchedPuppeteer } from "../../lunchPuppeteer"
-import { PdfHeaderProps, getMarginWithHeaderHeight, pdfHeader } from "./pdfHeader"
-import { pdfFooter, getMarginWitFooterHeight, PdfFooterProps } from "./pdfFooter"
+import { PdfHeaderProps } from "./pdfHeaderFooter/getPdfOptionsHeader"
+import { PdfFooterProps } from "./pdfHeaderFooter/getPdfOptionsFooter"
+import { generateHeaderFooterTemplatesAndMargins } from "./pdfHeaderFooter/generateHeaderFooterTemplatesAndMargins"
+import { convertCustomPdfOptionsToOfficial } from "./convertCustomPdfOptionsToOfficial"
 
 export type PuppeteerPdfOutputType = "pdf"
 export type PdfOrientation = "portrait" | "landscape"
+
+export type CustomPaperFormat = "" |
+PaperFormat |
+"Japanese Postcard 100x148" |
+"KDP-PB 139.7x215.9 no bleed" |
+"KDP-PB (JP) 148x210 no bleed" 
+
+export type CustomPDFOptions = Omit<PDFOptions, "margin" | "format"> & {
+  format: CustomPaperFormat
+  margin: {
+    vertical: string
+    horizontal: string
+  }
+}
 
 export type ExportPdfProps = {
   /** ランチ済のPuppeteerのページ */
@@ -14,10 +30,18 @@ export type ExportPdfProps = {
   exportPathName: string
 
   /** PDFのオプション */
-  pdfOption: PDFOptions
+  customPDFOptions: CustomPDFOptions
 } & {
-  headerProps: Omit<PdfHeaderProps, "pdfMargin">,
-  footerProps: Omit<PdfFooterProps, "pdfMargin">,
+  headerProps: {
+    headerItems: PdfHeaderProps['headerItems']
+    headerMargin: PdfHeaderProps['headerMargin']
+    hederFontSize: PdfHeaderProps['hederFontSize']
+  }
+  footerProps: {
+    footerItems: PdfFooterProps['footerItems']
+    footerMargin: PdfFooterProps['footerMargin']
+    footerFontSize: PdfFooterProps['footerFontSize']
+  }
 }
 
 /**
@@ -26,61 +50,60 @@ export type ExportPdfProps = {
 export const exportPdf = ({
   lunchedPuppeteerPage,
   exportPathName,
-  pdfOption,
+  customPDFOptions,
   headerProps,
   footerProps
 }: ExportPdfProps): Promise<void> => {
 
   return new Promise((resolve, reject) => {
-    const format: PaperFormat | undefined = !pdfOption.width && !pdfOption.height ? pdfOption.format ?? 'A4' : undefined
 
-    // ヘッダーの有無やフォントサイズによって、本文のマージンTopの計算
-    const marginWithHeaderHeight = getMarginWithHeaderHeight({
-      fontSize: headerProps.fontSize,
+    // 独自拡張したPDFオプションのうち、width, height, format, margin をオフィシャルなオプションに変換する
+    const {
+      PDFOptionsPaperFormat,
+      PDFOptionsWidth,
+      PDFOptionsHeight,
+      PDFOptionsMargin
+    } = convertCustomPdfOptionsToOfficial({
+      customPDFOptionsFormat: customPDFOptions.format,
+      customPDFOptionsWidth: customPDFOptions.width,
+      customPDFOptionsHeight: customPDFOptions.height,
+      customPDFOptionsMargin: customPDFOptions.margin
+    })
+
+    // ヘッダーとフッターのテンプレートを生成し、必要なマージンも算出する
+    const {
+      PDFOptionsHeaderTemplate,
+      PDFOptionsFooterTemplate,
+      PDFOptionsMarginWithHeaderFooter
+    } = generateHeaderFooterTemplatesAndMargins({
+      headerItems: headerProps.headerItems,
       headerMargin: headerProps.headerMargin,
-      pdfMargin: pdfOption.margin,
-      isDisplayHeaderAndFooter:pdfOption.displayHeaderFooter
-    })
-
-    const marginWithFooterHeight =  getMarginWitFooterHeight({
-      fontSize: headerProps.fontSize,
+      footerItems: footerProps.footerItems,
       footerMargin: footerProps.footerMargin,
-      pdfMargin: pdfOption.margin,
-      isDisplayHeaderAndFooter:pdfOption.displayHeaderFooter
+      hederFontSize: headerProps.hederFontSize,
+      footerFontSize: footerProps.footerFontSize,
+      pdfMargin: PDFOptionsMargin,
+      isDisplayHeaderAndFooter: customPDFOptions.displayHeaderFooter
     })
 
-    console.log(`marginWithHeaderHeight: ${marginWithHeaderHeight}, marginWithFooterHeight: ${marginWithFooterHeight}`)
-
+    // 最終的なPDFオプション
     const options: PDFOptions = {
       path: exportPathName,
-      scale: pdfOption.scale || 1,
-      displayHeaderFooter: pdfOption.displayHeaderFooter,
-      headerTemplate: pdfHeader({
-        headerItems: headerProps.headerItems,
-        fontSize: headerProps.fontSize,
-        headerMargin: headerProps.headerMargin,
-        pdfMargin: pdfOption.margin
-      }),
-      footerTemplate: pdfFooter({
-        footerItems: footerProps.footerItems,
-        fontSize: footerProps.fontSize,
-        footerMargin: footerProps.footerMargin,
-        pdfMargin: pdfOption.margin
-      }),
-      printBackground: pdfOption.printBackground,
-      landscape: pdfOption.landscape,
-      pageRanges: pdfOption.pageRanges || '',
-      format: format,
-      width: pdfOption.width,
-      height: pdfOption.height,
-      margin: {
-        top: marginWithHeaderHeight || '',
-        right: pdfOption.margin?.right || '',
-        bottom: marginWithFooterHeight || '',
-        left: pdfOption.margin?.left || ''
-      },
+      scale: customPDFOptions.scale || 1,
+      displayHeaderFooter: customPDFOptions.displayHeaderFooter,
+      headerTemplate: PDFOptionsHeaderTemplate,
+      footerTemplate: PDFOptionsFooterTemplate,
+      printBackground: customPDFOptions.printBackground,
+      landscape: customPDFOptions.landscape,
+      pageRanges: customPDFOptions.pageRanges || '',
+      format: PDFOptionsPaperFormat,
+      width: PDFOptionsWidth,
+      height: PDFOptionsHeight,
+      margin: PDFOptionsMarginWithHeaderFooter,
       timeout: 0
     }
+
+    console.log('options', JSON.stringify(options, null, 2))
 
     /** PDF化 */
     return lunchedPuppeteerPage.pdf(options)

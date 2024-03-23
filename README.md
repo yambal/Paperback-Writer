@@ -2,7 +2,8 @@
 
 This extension converts Markdown files into PDF, HTML, PNG, and JPEG files.
 
-[日本語:Japanese](./README_JA.md)
+- [日本語:Japanese (GitHub Pages)](https://yambal.github.io/Paperback-Writer/README_JA.html)
+- [PaperBack Writer (Visual Studio Code)](https://marketplace.visualstudio.com/items?itemName=JuneYAMAMOTO.paperback-writer)
 
 ## Features
 The following features are supported:
@@ -76,9 +77,9 @@ Visual Studio Code User and Workspace Settings
 | | paperback-writer.`PDF.printBackground` | Prints background graphics |
 | | paperback-writer.`PDF.paperOrientation` | Paper orientation |
 | | paperback-writer.`PDF.pageRanges` | Page range for pdf only, e.g., '1-5, 8, 11-13' |
-| | paperback-writer.`PDF.paperSizeFormat` | Paper size for pdf only, specifying width or height disables this |
-| | paperback-writer.`PDF.paperWidth` | Paper width for pdf only, units: mm, cm, in, px. Disables `PDF : PaperSizeFormat` if set |
-| | paperback-writer.`PDF.paperHeight` | Paper height for pdf only, units: mm, cm, in, px. Disables `PDF : PaperSizeFormat` if set |
+| | paperback-writer.`PDF.paperSizeFormat` | Paper size (pdf only), if specified, paper width/paper width will be ignored |
+| | paperback-writer.`PDF.paperWidth` | Paper width (pdf only), Ignored when paper size is specified. Units available are mm, cm, in, px |
+| | paperback-writer.`PDF.paperHeight` | Paper height (pdf only), Ignored when paper size is specified. Units available are mm, cm, in, px |
 | | paperback-writer.`PDF.margin.top` | Page setting: top margin. Units mm, cm, in, px |
 | | paperback-writer.`PDF.margin.bottom` | Page setting: bottom margin. Units mm, cm, in, px |
 | | paperback-writer.`PDF.margin.right` | Page setting: right margin. Units mm, cm, in, px |
@@ -90,6 +91,23 @@ Visual Studio Code User and Workspace Settings
 | | paperback-writer.`image.clip.height` | Height of the clip area |
 | | paperback-writer.`image.omitBackground` | Omits the background image. |
 | Chromium | paperback-writer.`pathToAnExternalChromium` | Path to the executable file of Chromium or Chrome to run instead of the bundled Chromium |
+
+
+### About ``PDF.paperSizeFormat``
+
+``PDF.paperSizeFormat`` is used to specify the paper size for PDF documents. This setting allows you to select standard paper sizes (such as Letter, A4, etc.), or define a custom paper size by specifying specific paper width (``PDF.paperWidth``) and paper height (``PDF.paperHeight``). However, if a standard paper size is selected, any custom size specified through ``PDF.paperWidth`` and {{PDF.paperHeight}} will be ignored. Therefore, if you want to use a custom size, you should select blank in ``PDF.paperSizeFormat`` and then enter specific dimensions for ``PDF.paperWidth`` and ``PDF.paperHeight``.
+
+The option ``Japanese Postcard 100x148`` is also available. This corresponds to the standard size of Japanese postal postcards.
+
+Settings for special paper sizes tailored for Kindle Direct Publishing are also available:
+| Option | Description | Notes |  |
+| --- | --- | --- | --- |
+| KDP-PB 139.7x215.9 no bleed | Kindle Direct Publishing Paperback: 139.7x215.9 mm without bleed | Minimum margin: 6.4 mm top and bottom, 9.6 mm left and right | kdp.amazon.com |
+| ADP-PB (JP) 148x210 no bleed | Kindle Direct Publishing Paperback: 148x210 mm without bleed | Minimum margin: 6.4 mm top and bottom, 9.6 mm left and right | kdp.amazon.co.jp |
+
+
+For more details, please refer to [KDP : Set Trim Size, Bleed, and Margins](https://kdp.amazon.com/en_US/help/topic/GVBQ3CMEQW3W2VL6)
+
 
 ## Release Notes
 

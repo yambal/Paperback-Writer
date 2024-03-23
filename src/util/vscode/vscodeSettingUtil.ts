@@ -1,8 +1,8 @@
 import * as vscode from 'vscode'
-import { PdfOrientation } from '../../export/pdf/exportPdf'
+import { CustomPDFOptions, PdfOrientation } from '../../export/pdf/exportPdf'
 import { PaperbackWriterOutputType } from '../../paperbackWriter'
 import { PaperFormat } from 'puppeteer'
-import { HeaderFooterItems } from '../../export/pdf/pdfHeaderFooterUtil'
+import { HeaderFooterItems } from '../../export/pdf/pdfHeaderFooter/pdfHeaderFooterUtil'
 import { CodeThemeName } from '../../convert/markdown/customRenderer/customRendererCodeBlockThemeCSSGenerator'
 
 type HeaderFooterFontSize = "50%" | "60%" | "70%" | "80%" | "90%"
@@ -59,14 +59,12 @@ type PaperbackWriterConfiguration = {
     printBackground: boolean
     paperOrientation: PdfOrientation
     pageRanges: string
-    paperSizeFormat?: PaperFormat
+    paperSizeFormat: CustomPDFOptions['format']
     paperWidth: string
     paperHeight: string
     margin: {
-      top: string
-      right: string
-      bottom: string
-      left: string
+      vertical: string
+      horizontal: string
     }
   }
   image: {
@@ -144,10 +142,8 @@ export const getPaperbackWriterConfiguration = (scope?: vscode.ConfigurationScop
       paperWidth: wsc['PDF']['paperWidth'],
       paperHeight: wsc['PDF']['paperHeight'],
       margin: {
-        top: wsc['PDF']['margin']['top'],
-        right: wsc['PDF']['margin']['right'],
-        bottom: wsc['PDF']['margin']['bottom'],
-        left: wsc['PDF']['margin']['left']
+        vertical: wsc['PDF']['margin']['vertical'],
+        horizontal: wsc['PDF']['margin']['horizontal']
       },
     },
     image: {
