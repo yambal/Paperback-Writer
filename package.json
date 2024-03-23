@@ -2,7 +2,7 @@
   "name": "paperback-writer",
   "displayName": "PaperBack Writer",
   "description": "Convert Markdown to PDF",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "publisher": "JuneYAMAMOTO",
   "repository": {
     "type": "git",
@@ -461,6 +461,7 @@
               "A5",
               "A6",
               "Japanese Postcard 100x148",
+              "KDP-PB 139.7x215.9 no bleed",
               "ADP-PB (JP) 148x210 no bleed"
             ],
             "default": "A4",
