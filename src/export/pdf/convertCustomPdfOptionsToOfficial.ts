@@ -1,5 +1,6 @@
 import { PDFOptions, PaperFormat } from "puppeteer"
 import { CustomPDFOptions } from "./exportPdf"
+import { toPx } from "./pdfHeaderFooter/pdfHeaderFooterUtil"
 
 /**
 puppeteer supports the following paper formats:
@@ -29,7 +30,7 @@ const paperFormats: PaperFormat[] = [
   'A6'
 ]
 
-
+// その値が有効かどうか（undefine, null, 空文字, Nanではない）を判定する
 const isValiable = (val?: string | number | null) => {
   if (val === undefined || val === null) {
     return false
@@ -62,10 +63,15 @@ const getSanitizedPaperFormat = (format?: any): PaperFormat | undefined  => {
   return hit[0]
 }
 
+// もし規定より小さければ既定の値を返す
+const returnDefaultValueIfBelowThreshold = (minimumValue: string, testValue: string) => {
+  return toPx(minimumValue) > toPx(testValue) ? minimumValue : testValue
+}
+
 // 独自拡張したPDFオプションのうち、width, height, format, margin をオフィシャルなオプションに変換する -----------------------
 export type FormatConvProps = {
   /** 拡張機能では、Puppeteer で期待されたものの他に、空白とundefinedを許容する */
-  customPDFOptionsFormat?: PaperFormat | "",
+  customPDFOptionsFormat?: CustomPDFOptions['format'],
   customPDFOptionsWidth?: CustomPDFOptions['width'],
   customPDFOptionsHeight?: CustomPDFOptions['height']
   customPDFOptionsMargin: CustomPDFOptions['margin']
@@ -96,6 +102,57 @@ export const convertCustomPdfOptionsToOfficial = ({
     right: customPDFOptionsMargin.horizontal,
     bottom: customPDFOptionsMargin.vertical,
     left: customPDFOptionsMargin.horizontal
+  }
+
+  // 日本の郵便はがき
+  if (customPDFOptionsFormat === 'Japanese Postcard 100x148') {
+    return {
+      PDFOptionsPaperFormat: undefined,
+      PDFOptionsWidth: "10.0cm",
+      PDFOptionsHeight: "14.8m",
+      PDFOptionsMargin: margin
+    }
+  }
+
+  /**
+   * Kindle Direct Publishing (KDP) でのペーパーバック
+   * サイズだけではなく、マージンも指定する
+   * @see https://kdp.amazon.co.jp/ja_JP/help/topic/GVBQ3CMEQW3W2VL6#margins
+   */
+
+  // kdp.amazon.com / 
+  if (customPDFOptionsFormat === 'KDP-PB 139.7x215.9 no bleed') {
+    const horizontalMargin = returnDefaultValueIfBelowThreshold("9.6mm", customPDFOptionsMargin.horizontal)
+    const verticalMargin = returnDefaultValueIfBelowThreshold("6.4mm", customPDFOptionsMargin.vertical)
+    return {
+      PDFOptionsPaperFormat: undefined,
+      PDFOptionsWidth: "13.97cm",
+      PDFOptionsHeight: "21.59cm",
+      PDFOptionsMargin: {
+        top: verticalMargin,
+        right: horizontalMargin,
+        bottom: verticalMargin,
+        left: horizontalMargin
+      }
+    }
+
+  }
+
+  if (customPDFOptionsFormat === 'KDP-PB (JP) 148x210 no bleed'){
+    // 規定より小さければ既定のマージンを返す（最低マージンを保証する）
+    const horizontalMargin = returnDefaultValueIfBelowThreshold("9.6mm", customPDFOptionsMargin.horizontal)
+    const verticalMargin = returnDefaultValueIfBelowThreshold("6.4mm", customPDFOptionsMargin.vertical)
+    return {
+      PDFOptionsPaperFormat: undefined,
+      PDFOptionsWidth: "14.8cm",
+      PDFOptionsHeight: "21.0cm",
+      PDFOptionsMargin: {
+        top: verticalMargin,
+        right: horizontalMargin,
+        bottom: verticalMargin,
+        left: horizontalMargin
+      }
+    }
   }
 
   // オフィシャルなPaperFormatである場合は、width, height は無視する

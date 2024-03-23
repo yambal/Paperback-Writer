@@ -1,5 +1,5 @@
 import * as vscode from 'vscode'
-import { PdfOrientation } from '../../export/pdf/exportPdf'
+import { CustomPDFOptions, PdfOrientation } from '../../export/pdf/exportPdf'
 import { PaperbackWriterOutputType } from '../../paperbackWriter'
 import { PaperFormat } from 'puppeteer'
 import { HeaderFooterItems } from '../../export/pdf/pdfHeaderFooter/pdfHeaderFooterUtil'
@@ -59,7 +59,7 @@ type PaperbackWriterConfiguration = {
     printBackground: boolean
     paperOrientation: PdfOrientation
     pageRanges: string
-    paperSizeFormat?: PaperFormat & ""
+    paperSizeFormat: CustomPDFOptions['format']
     paperWidth: string
     paperHeight: string
     margin: {

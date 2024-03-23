@@ -1,4 +1,4 @@
-import { PDFOptions } from "puppeteer"
+import { PDFOptions, PaperFormat } from "puppeteer"
 import { LunchedPuppeteer } from "../../lunchPuppeteer"
 import { PdfHeaderProps } from "./pdfHeaderFooter/getPdfOptionsHeader"
 import { PdfFooterProps } from "./pdfHeaderFooter/getPdfOptionsFooter"
@@ -7,7 +7,15 @@ import { convertCustomPdfOptionsToOfficial } from "./convertCustomPdfOptionsToOf
 
 export type PuppeteerPdfOutputType = "pdf"
 export type PdfOrientation = "portrait" | "landscape"
-export type CustomPDFOptions = Omit<PDFOptions, "margin"> & {
+
+export type CustomPaperFormat = "" |
+PaperFormat |
+"Japanese Postcard 100x148" |
+"KDP-PB 139.7x215.9 no bleed" |
+"KDP-PB (JP) 148x210 no bleed" 
+
+export type CustomPDFOptions = Omit<PDFOptions, "margin" | "format"> & {
+  format: CustomPaperFormat
   margin: {
     vertical: string
     horizontal: string

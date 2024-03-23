@@ -459,7 +459,9 @@
               "A3",
               "A4",
               "A5",
-              "A6"
+              "A6",
+              "Japanese Postcard 100x148",
+              "ADP-PB (JP) 148x210 no bleed"
             ],
             "default": "A4",
             "description": "%paperback-writer.PDF.paperSizeFormat.dsc%",

@@ -92,6 +92,23 @@ Visual Studio Code User and Workspace Settings
 | | paperback-writer.`image.omitBackground` | Omits the background image. |
 | Chromium | paperback-writer.`pathToAnExternalChromium` | Path to the executable file of Chromium or Chrome to run instead of the bundled Chromium |
 
+
+### About ``PDF.paperSizeFormat``
+
+``PDF.paperSizeFormat`` is used to specify the paper size for PDF documents. This setting allows you to select standard paper sizes (such as Letter, A4, etc.), or define a custom paper size by specifying specific paper width (``PDF.paperWidth``) and paper height (``PDF.paperHeight``). However, if a standard paper size is selected, any custom size specified through ``PDF.paperWidth`` and {{PDF.paperHeight}} will be ignored. Therefore, if you want to use a custom size, you should select blank in ``PDF.paperSizeFormat`` and then enter specific dimensions for ``PDF.paperWidth`` and ``PDF.paperHeight``.
+
+The option ``Japanese Postcard 100x148`` is also available. This corresponds to the standard size of Japanese postal postcards.
+
+Settings for special paper sizes tailored for Kindle Direct Publishing are also available:
+| Option | Description | Notes |  |
+| --- | --- | --- | --- |
+| KDP-PB 139.7x215.9 no bleed | Kindle Direct Publishing Paperback: 139.7x215.9 mm without bleed | Minimum margin: 6.4 mm top and bottom, 9.6 mm left and right | kdp.amazon.com |
+| ADP-PB (JP) 148x210 no bleed | Kindle Direct Publishing Paperback: 148x210 mm without bleed | Minimum margin: 6.4 mm top and bottom, 9.6 mm left and right | kdp.amazon.co.jp |
+
+
+For more details, please refer to [KDP : Set Trim Size, Bleed, and Margins](https://kdp.amazon.com/en_US/help/topic/GVBQ3CMEQW3W2VL6)
+
+
 ## Release Notes
 
 ## License
