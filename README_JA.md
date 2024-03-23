@@ -103,7 +103,8 @@
 
 ``PDF.paperSizeFormat``は、PDF文書の用紙サイズを指定するために使用されます。この設定では、標準の用紙サイズ（例えばLetter、A4など）を指定できるほか、特定の用紙幅（``PDF.paperWidth``）と用紙高さ（``PDF.paperHeight``）を指定してカスタムサイズの用紙を定義することも可能です。ただし、標準の用紙サイズが指定された場合、``PDF.paperWidth``と``PDF.paperHeight``で指定されたカスタムサイズは無視されます。そのため、カスタムサイズを使用したい場合は、``PDF.paperSizeFormat``で空白を選択してから、``PDF.paperWidth``と``PDF.paperHeight``に具体的な寸法を入力する必要があります。
 
-用紙サイズには``Japanese Postcard 100x148``(日本の郵便ハガキのサイズ)も用意しています
+
+``Japanese Postcard 100x148``という選択肢もあります。これは、日本の標準的な郵便ハガキサイズに対応しています。
 
 特殊な用紙サイズに Kindle direct publishing 向けの設定が（いくつか）用意されています
 | 選択肢 | 解説 | 備考 |  |
@@ -111,6 +112,7 @@
 | KDP-PB 139.7x215.9 no bleed | kindle direct publishing の ペーパーバック：139.7x215.9mm 裁ち落としなし | 最低マージン：上下6.4mm、左右9.6mm | kdp.amazon.com |
 | ADP-PB (JP) 148x210 no bleed | kindle direct publishing の ペーパーバック：148x210mm 裁ち落としなし| 最低マージン：上下6.4mm、左右9.6mm | kdp.amazon.co.jp |
 
+詳しくは[KDP : 判型、裁ち落とし、マージンの設定](https://kdp.amazon.co.jp/ja_JP/help/topic/GVBQ3CMEQW3W2VL6#margins)をご参照ください
 
 
 ## リリースノート
