@@ -100,7 +100,7 @@ export const image: TokenizerAndRendererExtension = {
         type: 'image',
         raw: match[0],
         title: match[1].trim(),
-        href: match[2].trim(),
+        href: match[2].trim().replace("\\", '/'),
         figure: match[3]?.trim(),
         classValue,
         tokens

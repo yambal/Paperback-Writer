@@ -16,9 +16,11 @@ import { exportHtml } from "./export/exportHtml"
 import { PuppeteerImageOutputType, exportImage } from "./export/exportImage"
 import { getHeaderFooterFontSize } from "./export/pdf/pdfHeaderFooter/pdfHeaderFooterUtil"
 import { htmlBuilder } from "./convert/htmlBuilder"
+import { exportWord } from "./export/word/exportWord"
+import { markdownToHtmlBodyForWord } from "./convert/markdown/markdownToHtmlBodyForWord"
 
 /** このExtentionが出力できる拡張子 */
-export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html'
+export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html' | 'word'
 
 /** 受け付けるコマンド */
 export type PaperbackWriterCommandType = 'settings' | 'all' | PaperbackWriterOutputType
@@ -94,6 +96,10 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
         outputTypes = ['html']
         break
 
+      case 'word':
+        outputTypes = ['word']
+        break
+
       case 'all':
         outputTypes = allOutputTypes
         break
@@ -148,7 +154,7 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
         },
         includeDefaultStyles: pwConf.style.includeDefaultStyle
       })
-      .then((html) => {
+      .then(({html, bodyHtml, markdownString}) => {
         statusBarItem.text = addIcon(nls["Saving temporary files"] + ` ${tmpfilename}`)
 
         return exportHtml({htmlString: html, exportPath:tmpfilename})
@@ -170,6 +176,37 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                     
                     return exportHtml({htmlString: html, exportPath: outputPathName})
     
+                  } else if (editorDocumentLanguageId === "markdown" && outputType === 'word') {
+                    const outputPathName = editorCocPathName.replace(ext, '.' + "docx")
+                    
+                    const exportPathName = getOutputPathName({
+                      outputPathName,
+                      editorDocVsUrl
+                    })
+
+                    if (!exportPathName) {
+                      return
+                    }
+
+                    return markdownToHtmlBodyForWord({
+                      markdownString: markdownString,
+                      isAddBrOnSingleNewLine: pwConf.markdown.addBrOnSingleLineBreaks,
+                    })
+                    .then((bodyHtmlForWord) => {
+                      console.log('bodyHtmlForWord', bodyHtmlForWord)
+                      return exportWord({
+                        htmlString: bodyHtmlForWord,
+                        headerHTMLString: '',
+                        footerHTMLString: '',
+                        exportPathName,
+                        documentOptions: {
+                          title: docTitle,
+                          lang: vscode.env.language
+                        }
+                      })
+                    })
+
+                    
                   } else if (editorDocumentLanguageId === "markdown" && outputType !== 'html') {      
 
                     const exportPathName = getOutputPathName({
@@ -223,6 +260,8 @@ export const paperbackWriter = async ({ command }: paperbackWriterOptionType) =>
                         }
                       })
                     }
+
+
                   } else {
                     return null
                   }
