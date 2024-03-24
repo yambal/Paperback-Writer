@@ -5,6 +5,7 @@
   "extension.paperback-writer.png": "MarkdownをPNGにOutput",
   "extension.paperback-writer.jpeg": "MarkdownをJPEGにOutput",
   "extension.paperback-writer.html": "MarkdownをHTMLにOutput",
+  "extension.paperback-writer.word": "MarkdownをWordにOutput",
   "extension.paperback-writer.all": "MarkdownをHTML,PDF,PNG,JPEGにOutput",
   
   

@@ -5,6 +5,7 @@
   "extension.paperback-writer.png": "Output Markdown to PNG",
   "extension.paperback-writer.jpeg": "Output Markdown to JPEG",
   "extension.paperback-writer.html": "Output Markdown to HTML",
+  "extension.paperback-writer.word": "Output Markdown to Word",
   "extension.paperback-writer.all": "Output Markdown to HTML, PDF, PNG, JPEG",
 
   "Output": "Output",

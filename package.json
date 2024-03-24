@@ -69,6 +69,11 @@
         "group": "paperback-writer"
       },
       {
+        "command": "extension.paperback-writer.word",
+        "title": "%extension.paperback-writer.word%",
+        "group": "paperback-writer"
+      },
+      {
         "command": "extension.paperback-writer.all",
         "title": "%extension.paperback-writer.all%",
         "group": "paperback-writer"
@@ -103,6 +108,11 @@
         },
         {
           "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.word",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
           "command": "extension.paperback-writer.all",
           "group": "paperback-writer"
         }
@@ -131,6 +141,11 @@
         {
           "when": "resourceLangId == markdown",
           "command": "extension.paperback-writer.html",
+          "group": "paperback-writer"
+        },
+        {
+          "when": "resourceLangId == markdown",
+          "command": "extension.paperback-writer.word",
           "group": "paperback-writer"
         },
         {
@@ -597,6 +612,7 @@
   },
   "devDependencies": {
     "@types/ejs": "^3.1.5",
+    "@types/file-saver": "^2.0.7",
     "@types/marked": "^6.0.0",
     "@types/minify": "^9.1.4",
     "@types/mocha": "^10.0.6",
@@ -609,6 +625,8 @@
     "@vscode/test-cli": "^0.0.6",
     "@vscode/test-electron": "^2.3.9",
     "eslint": "^8.56.0",
+    "from": "^0.1.7",
+    "import": "^0.0.6",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.90.3",
@@ -617,7 +635,10 @@
   "dependencies": {
     "clean-css": "^5.3.3",
     "ejs": "^3.1.9",
+    "file-saver": "^2.0.5",
     "highlight.js": "^11.9.0",
+    "html-minifier": "^4.0.0",
+    "html-to-docx": "^1.8.0",
     "marked": "^12.0.0",
     "mkdirp": "^3.0.1",
     "polished": "^4.3.1",

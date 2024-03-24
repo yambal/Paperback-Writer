@@ -17,7 +17,7 @@ export const htmlBuilder = ({
   fontStyleTagsBuilderProps,
   userStyleTagsBuilderProps,
   includeDefaultStyles,
-}: HtmlBuilderProps):Promise<string> => {
+}: HtmlBuilderProps):Promise<{html: string, bodyHtml: string, markdownString: string}> => {
   return new Promise(async (resolve, reject) => {
     try {
       const { markdownString, isAddBrOnSingleNewLine } = markdownProps
@@ -40,7 +40,11 @@ export const htmlBuilder = ({
           style: styleTags
         })
 
-        resolve(html)
+        resolve({
+          html,
+          bodyHtml: htmlBodyString,
+          markdownString: markdownString
+        })
 
       })
     } catch (error) {
