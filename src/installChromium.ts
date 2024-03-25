@@ -1,6 +1,7 @@
 import * as vscode from 'vscode'
-import { getPaperbackWriterConfiguration, showMessage } from './util'
+import { getNls, getPaperbackWriterConfiguration, showMessage } from './util'
 import { CheckPuppeteerBinaryProps, checkPuppeteerBinary } from './checkPuppeteerBinary'
+import { addIcon } from './util/vscode/vscodeMessage'
 
 /**
  * Chromiumをインストールする
@@ -15,13 +16,15 @@ export const installChromium = ({
 
   return new Promise((resolve, reject) => {
     const pwConf = getPaperbackWriterConfiguration()
+    const nls = getNls()
 
     showMessage({
-      message: `[Markdown PDF] Installing Chromium ...`,
+      message: addIcon(`${addIcon(nls["Installing Chromium"])} ...`),
       type: 'info'
     })
 
-    var statusbarmessage = vscode.window.setStatusBarMessage('$(markdown) Installing Chromium ...')
+    var statusbarmessage = vscode.window.setStatusBarMessage(`${addIcon(nls["Installing Chromium"])} ...`)
+
     var StatusbarMessageTimeout = pwConf.StatusbarMessageTimeout
 
     const puppeteer = require('puppeteer-core')
@@ -35,11 +38,10 @@ export const installChromium = ({
 
     return browserFetcher.download(revisionInfo.revision, (downloadedBytes: number, totalBytes: number) => {
       var progress = parseInt(`${downloadedBytes / totalBytes * 100}`)
-      vscode.window.setStatusBarMessage('$(markdown) Installing Chromium ' + progress + '%' , StatusbarMessageTimeout)
+      vscode.window.setStatusBarMessage(`${addIcon(nls["Installing Chromium"])} ${progress}%` , StatusbarMessageTimeout)
     })
     .then(() => browserFetcher.localRevisions())
     .then((localRevisions: any) => {
-      console.log('Chromium downloaded to ' + revisionInfo.folderPath)
       localRevisions = localRevisions.filter((revision: any) => revision !== revisionInfo.revision)
 
       // Remove previous chromium revisions.
@@ -47,7 +49,10 @@ export const installChromium = ({
 
       if (checkPuppeteerBinary({pathToAnExternalChromium})) {
         statusbarmessage.dispose()
-        vscode.window.showInformationMessage('[Markdown PDF] Chromiumのインストールに成功')
+        showMessage({
+          message: nls["Successfully installed Chromium"],
+          type: "info"
+        })
         return Promise.all(cleanupOldVersions)
         .then(() => {
           resolve()
@@ -56,9 +61,9 @@ export const installChromium = ({
     })
     .catch((error: any) => {
       statusbarmessage.dispose()
-      vscode.window.setStatusBarMessage('$(markdown) ERROR: Failed to download Chromium!', StatusbarMessageTimeout)
+      vscode.window.setStatusBarMessage(addIcon(nls["ERROR: Failed to download Chromium!"]), StatusbarMessageTimeout)
       showMessage({
-        message:'Failed to download Chromium! If you are behind a proxy, set the http.proxy option to settings.json and restart Visual Studio Code. See https://github.com/yzane/vscode-markdown-pdf#install',
+        message: nls["If you are behind a proxy"],
         type: 'error'
       })
       reject()
@@ -69,8 +74,6 @@ export const installChromium = ({
 function setProxy() {
   var https_proxy = vscode.workspace.getConfiguration('http')['proxy'] || ''
   if (https_proxy) {
-    console.log('Set proxy: ' + https_proxy) 
-    
     process.env.HTTPS_PROXY = https_proxy
     process.env.HTTP_PROXY = https_proxy
   }

@@ -39,3 +39,7 @@ export const showMessage = ({
       break
   }
 }
+
+export const addIcon = (text: string) => {
+  return `$(paperbackwriter-logo) ${text}`
+}
