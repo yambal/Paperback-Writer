@@ -78,5 +78,10 @@
   "Chromium or Chrome is not found!": "ChromiumまたはChromeが存在しません！",
   "The editor is not active.": "エディターがアクティヴになっていません",
   "Markdown file is not active in the editor": "エディターでマークダウンファイルがアクティブになっていません",
-  "Support outputting in the formats of HTML, PDF, PNG, and JPEG" : "html, pdf, png, jpeg、のフォーマットの書き出しをサポートしています"
+  "Support outputting in the formats of HTML, PDF, PNG, and JPEG" : "html, pdf, png, jpeg、のフォーマットの書き出しをサポートしています",
+  "Installing Chromium": "Chromium をインストール中",
+  "Successfully installed Chromium": "Chromium のインストールに成功しました",
+  "ERROR: Failed to download Chromium!": "ERROR: Chromium のダウンロードに失敗しました！",
+  "If you are behind a proxy": "Failed to download Chromium! プロキシを使用している場合は、http.proxy オプションを settings.json に設定し、Visual Studio Code を再起動します。 https://github.com/yzane/vscode-markdown-pdf#install を参照してください。"
+
 }

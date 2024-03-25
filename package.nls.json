@@ -76,5 +76,9 @@
   "Chromium or Chrome is not found!": "Chromium or Chrome is not found!",
   "The editor is not active.": "The editor is not active.",
   "Markdown file is not active in the editor": "Markdown file is not active in the editor",
-  "Support outputting in the formats of HTML, PDF, PNG, and JPEG" : "Support outputting in the formats of HTML, PDF, PNG, and JPEG"
+  "Support outputting in the formats of HTML, PDF, PNG, and JPEG" : "Support outputting in the formats of HTML, PDF, PNG, and JPEG",
+  "Installing Chromium": "Installing Chromium",
+  "Successfully installed Chromium": "Successfully installed Chromium",
+  "ERROR: Failed to download Chromium!": "ERROR: Failed to download Chromium!", 
+  "If you are behind a proxy": "Failed to download Chromium! If you are behind a proxy, set the http.proxy option to settings.json and restart Visual Studio Code. See https://github.com/yzane/vscode-markdown-pdf#install"
 }

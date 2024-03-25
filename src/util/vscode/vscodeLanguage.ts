@@ -30,6 +30,10 @@ type Nls = {
   "The editor is not active." : string
   "Markdown file is not active in the editor" : string
   "Support outputting in the formats of HTML, PDF, PNG, and JPEG" : string
+  "Installing Chromium": string
+  "Successfully installed Chromium": string
+  "ERROR: Failed to download Chromium!": string
+  "If you are behind a proxy": string
 }
 export const getLang = () => {
   return vscode.env.language

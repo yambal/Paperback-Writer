@@ -18,6 +18,7 @@ import { getHeaderFooterFontSize } from "./export/pdf/pdfHeaderFooter/pdfHeaderF
 import { htmlBuilder } from "./convert/htmlBuilder"
 import { exportWord } from "./export/word/exportWord"
 import { markdownToHtmlBodyForWord } from "./convert/markdown/markdownToHtmlBodyForWord"
+import { addIcon } from "./util/vscode/vscodeMessage"
 
 /** このExtentionが出力できる拡張子 */
 export type PaperbackWriterOutputType = PuppeteerPdfOutputType | PuppeteerImageOutputType | 'html' | 'word'
@@ -30,9 +31,7 @@ export type paperbackWriterOptionType = {
   command: PaperbackWriterCommandType
 }
 
-const addIcon = (text: string) => {
-  return `$(paperbackwriter-logo) ${text}`
-}
+
 
 export const paperbackWriter = async ({ command }: paperbackWriterOptionType) => {
   const nls = getNls()
